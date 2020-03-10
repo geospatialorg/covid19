@@ -1,6 +1,6 @@
 module.exports = {
     auth: {
-        jwtTokenSecret: 'z9zSBtYjgPHiwBr3yqnbLry2AmC7BBgWyq2PPEqP',
+        jwtTokenSecret: '',
          tokenExpireTime: '2h'
         //tokenExpireTime: 60
     },
@@ -9,10 +9,10 @@ module.exports = {
         apiPath: '/api'
     },
     db: {
-        user: 'postgres',
-        password: 'postgres',
-        host: '192.168.3.25',
-        database: 'ro_covid19', 
-        port: 5434
+        user: '',
+        password: '',
+        host: '',
+        database: '', 
+        port: 
     }
 };
