@@ -1,0 +1,29 @@
+<div class="header">
+    <div class="logo">
+        <h2>Coronavirus COVID-19 România</h2>
+    </div>
+    <ul class="topbar-menu">
+        <li> 
+            <a href="#"><i class="pi pi-home"></i> Acasa</a>
+        </li>
+        <li>
+            <a href="#"><i class="pi pi-chart-line"></i> Statistici</a>
+        </li>
+        <li *ngIf="currentUser">
+            <a href="#">Administrare</a>
+        </li>
+        <li *ngIf="!currentUser">
+            <a [routerLink]="['/login']">
+                <i class="pi pi-sign-in"></i>
+                Login
+            </a>
+        </li>
+
+        <li *ngIf="currentUser">
+            <a href="#" (click)="doLogout($event)">
+                <i class="pi pi-sign-in"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</div>

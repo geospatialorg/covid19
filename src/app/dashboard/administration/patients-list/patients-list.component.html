@@ -1,0 +1,64 @@
+<button type="button" class="ui-button-raised" label="Adaugă" pButton style="margin-bottom: 5px;" (click)="openAddNewRasterModal()"></button>
+<p-table [value]="tableData" selectionMode="single" id="rasterTable">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Etichetă</th>
+            <th>Cale</th>
+            <th>Nr. fișiere</th>
+            <th>Dată încărcare</th>
+            <th>Utilizator</th>
+            <th>Status</th>
+            <th width="80">Eroare</th>
+            <th width="120">Acțiuni</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        
+        <tr>
+            <td class="ellipsisClass" title="{{item.eticheta}}">{{item.eticheta}}</td>
+            <td class="ellipsisClass" title="{{item.cale}}">{{item.cale}}</td>
+            <td class="right-align">{{item.nr_fisiere}}</td>
+            <td class="right-align">{{item.data_incarcare}}</td>
+            <td>{{item.utilizator}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.cod_eroare ? 'DA' : 'NU'}}</td>
+            <td class="center-align table-actions">
+                <i class="fa fa-info-circle link" title="Afișează informații" (click)="openInfoModal(item);"
+                    [ngClass]="{'disabled': item.id_status < 3}"></i>
+                <i class="fa fa-redo-alt link" title="Reînregistrează" (click)="reprocessFolder(item);" 
+                    [ngClass]="{'disabled': item.id_status !== 3 && item.id_status !== 5}" style="color: #007ad9;"></i>
+                <i class="fa fa-download link" title="Generează serviciul WMTS" (click)="generateWMTS(item);" 
+                    [ngClass]="{'disabled': item.id_status !== 3 || item.cod_eroare}" style="color: green; transform: rotate(270deg);"></i>
+                <i class="fa fa-trash link" [ngClass]="{'disabled': item.id_status > 3}" title="Anulează înregistrarea" (click)="deleteItem(item);"></i>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <tr>
+            <span class="table-action" (click)="changePage('first')"><i class="fa fa-step-backward"></i></span>
+            <span class="table-action" (click)="changePage('prev')"><i class="fa fa-caret-left"></i></span>
+            <span class="table-action pagination">
+                Pagina
+                {{tableParams['page']}} din {{tableParams['lastPage']}}
+            </span>
+            <span class="table-action" (click)="changePage('next')"><i class="fa fa-caret-right"></i></span>
+            <span class="table-action" (click)="changePage('last')"><i class="fa fa-step-forward"></i></span>
+            <span class="table-action" (click)="loadData()"><i class="fa fa-sync-alt"></i></span><span *ngIf="tableParams.total > 0" 
+                class="table-summary">Înregistrări afișate {{tableParams.offset+1}}-{{ (tableParams.offset + tableParams.limit) < 
+                    tableParams.total ? (tableParams.offset + tableParams.limit): tableParams.total}} din {{tableParams.total}}</span>
+            <span *ngIf="tableParams.total == 0" class="table-summary">Nu există înregistrări</span>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<!-- <app-add-new-raster 
+*ngIf="displayRaster" 
+[display]="displayRaster" 
+[modalTitle]="modalTitle" 
+(displayChange)="onDialogCloseRaster($event)"></app-add-new-raster> -->

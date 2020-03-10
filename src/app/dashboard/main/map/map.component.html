@@ -1,0 +1,13 @@
+<div class="p-grid ui-fluid" style="padding: 15px 10px;height: 100%;">
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12">
+        <div id="map" style="width: 100%; height: 100%;position: relative;">
+            <div class="info-modal" *ngIf="selectedFeature">
+                <h3>{{selectedFeature.get('county')}}</h3>
+                <p>Cazuri confirmate: {{selectedFeature.get('total_county')}}</p>
+                <p>Total vindecari: {{selectedFeature.get('total_healed')}}</p>
+                <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
+                <p>Cazuri active: {{selectedFeature.get('total_county') - selectedFeature.get('total_healed') - selectedFeature.get('total_dead')}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div id="bg_login">
+    <div class="p-grid ui-fluid login-body  p-nogutter p-justify-center p-align-center" style="height:100%; margin-top: 15%;">
+        <div class="p-col-2 login-panel">
+            <p-panel>
+                <p-header>
+                  <div style="padding: 5px;font-weight: bold;">
+                      COVID-19 - Autentificare
+                  </div>
+                </p-header>
+    
+                <div class="panel-content">
+                  <form novalidate (keydown.enter)="doLogin()">
+                    <div class="p-grid ui-fluid p-justify-center p-align-center">
+                        <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                            <div class="p-grid ui-fluid">
+                                <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                                    <label class="required">Utilizator: </label>
+                                    <input type="text" id="username" autocomplete="off"  name="username" pInputText [(ngModel)]="username" />
+                                </div>
+                            </div>
+                            <div class="p-grid ui-fluid p-justify-center p-align-center">
+                                <div class="ui-lg-12 ui-md-12 ui-sm-12">
+                                <label class="required">Parola: </label>
+                                <input type="password" id="password" name="password" pInputText [(ngModel)]="password"/>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <button pButton type="button" label="Autentificare" (click)="doLogin()"></button>
+                    </div>
+                </form>
+                </div>
+    
+            </p-panel>
+        </div>
+    </div>
+</div>
