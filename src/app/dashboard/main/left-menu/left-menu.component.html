@@ -1,27 +1,23 @@
-<div class="p-grid ui-fluid" style="padding: 15px 10px;">
-  <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12">
-    <div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center; width: 100%">
-      <h2>Total confirmate</h2>
-      <h2 style="color: #ff7f00;">{{totalCases}}</h2>
-    </div>
-    <div style="overflow-y: auto; max-height: 715px" class="borderlessTable">
-      <p-table [value]="tableData" id="addNewRasterTable" selectionMode="single">
-        <ng-template pTemplate="header">
-          <tr>
-              <th>Cazuri confirmate pe județ</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-item>
-          <tr>
-              <td style="text-align: left;">
-                <span style="font-weight: bold;">{{item.total_county + " "}}</span>
-                <span>{{item.county}}</span>
-              </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>  
-  </div>
+<div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
+  <h2>Total confirmate</h2>
+  <h2 style="color: #ff7f00;">{{totalCases}}</h2>
+</div>
+<div style="overflow-y: auto; max-height: 715px" class="borderlessTable">
+  <p-table [value]="tableData" id="addNewRasterTable" selectionMode="single">
+    <ng-template pTemplate="header">
+      <tr>
+          <th>Cazuri confirmate pe județ</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+          <td style="text-align: left;">
+            <span style="font-weight: bold;">{{item.total_county + " "}}</span>
+            <span>{{item.county}}</span>
+          </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
 
 

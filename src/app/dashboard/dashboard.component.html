@@ -1,6 +1,14 @@
-<app-header></app-header>
-<div style="height: calc(100% - 128px)">
-    <router-outlet></router-outlet>
+<div class="p-grid" id="main-container">
+    <div class="p-col-12" style="padding: 0;">
+        <app-header></app-header>
+    </div>
+    <div id="main-area" class="p-col-12">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="p-col-12" style="padding: 0;">
+        <app-footer></app-footer>
+    </div>
+    
 </div>
 
-<app-footer></app-footer>
+

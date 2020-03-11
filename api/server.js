@@ -22,6 +22,9 @@ app.use(router);
 
 let routerLogic = require('./routes')(app);
 
+app.use('/', (req, res) => {
+    res.sendFile('./public/index.html', { 'root': __dirname });
+});
 
 const server = require('http').createServer(app);
 

@@ -23,7 +23,6 @@ body .ui-table .ui-table-thead > tr > th {
 }
 
 .header {
-    border: 1px #efefef solid;
     padding: 0 15px;
     background-color: #1976d2;
     color: #ffffff;
@@ -74,7 +73,6 @@ body .ui-table .ui-table-thead > tr > th {
 }
 
 .footer {
-    border: 1px #efefef solid;
     padding: 0 15px;
     background-color: #1976d2;
     color: #ffffff;
@@ -344,5 +342,46 @@ div.tooltip {
     visibility: visible;
 }
 
+#main-content {
+    height: calc(100% - 128px);
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .header .logo, .header .topbar-menu {
+        width: 100%;
+    }
+
+    .header .topbar-menu {
+        padding-left: 0;
+        display: flex;
+    }
+
+    #main-content, #right-sidebar, #left-sidebar, #map-container{
+        height: 100% !important;
+        overflow-y: unset !important;
+    }
+}
+
+#main-area {
+    padding: 0;
+    height: calc(100% - 125px);
+}
+
+#main-container {
+    margin: 0; 
+    height: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .header .logo{
+        font-size: 14px;
+    }
+
+    #main-container {
+        margin: 0; 
+        height: calc(100% - 90px);
+    }
+}
 
 
