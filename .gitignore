@@ -9,6 +9,9 @@
 
 # dependencies
 /node_modules
+/api/config.js
+api/config.js
+config.js
 
 # profiling files
 chrome-profiler-events*.json
@@ -44,6 +47,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-/api/config.js
-api/config.js
