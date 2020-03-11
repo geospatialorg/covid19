@@ -66,8 +66,6 @@ export class MapComponent implements OnInit {
     this.mapData = await this.getData();
 
     let geojson = await this.getGeojsonData();
-    console.log('geojson', geojson )
-    console.log('geojson', this.mapData )
     
     // let data = self.mapData.find(e => e.county_code === feature.get('county_code'));
 
@@ -157,10 +155,6 @@ export class MapComponent implements OnInit {
 
     this.mapData.map(e => {
       let data = geojsonFeatures.find(f => e.county_code === f.get('county_code'));
-
-      
-
-      console.log(e)
 
       if(data) {
         let radius = self.linearInterpolate(e.total_county, self.mapData[self.mapData.length-1].total_county, self.mapData[0].total_county, self.minRadius, self.maxRadius);

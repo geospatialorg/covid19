@@ -17,15 +17,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.AuthSvc.currentUserValue;
-
-    console.log(this.currentUser)
   }
 
   doLogout(ev){
-    console.log(11)
     ev.preventDefault();
     this.AuthSvc.logout().subscribe( res => {
-        console.log(res)
         this.AuthSvc.clearSession();
     })
   }
