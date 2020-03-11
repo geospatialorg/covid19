@@ -22,4 +22,8 @@ export class DashboardService {
     getDeadCasesByCounty( params?: any){
         return this.http.get<any>( `${environment.apiUrl}/dashboard/getDeadCasesByCounty`, { params });
     }
+
+    getDailyCaseReport( params?: any){
+        return this.http.get<any>( `${environment.apiUrl}/dashboard/getDailyCaseReport`, { params });
+    }
 }

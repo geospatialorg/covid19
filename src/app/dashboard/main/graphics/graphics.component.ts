@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdministrationService } from 'src/app/_services';
+import { DashboardService } from 'src/app/_services';
 import * as d3 from 'd3';
 
 @Component({
@@ -16,14 +16,31 @@ export class GraphicsComponent implements OnInit {
   jsonPath: string = "../assets/statistici_pe_zile.json";
 
   constructor(
-    private AdministrationSvc: AdministrationService
+    private DashboardSvc: DashboardService
   ) { }
+
+  getData(){
+    return this.DashboardSvc.getDailyCaseReport().toPromise().then( res => {
+        if(res && res.data && res.data.data) {
+
+            var parseTime = d3.timeParse("%Y-%m-%d");
+
+            // format the data
+            res.data.data.forEach(function(d) {
+                d.date = parseTime(d.day_case);
+                d.date.toLocaleDateString('ro-RO');
+                d.total_case = +d.total_case;
+            });
+
+            return res.data.data;
+        }
+        return [];
+    });
+  }
 
 
   ngOnInit(): void {
-    this.AdministrationSvc.getGlobalStat().subscribe( res => {
-
-    });
+    
   }
 
   changeView = (data, svg, x, y, valueline_total, valueline_dead, valueline_healed, width, margin, height) => {
@@ -236,6 +253,11 @@ export class GraphicsComponent implements OnInit {
   }
 
   ngAfterContentInit() {
+    this.initChart();
+  }
+
+  async initChart(){
+    let cases_data = await this.getData();
     let self = this;
 
     var margin = {top: 20, right: 20, bottom: 20, left: 20},
@@ -259,27 +281,29 @@ export class GraphicsComponent implements OnInit {
       .x(function(d:any) { return d.total_dead !== 0 ? self.x(d.date) : null; })
       .y(function(d: any) { return self.y(d.total_dead); });
 
-    const promises = [
-      d3.json(self.jsonPath)
-    ];
+    // const promises = [
+    //   d3.json(self.jsonPath)
+    // ];
 
-    Promise.all(promises).then( data => {
-        const cases_data = data[0].data;
 
-        // parse the date / time
-        var parseTime = d3.timeParse("%Y-%m-%d");
+    // Promise.all(promises).then( data => {
+    //     const cases_data = data[0].data;
+    //     console.log(cases_data)
 
-        // format the data
-        cases_data.forEach(function(d) {
-            d.date = parseTime(d.day_case);
-            d.date.toLocaleDateString('ro-RO');
-            d.total_case = +d.total_case;
-        });
+    //     // // parse the date / time
+    //     // var parseTime = d3.timeParse("%Y-%m-%d");
 
-        self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
-    }).catch( 
-        error => console.log(error)
-    );
+    //     // // format the data
+    //     // cases_data.forEach(function(d) {
+    //     //     d.date = parseTime(d.day_case);
+    //     //     d.date.toLocaleDateString('ro-RO');
+    //     //     d.total_case = +d.total_case;
+    //     // });
+
+    //     // self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
+    // }).catch( 
+    //     error => console.log(error)
+    // );
 
     self.svg = d3.select("#chart")
             .append("svg")
@@ -291,6 +315,8 @@ export class GraphicsComponent implements OnInit {
                 .append("g")
                 .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
+
+    self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
   }
 
 }
