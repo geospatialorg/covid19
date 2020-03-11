@@ -10,6 +10,7 @@ import { SkipIfLoggedIn } from './_guards/skipIfLoggedIn.guard';
 import { AdministrationComponent } from './dashboard/administration/administration.component';
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
 import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
+import { MainComponent } from './dashboard/main/main.component';
 
 
 const routes: Routes = [
@@ -19,22 +20,31 @@ const routes: Routes = [
     component: DashboardComponent,
     // canActivate: [AuthGuard],
     children: [
-      { path: 'map', component: MapComponent },
-      { path: 'left-menu', component: LeftMenuComponent },
-      { path: 'graphics', component: GraphicsComponent }
-    ]
-  },
-  {
-    path: 'administration',
-    component: AdministrationComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      { path: 'patients-list', component: PatientsListComponent },
-      { path: 'user-list', component: UserListComponent }
+      { path: '', redirectTo: 'main', pathMatch: 'full' },
+      { 
+        path: 'main', 
+        component: MainComponent,
+        children: [
+          { path: 'map', component: MapComponent },
+          { path: 'left-menu', component: LeftMenuComponent },
+          { path: 'graphics', component: GraphicsComponent }
+        ]
+      },
+      { 
+        path: 'administration', 
+        component: AdministrationComponent,
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', redirectTo: 'patients-list', pathMatch: 'full' },
+          { path: 'patients-list', component: PatientsListComponent },
+          { path: 'user-list', component: UserListComponent }
+        ]
+      }
     ]
   },
   { path: 'login', component: LoginComponent, resolve: { skipLoggedIn: SkipIfLoggedIn } }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' } )],
