@@ -11,6 +11,7 @@ import { AdministrationComponent } from './dashboard/administration/administrati
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
 import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
 import { MainComponent } from './dashboard/main/main.component';
+import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
           { path: 'patients-list', component: PatientsListComponent },
           { path: 'user-list', component: UserListComponent }
         ]
+      },
+      { 
+        path: 'statistics', 
+        component: StatisticsComponent
       }
     ]
   },

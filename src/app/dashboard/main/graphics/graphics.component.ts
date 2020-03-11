@@ -13,6 +13,8 @@ export class GraphicsComponent implements OnInit {
   y: any;
   svg: any;
 
+  jsonPath: string = "../assets/statistici_pe_zile.json";
+
   constructor(
     private AdministrationSvc: AdministrationService
   ) { }
@@ -27,8 +29,8 @@ export class GraphicsComponent implements OnInit {
   changeView = (data, svg, x, y, valueline_total, valueline_dead, valueline_healed, width, margin, height) => {
 
       // Scale the range of the data
-      x.domain(d3.extent(data, function(d) { return d.date; }));
-      y.domain([0, d3.max(data, function(d) { return d.total_case; })]);
+      x.domain(d3.extent(data, function(d: any) { return d.date; }));
+      y.domain([0, d3.max(data, function(d: any) { return d.total_case; })]);
 
       /****************************** Valueline Path ********************************/
       svg.append("path")
@@ -181,22 +183,18 @@ export class GraphicsComponent implements OnInit {
           .attr("class", "overlay")
           .attr("width", width)
           .attr("height", height)
-          .on("mouseover", function() { focus.style("display", null); tooltip_div.style("display", null); })
-          // .on("mouseout", function() { focus.style("display", "none"); tooltip_div.style("display", "none"); })
+          .on("mouseover", function() { focus.style("display", null); })
+          .on("mouseout", function() { focus.style("display", "none"); tooltip_div.style("display", "none"); })
           .on("mousemove", mousemove);
 
-      var bisectDate = d3.bisector(function(d) { return d.date; }).left;
+      var bisectDate = d3.bisector(function(d:any) { return d.date; }).left;
 
       function mousemove() {
-
-          var x0 = x.invert(d3.mouse(this)[0]),
-              i = bisectDate(data, x0, 1),
-              d0 = data[i - 1],
-              d1 = data[i],
-              d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-
-
-        console.log(d3.event)
+        var x0 = x.invert(d3.mouse(this)[0]),
+            i = bisectDate(data, x0, 1),
+            d0 = data[i - 1],
+            d1 = data[i],
+            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
 
           focus.attr("transform", "translate(" + x(d.date) + "," + y(d.total_case) + ")");
           // focus.select("text").html("Ziua " + d.day_no);
@@ -250,19 +248,19 @@ export class GraphicsComponent implements OnInit {
     self.y = d3.scaleLinear().range([height, 0]);
 
     var valueline_total = d3.line()
-      .x(function(d) { return self.x(d.date); })
-      .y(function(d) { return self.y(d.total_case); });
+      .x(function(d:any) { return self.x(d.date); })
+      .y(function(d:any) { return self.y(d.total_case); });
 
     var valueline_healed = d3.line()
-      .x(function(d) { return d.total_healed !== 0 ? self.x(d.date) : null; })
-      .y(function(d) { return self.y(d.total_healed); });
+      .x(function(d:any) { return d.total_healed !== 0 ? self.x(d.date) : null; })
+      .y(function(d:any) { return self.y(d.total_healed); });
         
     var valueline_dead = d3.line()
-      .x(function(d) { return d.total_dead !== 0 ? self.x(d.date) : null; })
-      .y(function(d) { return self.y(d.total_dead); });
+      .x(function(d:any) { return d.total_dead !== 0 ? self.x(d.date) : null; })
+      .y(function(d: any) { return self.y(d.total_dead); });
 
     const promises = [
-      d3.json("https://alexaac.github.io/covid-19-ro/cases_per_day/statistici_pe_zile.json")
+      d3.json(self.jsonPath)
     ];
 
     Promise.all(promises).then( data => {

@@ -65,6 +65,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdministrationComponent } from './dashboard/administration/administration.component';
 import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
+import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { UserListComponent } from './dashboard/administration/user-list/user-lis
     LoginComponent,
     AdministrationComponent,
     PatientsListComponent,
-    UserListComponent
+    UserListComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

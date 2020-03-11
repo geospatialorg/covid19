@@ -57,6 +57,7 @@ function verifyToken (req, res, next){
 module.exports = app => {
     app.use(`${config.app.apiPath}/authentication`, require('./_authentication'));
     app.use(`${config.app.apiPath}/dashboard`, require('./_dashboard'));
+    app.use(`${config.app.apiPath}/statistics`, require('./_statistics'));
     app.use(`${config.app.apiPath}/*`,verifyToken);
     app.use(`${config.app.apiPath}/administration`, require('./_administration'));
 }
