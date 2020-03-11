@@ -1,0 +1,143 @@
+{
+	"data": [{
+			"day_case": "2020-02-26",
+			"day_no": 1,
+			"new_case_no": 1,
+			"total_case": 1,
+			"new_healed_no": 0,
+			"total_healed": 0,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-02-27",
+			"day_no": 2,
+			"new_case_no": 0,
+			"total_case": 1,
+			"new_healed_no": 0,
+			"total_healed": 0,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-02-28",
+			"day_no": 3,
+			"new_case_no": 2,
+			"total_case": 3,
+			"new_healed_no": 0,
+			"total_healed": 0,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-02-29",
+			"day_no": 4,
+			"new_case_no": 0,
+			"total_case": 3,
+			"new_healed_no": 0,
+			"total_healed": 0,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-01",
+			"day_no": 5,
+			"new_case_no": 0,
+			"total_case": 3,
+			"new_healed_no": 1,
+			"total_healed": 1,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-02",
+			"day_no": 6,
+			"new_case_no": 0,
+			"total_case": 3,
+			"new_healed_no": 0,
+			"total_healed": 1,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-03",
+			"day_no": 7,
+			"new_case_no": 1,
+			"total_case": 4,
+			"new_healed_no": 0,
+			"total_healed": 1,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-04",
+			"day_no": 8,
+			"new_case_no": 2,
+			"total_case": 6,
+			"new_healed_no": 0,
+			"total_healed": 1,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-05",
+			"day_no": 9,
+			"new_case_no": 1,
+			"total_case": 7,
+			"new_healed_no": 2,
+			"total_healed": 3,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-06",
+			"day_no": 10,
+			"new_case_no": 2,
+			"total_case": 9,
+			"new_healed_no": 0,
+			"total_healed": 3,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-07",
+			"day_no": 11,
+			"new_case_no": 4,
+			"total_case": 13,
+			"new_healed_no": 1,
+			"total_healed": 4,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-08",
+			"day_no": 12,
+			"new_case_no": 2,
+			"total_case": 15,
+			"new_healed_no": 0,
+			"total_healed": 4,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-09",
+			"day_no": 13,
+			"new_case_no": 2,
+			"total_case": 17,
+			"new_healed_no": 1,
+			"total_healed": 5,
+			"new_dead_no": 0,
+			"total_dead": 0
+		},
+		{
+			"day_case": "2020-03-10",
+			"day_no": 14,
+			"new_case_no": 12,
+			"total_case": 29,
+			"new_healed_no": 0,
+			"total_healed": 5,
+			"new_dead_no": 0,
+			"total_dead": 0
+		}
+	]
+}
