@@ -23,9 +23,8 @@ router
             offset = params.offset || 0,
             sort_column = params.sort_column || null,
             order_type = params.order_type || null,
-            county_code = params.county_code || null;
+            county_code = params.filter && JSON.parse(params.filter).county_code ? JSON.parse(params.filter).county_code : null;
 
-            
         pool.query(query,
             [ login_id, limit, offset, sort_column, order_type, county_code ],
             function (err, result) {
@@ -48,7 +47,6 @@ router
 router
     .route('/setLogout')
     .get(function (req, res) {
-        console.log(req.user);
         
         if (!req.user) {
             res.status(403).json({
@@ -119,6 +117,7 @@ router
         volunteer = params.volunteer || null,
         login_id = req.user.login_id;
 
+
     pool.query(query,
         [ case_id, case_no, source_no, diagnostic_date, healing_date, death_date, gender, age, county_code, siruta,
             reference, healed_reference, symptoms_flag, other_info, country_of_infection, volunteer, login_id ],
@@ -179,5 +178,105 @@ router
         }
     )
 });
+
+router
+.route('/getCountyCombo')
+.get((req, res) => {
+    let query = `select COVID.GET_COUNTY_COMBO() as data`;
+
+    pool.query(query,
+        function (err, result) {
+            if (err) {
+                res.status(400).send({
+                    success: false,
+                    user_id: null
+                });
+
+                return console.error('error running query', err);
+            }
+
+            res.status(200).send({
+                data: result.rows[0].data || null
+            });
+        }
+    )
+});
+
+router
+    .route('/getUatCombo')
+    .get((req, res) => {
+        if (!req.user) {
+            res.status(403).json({
+                success: false,
+                message: "Not authorized"
+            });
+            return false;
+        }
+
+        let params_no = 2;
+        let qp = Array.from(Array(params_no).keys(), x => `$${x+1}`).join(',');
+        let query = `select COVID.GET_UAT_COMBO(${qp}) as data`;
+
+        let params = req.query,
+            county_code = params.county_code || null,
+            search_uat = params.search_uat || null;
+   
+        pool.query(query,
+            [ county_code, search_uat ],
+            function (err, result) {
+                if (err) {
+                    res.status(400).send({
+                        success: false
+                    });
+    
+                    return console.error('error running query', err);
+                }
+    
+                res.status(200).send({
+                    data: result.rows[0].data || null
+                });
+            }
+        );
+
+    });
+
+router
+    .route('/getCaseDetails')
+    .get((req, res) => {
+        if (!req.user) {
+            res.status(403).json({
+                success: false,
+                message: "Not authorized"
+            });
+            return false;
+        }
+
+        let params_no = 2;
+        let qp = Array.from(Array(params_no).keys(), x => `$${x+1}`).join(',');
+        let query = `select COVID.GET_CASE_DETAILS(${qp}) as data`;
+
+        let params = req.query,
+            login_id = req.user.login_id,
+            case_id = params.case_id || null;
+
+            
+        pool.query(query,
+            [ login_id, case_id ],
+            function (err, result) {
+                if (err) {
+                    res.status(400).send({
+                        success: false
+                    });
+    
+                    return console.error('error running query', err);
+                }
+    
+                res.status(200).send({
+                    data: result.rows[0].data || null
+                });
+            }
+        );
+
+    });
 
 module.exports = router;

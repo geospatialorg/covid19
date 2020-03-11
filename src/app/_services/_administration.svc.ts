@@ -26,4 +26,16 @@ export class AdministrationService {
     deleteCase( params: any ){
         return this.http.post<any>( `${environment.apiUrl}/administration/deleteCase`, params);
     }
+
+    getUatCombo( params?: any){
+        return this.http.get<any>( `${environment.apiUrl}/administration/getUatCombo`, { params });
+    }
+
+    getCountyCombo( params?: any){
+        return this.http.get<any>( `${environment.apiUrl}/administration/getCountyCombo`, { params });
+    }
+
+    getCaseDetails( params?: any){
+        return this.http.get<any>( `${environment.apiUrl}/administration/getCaseDetails`, { params });
+    }
 }

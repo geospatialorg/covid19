@@ -11,6 +11,7 @@ import { AdministrationComponent } from './dashboard/administration/administrati
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
 import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
 import { MainComponent } from './dashboard/main/main.component';
+import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 
 
@@ -31,19 +32,25 @@ const routes: Routes = [
           { path: 'graphics', component: GraphicsComponent }
         ]
       },
+
+      { 
+        path: 'statistics', 
+        component: StatisticsComponent
+      },
       { 
         path: 'administration', 
         component: AdministrationComponent,
         canActivate: [AuthGuard],
         children: [
           { path: '', redirectTo: 'patients-list', pathMatch: 'full' },
-          { path: 'patients-list', component: PatientsListComponent },
+          { path: 'patients-list', 
+            component: PatientsListComponent,
+            children: [
+              { path: 'add-new-patient', component: AddNewPatientComponent }
+            ]
+          },
           { path: 'user-list', component: UserListComponent }
         ]
-      },
-      { 
-        path: 'statistics', 
-        component: StatisticsComponent
       }
     ]
   },
