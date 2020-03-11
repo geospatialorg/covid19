@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "@schematics/angular": "^9.0.5",
     "chart.js": "^2.9.3",
     "cors": "^2.8.5",

@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MapComponent } from './dashboard/main/map/map.component';
 import { LeftMenuComponent } from './dashboard/main/left-menu/left-menu.component';
 import { GraphicsComponent } from './dashboard/main/graphics/graphics.component';
-
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { ErrorInterceptor, JwtInterceptor } from './_interceptors';
 
 // primeng modules
@@ -61,10 +61,12 @@ import {SpinnerModule} from 'primeng/spinner';
 import { LoginComponent } from './login/login.component';
 import {ChartModule} from 'primeng/chart';
 
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdministrationComponent } from './dashboard/administration/administration.component';
 import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
+import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import { UserListComponent } from './dashboard/administration/user-list/user-lis
     LoginComponent,
     AdministrationComponent,
     PatientsListComponent,
-    UserListComponent
+    UserListComponent,
+    AddNewPatientComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,8 @@ import { UserListComponent } from './dashboard/administration/user-list/user-lis
     ContextMenuModule,
     TableModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     ButtonModule,
     InputTextModule,

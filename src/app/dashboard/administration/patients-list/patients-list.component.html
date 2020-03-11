@@ -1,46 +1,61 @@
 <div class="p-grid ui-fluid">
-    <div class="p-col-10" style="border: 1px red solid;">
-        <button type="button" class="ui-button-raised" label="Adaugă" pButton style="margin-bottom: 5px; width: 100px"></button>
+    <div style="width: 100%; margin: 20px; height: auto;">
+        <form class="ui-form" [formGroup]="myForm">
+            <div class="p-grid ui-fluid" style="padding-right: 5px;">
+                <div class="p-col-11">
+                        <label style="display: inline-block; padding-right: 10px;">Județ</label>
+                        <span style="display: inline-block; width: 220px;"> 
+                            <p-dropdown [options]="countyList" formControlName="county_code" optionLabel="county" 
+                            [autoDisplayFirst]="false" (onChange)="filterTable()" [showClear]="true"></p-dropdown>
+                        </span>
+                </div>
+                <div class="p-col-1" style="padding-right: 5px;">
+                    <button type="button" class="ui-button-raised" label="Adaugă pacient" pButton style="margin-bottom: 5px; width: 150px"  (click)="openAddModal(null, false)"></button>
+                </div>
+            </div>
+ 
+        </form>
+        
         <p-table [value]="tableData" selectionMode="single" id="rasterTable">
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Nr. de cazuri</th>
-                    <th>Sursă</th>
-                    <th>Status</th>
-                    <th>Data diagnostic</th>
-                    <th>Data vindecare</th>
-                    <th>Data mortii</th>
-                    <th>Sex</th>
-                    <th>Varsta</th>
-                    <th>Judej</th>
-                    <th>Localitate</th>
-                    <th>Referinta</th>
-                    <th width="120">Acțiuni</th>
+                    <th width="70">Caz nr.</th>
+                    <th width="120">Caz sursă</th>
+                    <th width="100">Status</th>
+                    <th width="100">Dată diagnostic</th>
+                    <th width="100">Dată vindecare</th>
+                    <th width="100">Data morții</th>
+                    <th width="50">Sex</th>
+                    <th width="60">Vârsta</th>
+                    <th width="60">Cod județ</th>
+                    <th width="180">Județ</th>
+                    <th width="180">Localitate</th>
+                    <th>Referință</th>
+                    <th width="60">Acțiuni</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
                 <tr>
-                    <td>{{item.case_no}}</td>
-                    <td>{{item.source_no}}</td>
+                    <td class="right-align">{{item.case_no}}</td>
+                    <td class="right-align">{{item.source_no}}</td>
                     <td>{{item.status}}</td>
                     <td>{{item.diagnostic_date}}</td>
-                    <td>{{item.healing_date}}</td>
-                    <td>{{item.death_date}}</td>
-                    <td>{{item.gender}}</td>
-                    <td>{{item.age}}</td>
+                    <td class="right-align">{{item.healing_date}}</td>
+                    <td class="right-align">{{item.death_date}}</td>
+                    <td class="center-align">{{item.gender}}</td>
+                    <td class="right-align">{{item.age}}</td>
+                    <td class="center-align">{{item.county_code}}</td>
                     <td>{{item.county}}</td>
-                    <td>{{item.siruta}}</td>
-                    <td>{{item.reference}}</td>
+                    <td>{{item.uat}}</td>
+                    <td class="ellipsisClass" title="{{item.reference}}">{{item.reference}}</td>
                     <td class="center-align table-actions">
-                        <i class="fa fa-download link" title="Generează serviciul WMTS" (click)="generateWMTS(item);" 
-                            [ngClass]="{'disabled': item.id_status !== 3 || item.cod_eroare}" style="color: green; transform: rotate(270deg);"></i>
-                        <i class="fa fa-trash link" [ngClass]="{'disabled': item.id_status > 3}" title="Anulează înregistrarea" (click)="deleteItem(item);"></i>
+                        <i class="fa fa-edit link" title="Editează înregistrarea" (click)="openAddModal(item, true);"></i>
                     </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="12" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
+                    <td colspan="13" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
@@ -63,6 +78,11 @@
     </div>
 </div>
 
-
+<app-add-new-patient 
+*ngIf="display" 
+[display]="display" 
+[modalTitle]="modalTitle" 
+[idPatient]="idPatient" 
+(displayChange)="onDialogClose($event)"></app-add-new-patient>
 
 

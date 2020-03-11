@@ -11,6 +11,7 @@ import { AdministrationComponent } from './dashboard/administration/administrati
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
 import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
 import { MainComponent } from './dashboard/main/main.component';
+import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
           { path: '', redirectTo: 'patients-list', pathMatch: 'full' },
-          { path: 'patients-list', component: PatientsListComponent },
+          { path: 'patients-list', 
+            component: PatientsListComponent,
+            children: [
+              { path: 'add-new-patient', component: AddNewPatientComponent }
+            ]
+          },
           { path: 'user-list', component: UserListComponent }
         ]
       }
