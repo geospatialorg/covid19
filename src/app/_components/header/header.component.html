@@ -4,13 +4,13 @@
     </div>
     <ul class="topbar-menu">
         <li> 
-            <a href="#"><i class="pi pi-home"></i> Acasa</a>
+            <a [routerLink]="['/dashboard/main']"><i class="pi pi-home"></i> Acasa</a>
         </li>
         <li>
             <a href="#"><i class="pi pi-chart-line"></i> Statistici</a>
         </li>
         <li *ngIf="currentUser">
-            <a href="#">Administrare</a>
+            <a [routerLink]="['/administration/patients-list']">Administrare</a>
         </li>
         <li *ngIf="!currentUser">
             <a [routerLink]="['/login']">

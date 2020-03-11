@@ -102,3 +102,179 @@ body .ui-table .ui-table-thead > tr > th {
     margin: 0;
     margin-bottom: 10px;
 }
+
+
+/* css adus cin cr0328 */
+/* You can add global styles to this file, and also import other style files */
+body .ui-table .ui-table-tbody > trr:nth-child(2n+1) {
+    background: #f8f8f8;
+    color: #252529;
+    border: 1px solid #d8d8dc;
+}
+
+html, body {
+    height: 100% !important;
+}
+
+.disabled {
+    opacity: 0.3;
+    /* cursor: not-allowed; */
+    pointer-events: none;
+}
+
+.custom-table-container {
+    height: 100%; 
+    overflow-y: auto;
+}
+
+
+.table-actions i.fa {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.table-actions i.fa.link {
+    cursor: pointer;
+}
+
+.table-actions i.fa.fa-trash {
+    color: #d01919;
+}
+
+.table-actions i.fa.fa-edit {
+    color: #009c95;
+}
+
+.table-actions i.fa.fa-arrow-up {
+    color: green;
+}
+
+.table-actions i.fa.fa-arrow-down {
+    color: green;
+}
+
+.table-action {
+    font-size: 0.85em;
+    padding: 6px 8px;
+    margin-left: 2px; 
+    margin-right: 2px;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+.table-action:not(.pagination){
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #fff;
+}
+
+.table-action:not(.pagination):hover {
+    border: 1px solid teal;
+    background: #eee;
+}
+
+.table-action .current-page {
+    width: 35px;
+    text-align: center;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.table-summary {
+    padding: 3px 8px;
+    font-size: 0.85em;
+}
+
+.ui-panel-footer {
+    padding: 5px!important;
+    background-color: #eee !important;
+}
+
+.ui-panel-content-wrapper {
+    height: 100%;
+}
+
+.ui-panel-content {
+    height: calc(100% - 47px);
+}
+
+.divider {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #fff;
+    display: inline;
+    margin: 0 8px;
+}
+
+.table-btn {
+    width: 100px !important;
+    font-size: 12px !important;
+    padding: 0 !important;
+}
+
+.ui-tabview-nav li a{
+    padding: 5px 10px !important;
+    font-size: 0.85em !important;
+}
+
+
+
+.ui-form .field {
+    padding: 8px;
+    display: block;
+}
+
+.ui-form .field .field-label {
+    font-weight: bold;
+    display: block;
+    padding-bottom: 5px;
+    font-size: 0.75em;
+}
+
+.ui-form .field.required .field-label::after{
+    content: ' *';
+    color: red;
+}
+
+.ui-form .field.inline .field-label{
+    display: inline;
+    padding-right: 10px;
+}
+
+.ui-form .inline-fields .field {
+    display: inline-block;
+}
+
+fieldset{
+    position: relative!important;
+}
+
+
+
+
+
+table th, table td {
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+table th {
+    padding-top: 11px !important;
+    padding-bottom: 10px !important;
+}
+
+table th.center-align, table td.center-align {
+    text-align: center;
+}
+
+table th.right-align, table td.right-align {
+    text-align: right;
+}
+
+table th.left-align, table td.left-align {
+    text-align: left;
+}
+
+body .ui-panel {
+    height: 100%;
+}
+

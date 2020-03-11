@@ -18,4 +18,12 @@ export class AdministrationService {
     getGlobalStat( params?: any){
         return this.http.get<any>( `${environment.apiUrl}/dashboard/getGlobalStat`, { params });
     }
+
+    setCase( params: any ){
+        return this.http.post<any>( `${environment.apiUrl}/administration/setCase`, params);
+    }
+
+    deleteCase( params: any ){
+        return this.http.post<any>( `${environment.apiUrl}/administration/deleteCase`, params);
+    }
 }
