@@ -248,6 +248,14 @@ fieldset{
     position: relative!important;
 }
 
+.ellipsisClass {
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    max-width: 0px;
+    user-select: all;
+}
+
 
 table th, table td {
     font-size: 12px;
