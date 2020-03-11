@@ -1,0 +1,111 @@
+<p-dialog [(visible)]="display" [modal]="true" [style]="{width: '60%', minWidth: '200px'}" 
+  [resizable]="false" (onHide)="closeModal()" [responsive]="true">
+
+  <p-header>
+    {{modalTitle}}
+  </p-header>
+
+    <form class="ui-form" [formGroup]="myForm">
+        <div class="p-grid ui-fluid">  
+            <div class="p-col-3 field required" [ngClass]="{'error': myFormSubmitted && myFormErrors.noCaseNoSelected }">
+                <label class="field-label">Număr caz</label>
+                <input pInputText formControlName="case_no" [type]="'search'">    
+            </div>
+
+            <div class="p-col-3 field">
+                <label class="field-label">Număr caz sursă</label>
+                <input pInputText formControlName="source_no" [type]="'search'">    
+            </div>
+
+            <div class="p-col-2 field required" [ngClass]="{'error': myFormSubmitted && myFormErrors.noDateSelected }">
+                <label class="field-label">Dată diagnostic</label>
+                <p-calendar showButtonBar="true" formControlName="diagnostic_date" 
+                  [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'" [defaultDate]="defaultDate" 
+                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" 
+                  [showIcon]="true" dateFormat="dd-mm-yy"></p-calendar>
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Dată vindecare</label>
+                <p-calendar showButtonBar="true" formControlName="healing_date" 
+                  [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'"
+                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" 
+                  [showIcon]="true" dateFormat="dd-mm-yy"></p-calendar>
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Dată deces</label>
+                <p-calendar showButtonBar="true" formControlName="death_date" 
+                  [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'"
+                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" 
+                  [showIcon]="true" dateFormat="dd-mm-yy"></p-calendar>
+            </div>
+
+            <div class="field p-col-3">
+                <label class="field-label">Județ</label>
+                <p-dropdown [options]="countyList" formControlName="county_code" optionLabel="county" 
+                    [autoDisplayFirst]="false" (onChange)="loadUatCombo()" [showClear]="true"></p-dropdown>
+            </div>
+
+            <div class="field p-col-3" [ngClass]="{'disabled': !myForm.value['county_code']}">
+                <label class="field-label">Localitate</label>
+                <p-autoComplete [suggestions]="uatResultList" formControlName="siruta" [dropdown]="true"
+                    field="uat" [type]="'search'" #structure (completeMethod)="filterUatCombo($event)"></p-autoComplete>
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Sex</label>
+                <p-dropdown [options]="genderList" formControlName="gender" [autoDisplayFirst]="false" optionLabel="gender_name" [showClear]="true"></p-dropdown>
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Vârsta</label>
+                <input pInputText formControlName="age" [type]="'search'">    
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Prezintă simptome</label>
+                <p-dropdown [options]="symptomList" formControlName="symptoms_flag" [autoDisplayFirst]="false" optionLabel="symptoms_flag_name" [showClear]="true"></p-dropdown>
+            </div>
+
+            <div class="p-col-3 field">
+                <label class="field-label">Referință pacient</label>
+                <input pInputText formControlName="reference" [type]="'search'">    
+            </div>
+
+            <div class="p-col-3 field">
+                <label class="field-label">Referință vindecare pacient</label>
+                <input pInputText formControlName="healed_reference" [type]="'search'">    
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Alte informații</label>
+                <input pInputText formControlName="other_info" [type]="'search'">    
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Țara</label>
+                <input pInputText formControlName="country_of_infection" [type]="'search'">    
+            </div>
+
+            <div class="p-col-2 field">
+                <label class="field-label">Voluntar</label>
+                <input pInputText formControlName="volunteer" [type]="'search'">    
+            </div>
+
+            <div class="p-col-12 form-messages error" *ngIf="myFormSubmitted && myFormHasErrors">
+                <div class="messages">
+                  <p *ngIf="myFormErrors.noCaseNoSelected">Nu ați completat câmpul "Număr caz".</p>
+                  <p *ngIf="myFormErrors.noDateSelected">Nu ați completat câmpul "Dată diagnostic".</p>
+                </div>
+              </div>
+        </div>
+    </form>
+  
+  <p-footer>
+    <button pButton class="table-btn ui-button-raised ui-button-info" type="button" (click)="saveForm()" 
+        label="Salvează" icon="fa fa-check" style="margin-right: 5px;"></button>
+    <button class="ui-button-raised ui-button-secondary" type="button" pButton 
+      icon="fa fa-times" label="Închide" (click)="closeModal()"></button>
+  </p-footer>
+</p-dialog>
