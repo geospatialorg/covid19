@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 
 /api/config.js
+api/config.js
