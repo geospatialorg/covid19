@@ -60,6 +60,7 @@ import {SliderModule} from 'primeng/slider';
 import {SpinnerModule} from 'primeng/spinner';
 import { LoginComponent } from './login/login.component';
 import {ChartModule} from 'primeng/chart';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -141,6 +142,8 @@ import { StatisticsComponent } from './dashboard/statistics/statistics.component
     ChartModule
   ],
   providers: [
+    MessageService,
+    ConfirmationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
   ],

@@ -108,4 +108,13 @@
     <button class="ui-button-raised ui-button-secondary" type="button" pButton 
       icon="fa fa-times" label="Închide" (click)="closeModal()"></button>
   </p-footer>
+
 </p-dialog>
+
+
+<p-confirmDialog #warningDialog icon="fa fa-exclamation-triangle" appendTo="body"  header="Atenție">
+    <p-footer>
+        <button class="ui-button-raised ui-button-secondary" type="button" pButton icon="fa fa-times" label="Închide"
+            (click)="warningDialog.reject()"></button>
+    </p-footer>
+</p-confirmDialog>

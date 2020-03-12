@@ -1,11 +1,13 @@
 import { Component, OnInit, Input, Output, ViewChild, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ConfirmationService } from 'primeng/api';
 import { AdministrationService } from 'src/app/_services';
 
 @Component({
   selector: 'app-add-new-patient',
   templateUrl: './add-new-patient.component.html',
-  styleUrls: ['./add-new-patient.component.css']
+  styleUrls: ['./add-new-patient.component.css'],
+  providers: [ConfirmationService]
 })
 export class AddNewPatientComponent implements OnInit, OnDestroy {
   @Input() display: boolean;
@@ -32,7 +34,8 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private AdminSvc: AdministrationService
+    private AdminSvc: AdministrationService,
+    private ConfirmationSvc: ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -203,7 +206,10 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     this.AdminSvc.setCase(params).subscribe(res => {
       if(res && res.data && res.data.success) {
         this.closeModal();
-      } 
+      } else if (!res.success) {
+        this.showMessage(res.message)
+        console.log(res)
+      }
     })
   }
 
@@ -222,4 +228,10 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     });
   }
 
+
+  showMessage(msg) {
+    this.ConfirmationSvc.confirm({
+      message: msg
+    });
+  }
 }
