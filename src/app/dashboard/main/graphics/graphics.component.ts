@@ -108,8 +108,8 @@ export class GraphicsComponent implements OnInit {
 
       var yLabel = svg.append("text")
           .attr("transform", "rotate(-90)")
-          .attr("y", -30)
-          .attr("x", -170)
+          .attr("y", -35)
+          .attr("x", -220)
           .attr("font-size", "18px")
           .attr("text-anchor", "middle")
           .text("Număr de persoane");
@@ -271,7 +271,7 @@ export class GraphicsComponent implements OnInit {
     let cases_data = await this.getData();
     let self = this;
 
-    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+    var margin = {top: 20, right: 20, bottom: 20, left: 50},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom,
         svg_width = width + margin.left + margin.right,
