@@ -115,18 +115,18 @@ export class GraphicsComponent implements OnInit {
           .text("Număr de persoane");
 
       /******************************** Legend ********************************/
-      var statuses = [
-          { status: "total", color: "steelblue", label: "Cazuri confirmate"},
-          { status: "healed", color: "limegreen", label: "Recuperări" },
-          { status: "dead", color: "red", label: "Decese" }
-      ];
+      const statuses = [
+        { status: "total", color: "var(--main-confirmate)", label: "Cazuri confirmate"},
+        { status: "healed", color: "var(--main-recuperari)", label: "Recuperări" },
+        { status: "dead", color: "var(--main-decese)", label: "Decese" }
+    ];
 
       var legend = svg.append("g")
-          .attr("transform", "translate(20,0)");
+          .attr("transform", "translate(130,0)");
 
       statuses.forEach(function(elem, i){
           var legendRow = legend.append("g")
-              .attr("transform", "translate(0, " + (i * 20) + ")");
+              .attr("transform", "translate(20, " + (i * 20) + ")");
 
           legendRow.append("rect")
               .attr("width", 10)
@@ -134,8 +134,9 @@ export class GraphicsComponent implements OnInit {
               .attr("fill", elem.color);
 
           legendRow.append("text")
-              .attr("x", 20)
+              .attr("x", -10)
               .attr("y", 10)
+              .attr("text-anchor", "end")
               .style("text-transform", "capitalize")
               .text(elem.label);
       });
@@ -152,36 +153,40 @@ export class GraphicsComponent implements OnInit {
           "shortMonths": ["Ian", "Feb", "Mart", "Apr", "Mai", "Iun", "Iul", "Aug", "Sept", "Oct", "Nov", "Dec"]
       });
 
-      var formatMillisecond = locale.format(".%L"),
-          formatSecond = locale.format(":%S"),
-          formatMinute = locale.format("%I:%M"),
-          formatHour = locale.format("%I %p"),
-          formatDay = locale.format("%a %d"),
-          formatWeek = locale.format("%b %d"),
-          formatMonth = locale.format("%B"),
-          formatYear = locale.format("%Y");
+      const formatMillisecond = locale.format(".%L"),
+            formatSecond = locale.format(":%S"),
+            formatMinute = locale.format("%I:%M"),
+            formatHour = locale.format("%I %p"),
+            formatDay = locale.format("%a %d"),
+            formatWeek = locale.format("%b %d"),
+            formatMonth = locale.format("%B"),
+            formatYear = locale.format("%Y");
 
       function multiFormat(date) {
-      return (d3.timeSecond(date) < date ? formatMillisecond
-          : d3.timeMinute(date) < date ? formatSecond
-          : d3.timeHour(date) < date ? formatMinute
-          : d3.timeDay(date) < date ? formatHour
-          : d3.timeMonth(date) < date ? (d3.timeWeek(date) < date ? formatDay : formatWeek)
-          : d3.timeYear(date) < date ? formatMonth
-          : formatYear)(date);
+        return (d3.timeSecond(date) < date ? formatMillisecond
+            : d3.timeMinute(date) < date ? formatSecond
+            : d3.timeHour(date) < date ? formatMinute
+            : d3.timeDay(date) < date ? formatHour
+            : d3.timeMonth(date) < date ? (d3.timeWeek(date) < date ? formatDay : formatWeek)
+            : d3.timeYear(date) < date ? formatMonth
+            : formatYear)(date);
       }
 
-      svg.append("g")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x).ticks(5).tickFormat(multiFormat));
+      const xAxis = svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x).ticks(5).tickFormat(multiFormat));
+
+        xAxis.selectAll('text').attr("font-weight", "bold");
 
       // Add the Y Axis
-      svg.append("g")
+      const yAxis = svg.append("g")
           .call(d3.axisLeft(y).ticks(5));
+        
+          yAxis.selectAll('text').attr("font-weight", "bold");
 
       /******************************** Tooltip Code ********************************/
 
-      var focus = svg.append("g")
+      const focus = svg.append("g")
           .attr("class", "focus")
           .style("display", "none");
 
@@ -206,11 +211,11 @@ export class GraphicsComponent implements OnInit {
           .attr("class", "overlay")
           .attr("width", width)
           .attr("height", height)
-          .on("mouseover", function() { focus.style("display", null); })
+          .on("mouseover", function() { focus.style("display", null); tooltip_div.style("display", null); })
           .on("mouseout", function() { focus.style("display", "none"); tooltip_div.style("display", "none"); })
           .on("mousemove", mousemove);
 
-      var bisectDate = d3.bisector(function(d:any) { return d.date; }).left;
+      const bisectDate = d3.bisector(function(d:any) { return d.date; }).left;
 
       function mousemove() {
         var x0 = x.invert(d3.mouse(this)[0]),
@@ -238,8 +243,8 @@ export class GraphicsComponent implements OnInit {
               .style("opacity", .9);
 
           tooltip_div.html(tooltipHTML(d))
-              .style("left", (d3.event.pageX) + "px")
-              .style("top", (d3.event.pageY - 28) + "px");
+              .style("left", (d3.event.pageX/1.12) + "px")
+              .style("top", (d3.event.pageY/1.1) + "px");
       };
 
       const tooltipHTML = (d) => {
@@ -329,7 +334,7 @@ export class GraphicsComponent implements OnInit {
         self.svg.selectAll("*").remove();
 
         self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
-    }, this.appConfig.refresh_data);
+    }, this.appConfig.data_refresh);
   }
 
   ngOnDestroy(): void {
