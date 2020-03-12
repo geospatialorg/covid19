@@ -26,4 +26,10 @@ export class DashboardService {
     getDailyCaseReport( params?: any){
         return this.http.get<any>( `${environment.apiUrl}/dashboard/getDailyCaseReport`, { params });
     }
+
+    getGlobalStat( params?: any){
+        return this.http.get<any>( `${environment.apiUrl}/dashboard/getGlobalStat`, { params });
+    }
+
+    
 }

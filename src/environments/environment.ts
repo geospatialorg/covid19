@@ -4,7 +4,8 @@
 
 export const environment = {
   apiUrl: '/api',
-  production: false
+  production: false,
+  data_refresh: 30*60*1000
 };
 
 /*

@@ -73,7 +73,7 @@ body .ui-table .ui-table-thead > tr > th {
 }
 
 .footer {
-    padding: 0 15px;
+    padding: 15px 15px 0 15px;
     background-color: #1976d2;
     color: #ffffff;
     height: 45px;

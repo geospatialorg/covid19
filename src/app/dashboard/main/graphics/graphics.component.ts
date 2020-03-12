@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/_services';
 import * as d3 from 'd3';
+import { environment as appConfig } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-graphics',
@@ -14,6 +15,8 @@ export class GraphicsComponent implements OnInit {
   svg: any;
 
   jsonPath: string = "../assets/statistici_pe_zile.json";
+  interval:any = null;
+  appConfig:any = appConfig;
 
   constructor(
     private DashboardSvc: DashboardService
@@ -40,7 +43,6 @@ export class GraphicsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
   }
 
   changeView = (data, svg, x, y, valueline_total, valueline_dead, valueline_healed, width, margin, height) => {
@@ -54,10 +56,12 @@ export class GraphicsComponent implements OnInit {
           .data([data])
           .attr("class", "line_total")
           .attr("d", valueline_total);
+
       svg.append("path")
           .data([data])
           .attr("class", "line_healed")
           .attr("d", valueline_healed);
+
       svg.append("path")
           .data([data])
           .attr("class", "line_dead")
@@ -70,12 +74,14 @@ export class GraphicsComponent implements OnInit {
               .attr("r", 5)
               .attr("cx", function(d) { return x(d.date); })
               .attr("cy", function(d) { return y(d.total_case); });
+
       svg.selectAll("dot")
           .data(data)
           .enter().append("circle")
               .attr("r", 5)
               .attr("cx", function(d) { return d.total_healed !== 0 ? x(d.date) : null; })
               .attr("cy", function(d) { return y(d.total_healed); });
+
       svg.selectAll("dot")
           .data(data)
           .enter().append("circle")
@@ -317,6 +323,19 @@ export class GraphicsComponent implements OnInit {
                 "translate(" + margin.left + "," + margin.top + ")");
 
     self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
+
+    self.interval = setInterval(async ()=> {
+        let cases_data = await this.getData();
+        self.svg.selectAll("*").remove();
+
+        self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
+    }, this.appConfig.refresh_data);
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if(this.interval) clearInterval(this.interval);
   }
 
 }

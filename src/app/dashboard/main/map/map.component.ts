@@ -11,6 +11,8 @@ import Circle from 'ol/geom/Circle';
 import Feature from 'ol/Feature';
 import { DashboardService } from 'src/app/_services';
 
+import { environment as appConfig } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -21,6 +23,8 @@ export class MapComponent implements OnInit {
   maxRadius: number = 40000;
   minRadius: number = 7500;
   mapData: any[] = [];
+  interval = null;
+  appConfig = appConfig;
 
   selectedFeature: any = null;
 
@@ -57,6 +61,28 @@ export class MapComponent implements OnInit {
       return response.json();
     }).then(function(json) {
       return json;
+    });
+  }
+
+ drawFeatures(source, geojsonFeatures, iconStyle) {
+    this.mapData.map(e => {
+      let data = geojsonFeatures.find(f => e.county_code === f.get('county_code'));
+
+      if(data) {
+        let radius = this.linearInterpolate(e.total_county, this.mapData[this.mapData.length-1].total_county, this.mapData[0].total_county, this.minRadius, this.maxRadius);
+        let circle =  new Circle([data.get('x_cen'), data.get('y_cen')], radius);
+        let feat = new Feature(circle);
+
+        Object.keys(e).map(r => {
+          feat.set(r, e[r]);
+        });
+        
+        // if(e.total_county > 0) iconStyle.getText().setText(e.county_code);
+        // if(e.total_county > 0) iconStyle.getText().setText(e.total_county.toString());
+
+        feat.setStyle(iconStyle);
+        source.addFeature(feat);
+      }
     });
   }
 
@@ -123,7 +149,6 @@ export class MapComponent implements OnInit {
       })
     });
 
-
     let iconSource = new VectorSource();
    
     var iconLayer = new VectorLayer({
@@ -153,25 +178,7 @@ export class MapComponent implements OnInit {
       })
     });
 
-    this.mapData.map(e => {
-      let data = geojsonFeatures.find(f => e.county_code === f.get('county_code'));
-
-      if(data) {
-        let radius = self.linearInterpolate(e.total_county, self.mapData[self.mapData.length-1].total_county, self.mapData[0].total_county, self.minRadius, self.maxRadius);
-        let circle =  new Circle([data.get('x_cen'), data.get('y_cen')], radius);
-        let feat = new Feature(circle);
-
-        Object.keys(e).map(r => {
-          feat.set(r, e[r]);
-        });
-        
-        // if(e.total_county > 0) iconStyle.getText().setText(e.county_code);
-        // if(e.total_county > 0) iconStyle.getText().setText(e.total_county.toString());
-
-        feat.setStyle(iconStyle);
-        iconSource.addFeature(feat);
-      }
-    })
+    this.drawFeatures(iconSource, geojsonFeatures, iconStyle);
 
     var vectorLayer = new VectorLayer({
       id: 'counties',
@@ -203,7 +210,6 @@ export class MapComponent implements OnInit {
         minZoom: 3
       })
     });
-    
 
     this.map.on('pointermove', (ev)=> {
       if (ev.dragging) return;
@@ -219,14 +225,23 @@ export class MapComponent implements OnInit {
         if(layer.get('id') === 'counties') return;
 
         self.selectedFeature = feature;
-        console.log(self.selectedFeature)
         feature.setStyle(highlightStyle);
         return true;
       });
     });
+
+    this.interval = setInterval(()=> {
+      this.getData().then(data => {
+        iconLayer.getSource().clear();
+        this.mapData = data;
+
+        this.drawFeatures(iconSource, geojsonFeatures, iconStyle);
+      })
+    }, this.appConfig.data_refresh);
   }
 
   ngDestroy(){
+    if(this.interval) clearInterval(this.interval);
     this.map.off('pointermove');
   }
 

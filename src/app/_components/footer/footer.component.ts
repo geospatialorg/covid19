@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from 'src/app/_services';
+
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  lastUpdate: any;
 
-  constructor() { }
+  constructor(
+    private DashboardSvc: DashboardService
+  ) { }
 
   ngOnInit(): void {
+    this.DashboardSvc.getGlobalStat().subscribe(res => {
+      console.log(res.data)
+      if(res && res.data && res.data.data) this.lastUpdate = res.data.data[0].to_char;
+    });
   }
 
 }
