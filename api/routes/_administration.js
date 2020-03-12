@@ -13,7 +13,7 @@ router
             return false;
         }
 
-        let params_no = 6;
+        let params_no = 9;
         let qp = Array.from(Array(params_no).keys(), x => `$${x+1}`).join(',');
         let query = `select COVID.GET_CASE_LIST(${qp}) as data`;
 
@@ -23,10 +23,13 @@ router
             offset = params.offset || 0,
             sort_column = params.sort_column || null,
             order_type = params.order_type || null,
-            county_code = params.filter && JSON.parse(params.filter).county_code ? JSON.parse(params.filter).county_code : null;
+            county_code = params.filter && JSON.parse(params.filter).county_code ? JSON.parse(params.filter).county_code : null,
+            status = params.filter && JSON.parse(params.filter).status ? JSON.parse(params.filter).status : null,
+            case_no = params.filter && JSON.parse(params.filter).case_no ? JSON.parse(params.filter).case_no : null,
+            source_no = params.filter && JSON.parse(params.filter).source_no ? JSON.parse(params.filter).source_no : null;
 
         pool.query(query,
-            [ login_id, limit, offset, sort_column, order_type, county_code ],
+            [ login_id, limit, offset, sort_column, order_type, county_code, status, case_no, source_no ],
             function (err, result) {
                 if (err) {
                     res.status(400).send({

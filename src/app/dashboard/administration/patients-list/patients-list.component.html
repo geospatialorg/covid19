@@ -2,22 +2,33 @@
     <div style="width: 100%; margin: 20px; height: auto;">
         <form class="ui-form" [formGroup]="myForm">
             <div class="p-grid ui-fluid" style="padding-right: 5px;">
-                <div class="p-col-10">
-                        <label style="display: inline-block; padding-right: 10px;">Județ</label>
-                        <span style="display: inline-block; width: 220px;"> 
-                            <p-dropdown [options]="countyList" formControlName="county_code" optionLabel="county" 
-                            [autoDisplayFirst]="false" (onChange)="filterTable()" [showClear]="true"></p-dropdown>
-                        </span>
+                <div class="p-col-1">
+                    <label>Număr caz:</label>
+                    <input pInputText formControlName="case_no" [type]="'search'" (keyup.enter)="filterTable()">    
                 </div>
-                <div class="p-col-2" style="padding-right: 5px;">
-                    <button type="button" class="ui-button-raised" label="Adaugă caz confirmat" pButton style="margin-bottom: 5px; width: 175px; float: right;"  
+                <div class="p-col-1">
+                    <label>Caz sursă:</label>
+                    <input pInputText formControlName="source_no" [type]="'search'" (keyup.enter)="filterTable()">    
+                </div>
+                <div class="p-col-1">
+                    <label>Județ:</label>
+                    <p-dropdown [options]="countyList" formControlName="county_code" optionLabel="county" 
+                        [autoDisplayFirst]="false" (onChange)="filterTable()" [showClear]="true"></p-dropdown>
+                </div>
+                <div class="p-col-1">
+                    <label>Status:</label>
+                    <p-dropdown [options]="statusList" formControlName="status" [autoDisplayFirst]="false" (onChange)="filterTable()"
+                        optionLabel="status_name" [showClear]="true"></p-dropdown>
+                </div>
+                <div class="p-col-8" style="padding-right: 5px;">
+                    <button type="button" class="ui-button-raised" label="Adaugă caz confirmat" pButton style="margin-bottom: 5px; width: 175px; float: right; margin-top: 20px;"  
                         (click)="openAddModal(null, false)"></button>
                 </div>
             </div>
  
         </form>
         
-        <p-table [value]="tableData" selectionMode="single" id="rasterTable">
+        <p-table [value]="tableData" selectionMode="single" id="rasterTable" [responsive]="true">
             <ng-template pTemplate="header">
                 <tr>
                     <th width="70">Număr caz</th>
@@ -31,12 +42,12 @@
                     <th width="180">Județ</th>
                     <th width="180">Localitate</th>
                     <th>Referință</th>
-                    <th width="60">Acțiuni</th>
+                    <th width="80">Acțiuni</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
                 <tr>
-                    <td class="right-align">{{item.case_no}}</td>
+                    <td class="right-align"><span class="ui-column-title">Număr caz</span> {{item.case_no}}</td>
                     <td class="right-align">{{item.source_no}}</td>
                     <td>{{item.status}}</td>
                     <td>{{item.diagnostic_date}}</td>
@@ -49,6 +60,7 @@
                     <td class="ellipsisClass" title="{{item.reference}}">{{item.reference}}</td>
                     <td class="center-align table-actions">
                         <i class="fa fa-edit link" title="Editează înregistrarea" (click)="openAddModal(item, true);"></i>
+                        <i class="fa fa-trash link" title="Șterge înregistrarea" (click)="deleteItem(item.case_id);"></i>
                     </td>
                 </tr>
             </ng-template>
@@ -86,4 +98,21 @@
 [idPatient]="idPatient" 
 (displayChange)="onDialogClose($event)"></app-add-new-patient>
 
+
+<p-confirmDialog #deleteDialog icon="fa fa-exclamation-triangle"  header="Atenție" key="deleteConfirm">
+    <p-footer>
+        <button class="ui-button-raised" type="button" pButton icon="fa fa-times" label="Da"
+            (click)="deleteDialog.accept()"></button>
+        <button class="ui-button-raised ui-button-secondary" type="button" pButton icon="fa fa-times" label="Nu"
+            (click)="deleteDialog.reject()"></button>
+    </p-footer>
+</p-confirmDialog>
+
+
+<p-confirmDialog #warningDialog icon="fa fa-exclamation-triangle"  header="Atenție" key="warningConfirm">
+    <p-footer>
+        <button class="ui-button-raised ui-button-secondary" type="button" pButton icon="fa fa-times" label="Închide"
+            (click)="warningDialog.reject()"></button>
+    </p-footer>
+</p-confirmDialog>
 

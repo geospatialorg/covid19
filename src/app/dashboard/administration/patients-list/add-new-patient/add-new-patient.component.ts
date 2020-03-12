@@ -266,7 +266,6 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     if(params.symptoms_flag) params.symptoms_flag = params.symptoms_flag.symptoms_flag;
     if(this.idPatient) params.case_id = this.idPatient;
 
-    console.log(params)
     this.AdminSvc.setCase(params).subscribe(res => {
       if(res && res.data && res.data.success) {
         this.closeModal();

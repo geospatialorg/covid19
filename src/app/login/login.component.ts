@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     let pass = CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex);    
 
     this.authSvc.login(this.username, pass).subscribe(async (res) => {
-      console.log(res);
       if(!res.success){
         this.loginFormErrors.invalidLogin = true;
         this.loginFormHasErrors = true;

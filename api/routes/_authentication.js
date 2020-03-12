@@ -21,7 +21,6 @@ router
         return false;
     }
 
-    console.log(params);
     pool.query(query, 
         [params.user_id, params.password, params.ip_address],
         function(err, result){

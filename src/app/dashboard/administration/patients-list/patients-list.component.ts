@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AdministrationService } from 'src/app/_services';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-patients-list',
   templateUrl: './patients-list.component.html',
-  styleUrls: ['./patients-list.component.css']
+  styleUrls: ['./patients-list.component.css'],
+  providers: [ConfirmationService]
 })
 export class PatientsListComponent implements OnInit {
   tableData: any[] = [];
@@ -14,11 +16,13 @@ export class PatientsListComponent implements OnInit {
   idPatient: number;
   modalTitle: string;
   countyList: any[] = [];
+  statusList: any[] = [];
   myForm: FormGroup;
 
   constructor(
     private AdministrationSvc: AdministrationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private ConfirmationSvc: ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +39,25 @@ export class PatientsListComponent implements OnInit {
 
     this.myForm = this.fb.group({
       'county_code': [null],
+      'case_no': [''],
+      'status': [null],
+      'source_no': ['']
     });
+
+    this.statusList = [
+      {
+        status: 1,
+        status_name: 'Confirmat'
+      },
+      {
+        status: 2,
+        status_name: 'Vindecat'
+      },
+      {
+        status: 3,
+        status_name: 'Decedat'
+      }
+    ]
 
     this.AdministrationSvc.getCountyCombo().subscribe(res => {
       if(res && res.data && res.data.data) {
@@ -51,6 +73,15 @@ export class PatientsListComponent implements OnInit {
 
     if(this.myForm.value['county_code'])  {
       appliedFilters['county_code'] = this.myForm.value['county_code'].county_code;
+    }
+    if(this.myForm.value['status'])  {
+      appliedFilters['status'] = this.myForm.value['status'].status;
+    }
+    if(this.myForm.value['case_no'])  {
+      appliedFilters['case_no'] = this.myForm.value['case_no'];
+    }
+    if(this.myForm.value['source_no'])  {
+      appliedFilters['source_no'] = this.myForm.value['source_no'];
     }
 
     this.tableParams.filter = JSON.stringify(appliedFilters);
@@ -112,5 +143,28 @@ export class PatientsListComponent implements OnInit {
     this.display = event;
     this.idPatient = null;
     this.loadData();
+  }
+
+  deleteItem(caseNo) {
+    this.ConfirmationSvc.confirm({
+      key: 'deleteConfirm',
+      message: 'Sunteți sigur(ă) că doriți să ștergeți definitiv înregistrarea?',
+      accept: () => {
+        this.AdministrationSvc.deleteCase({ case_id: caseNo }).subscribe(res => {
+          if (res && res.data.success) {
+            this.loadData();
+          } else if (!res.data.success) {
+            this.showMessage(res.data.message)
+          }
+        });
+      }
+    });
+  }
+
+  showMessage(msg) {
+    this.ConfirmationSvc.confirm({
+      key: 'warningConfirm',
+      message: msg
+    });
   }
 }
