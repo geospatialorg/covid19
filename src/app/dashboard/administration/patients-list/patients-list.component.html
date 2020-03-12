@@ -38,33 +38,42 @@
             <ng-template pTemplate="header">
                 <tr>
                     <th width="70">Număr caz</th>
-                    <th width="120">Caz sursă</th>
-                    <th width="100">Status</th>
-                    <th width="100">Dată diagnostic</th>
-                    <th width="100">Dată vindecare</th>
-                    <th width="100">Dată deces</th>
+                    <th width="70">Caz sursă</th>
+                    <th width="70">Status</th>
+                    <th width="90">Dată diagnostic</th>
+                    <th width="90">Dată vindecare</th>
+                    <th width="90">Dată deces</th>
                     <th width="50">Sex</th>
                     <th width="60">Vârsta</th>
-                    <th width="180">Județ</th>
-                    <th width="180">Localitate</th>
-                    <th>Referință</th>
-                    <th width="80">Acțiuni</th>
+                    <th width="100">Asimptomatic</th>
+                    <th>Județ</th>
+                    <th>Localitate</th>
+                    <th>Țara probabilă de infectare</th>
+                    <th>Alte informații</th>
+                    <th width="110">Acțiuni</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
                 <tr>
                     <td class="right-align"><span class="ui-column-title">Număr caz</span> {{item.case_no}}</td>
-                    <td class="right-align">{{item.source_no}}</td>
-                    <td>{{item.status}}</td>
-                    <td>{{item.diagnostic_date}}</td>
-                    <td class="right-align">{{item.healing_date}}</td>
-                    <td class="right-align">{{item.death_date}}</td>
-                    <td class="center-align">{{item.gender}}</td>
-                    <td class="right-align">{{item.age}}</td>
-                    <td class="center-align">{{item.county}}</td>
-                    <td class="center-align">{{item.uat}}</td>
-                    <td class="ellipsisClass" title="{{item.reference}}">{{item.reference}}</td>
+                    <td class="right-align"><span class="ui-column-title">Caz sursă</span>{{item.source_no}}</td>
+                    <td><span class="ui-column-title">Status</span>{{item.status}}</td>
+                    <td><span class="ui-column-title">Dată diagnostic</span>{{item.diagnostic_date}}</td>
+                    <td class="right-align"><span class="ui-column-title">Dată vindecare</span>{{item.healing_date}}</td>
+                    <td class="right-align"><span class="ui-column-title">Dată deces</span>{{item.death_date}}</td>
+                    <td class="center-align"><span class="ui-column-title">Sex</span>{{item.gender}}</td>
+                    <td class="right-align"><span class="ui-column-title">Vârsta</span>{{item.age}}</td>
+                    <td class="ellipsisClass center-align" title="{{item.reference}}"><span class="ui-column-title">Prezintă simptome</span>{{item.symptoms_flag}}</td>
+                    <td class="center-align"><span class="ui-column-title">Județ</span>{{item.county}}</td>
+                    <td class="center-align"><span class="ui-column-title">Localitate</span>{{item.uat}}</td>
+                    <td class="ellipsisClass" title="{{item.reference}}"><span class="ui-column-title">Țara probabilă de infectare</span>{{item.country_of_infection}}</td>
+                    <td class="ellipsisClass" title="{{item.reference}}"><span class="ui-column-title">Alte informații</span>{{item.other_info}}</td>
                     <td class="center-align table-actions">
+                        <span class="ui-column-title">Număr caz</span>
+                        <i class="fa fa-clipboard link" [ngClass]="{'disabled1': !item.reference }" title="Copiază link-ul referinței în clipboard " 
+                            (click)="copyStringToClipboard(item.reference);"></i>
+                        <i class="fa fa-clipboard-list link" [ngClass]="{'disabled1': !item.healed_reference }" title="Copiază link-ul referinței pentru vindecare în clipboard " 
+                            (click)="copyStringToClipboard(item.healed_reference);"></i>
                         <i class="fa fa-edit link" title="Editează înregistrarea" (click)="openAddModal(item, true);"></i>
                         <i class="fa fa-trash link" title="Șterge înregistrarea" (click)="deleteItem(item.case_id);"></i>
                     </td>
@@ -72,12 +81,12 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="12" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
+                    <td colspan="14" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
                 <tr>
-                    <td colspan="12">
+                    <td colspan="14">
                         <span class="table-action" (click)="changePage('first')"><i class="fa fa-step-backward"></i></span>
                         <span class="table-action" (click)="changePage('prev')"><i class="fa fa-caret-left"></i></span>
                         <span class="table-action pagination">

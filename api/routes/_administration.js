@@ -114,12 +114,11 @@ router
         siruta = params.siruta || null,
         reference = params.reference || null,
         healed_reference = params.healed_reference || null,
-        symptoms_flag = params.symptoms_flag || null,
+        symptoms_flag = params.symptoms_flag,
         other_info = params.other_info || null,
         country_of_infection = params.country_of_infection || null,
         volunteer = params.volunteer || null,
         login_id = req.user.login_id;
-
 
     pool.query(query,
         [ case_id, case_no, source_no, diagnostic_date, healing_date, death_date, gender, age, county_code, siruta,

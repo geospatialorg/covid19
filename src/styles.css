@@ -120,6 +120,12 @@ html, body {
     pointer-events: none;
 }
 
+.disabled1 {
+    opacity: 0.3;
+    cursor: default !important;
+    /* pointer-events: none; */
+}
+
 .custom-table-container {
     height: 100%; 
     overflow-y: auto;
