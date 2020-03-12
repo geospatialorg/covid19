@@ -232,10 +232,10 @@ export class GraphicsComponent implements OnInit {
       }
 
       const tooltip_div = d3.select("body")
-          .append("div")
+          .append("tooltip_div")
           .attr("class", "tooltip")
           .style("position", "absolute")
-          .style("opacity", 0);
+          .style("display", "none");
 
       const highlight = (d) => {
           tooltip_div.transition()

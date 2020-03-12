@@ -452,7 +452,7 @@ path {
     stroke-dasharray: 3,3;
 }
 
-div.tooltip {
+tooltip_div.tooltip {
     position: absolute;
     /* top: 100px;
     left: 100px; */
@@ -470,6 +470,7 @@ div.tooltip {
     /* font-weight: lighter; */
     visibility: visible;
     pointer-events: none;
+    /* display: none; */
     /* width: 120px;
     height: 110px; */
 }
