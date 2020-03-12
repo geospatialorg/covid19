@@ -4,23 +4,29 @@
             <div class="p-grid ui-fluid" style="padding-right: 5px;">
                 <div class="p-col-1">
                     <label>Număr caz:</label>
-                    <input pInputText formControlName="case_no" [type]="'search'" (keyup.enter)="filterTable()">    
+                    <input pInputText formControlName="case_no" [type]="'search'">    
                 </div>
                 <div class="p-col-1">
                     <label>Caz sursă:</label>
-                    <input pInputText formControlName="source_no" [type]="'search'" (keyup.enter)="filterTable()">    
+                    <input pInputText formControlName="source_no" [type]="'search'">    
                 </div>
                 <div class="p-col-1">
                     <label>Județ:</label>
                     <p-dropdown [options]="countyList" formControlName="county_code" optionLabel="county" 
-                        [autoDisplayFirst]="false" (onChange)="filterTable()" [showClear]="true"></p-dropdown>
+                        [autoDisplayFirst]="false" [showClear]="true"></p-dropdown>
                 </div>
                 <div class="p-col-1">
                     <label>Status:</label>
-                    <p-dropdown [options]="statusList" formControlName="status" [autoDisplayFirst]="false" (onChange)="filterTable()"
+                    <p-dropdown [options]="statusList" formControlName="status" [autoDisplayFirst]="false"
                         optionLabel="status_name" [showClear]="true"></p-dropdown>
                 </div>
-                <div class="p-col-8" style="padding-right: 5px;">
+                <div class="p-col-1">
+                    <button type="button" class="ui-button-raised" label="Filtrează" pButton (click)="filterTable()" style="margin-top: 20px;"></button>
+                </div>
+                <div class="p-col-1">
+                    <button type="button" class="ui-button-raised" label="Curăță filtrele" pButton (click)="clearfilterTable()" style="margin-top: 20px;"></button>
+                </div>
+                <div class="p-col-6" style="padding-right: 5px;">
                     <button type="button" class="ui-button-raised" label="Adaugă caz confirmat" pButton style="margin-bottom: 5px; width: 175px; float: right; margin-top: 20px;"  
                         (click)="openAddModal(null, false)"></button>
                 </div>

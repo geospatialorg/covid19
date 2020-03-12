@@ -89,6 +89,14 @@ export class PatientsListComponent implements OnInit {
     this.loadData();
   }
 
+  clearfilterTable(): void{
+    this.tableParams.filter = '';
+    this.myForm.reset();
+    this.tableParams.page = 1;
+
+    this.loadData();
+  }
+
   loadData() {
     this.tableParams.offset = (this.tableParams.page - 1) * this.tableParams.limit;
     this.AdministrationSvc.getCaseList(this.tableParams).subscribe(res => {
