@@ -2,15 +2,15 @@
     <div style="width: 100%; margin: 20px; height: auto;">
         <form class="ui-form" [formGroup]="myForm">
             <div class="p-grid ui-fluid" style="padding-right: 5px;">
-                <div class="p-col-11">
+                <div class="p-col-10">
                         <label style="display: inline-block; padding-right: 10px;">Județ</label>
                         <span style="display: inline-block; width: 220px;"> 
                             <p-dropdown [options]="countyList" formControlName="county_code" optionLabel="county" 
                             [autoDisplayFirst]="false" (onChange)="filterTable()" [showClear]="true"></p-dropdown>
                         </span>
                 </div>
-                <div class="p-col-1" style="padding-right: 5px;">
-                    <button type="button" class="ui-button-raised" label="Adaugă caz" pButton style="margin-bottom: 5px; width: 150px"  
+                <div class="p-col-2" style="padding-right: 5px;">
+                    <button type="button" class="ui-button-raised" label="Adaugă caz confirmat" pButton style="margin-bottom: 5px; width: 175px; float: right;"  
                         (click)="openAddModal(null, false)"></button>
                 </div>
             </div>
@@ -61,18 +61,20 @@
             </ng-template>
             <ng-template pTemplate="summary">
                 <tr>
-                    <span class="table-action" (click)="changePage('first')"><i class="fa fa-step-backward"></i></span>
-                    <span class="table-action" (click)="changePage('prev')"><i class="fa fa-caret-left"></i></span>
-                    <span class="table-action pagination">
-                        Pagina
-                        {{tableParams['page']}} din {{tableParams['lastPage']}}
-                    </span>
-                    <span class="table-action" (click)="changePage('next')"><i class="fa fa-caret-right"></i></span>
-                    <span class="table-action" (click)="changePage('last')"><i class="fa fa-step-forward"></i></span>
-                    <span class="table-action" (click)="loadData()"><i class="fa fa-sync-alt"></i></span><span *ngIf="tableParams.total > 0" 
-                        class="table-summary">Înregistrări afișate {{tableParams.offset+1}}-{{ (tableParams.offset + tableParams.limit) < 
-                            tableParams.total ? (tableParams.offset + tableParams.limit): tableParams.total}} din {{tableParams.total}}</span>
-                    <span *ngIf="tableParams.total == 0" class="table-summary">Nu există înregistrări</span>
+                    <td colspan="13">
+                        <span class="table-action" (click)="changePage('first')"><i class="fa fa-step-backward"></i></span>
+                        <span class="table-action" (click)="changePage('prev')"><i class="fa fa-caret-left"></i></span>
+                        <span class="table-action pagination">
+                            Pagina
+                            {{tableParams['page']}} din {{tableParams['lastPage']}}
+                        </span>
+                        <span class="table-action" (click)="changePage('next')"><i class="fa fa-caret-right"></i></span>
+                        <span class="table-action" (click)="changePage('last')"><i class="fa fa-step-forward"></i></span>
+                        <span class="table-action" (click)="loadData()"><i class="fa fa-sync-alt"></i></span><span *ngIf="tableParams.total > 0" 
+                            class="table-summary">Înregistrări afișate {{tableParams.offset+1}}-{{ (tableParams.offset + tableParams.limit) < 
+                                tableParams.total ? (tableParams.offset + tableParams.limit): tableParams.total}} din {{tableParams.total}}</span>
+                        <span *ngIf="tableParams.total == 0" class="table-summary">Nu există înregistrări</span>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
