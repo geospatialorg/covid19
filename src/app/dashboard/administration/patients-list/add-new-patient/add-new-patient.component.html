@@ -20,7 +20,7 @@
             <div class="p-col-2 field required" [ngClass]="{'error': myFormSubmitted && myFormErrors.noDateSelected }">
                 <label class="field-label">Dată diagnostic</label>
                 <p-calendar showButtonBar="true" formControlName="diagnostic_date" 
-                  [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'" [defaultDate]="defaultDate" [maxDate]="defaultDate"
+                  [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'" [defaultDate]="defaultDate" 
                   [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" 
                   [showIcon]="true" dateFormat="dd-mm-yy"></p-calendar>
             </div>
@@ -29,7 +29,7 @@
                 <label class="field-label">Dată vindecare</label>
                 <p-calendar showButtonBar="true" formControlName="healing_date" 
                   [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'"
-                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" [maxDate]="defaultDate"
+                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true"
                   [showIcon]="true" dateFormat="dd-mm-yy"></p-calendar>
             </div>
 
@@ -37,7 +37,7 @@
                 <label class="field-label">Dată deces</label>
                 <p-calendar showButtonBar="true" formControlName="death_date" 
                   [todayButtonStyleClass]="'ui-primary-button'" [dataType]="'string'"
-                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" [maxDate]="defaultDate"
+                  [locale]="ro" [yearNavigator]="true" [yearRange]="yearsRange" [monthNavigator]="true" 
                   [showIcon]="true" dateFormat="dd-mm-yy"></p-calendar>
             </div>
 

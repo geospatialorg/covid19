@@ -107,8 +107,27 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     })
 
     if(!this.idPatient) {
+      let dd = this.defaultDate.getDate();
+      let mm = this.defaultDate.getMonth()+1; 
+      let yyyy = this.defaultDate.getFullYear();
+
+      let day;
+      let month;
+      if(dd<10)  {
+        day = String('0'+dd);
+      } else {
+        day = dd;
+      }
+      
+      if(mm<10) {
+         month =String('0'+mm);
+      } else {
+        month = mm;
+      }
+      let today = day+'-'+month+'-'+yyyy;
+
       this.myForm.patchValue({
-        'diagnostic_date': this.defaultDate
+        'diagnostic_date': today
       })
     }
 
@@ -116,6 +135,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     this.loadCombos();
     this.loadData();
   }
+
 
   loadCombos() {
     this.AdminSvc.getCountyCombo().subscribe(res => {
@@ -246,6 +266,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     if(params.symptoms_flag) params.symptoms_flag = params.symptoms_flag.symptoms_flag;
     if(this.idPatient) params.case_id = this.idPatient;
 
+    console.log(params)
     this.AdminSvc.setCase(params).subscribe(res => {
       if(res && res.data && res.data.success) {
         this.closeModal();

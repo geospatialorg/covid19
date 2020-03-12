@@ -20,15 +20,14 @@
         <p-table [value]="tableData" selectionMode="single" id="rasterTable">
             <ng-template pTemplate="header">
                 <tr>
-                    <th width="70">Caz nr.</th>
+                    <th width="70">Număr caz</th>
                     <th width="120">Caz sursă</th>
                     <th width="100">Status</th>
                     <th width="100">Dată diagnostic</th>
                     <th width="100">Dată vindecare</th>
-                    <th width="100">Data morții</th>
+                    <th width="100">Dată deces</th>
                     <th width="50">Sex</th>
                     <th width="60">Vârsta</th>
-                    <th width="60">Cod județ</th>
                     <th width="180">Județ</th>
                     <th width="180">Localitate</th>
                     <th>Referință</th>
@@ -45,9 +44,8 @@
                     <td class="right-align">{{item.death_date}}</td>
                     <td class="center-align">{{item.gender}}</td>
                     <td class="right-align">{{item.age}}</td>
-                    <td class="center-align">{{item.county_code}}</td>
-                    <td>{{item.county}}</td>
-                    <td>{{item.uat}}</td>
+                    <td class="center-align">{{item.county}}</td>
+                    <td class="center-align">{{item.uat}}</td>
                     <td class="ellipsisClass" title="{{item.reference}}">{{item.reference}}</td>
                     <td class="center-align table-actions">
                         <i class="fa fa-edit link" title="Editează înregistrarea" (click)="openAddModal(item, true);"></i>
@@ -56,12 +54,12 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="13" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
+                    <td colspan="12" *ngIf="tableData.length === 0">Nu au fost găsite înregistrări.</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
                 <tr>
-                    <td colspan="13">
+                    <td colspan="12">
                         <span class="table-action" (click)="changePage('first')"><i class="fa fa-step-backward"></i></span>
                         <span class="table-action" (click)="changePage('prev')"><i class="fa fa-caret-left"></i></span>
                         <span class="table-action pagination">
