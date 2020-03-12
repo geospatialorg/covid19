@@ -63,7 +63,6 @@ export class PatientsListComponent implements OnInit {
     this.AdministrationSvc.getCaseList(this.tableParams).subscribe(res => {
       if (res && res.data && res.data.success) {
         this.tableData = res.data.data;
-        console.log(this.tableData)
       }
 
       if (res.data.total >= 0) {

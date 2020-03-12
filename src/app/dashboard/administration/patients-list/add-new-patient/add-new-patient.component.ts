@@ -30,6 +30,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
   ro: any;
   yearsRange: string = '2000:' + new Date().getFullYear();
   defaultDate: Date = new Date();
+  maxDate: Date = new Date();
 
 
   constructor(
@@ -39,6 +40,41 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    setTimeout( () => {
+      document.getElementById('inputDigit1').addEventListener('keydown', function(e) {
+        var key   = e.keyCode ? e.keyCode : e.which;
+        
+        if (!( [8, 9, 13, 27, 46].indexOf(key) !== -1 ||
+             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+             (key >= 35 && key <= 40) ||
+             (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
+             (key >= 96 && key <= 105)
+           )) e.preventDefault();
+      });
+
+      document.getElementById('inputDigit2').addEventListener('keydown', function(e) {
+        var key   = e.keyCode ? e.keyCode : e.which;
+        
+        if (!( [8, 9, 13, 27, 46].indexOf(key) !== -1 ||
+             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+             (key >= 35 && key <= 40) ||
+             (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
+             (key >= 96 && key <= 105)
+           )) e.preventDefault();
+      });
+
+      document.getElementById('inputDigit3').addEventListener('keydown', function(e) {
+        var key   = e.keyCode ? e.keyCode : e.which;
+        
+        if (!( [8, 9, 13, 27, 46].indexOf(key) !== -1 ||
+             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+             (key >= 35 && key <= 40) ||
+             (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
+             (key >= 96 && key <= 105)
+           )) e.preventDefault();
+      });
+    }, 100)
+
     this.ro = {
       firstDayOfWeek: 1,
       dayNames: ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"],
@@ -46,7 +82,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
       dayNamesMin: ["D", "L", "M", "M", "J", "V", "S"],
       monthNames: ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octobrie", "Noiembrie", "Decembrie"],
       monthNamesShort: ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      dateFormat: 'mm-dd-yy',
+      dateFormat: 'dd-mm-yy',
       today: 'Astăzi',
       clear: 'Curăță',
       weekHeader: 'Wk',
@@ -69,6 +105,13 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
       'country_of_infection': [''],
       'volunteer': ['']
     })
+
+    if(!this.idPatient) {
+      this.myForm.patchValue({
+        'diagnostic_date': this.defaultDate
+      })
+    }
+
 
     this.loadCombos();
     this.loadData();
@@ -206,9 +249,8 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     this.AdminSvc.setCase(params).subscribe(res => {
       if(res && res.data && res.data.success) {
         this.closeModal();
-      } else if (!res.success) {
-        this.showMessage(res.message)
-        console.log(res)
+      } else if (!res.data.success) {
+        this.showMessage(res.data.message)
       }
     })
   }
