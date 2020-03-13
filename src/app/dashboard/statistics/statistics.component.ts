@@ -39,8 +39,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   changeView = (graph, types, width, height, tooltip_div) => {
-
-
     const tooltipHTML = (d) => {
       return "<b>Cazul " + d.properties.case_no + "</b><br />" +
           (d.properties.gender === 'Bărbat' ? "Bărbat, " : "Femeie, ") +
@@ -51,18 +49,14 @@ export class StatisticsComponent implements OnInit {
           (d.properties.reference !== null && d.properties.reference !== "" ? ("Detalii: " + '<a href="' + d.properties.reference + '" target= "_blank">aici</a>') : "");
   };
 
-  const unHighlight = () => {
-    tooltip_div.transition()
-        .duration(200)
-        .style("opacity", 0);
-};
+  
 
     const highlight = (d) => {
       let left = d3.event.pageX -20;
       let top = d3.event.pageY + 20;
 
       if(window.innerWidth - left < 150){
-        left = d3.event.pageX - 40;
+        left = d3.event.pageX - 80;
       }
 
         tooltip_div.transition()    
@@ -162,11 +156,11 @@ export class StatisticsComponent implements OnInit {
         .attr("stroke-width", 1.5)
         .attr("r", 8)
         .attr("fill", function(d) {return d.parent ? color(d.parent.properties.county) : color(d.properties.county); })
-        .attr("stroke", function(d) { return d.properties.status === 2 ? 'green' : '#333'; })
+        .attr("stroke", function(d) { return d.properties.status === "Vindecat" ? 'green' : '#333'; })
         .on("mouseenter", d => highlight(d))
-        .on("mouseleave", (d) => {
-          unHighlight();
-        });
+        // .on("mouseleave", (d) => {
+        //   unHighlight();
+        // });
         
     node.append("text")
             .attr("x", 8)
@@ -208,12 +202,17 @@ export class StatisticsComponent implements OnInit {
     graph.links = data.links;
 
     // use a tooltip to show info per county, simultaneous in all charts
-    const tooltip_div = d3.select("body")
+    const tooltip_div = d3.select("#chart")
         .append("tooltip_div") 
         .attr("class", "tooltip")       
         .style("opacity", 0)
         .style("display", "none");
 
+        const unHighlight = () => {
+          tooltip_div.transition()
+              .duration(200)
+              .style("opacity", 0);
+      };
 
     this.svg = d3.select("#chart")
       .append("svg")
@@ -222,12 +221,17 @@ export class StatisticsComponent implements OnInit {
       .attr("width", svg_width)
       .attr("height", svg_height)
       .attr("viewBox", '0, 0 ' + svg_width + ' ' + svg_height)
-      // .on("click", () => { unHighlight(); })
+      .on("click", () => { unHighlight(); })
           .append("g")
               .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
     this.changeView(graph, null, width, height, tooltip_div);
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
   }
   
 }
