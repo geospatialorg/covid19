@@ -13,6 +13,7 @@ import { PatientsListComponent } from './dashboard/administration/patients-list/
 import { MainComponent } from './dashboard/main/main.component';
 import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
+import { AboutComponent } from './dashboard/about/about.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
+      { path: 'about', component: AboutComponent },
       { 
         path: 'main', 
         component: MainComponent,
@@ -32,7 +34,6 @@ const routes: Routes = [
           { path: 'graphics', component: GraphicsComponent }
         ]
       },
-
       { 
         path: 'statistics', 
         component: StatisticsComponent

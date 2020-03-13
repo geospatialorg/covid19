@@ -69,6 +69,7 @@ import { PatientsListComponent } from './dashboard/administration/patients-list/
 import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
 import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
+import { AboutComponent } from './dashboard/about/about.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { StatisticsComponent } from './dashboard/statistics/statistics.component
     PatientsListComponent,
     UserListComponent,
     AddNewPatientComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
