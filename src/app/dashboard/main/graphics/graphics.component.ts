@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DashboardService } from 'src/app/_services';
 import * as d3 from 'd3';
 import { environment as appConfig } from '../../../../environments/environment';
@@ -6,7 +6,8 @@ import { environment as appConfig } from '../../../../environments/environment';
 @Component({
   selector: 'app-graphics',
   templateUrl: './graphics.component.html',
-  styleUrls: ['./graphics.component.css']
+  styleUrls: ['./graphics.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GraphicsComponent implements OnInit {
   data: any;
@@ -14,7 +15,7 @@ export class GraphicsComponent implements OnInit {
   y: any;
   svg: any;
 
-  jsonPath: string = "../assets/statistici_pe_zile.json";
+  jsonPath: string = "";
   interval:any = null;
   appConfig:any = appConfig;
 
@@ -96,7 +97,7 @@ export class GraphicsComponent implements OnInit {
           .attr("text-anchor", "middle")
           .style("font-size", "24px")
           .style("text-decoration", "underline")
-          .text("Cazurile de COVID-19 din România pe zile");
+          .text("Evoluția cazurilor pe zile");
 
       /******************************** Labels ********************************/
       var xLabel = svg.append("text")

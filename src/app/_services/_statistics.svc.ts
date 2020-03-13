@@ -5,13 +5,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class DashboardService {
+export class StatisticsService {
 
     constructor(
         private http: HttpClient
     ) {}
 
     getCaseRelations( params?: any){
-        return this.http.get<any>( `${environment.apiUrl}/statstics/getCaseRelations`, { params });
+        return this.http.get<any>( `${environment.apiUrl}/statistics/getCaseRelations`, { params });
     }
 }
