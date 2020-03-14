@@ -29,12 +29,12 @@ body .ui-table .ui-table-thead > tr > th {
 }
 
 .header .logo {
-    width: calc(100% - 500px);
+    width: calc(100% - 600px);
 }
 
 .header .topbar-menu {
     margin: 0;
-    width: 500px;
+    width: 600px;
     height: 78px;
     text-align: right;
 }

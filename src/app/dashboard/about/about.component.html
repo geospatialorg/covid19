@@ -5,7 +5,7 @@
         <br><br>
         În data de 26 februarie, a fost confirmat și primul caz pe teritoriul României. Autoritățile și organizațiile media fac eforturi susținute în a informa populația în timp real cu privire la  răspândirea virusului COVID-19 în România prin comunicate de presă. O prezentarea completă, schematică a tuturor cazurilor oficiale (confirmate, vindecări, decese) actualizată cât mai des posibil, este însă esențială în a disemina aceste informații vitale. 
         <br><br>
-        Aceasta este motivația demersului nostru: <a href="https://covid19.geo-spatial.org/" title="Coronavirus COVID-19 România"></a>. Prin utilizarea tehnologiilor open source, am realizat o hartă a distribuției spațiale a tuturor cazurilor COVID-19 confirmate oficial, o statistică care arată evoluția pe zile, precum și un grafic ce permite vizualizarea legăturilor de contaminare. Navigarea prin grafic prezintă și detaliile relevante fiecărui caz - vârsta, sexul  pacientului, localitatea în care a fost inițial depistat ca pozitiv, statusul, precum și sursa acestor informații.
+        Aceasta este motivația demersului nostru: <a href="https://covid19.geo-spatial.org/" title="Coronavirus COVID-19 România" target="_blank"></a>. Prin utilizarea tehnologiilor open source, am realizat o hartă a distribuției spațiale a tuturor cazurilor COVID-19 confirmate oficial, o statistică care arată evoluția pe zile, precum și un grafic ce permite vizualizarea legăturilor de contaminare. Navigarea prin grafic prezintă și detaliile relevante fiecărui caz - vârsta, sexul  pacientului, localitatea în care a fost inițial depistat ca pozitiv, statusul, precum și sursa acestor informații.
     </p>
     
     <h3>Sursa datelor și politica de actualizare</h3>
@@ -13,14 +13,25 @@
         Datele publicate în aplicație au fost extrase din comunicatele oficiale de presă ale Grupului de Comunicare Strategică al Ministerului Afacerilor Interne, Institutul Național de Sănătate Publică România. 
         <br><br>
         Aceste date sunt actualizate imediat ce noi cazuri sunt confirmate de către autoritățile române și comunicate, datele sunt preluate într-un tabel de către echipa de voluntari a proiectului, de unde ulterior sunt actualizate în cadrul aplicației. Aplicația se actualizează automat la fiecare 5 minute. 
-        <br><br>
-        Cei interesați, pot studia <a href="https://www.rfi.ro/social-118945-coronavirus-13-cazuri-au-fost-confirmate-romania-dintre-care-unul-bucuresti" title="tabelul cu date actualizat de voluntari">online tabelul cu date actualizat de voluntari</a>. Tot acolo se găsesc o serie de statistici. În zilele următoare vom muta aceste <a href="https://docs.google.com/spreadsheets/d/1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ/edit#gid=823533812" title="statistici">statistici</a> în aplicația principală.
+        <br>
+        <strong>Precizare importantă:</strong> cazurile au fost asociate cu județul unde ele au fost confirmate. După confirmare este posibil ca pacientul să fi ajuns într-un spital din alt județ. Deoarece această informație nu este transparent comunicată, am decis să prezentăm pe hartă momentul confirmării
     </p>
+
+    <p>
+        Cei interesați, pot studia <a href="https://docs.google.com/spreadsheets/d/1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ/edit?usp=sharing" target="_blank" title="tabelul cu date actualizat de voluntari">online tabelul cu date actualizat de voluntari</a>. Tot acolo se găsesc o serie de statistici. În zilele următoare vom muta aceste <a href="https://docs.google.com/spreadsheets/d/1YxwFui0_HdcCT5ej6TuXACUUk42sButQfC563m0aPlQ/edit#gid=823533812" target="_blank" title="statistici">statistici</a> în aplicația principală. De asemenea, datele pot fi accesate în format JSON prin intermediul unui API dedicat (momentan e static, pe viitor vom analiza posibilitatea de a permite aplicarea de filtre):
+    </p>
+    <ul>
+        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getCasesByCount" title="https://covid19.geo-spatial.org/api/dashboard/getCasesByCount" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getCasesByCount</a></li>
+        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getDeadCasesByCounty" title="https://covid19.geo-spatial.org/api/dashboard/getDeadCasesByCounty" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getDeadCasesByCounty</a></li>
+        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getHealthCasesByCounty" title="https://covid19.geo-spatial.org/api/dashboard/getHealthCasesByCounty" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getHealthCasesByCounty</a></li>
+        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport" title="https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport</a></li>
+        <li><a href="https://covid19.geo-spatial.org/api/statistics/getCaseRelations" title="https://covid19.geo-spatial.org/api/statistics/getCaseRelations" target="_blank">https://covid19.geo-spatial.org/api/statistics/getCaseRelations</a></li>
+    </ul>
     
     <h3>Codul sursă</h3>
     
     <p>
-        Codul sursă al aplicație este publicat sub licență <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT">MIT</a> și poate fi accesat pe platforma <a href="https://github.com/geospatialorg/covid19" title="https://github.com/geospatialorg/covid19">GitHub</a>.
+        Codul sursă al aplicație este publicat sub licență <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT" target="_blank">MIT</a> și poate fi accesat pe platforma <a href="https://github.com/geospatialorg/covid19" target="_blank" title="https://github.com/geospatialorg/covid19">GitHub</a>.
     </p>
 
     <h3>Echipa</h3>
@@ -38,17 +49,19 @@
         <li>Robert Ille</li>
         <li>Iulian Iuga</li>
         <li>Marian Neagul</li>
+        <li>Gabriela Stancu</li>
         <li>Cristina Vrînceanu</li>
     </ul>
 
     <h3>Contact</h3>
-    <p>Pentru implicare, întrebări și sugestii ne puteți scrie pe <a href="mailto:covid19@geo-spatial.org" title="e-mail">e-mail</a>, <a href="https://groups.yahoo.com/neo/groups/geo-spatial/info" title="https://groups.yahoo.com/neo/groups/geo-spatial/info">lista de discuții</a> sau pe canalul <a href="http://bit.ly/2TzN9Yx" title="Slack">Slack</a>.</p>
+    <p>Pentru implicare, întrebări și sugestii ne puteți scrie pe <a href="mailto:covid19@geo-spatial.org" title="e-mail">e-mail</a>, <a href="https://groups.yahoo.com/neo/groups/geo-spatial/info" target="_blank" title="https://groups.yahoo.com/neo/groups/geo-spatial/info">lista de discuții</a> sau pe canalul <a href="http://bit.ly/2TzN9Yx" title="Slack" target="_blank">Slack</a>.</p>
 
     <h3>Proiecte similare </h3>
     <p>Alte proiecte asemănătoare în România: </p>
     <ul>
-        <li><a href="https://coronavirus.casajurnalistului.ro/" title="Monitorizare Coronavirus">Monitorizare Coronavirus</a></li>
-        <li><a href="https://covid19-romania.appspot.com/" title="https://covid19-romania.appspot.com/">https://covid19-romania.appspot.com/</a></li>
+        <li><a href="https://coronavirus.casajurnalistului.ro/" title="Monitorizare Coronavirus" target="_blank">Monitorizare Coronavirus</a></li>
+        <li><a href="https://covid19-romania.appspot.com/" title="https://covid19-romania.appspot.com/" target="_blank">https://covid19-romania.appspot.com/</a></li>
+        <li><a href="https://instnsp.maps.arcgis.com/apps/opsdashboard/index.html#/5eced796595b4ee585bcdba03e30c127" title="https://instnsp.maps.arcgis.com/apps/opsdashboard/index.html#/5eced796595b4ee585bcdba03e30c127" target="_blank">https://instnsp.maps.arcgis.com/apps/opsdashboard/index.html#/5eced796595b4ee585bcdba03e30c127</a></li>
     </ul>
 
     <h3>Disclaimer </h3>

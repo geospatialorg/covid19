@@ -14,6 +14,8 @@ import { MainComponent } from './dashboard/main/main.component';
 import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 import { AboutComponent } from './dashboard/about/about.component';
+import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
+import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
 
 
 const routes: Routes = [
@@ -36,7 +38,12 @@ const routes: Routes = [
       },
       { 
         path: 'statistics', 
-        component: StatisticsComponent
+        component: StatisticsComponent,
+        children: [
+          { path: '', redirectTo: 'relation-cases', pathMatch: 'full' },
+          { path: 'relation-cases', component: RelationCasesComponent },
+          { path: 'general-statistics', component: GeneralStatisticsComponent }
+        ]
       },
       { 
         path: 'administration', 

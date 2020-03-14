@@ -1,7 +1,6 @@
-<div class="p-grid" style="margin: 0;height: 100%;overflow-y: auto;">
-    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12" style="height: 100%;">
-        <div class="wrapper" style="height: 100%;">
-            <div id="chart" style="height: 100%;"></div>
-        </div>
-    </div>
+<div class="sub-menu" style="background-color: rgba(25, 118, 210, 0.4);border-top: 1px solid #eee;border-bottom: 1px solid #eee;padding: 5px;">
+    <button pButton type="button" class="ui-button-secondary" [routerLink]="['/dashboard/statistics/relation-cases']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Relationare cazuri"></button>
+    <button pButton type="button" style="margin-left: 10px" class="ui-button-secondary" [routerLink]="['/dashboard/statistics/general-statistics']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Statistici generale"></button>
 </div>
+
+<router-outlet></router-outlet>
