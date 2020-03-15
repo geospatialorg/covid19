@@ -1,10 +1,10 @@
-<div id="custom-grid" style="margin: 0;height: 100%;">
+<div id="custom-grid" style="margin: 0;" #rightMenu>
   <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
     <div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
       <h2>Total vindecări</h2>
       <h2  style="color: #4daf4a;">{{totalHealed}}</h2>
     </div>
-  
+
     <div style="overflow-y: auto; max-height: 360px" class="borderlessTable">
       <p-table [value]="tableDataRecovered" id="addNewRasterTable" selectionMode="single">
         <ng-template pTemplate="header">
@@ -25,15 +25,15 @@
               <td colspan="1" *ngIf="tableDataRecovered.length === 0">Nu au fost înregistrate vindecări.</td>
           </tr>
         </ng-template>
-      </p-table>  
+      </p-table>
     </div>
   </div>
-  
+
   <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
     <div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
         <h2>Total decese</h2>
         <h2 style="color: #a65628;">{{totalDeads}}</h2>
-  
+
         <div style="overflow-y: auto; max-height: 360px" class="borderlessTable">
           <p-table [value]="tableDataDeath" id="addNewRasterTable" selectionMode="single">
             <ng-template pTemplate="header">
@@ -54,10 +54,12 @@
                   <td colspan="1" *ngIf="tableDataDeath.length === 0">Nu au fost înregistrate decese.</td>
               </tr>
             </ng-template>
-          </p-table>  
+          </p-table>
         </div>
     </div>
   </div>
-  
-  <app-graphics></app-graphics>
+
+  <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12">
+    <app-graphics [parentWidth]="rightMenu.offsetWidth"></app-graphics>
+  </div>
 </div>
