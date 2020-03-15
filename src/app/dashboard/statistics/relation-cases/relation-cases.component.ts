@@ -25,7 +25,7 @@ export class RelationCasesComponent implements OnInit {
     //Called after ngOnInit when the component's or directive's content has been initialized.
     //Add 'implements AfterContentInit' to the class.
 
-    this.initGraph();
+    // this.initGraph();
   }
 
   getData(){

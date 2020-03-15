@@ -67,3 +67,14 @@ tooltip_div.tooltip {
         float: none;
     }
 }
+
+iframe {
+    width: 50%;
+    height: 1000px;
+}
+
+@media (max-width: 600px) {
+    iframe {
+        width: 100%;
+    }
+}
