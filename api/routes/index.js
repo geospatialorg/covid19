@@ -1,5 +1,6 @@
 const config = require('../config');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 function verifyToken (req, res, next){
     var token = req.headers.authorization.split(' ')[1] || null;
@@ -54,10 +55,17 @@ function verifyToken (req, res, next){
     }
 }
 
+function setCacheControl(req, res, next){
+	res.set('Cache-Control', 'public, max-age=600, s-maxage=600');
+	next();
+}
+
 module.exports = app => {
+    app.use(`${config.app.apiPath}/`, cors());
+    app.use(`${config.app.apiPath}/`, setCacheControl);
     app.use(`${config.app.apiPath}/authentication`, require('./_authentication'));
     app.use(`${config.app.apiPath}/dashboard`, require('./_dashboard'));
-    app.use(`${config.app.apiPath}/statistics`, require('./_statistics'));
+    app.use(`${config.app.apiPath}/statistics`, cors(), require('./_statistics'));
     app.use(`${config.app.apiPath}/*`,verifyToken);
     app.use(`${config.app.apiPath}/administration`, require('./_administration'));
 }
