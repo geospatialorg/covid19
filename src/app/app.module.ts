@@ -72,6 +72,7 @@ import { StatisticsComponent } from './dashboard/statistics/statistics.component
 import { AboutComponent } from './dashboard/about/about.component';
 import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
 import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
+import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { GeneralStatisticsComponent } from './dashboard/statistics/general-stati
     StatisticsComponent,
     AboutComponent,
     RelationCasesComponent,
-    GeneralStatisticsComponent
+    GeneralStatisticsComponent,
+    CoronavirusEuropeComponent
   ],
   imports: [
     BrowserModule,
