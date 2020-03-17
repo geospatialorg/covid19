@@ -1,0 +1,19 @@
+#main-area{
+    height: calc(100% - 125px);
+    overflow-y: auto;
+    padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+    #main-area{
+        height: calc(100% - 170px);
+        overflow-y: auto;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 991px) {
+    #main-area{
+        height: calc(100% - 166px);
+        overflow-y: auto;
+    }
+}

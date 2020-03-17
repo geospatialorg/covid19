@@ -1,0 +1,95 @@
+
+:root {
+    --main-confirmate:steelblue ;
+    --main-recuperari: limegreen;
+    --main-decese: #b2beb5;
+}
+
+.wrapper {
+    margin: 0 20;
+    max-width: 1200px;
+}
+
+svg.chart-group {
+    width: 100%;
+    max-width: 900px;
+}
+
+path { 
+    stroke: grey;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path, line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.line_total {
+    stroke: var(--main-confirmate);
+}
+.line_healed {
+    stroke: var(--main-recuperari);
+}
+.line_dead {
+    stroke: var(--main-decese);
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.focus circle {
+    fill: #F1F3F3;
+    stroke: #777;
+    stroke-width: 3px;
+}
+
+.hover-line {
+    stroke: #777;
+    stroke-width: 2px;
+    stroke-dasharray: 3,3;
+}
+
+tooltip_div.tooltip {
+    position: absolute;
+    /* top: 100px;
+    left: 100px; */
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: white;
+    border: 1px solid #222;
+    opacity: .9;
+    color: #222;
+    padding: 10px;
+    min-width: 16.75vmin;
+    font-size: 0.7em;
+    line-height: 12pt;
+    font-family:  "EB Garamond", serif;
+    /* font-weight: lighter; */
+    /* visibility: visible; */
+    pointer-events: none;
+    /* width: 120px;
+    height: 110px; */
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 550px) {
+    .wrapper {
+        width: 97%;
+        max-width: 767px;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 850px) {
+    .wrapper {
+        width: 97%;
+        max-width: 1200px;
+        float: none;
+    }
+}
