@@ -10,10 +10,10 @@
             <a [routerLink]="['/dashboard/statistics']"><i class="pi pi-chart-line"></i> Statistici</a>
         </li>
         <li>
-            <a [routerLink]="['/dashboard/about']"><i class="pi pi-info"></i> Despre</a>
+            <a [routerLink]="['/dashboard/about']"><i class="pi pi-info-circle"></i> Despre</a>
         </li>
         <li *ngIf="currentUser">
-            <a [routerLink]="['/dashboard/administration/patients-list']">Administrare</a>
+            <a [routerLink]="['/dashboard/administration/patients-list']"><i class="pi pi-desktop"></i> Administrare</a>
         </li>
         <li *ngIf="!currentUser">
             <a [routerLink]="['/login']">
