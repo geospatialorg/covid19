@@ -16,6 +16,7 @@ import { StatisticsComponent } from './dashboard/statistics/statistics.component
 import { AboutComponent } from './dashboard/about/about.component';
 import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
 import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
+import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'relation-cases', pathMatch: 'full' },
           { path: 'relation-cases', component: RelationCasesComponent },
-          { path: 'general-statistics', component: GeneralStatisticsComponent }
+          { path: 'general-statistics', component: GeneralStatisticsComponent },
+          { path: 'maps', component: CoronavirusEuropeComponent }
         ]
       },
       { 

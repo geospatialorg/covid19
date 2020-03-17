@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -15,10 +14,14 @@ app
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json({ limit: '10mb' }))
     .use(morgan('dev'))
-    .use(express.static(path.join(__dirname, 'public')))
-    .use(cors());
+    .use(express.static(path.join(__dirname, 'public')));
 
 app.use(router);
+
+app.use((req, res, next)=>{
+    res.append("COVID19-Dupa-CloudFront", "DA");
+    next();
+});
 
 let routerLogic = require('./routes')(app);
 
