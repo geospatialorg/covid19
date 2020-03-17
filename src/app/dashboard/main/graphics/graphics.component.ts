@@ -95,7 +95,7 @@ export class GraphicsComponent implements OnInit {
       /******************************** Title ********************************/
       svg.append("text")
           .attr("x", (width / 2))
-          .attr("y", 0 - (margin.top))
+          .attr("y", -30)
           .attr("text-anchor", "middle")
           .style("font-size", "24px")
           .style("text-decoration", "underline")
@@ -274,7 +274,7 @@ export class GraphicsComponent implements OnInit {
     let cases_data = await this.getData();
     let self = this;
 
-    var margin = {top: 20, right: 20, bottom: 20, left: 50},
+    var margin = {top: 50, right: 20, bottom: 20, left: 50},
         width = this.parentWidth - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom,
         svg_width = width + margin.left + margin.right,

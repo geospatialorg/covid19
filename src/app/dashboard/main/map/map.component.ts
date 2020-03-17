@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
@@ -16,7 +16,8 @@ import { environment as appConfig } from '../../../../environments/environment';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
   map: Map = null;
