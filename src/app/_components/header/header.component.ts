@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MenuItem } from 'primeng/api/menuitem';
+import { MenuItem } from 'primeng/api';
 import { AuthenticationService } from 'src/app/_services';
 
 @Component({
