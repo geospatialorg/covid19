@@ -5,7 +5,7 @@ import { environment as appConfig } from '../../../../environments/environment';
 @Component({
   selector: 'app-right-menu',
   templateUrl: './right-menu.component.html',
-  styleUrls: ['./right-menu.component.css']
+  styleUrls: ['./right-menu.component.scss']
 })
 export class RightMenuComponent implements OnInit {
   tableDataDeath: any[] = [];
@@ -42,7 +42,7 @@ export class RightMenuComponent implements OnInit {
           this.totalDeads = res.data.total;
         }
       });
-  
+
       this.DashboardSvc.getHealthCasesByCounty().subscribe( res => {
         if(res && res.data && res.data.data) {
           this.tableDataRecovered = res.data.data;

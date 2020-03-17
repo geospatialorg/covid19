@@ -6,7 +6,7 @@ import { ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'app-patients-list',
   templateUrl: './patients-list.component.html',
-  styleUrls: ['./patients-list.component.css'],
+  styleUrls: ['./patients-list.component.scss'],
   providers: [ConfirmationService]
 })
 export class PatientsListComponent implements OnInit {

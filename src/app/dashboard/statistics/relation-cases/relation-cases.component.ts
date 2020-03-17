@@ -7,7 +7,7 @@ import { StatisticsService } from '../../../_services';
 @Component({
   selector: 'app-relation-cases',
   templateUrl: './relation-cases.component.html',
-  styleUrls: ['./relation-cases.component.css'],
+  styleUrls: ['./relation-cases.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class RelationCasesComponent implements OnInit {
@@ -49,7 +49,7 @@ export class RelationCasesComponent implements OnInit {
           (d.properties.reference !== null && d.properties.reference !== "" ? ("Detalii: " + '<a href="' + d.properties.reference + '" target= "_blank">aici</a>') : "");
   };
 
-  
+
 
     const highlight = (d) => {
       let left = d3.event.pageX -20;
@@ -59,15 +59,15 @@ export class RelationCasesComponent implements OnInit {
         left = d3.event.pageX - 80;
       }
 
-        tooltip_div.transition()    
-            .duration(200)    
+        tooltip_div.transition()
+            .duration(200)
             .style("opacity", .9);
 
         tooltip_div.html(tooltipHTML(d))
             .style("left", left + 'px')
             .style("top", top + 'px')
             .style("display", null);
-            
+
     };
 
     types = Array.from(new Set(graph.nodes.map(d => d.source)));
@@ -106,7 +106,7 @@ export class RelationCasesComponent implements OnInit {
                 .attr("fill", color)
                 .attr("fill", "#999")
                 .attr("d", "M0,-5L10,0L0,5");
-    
+
     const link = this.svg.append("g")
             .attr("fill", "none")
             .attr("stroke-width", 1.5)
@@ -125,18 +125,18 @@ export class RelationCasesComponent implements OnInit {
             d.fx = d.x;
             d.fy = d.y;
         }
-        
+
         function dragged(d) {
             d.fx = d3.event.x;
             d.fy = d3.event.y;
         }
-        
+
         function dragended(d) {
             if (!d3.event.active) simulation.alphaTarget(0);
             d.fx = null;
             d.fy = null;
         }
-        
+
         return d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -150,7 +150,7 @@ export class RelationCasesComponent implements OnInit {
         .data(nodes)
         .join("g")
             .call(drag(simulation));
-    
+
     node.append("circle")
         .attr("stroke", "white")
         .attr("stroke-width", 1.5)
@@ -161,7 +161,7 @@ export class RelationCasesComponent implements OnInit {
         // .on("mouseleave", (d) => {
         //   unHighlight();
         // });
-        
+
     node.append("text")
             .attr("x", 8)
             .attr("y", "0.31em")
@@ -175,7 +175,7 @@ export class RelationCasesComponent implements OnInit {
         link.attr("d", linkArc);
         node.attr("transform", d => `translate(${d.x},${d.y})`);
     });
-    
+
     function linkArc(d) {
         const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
         return `
@@ -187,7 +187,7 @@ export class RelationCasesComponent implements OnInit {
 }
 
   async initGraph(){
-    
+
     const margin = {top: 20, right: 20, bottom: 20, left: 20},
     width = 800 - margin.left - margin.right,
     height = 770 - margin.top - margin.bottom,
@@ -203,8 +203,8 @@ export class RelationCasesComponent implements OnInit {
 
     // use a tooltip to show info per county, simultaneous in all charts
     const tooltip_div = d3.select("#chart")
-        .append("tooltip_div") 
-        .attr("class", "tooltip")       
+        .append("tooltip_div")
+        .attr("class", "tooltip")
         .style("opacity", 0)
         .style("display", "none");
 
