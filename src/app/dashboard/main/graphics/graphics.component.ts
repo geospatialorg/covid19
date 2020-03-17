@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { DashboardService } from 'src/app/_services';
 import * as d3 from 'd3';
 import { environment as appConfig } from '../../../../environments/environment';
@@ -10,6 +10,8 @@ import { environment as appConfig } from '../../../../environments/environment';
   encapsulation: ViewEncapsulation.None
 })
 export class GraphicsComponent implements OnInit {
+  @Input() parentWidth;
+
   data: any;
   x: any;
   y: any;
@@ -23,7 +25,7 @@ export class GraphicsComponent implements OnInit {
     private DashboardSvc: DashboardService
   ) { }
 
-  getData(){
+  getData() {
     return this.DashboardSvc.getDailyCaseReport().toPromise().then( res => {
         if(res && res.data && res.data.data) {
 
@@ -67,7 +69,7 @@ export class GraphicsComponent implements OnInit {
           .data([data])
           .attr("class", "line_dead")
           .attr("d", valueline_dead);
-          
+
       /******************************** Scatterplot ********************************/
       svg.selectAll("dot")
           .data(data)
@@ -182,7 +184,7 @@ export class GraphicsComponent implements OnInit {
       // Add the Y Axis
       const yAxis = svg.append("g")
           .call(d3.axisLeft(y).ticks(5));
-        
+
           yAxis.selectAll('text').attr("font-weight", "bold");
 
       /******************************** Tooltip Code ********************************/
@@ -273,7 +275,7 @@ export class GraphicsComponent implements OnInit {
     let self = this;
 
     var margin = {top: 20, right: 20, bottom: 20, left: 50},
-        width = 960 - margin.left - margin.right,
+        width = this.parentWidth - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom,
         svg_width = width + margin.left + margin.right,
         svg_height = height + margin.top + margin.bottom;
@@ -288,7 +290,7 @@ export class GraphicsComponent implements OnInit {
     var valueline_healed = d3.line()
       .x(function(d:any) { return d.total_healed !== 0 ? self.x(d.date) : null; })
       .y(function(d:any) { return self.y(d.total_healed); });
-        
+
     var valueline_dead = d3.line()
       .x(function(d:any) { return d.total_dead !== 0 ? self.x(d.date) : null; })
       .y(function(d: any) { return self.y(d.total_dead); });
@@ -313,7 +315,7 @@ export class GraphicsComponent implements OnInit {
     //     // });
 
     //     // self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
-    // }).catch( 
+    // }).catch(
     //     error => console.log(error)
     // );
 
@@ -322,7 +324,7 @@ export class GraphicsComponent implements OnInit {
             .attr("class", "chart-group")
             .attr("preserveAspectRatio", "xMidYMid")
             .attr("width", svg_width)
-            .attr("height", svg_height)       
+           // .attr("height", svg_height)
             .attr('viewBox', '0 0 ' + svg_width + ' ' + svg_height)
                 .append("g")
                 .attr("transform",

@@ -2,19 +2,18 @@
     font-family: "Open Sans", "Helvetica Neue", sans-serif
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+  /* overflow-y: hidden;*/
+}
+
 body .ui-table .ui-table-tbody tr td, body .ui-table .ui-table-thead tr th  {
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
 }
 
-body, html {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-}
 
 body .ui-table .ui-table-thead > tr > th {
     position: -webkit-sticky;
@@ -56,16 +55,16 @@ body .ui-table .ui-table-thead > tr > th {
 #bg_login {
     background: url('assets/images/bkg.png') no-repeat center center fixed;
     min-height: 100%;
-    /* min-width: 1024px; */ 
+    /* min-width: 1024px; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-        
+
     /* Set up proportionate scaling */
     width: 100%;
     height: auto;
-        
+
     /* Set up positioning */
     position: fixed;
     top: 0;
@@ -84,10 +83,10 @@ body .ui-table .ui-table-thead > tr > th {
 .info-modal {
     background-color: rgba(152,78,163, 0.8);
     position: absolute;
-    z-index: 1000; 
-    right: 5px; 
+    z-index: 1000;
+    right: 5px;
     top: 5px;
-    padding: 15px; 
+    padding: 15px;
     color: #ffffff;
 }
 
@@ -127,7 +126,7 @@ html, body {
 }
 
 .custom-table-container {
-    height: 100%; 
+    height: 100%;
     overflow-y: auto;
 }
 
@@ -160,7 +159,7 @@ html, body {
 .table-action {
     font-size: 0.85em;
     padding: 6px 8px;
-    margin-left: 2px; 
+    margin-left: 2px;
     margin-right: 2px;
     margin-top: 2px;
     display: inline-block;
@@ -238,7 +237,7 @@ html, body {
 
 .ui-form .field.error .ui-dropdown .ui-dropdown-label, .ui-form .field.error .ui-dropdown .ui-dropdown-trigger, .ui-form .field.error .ui-multiselect-trigger {
     background-color: #f0d1d0 !important;
-    
+
 }
 
 .ui-form .field {
@@ -297,9 +296,9 @@ fieldset{
 }
 
 .ellipsisClass {
-    white-space: nowrap; 
-    text-overflow: ellipsis; 
-    overflow: hidden; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     max-width: 0px;
     user-select: all;
 }
@@ -337,9 +336,38 @@ body .ui-panel {
 }
 
 #map {
-    width: 100%; 
+    width: 100%;
     height: 100%;
     position: relative;
+}
+
+
+#main-area {
+  padding: 0;
+  height: calc(100% - 125px);
+}
+
+#main-container {
+  overflow: auto;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+#custom-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header .logo h2{
+  font-size: 18px;
+}
+#right-sidebar,
+#left-sidebar,
+#map-container {
+  height: 100%;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -353,38 +381,17 @@ body .ui-panel {
     }
 
     #main-content, #right-sidebar, #left-sidebar, #map-container{
-        height: 100% !important;
-        overflow-y: unset !important;
-    }
-}
-
-#main-area {
-    padding: 0;
-    height: calc(100% - 125px);
-}
-
-#main-container {
-    margin: 0; 
-    height: 100%;
-}
-
-#custom-grid {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-@media screen and (max-width: 600px) {
-    .header .logo{
-        font-size: 14px;
+        height: 100%;
+        overflow-y: unset;
     }
 
-    #main-container {
-        margin: 0; 
-        height: auto
+
+    .header .logo h2{
+      font-size: 14px;
     }
 
     #map {
-        width: 320px; 
+        width: 320px;
         height: 340px;
         position: relative;
     }
@@ -393,6 +400,24 @@ body .ui-panel {
         display: block;
         flex-wrap: nowrap;
     }
+}
+
+
+@media screen and (max-width: 991px) {
+  .header .logo h2 {
+    font-size: 14px;
+  }
+
+  #right-sidebar,
+  #left-sidebar,
+  #map-container {
+    height: auto;
+    overflow-y: hidden;
+  }
+
+  #map-container {
+    height: 100%;
+  }
 }
 
 .outer {
