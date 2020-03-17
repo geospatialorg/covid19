@@ -385,15 +385,18 @@ body .ui-panel {
         overflow-y: unset;
     }
 
-
     .header .logo h2{
       font-size: 14px;
     }
 
     #map {
-        width: 320px;
         height: 340px;
         position: relative;
+    }
+
+    #map-container {
+        width: calc(100% - 3px);
+        height: auto !important;
     }
 
     #custom-grid {
