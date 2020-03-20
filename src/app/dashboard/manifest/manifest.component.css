@@ -1,0 +1,22 @@
+#manifest-area {
+    text-align: center; 
+    height: 100%;
+}
+
+#manifest-area iframe {
+    width: 60%;
+    height: 99%;
+}
+
+
+@media (max-width: 550px) {
+    #manifest-area iframe {
+        width: 100%;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 900px) {
+    #manifest-area iframe {
+        width: 75%;
+    }
+}

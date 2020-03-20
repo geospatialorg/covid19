@@ -17,6 +17,7 @@ import { AboutComponent } from './dashboard/about/about.component';
 import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
 import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
 import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
+import { ManifestComponent } from './dashboard/manifest/manifest.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
+      { path: 'manifest', component: ManifestComponent },
       { 
         path: 'main', 
         component: MainComponent,

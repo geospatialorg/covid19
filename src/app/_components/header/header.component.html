@@ -4,15 +4,18 @@
     </div>
     <ul class="topbar-menu">
         <li>
-            <a [routerLink]="['/dashboard/main']"><i class="pi pi-home"></i> Acasa</a>
+            <a [routerLink]="['/dashboard/main']" routerLinkActive="active"><i class="pi pi-home"></i> Acasa</a>
         </li>
         <li>
-            <a [routerLink]="['/dashboard/statistics']"><i class="pi pi-chart-line"></i> Statistici</a>
+            <a [routerLink]="['/dashboard/manifest']" routerLinkActive="active"><i class="pi pi-users"></i> Manifest</a>
         </li>
         <li>
-            <a [routerLink]="['/dashboard/about']"><i class="pi pi-info-circle"></i> Despre</a>
+            <a [routerLink]="['/dashboard/statistics']" routerLinkActive="active"><i class="pi pi-chart-line"></i> Statistici</a>
         </li>
-        <li *ngIf="currentUser">
+        <li>
+            <a [routerLink]="['/dashboard/about']" routerLinkActive="active"><i class="pi pi-info-circle"></i> Despre</a>
+        </li>
+        <!-- <li *ngIf="currentUser">
             <a [routerLink]="['/dashboard/administration/patients-list']"><i class="pi pi-desktop"></i> Administrare</a>
         </li>
         <li *ngIf="!currentUser">
@@ -27,6 +30,6 @@
                 <i class="pi pi-sign-in"></i>
                 Logout
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
