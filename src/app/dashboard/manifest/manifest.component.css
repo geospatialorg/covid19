@@ -8,15 +8,36 @@
     height: 99%;
 }
 
-
-@media (max-width: 550px) {
+@media (max-width: 360px) {
+    #manifest-area{
+        overflow: hidden;
+    }
     #manifest-area iframe {
-        width: 100%;
+        width: 150%;
+        margin-left: -85px;
+        margin-top: -60px;
+        height: 130%;
+        
+        height: calc(100% + 50px);
     }
 }
 
-@media (min-width: 550px) and (max-width: 900px) {
+@media (min-width: 361px) and (max-width: 550px) {
+    #manifest-area{
+        overflow: hidden;
+    }
     #manifest-area iframe {
-        width: 75%;
+        width: 145%;
+        margin-left: -85px;
+        margin-top: -60px;
+        height: 130%;
+        
+        height: calc(100% + 50px);
+    }
+}
+
+@media (min-width: 551px) and (max-width: 900px) {
+    #manifest-area iframe {
+        width: 100%;
     }
 }
