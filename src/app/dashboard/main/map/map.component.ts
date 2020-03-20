@@ -26,6 +26,7 @@ export class MapComponent implements OnInit {
   mapData: any[] = [];
   interval = null;
   appConfig = appConfig;
+  activeTab = 1;
 
   selectedFeature: any = null;
 
@@ -55,6 +56,10 @@ export class MapComponent implements OnInit {
           return (y0 + y1) / 2;
       }
       return y0 + (x - x0) * (y1 - y0) / (x1 - x0);
+  }
+
+  setActiveTab(tab){
+    this.activeTab = tab;
   }
 
   getGeojsonData(){
