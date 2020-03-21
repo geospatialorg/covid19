@@ -1,4 +1,4 @@
-iframe {
+/* iframe {
     width: 100%;
     height: 371px;
     margin-bottom: 20px;
@@ -10,4 +10,27 @@ iframe {
         height: 100%;
         max-width: 344px;
     }
+} */
+
+.only-xs {
+    display: none;
 }
+
+.only-large {
+    display: block;
+}
+
+@media (max-width: 550px) {
+    .full-width {
+        width: 100%;
+    }
+
+    .only-xs {
+        display: block;
+    }
+
+    .only-large {
+        display: none;
+    }
+}
+

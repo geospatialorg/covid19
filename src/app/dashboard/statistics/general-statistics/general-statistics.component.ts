@@ -1,13 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 import * as regression from 'regression';
+import * as palette from 'google-palette';
 import * as pluginPiechartOutlabels from 'chartjs-plugin-piechart-outlabels';
 
 @Component({
   selector: 'app-general-statistics',
   templateUrl: './general-statistics.component.html',
-  styleUrls: ['./general-statistics.component.css']
+  styleUrls: ['./general-statistics.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GeneralStatisticsComponent implements OnInit {
   @ViewChild('canvasDailyCases', {static: true}) canvasDailyCases: ElementRef;
@@ -15,6 +17,7 @@ export class GeneralStatisticsComponent implements OnInit {
   @ViewChild('canvasFreqByGeneration', {static: true}) canvasFreqByGeneration: ElementRef;
   @ViewChild('canvasFreqByAge', {static: true}) canvasFreqByAge: ElementRef;
   @ViewChild('canvasTrendline', {static: true}) canvasTrendline: ElementRef;
+  @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
 
   chartColors : any = {
     red: 'rgb(255, 99, 132)',
@@ -95,22 +98,15 @@ export class GeneralStatisticsComponent implements OnInit {
 			data: {
 				labels: [],
 				datasets: [
-          {
-            label: 'cazuri',
-            backgroundColor: this.chartColors.blue,
-            borderColor: this.chartColors.blue,
-            data: [],
-            fill: false,
-            showLine: false
-          },
-          {
-              label: '',
-              backgroundColor: this.chartColors.orange,
-              borderColor: this.chartColors.orange,
-              data: [],
-              fill: false,
-          }
-        ]
+                    {
+                        label: 'cazuri [Romania]',
+                        backgroundColor: this.chartColors.blue,
+                        borderColor: this.chartColors.blue,
+                        data: [],
+                        fill: false,
+                        showLine: false
+                    }
+                ]
 			},
 			options: {
 				responsive: true,
@@ -132,7 +128,7 @@ export class GeneralStatisticsComponent implements OnInit {
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Ziua (din momentul declanșării în România)'
+							labelString: 'Ziua'
 						}
 					}],
 					yAxes: [{
@@ -142,46 +138,157 @@ export class GeneralStatisticsComponent implements OnInit {
 							labelString: 'Cumulativ'
 						}
 					}]
-				}
+                },
+                annotation: {
+                    drawTime: 'afterDatasetsDraw',
+                    annotations: [{
+                        id: 'a-line-1', // optional
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '19',
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        label: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            position: "top",
+                            content: "Stare de Urgenta",
+                            enabled: true
+                        }
+                    },
+                    {
+                        id: 'a-line-2', // optional
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '14',
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        label: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            position: "top",
+                            content: "Inchidere Scoli/Gradinite",
+                            enabled: true
+                        }
+                    }
+                    ]
+                }
 			}
 		};
 
+    // $.getJSON({
+    //   url: '/api/dashboard/getDailyCaseReport',
+    //   success: function(data) {
+    //       let _data = data.data.data;
+    //       let _datasets = [];
+    //       let _trendline = { x: [], y: [], pairs: [] };
+
+    //       for (let i=0; i<_data.length; i++) {
+    //           _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
+    //           _trendline.x.push(_data[i]['day_no']);
+    //           _trendline.y.push(_data[i]['total_case']);
+    //           _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
+    //       }
+
+    //       let lr = regression.exponential(_trendline.pairs);
+    //       let lrds = []
+    //       for (let i=0; i<lr.points.length; i++) {
+    //           lrds.push(lr.points[i][1]);
+    //       }
+    //       configDailyCases['data']['datasets'][0]['data'] = _datasets;
+
+    //       let ctxDailyCases = self.canvasDailyCases.nativeElement.getContext('2d');
+
+    //       let myLine = new Chart(ctxDailyCases, configDailyCases);
+
+    //       configTrendline['data']['labels'] = _trendline.x;
+    //       configTrendline['data']['datasets'][0]['data'] = _trendline.y;
+    //       configTrendline['data']['datasets'][1]['data'] = lrds;
+    //       configTrendline['data']['datasets'][1]['label'] = lr.string + '  R^2=' + lr.r2;
+
+    //       var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
+    //       myLine = new Chart(ctxTrendline, configTrendline);
+    //     }
+    // });
+
     $.getJSON({
-      url: '/api/dashboard/getDailyCaseReport',
-      success: function(data) {
-        console.log(data);
+        url: 'https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport',
+        success: function(data) {
+            let _data = data.data.data;
+            let _datasets = [];
+            let _trendline = { x: [], y: [], pairs: [], dates: [] };
+    
+            for (let i=0; i<_data.length; i++) {
+                _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
 
-          let _data = data.data.data;
-          let _datasets = [];
-          let _trendline = { x: [], y: [], pairs: [] };
+                _trendline.x.push(_data[i]['day_no']);
+                _trendline.y.push(_data[i]['total_case']);
+                _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
+                _trendline.dates.push(_data[i]['day_case']+' ['+_data[i]['day_no']+']')
+            }
+    
+            // Cazuri pe zile
+            configDailyCases['data']['datasets'][0]['data'] = _datasets;
+            let ctxDailyCases = self.canvasDailyCases.nativeElement.getContext('2d');
 
-          for (let i=0; i<_data.length; i++) {
-              _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
-              _trendline.x.push(_data[i]['day_no']);
-              _trendline.y.push(_data[i]['total_case']);
-              _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
-          }
+            if(self.mainGrid.nativeElement.offsetWidth < 550){
+                ctxDailyCases.canvas.height = 300;
+            }
 
-          let lr = regression.exponential(_trendline.pairs);
-          let lrds = []
-          for (let i=0; i<lr.points.length; i++) {
-              lrds.push(lr.points[i][1]);
-          }
-          configDailyCases['data']['datasets'][0]['data'] = _datasets;
+            let myLine = new Chart(ctxDailyCases, configDailyCases);
+    
+            // Ziua fata de cazuri cumulative
+            let _ds = [
+                { 
+                    'values': regression.exponential(_trendline.pairs),
+                    'function': 'exp' 
+                }, 
+                {
+                    'values': regression.logarithmic(_trendline.pairs),
+                    'function': 'log'
+                },
+                {
+                    'values': regression.linear(_trendline.pairs),
+                    'function': 'linear'
+                }
+            ];
+    
+            let pal = palette('tol-rainbow', _ds.length).map(function(hex){return '#' + hex;});
+    
+            let pointsds = [];
+    
+            for (var i in _ds) {
+                pointsds[i] = []
+                for (var j in _ds[i].values.points) {
+                    pointsds[i].push(_ds[i].values.points[j][1]);
+                }
+                let dss:any = {
+                    label : _ds[i].values.string + ' R^2='+_ds[i].values.r2 + ' ['+_ds[i].function+']',
+                    backgroundColor : pal[i],
+                    data : pointsds[i],
+                    fill : false,
+                    borderColor : pal[i],
+                    borderWidth : 1,
+                    pointRadius : 0
+                };
+                
+                configTrendline['data']['datasets'].push(dss);
+            }
+    
+            configTrendline['data']['labels'] = _trendline.dates;
+            configTrendline['data']['datasets'][0]['data'] = _trendline.y;
+    
+            var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
+            if(self.mainGrid.nativeElement.offsetWidth < 550){
+                ctxTrendline.canvas.height = 320;
+            }
+            myLine = new Chart(ctxTrendline, configTrendline);
+            }
+        });
 
-          let ctxDailyCases = self.canvasDailyCases.nativeElement.getContext('2d');
-
-          let myLine = new Chart(ctxDailyCases, configDailyCases);
-
-          configTrendline['data']['labels'] = _trendline.x;
-          configTrendline['data']['datasets'][0]['data'] = _trendline.y;
-          configTrendline['data']['datasets'][1]['data'] = lrds;
-          configTrendline['data']['datasets'][1]['label'] = lr.string + '  R^2=' + lr.r2;
-
-          var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
-          myLine = new Chart(ctxTrendline, configTrendline);
-      }
-  });
+    
   }
 
   drawCharts2(){
@@ -233,45 +340,85 @@ export class GeneralStatisticsComponent implements OnInit {
 
     // by age intervals
     let _bai = {
-        'a0_14': {
+        'a0_9': {
             intervals: {
                 'min': 0,
-                'max': 14
+                'max': 9
             },
             count: 0,
-            label: '0-14'
+            label: '0-9'
         },
-        'a15_24': {
+        'a10_19': {
             intervals: {
-                'min': 15,
-                'max': 24,
+                'min': 10,
+                'max': 19,
             },
             count: 0,
-            label: '15-24'
+            label: '10-19'
         },
-        'a25_54': {
+        'a20-29': {
             intervals: {
-                'min': 25,
-                'max': 54,
+                'min': 20,
+                'max': 29,
             },
             count: 0,
-            label: '25-54'
+            label: '20-29'
         },
-        'a55_64': {
+        'a30-39': {
             intervals: {
-                'min': 55,
-                'max': 64,
+                'min': 30,
+                'max': 39,
             },
             count: 0,
-            label: '55-64'
+            label: '30-39'
         },
-        'a65': {
+        'a40-49': {
             intervals: {
-                'min': 65,
-                'max': 150,
+                'min': 40,
+                'max': 49,
             },
             count: 0,
-            label: '64+'
+            label: '40-49'
+        },
+        'a50-59': {
+            intervals: {
+                'min': 50,
+                'max': 59,
+            },
+            count: 0,
+            label: '50-59'
+        },
+        'a60-69': {
+            intervals: {
+                'min': 60,
+                'max': 69,
+            },
+            count: 0,
+            label: '60-69'
+        },
+        'a70-79': {
+            intervals: {
+                'min': 70,
+                'max': 79,
+            },
+            count: 0,
+            label: '70-79'
+        },
+        'a80-89': {
+            intervals: {
+                'min': 80,
+                'max': 89,
+            },
+            count: 0,
+            label: '80-99'
+        },
+        'a90-99': {
+            intervals: {
+                'min': 90,
+                'max': 99,
+            },
+            count: 0,
+            label: '90-99'
         }
     }
 
@@ -344,7 +491,7 @@ export class GeneralStatisticsComponent implements OnInit {
     }
 
     var configFreqByAge = {
-			type: 'line',
+			type: 'bar',
 			data: {
 				labels: [],
 				datasets: [
@@ -361,8 +508,8 @@ export class GeneralStatisticsComponent implements OnInit {
 				responsive: true,
 				title: {
 					display: true,
-          text: 'Frecvența pe grupe de vârstă',
-          fontSize: 18
+                    text: 'Frecvența pe grupe de vârstă',
+                    fontSize: 18
 				},
 				tooltips: {
 					mode: 'index',
@@ -442,10 +589,19 @@ export class GeneralStatisticsComponent implements OnInit {
           }
 
           var ctxDBS = self.canvasDistributionBySex.nativeElement.getContext('2d');
+          if(self.mainGrid.nativeElement.offsetWidth < 550){
+            ctxDBS.canvas.height = 220;
+            }
           let myGraph1 = new Chart(ctxDBS, configDistributionBySex);
           var ctxFBG = self.canvasFreqByGeneration.nativeElement.getContext('2d');
+          if(self.mainGrid.nativeElement.offsetWidth < 550){
+            ctxFBG.canvas.height = 210;
+            }
           let myGraph2 = new Chart(ctxFBG, configFreqByGeneration);
           var ctxFBA = self.canvasFreqByAge.nativeElement.getContext('2d');
+          if(self.mainGrid.nativeElement.offsetWidth < 550){
+            ctxFBA.canvas.height = 320;
+            }
           let myGraph3 = new Chart(ctxFBA, configFreqByAge);
       }
   });
