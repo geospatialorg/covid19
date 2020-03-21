@@ -236,6 +236,22 @@ export class MapComponent implements OnInit {
       });
     });
 
+    this.map.on('singleclick', (ev)=> {
+      if (ev.dragging) return;
+      ev.preventDefault();
+
+      if (self.selectedFeature !== null) {
+        self.selectedFeature.setStyle(iconStyle);
+        self.selectedFeature = null;
+      }
+
+      let coords = self.map.getEventCoordinate(ev.originalEvent);
+
+      var feature = iconLayer.getSource().getClosestFeatureToCoordinate(coords);
+      self.selectedFeature = feature;
+      feature.setStyle(highlightStyle);
+    });
+
     this.interval = setInterval(()=> {
       this.getData().then(data => {
         iconLayer.getSource().clear();
@@ -249,6 +265,7 @@ export class MapComponent implements OnInit {
   ngDestroy(){
     if(this.interval) clearInterval(this.interval);
     this.map.off('pointermove');
+    this.map.off('singleclick');
   }
 
 
