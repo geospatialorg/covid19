@@ -68,13 +68,13 @@ tooltip_div.tooltip {
     }
 }
 
-iframe {
+#statistics iframe {
     width: 50%;
     height: 1000px;
 }
 
 @media (max-width: 600px) {
-    iframe {
+    #statistics iframe {
         width: 100%;
     }
 }
