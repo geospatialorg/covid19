@@ -21,6 +21,7 @@ import { ManifestComponent } from './dashboard/manifest/manifest.component';
 import { MapsComponent } from './dashboard/maps/maps.component';
 import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission.component';
 import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
+import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'no2-emission', pathMatch: 'full' },
           { path: 'no2-emission', component: No2EmissionComponent },
-          { path: 'europe', component: EuropeanContextComponent }
+          { path: 'europe', component: EuropeanContextComponent },
+          { path: 'social-interest-points', component: SocialInterestPointsComponent }
         ]
       },
       { 

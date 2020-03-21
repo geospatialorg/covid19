@@ -50,24 +50,6 @@ tooltip_div.tooltip {
     font-family:  "EB Garamond", serif;
     /* visibility: visible; */
 }
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 550px) {
-    .wrapper {
-        width: 97%;
-        /* max-width: 767px; */
-    }
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 850px) {
-    .wrapper {
-        width: 97%;
-        /* max-width: 1200px; */
-        float: none;
-    }
-}
-
 #statistics iframe {
     width: 50%;
     height: 1000px;
@@ -75,6 +57,7 @@ tooltip_div.tooltip {
 
 @media (max-width: 600px) {
     #statistics iframe {
-        width: 100%;
+        width: 90%;
+        height: 100%;
     }
 }

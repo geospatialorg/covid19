@@ -1,0 +1,11 @@
+#last-elem {
+    margin-left: 10px;
+}
+
+@media (max-width: 550px) {
+    #last-elem {
+       margin-left: unset;
+       margin-top: 5px;
+    }
+}
+

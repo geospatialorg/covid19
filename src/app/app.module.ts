@@ -77,6 +77,7 @@ import { ManifestComponent } from './dashboard/manifest/manifest.component';
 import { MapsComponent } from './dashboard/maps/maps.component';
 import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission.component';
 import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
+import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { EuropeanContextComponent } from './dashboard/maps/european-context/euro
     ManifestComponent,
     MapsComponent,
     No2EmissionComponent,
-    EuropeanContextComponent
+    EuropeanContextComponent,
+    SocialInterestPointsComponent
   ],
   imports: [
     BrowserModule,
