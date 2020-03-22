@@ -6,6 +6,7 @@
     "app": "ng serve --host 0.0.0.0 --proxy-config proxy.conf.json --disable-host-check",
     "api": "nodemon api/server.js",
     "build": "ng build",
+    "build-prod": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

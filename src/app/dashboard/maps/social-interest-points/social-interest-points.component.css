@@ -15,5 +15,6 @@ iframe {
         margin: 0;
         height: calc(100% - 83px);
         overflow-y: unset;
+        min-height: 550px;
     }
 }

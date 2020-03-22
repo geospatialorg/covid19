@@ -119,7 +119,7 @@ export class GeneralStatisticsComponent implements OnInit {
             pluginAnnotation
         },
         options: {
-            responsive: true,
+            responsive: false,
             title: {
                 display: true,
                 text: 'Ziua față de cazuri cumulative',
@@ -224,9 +224,8 @@ export class GeneralStatisticsComponent implements OnInit {
     // });
 
     $.getJSON({
-        url: 'https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport',
+        url: '/api/dashboard/getDailyCaseReport',
         success: function(data) {
-            console.log(data)
             let _data = data.data.data;
             let _datasets = [];
             let _trendline = { x: [], y: [], pairs: [], dates: [] };
@@ -295,6 +294,10 @@ export class GeneralStatisticsComponent implements OnInit {
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
+                ctxTrendline.canvas.width = self.mainGrid.nativeElement.offsetWidth - 10;
+            } else {
+                ctxTrendline.canvas.height = 700;
+                ctxTrendline.canvas.width = self.mainGrid.nativeElement.offsetWidth - 50;
             }
             myLine = new Chart(ctxTrendline, configTrendline);
             }
@@ -357,7 +360,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 0,
                 'max': 9
             },
-            count: 0,
+            count: 8,
             label: '0-9'
         },
         'a10_19': {
@@ -365,7 +368,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 10,
                 'max': 19,
             },
-            count: 0,
+            count: 19,
             label: '10-19'
         },
         'a20-29': {
@@ -373,7 +376,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 20,
                 'max': 29,
             },
-            count: 0,
+            count: 60,
             label: '20-29'
         },
         'a30-39': {
@@ -381,7 +384,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 30,
                 'max': 39,
             },
-            count: 0,
+            count: 110,
             label: '30-39'
         },
         'a40-49': {
@@ -389,7 +392,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 40,
                 'max': 49,
             },
-            count: 0,
+            count: 112,
             label: '40-49'
         },
         'a50-59': {
@@ -397,7 +400,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 50,
                 'max': 59,
             },
-            count: 0,
+            count: 79,
             label: '50-59'
         },
         'a60-69': {
@@ -405,7 +408,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 60,
                 'max': 69,
             },
-            count: 0,
+            count: 27,
             label: '60-69'
         },
         'a70-79': {
@@ -413,26 +416,18 @@ export class GeneralStatisticsComponent implements OnInit {
                 'min': 70,
                 'max': 79,
             },
-            count: 0,
+            count: 17,
             label: '70-79'
         },
-        'a80-89': {
+        'a80plus': {
             intervals: {
                 'min': 80,
                 'max': 89,
             },
-            count: 0,
-            label: '80-99'
-        },
-        'a90-99': {
-            intervals: {
-                'min': 90,
-                'max': 99,
-            },
-            count: 0,
-            label: '90-99'
+            count: 1,
+            label: '80+'
         }
-    }
+    };
 
     var configFreqByGeneration = {
       type: 'outlabeledPie',
@@ -479,16 +474,16 @@ export class GeneralStatisticsComponent implements OnInit {
     var configDistributionBySex = {
       type: 'doughnut',
       data: {
-          labels: ['Feminin', 'Masculin'],
+          labels: ['Feminin', 'Masculin',  'Copii < 18'],
           datasets: [
             {
-              backgroundColor: [self.chartColors.red, self.chartColors.blue],
+              backgroundColor: [self.chartColors.red, self.chartColors.blue, self.chartColors.green],
               data: []
             }
           ]
       },
       options: {
-          repsonsive: true,
+          resposive: true,
           title: {
               display: true,
               text: 'Distribuție după gen',
@@ -574,19 +569,25 @@ export class GeneralStatisticsComponent implements OnInit {
                       }
                   }
               }
-              for (var e in Object.keys(_bai)){
-                  var _k = Object.keys(_bai)[e];
-                  if (_data[i].properties.age != null) {
-                      if (_data[i].properties.age >= _bai[_k].intervals.min && _data[i].properties.age <= _bai[_k].intervals.max) {
-                          _bai[_k].count += 1;
-                      }
-                  }
-              }
+            //   for (var e in Object.keys(_bai)){
+            //       var _k = Object.keys(_bai)[e];
+            //       if (_data[i].properties.age != null) {
+            //           if (_data[i].properties.age >= _bai[_k].intervals.min && _data[i].properties.age <= _bai[_k].intervals.max) {
+            //               _bai[_k].count += 1;
+            //           }
+            //       }
+            //   }
           }
-          configDistributionBySex.data.datasets[0].data = [
-              ((_women*100)/_total).toFixed(2), 
-              ((_men*100)/_total).toFixed(2)
-          ];
+        //   configDistributionBySex.data.datasets[0].data = [
+        //       ((_women*100)/_total).toFixed(2), 
+        //       ((_men*100)/_total).toFixed(2)
+        //   ];
+
+        configDistributionBySex.data.datasets[0].data = [
+            (50).toFixed(2),
+            (46).toFixed(2),
+            (4).toFixed(2)
+        ];
           
           for (var e in Object.keys(_bti)){
               var k = Object.keys(_bti)[e];

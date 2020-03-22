@@ -20,6 +20,7 @@
     display: block;
 }
 
+
 @media (max-width: 550px) {
     .full-width {
         width: 100%;

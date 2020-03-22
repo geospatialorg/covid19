@@ -1,7 +1,8 @@
 <div class="sub-menu" style="background-color: rgba(25, 118, 210, 0.4);border-top: 1px solid #eee;border-bottom: 1px solid #eee;padding: 5px;">
     <button pButton type="button" class="ui-button-secondary" [routerLink]="['/dashboard/maps/no2-emission']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Emisii NO2"></button>
-    <button pButton type="button" style="margin-left: 10px" class="ui-button-secondary" [routerLink]="['/dashboard/maps/europe']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Context european"></button>
-    <button pButton type="button" id="last-elem" class="ui-button-secondary" [routerLink]="['/dashboard/maps/social-interest-points']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Puncte de interes social"></button>
+    <button pButton type="button" style="margin-left: 5px" class="ui-button-secondary" [routerLink]="['/dashboard/maps/europe']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Context european"></button>
+    <button pButton type="button" class="ui-button-secondary new-row" [routerLink]="['/dashboard/maps/social-interest-points']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Puncte de interes social"></button>
+    <button pButton type="button" style="margin-left: 5px" class="ui-button-secondary" [routerLink]="['/dashboard/maps/frontier-situation']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Situația la frontieră"></button>
 </div>
 
 <router-outlet></router-outlet>
