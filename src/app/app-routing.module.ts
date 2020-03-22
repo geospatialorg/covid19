@@ -29,7 +29,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
@@ -57,13 +56,9 @@ const routes: Routes = [
         path: 'statistics', 
         component: StatisticsComponent,
         children: [
-          { path: '', redirectTo: 'relation-cases', pathMatch: 'full' },
-          { path: 'relation-cases', component: RelationCasesComponent },
+          { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
           { path: 'general-statistics', component: GeneralStatisticsComponent },
-          { 
-            path: 'maps',
-            component: CoronavirusEuropeComponent
-          }
+          { path: 'relation-cases', component: RelationCasesComponent }
         ]
       },
       { 

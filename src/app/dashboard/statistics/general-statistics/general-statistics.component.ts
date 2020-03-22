@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import * as regression from 'regression';
 import * as palette from 'google-palette';
 import * as pluginPiechartOutlabels from 'chartjs-plugin-piechart-outlabels';
+import * as pluginAnnotation from 'chartjs-plugin-annotation';
 
 @Component({
   selector: 'app-general-statistics',
@@ -32,6 +33,11 @@ export class GeneralStatisticsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    Chart.scaleService.updateScaleDefaults('linear', {
+        ticks: {
+            min: 0
+        }
+    });
 
     this.drawCharts1();
     this.drawCharts2();
@@ -94,89 +100,93 @@ export class GeneralStatisticsComponent implements OnInit {
     };
 
     var configTrendline = {
-			type: 'line',
-			data: {
-				labels: [],
-				datasets: [
-                    {
-                        label: 'cazuri [Romania]',
-                        backgroundColor: this.chartColors.blue,
-                        borderColor: this.chartColors.blue,
-                        data: [],
-                        fill: false,
-                        showLine: false
-                    }
-                ]
-			},
-			options: {
-				responsive: true,
-				title: {
-					display: true,
-                    text: 'Ziua față de cazuri cumulative',
-                    fontSize: 18
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Ziua'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Cumulativ'
-						}
-					}]
-                },
-                annotation: {
-                    drawTime: 'afterDatasetsDraw',
-                    annotations: [{
-                        id: 'a-line-1', // optional
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '19',
-                        borderColor: 'red',
-                        borderWidth: 2,
-                        label: {
-                            backgroundColor: 'rgba(0,0,0,0.8)',
-                            position: "top",
-                            content: "Stare de Urgenta",
-                            enabled: true
-                        }
-                    },
-                    {
-                        id: 'a-line-2', // optional
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '14',
-                        borderColor: 'red',
-                        borderWidth: 2,
-                        label: {
-                            backgroundColor: 'rgba(0,0,0,0.8)',
-                            position: "top",
-                            content: "Inchidere Scoli/Gradinite",
-                            enabled: true
-                        }
-                    }
-                    ]
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'cazuri [Romania]',
+                    backgroundColor: this.chartColors.yellow,
+                    borderColor: this.chartColors.yellow,
+                    data: [],
+                    fill: false,
+                    // showLine: false,
+                    borderWidth: 3
                 }
-			}
-		};
+            ]
+        },
+        plugins: {
+            pluginAnnotation
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Ziua față de cazuri cumulative',
+                fontSize: 18
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Ziua'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Cumulativ'
+                    }
+                }]
+            },
+            annotation: {
+                drawTime: 'afterDatasetsDraw',
+                annotations: [{
+                    id: 'a-line-1', // optional
+                    type: 'line',
+                    mode: 'vertical',
+                    borderDash: [2, 2],
+                    scaleID: 'x-axis-0',
+                    value: '19',
+                    borderColor: 'red',
+                    borderWidth: 2,
+                    label: {
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        position: "top",
+                        content: "Stare de Urgenta",
+                        enabled: true
+                    }
+                },
+                {
+                    id: 'a-line-2', // optional
+                    type: 'line',
+                    mode: 'vertical',
+                    borderDash: [2, 2],
+                    scaleID: 'x-axis-0',
+                    value: '14',
+                    borderColor: 'red',
+                    borderWidth: 2,
+                    label: {
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        position: "top",
+                        content: "Inchidere Scoli/Gradinite",
+                        enabled: true
+                    }
+                }
+                ]
+            }
+        }
+    };
 
     // $.getJSON({
     //   url: '/api/dashboard/getDailyCaseReport',
@@ -216,6 +226,7 @@ export class GeneralStatisticsComponent implements OnInit {
     $.getJSON({
         url: 'https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport',
         success: function(data) {
+            console.log(data)
             let _data = data.data.data;
             let _datasets = [];
             let _trendline = { x: [], y: [], pairs: [], dates: [] };
@@ -225,8 +236,8 @@ export class GeneralStatisticsComponent implements OnInit {
 
                 _trendline.x.push(_data[i]['day_no']);
                 _trendline.y.push(_data[i]['total_case']);
-                _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
                 _trendline.dates.push(_data[i]['day_case']+' ['+_data[i]['day_no']+']')
+                _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
             }
     
             // Cazuri pe zile
@@ -260,19 +271,20 @@ export class GeneralStatisticsComponent implements OnInit {
             let pointsds = [];
     
             for (var i in _ds) {
-                pointsds[i] = []
+                pointsds[i] = [];
+
                 for (var j in _ds[i].values.points) {
                     pointsds[i].push(_ds[i].values.points[j][1]);
                 }
-                let dss:any = {
-                    label : _ds[i].values.string + ' R^2='+_ds[i].values.r2 + ' ['+_ds[i].function+']',
-                    backgroundColor : pal[i],
-                    data : pointsds[i],
-                    fill : false,
-                    borderColor : pal[i],
-                    borderWidth : 1,
-                    pointRadius : 0
-                };
+                
+                let dss: any = {};
+                dss.label = _ds[i].values.string + ' R^2='+_ds[i].values.r2 + ' ['+_ds[i].function+']';
+                dss.backgroundColor = pal[i];
+                dss.data = pointsds[i];
+                dss.fill = false;
+                dss.borderColor = pal[i];
+                dss.borderWidth = 1;
+                dss.pointRadius = 0;
                 
                 configTrendline['data']['datasets'].push(dss);
             }

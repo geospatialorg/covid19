@@ -24,6 +24,7 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@schematics/angular": "^9.0.5",
     "chart.js": "^2.9.3",
+    "chartjs-plugin-annotation": "^0.5.7",
     "chartjs-plugin-piechart-outlabels": "^0.1.4",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
