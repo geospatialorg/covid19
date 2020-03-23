@@ -29,6 +29,14 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.header .topbar-menu li a.active{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header .topbar-menu li a span {
+    margin-left: 3px;
+}
+
 .header .logo h2{
   font-size: 18px;
 }
@@ -53,18 +61,23 @@
         padding-left: 0;
         height: auto;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .header .topbar-menu li a{
-        line-height: 32px;
+        line-height: 1.75;
         text-align: center;
-        font-size: 13px;
-        padding: 0 10px;
+        font-size: 12px;
+        padding: 5px;
     }
 
     .header .logo h2{
       font-size: 14px;
+    }
+
+    .header .topbar-menu li a span {
+        display: block;
+        margin-left: unset;
     }
 }
 

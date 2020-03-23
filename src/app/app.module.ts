@@ -73,6 +73,12 @@ import { AboutComponent } from './dashboard/about/about.component';
 import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
 import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
 import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
+import { ManifestComponent } from './dashboard/manifest/manifest.component';
+import { MapsComponent } from './dashboard/maps/maps.component';
+import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission.component';
+import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
+import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
+import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
 
 
 @NgModule({
@@ -95,7 +101,13 @@ import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-e
     AboutComponent,
     RelationCasesComponent,
     GeneralStatisticsComponent,
-    CoronavirusEuropeComponent
+    CoronavirusEuropeComponent,
+    ManifestComponent,
+    MapsComponent,
+    No2EmissionComponent,
+    EuropeanContextComponent,
+    SocialInterestPointsComponent,
+    FrontierSituationComponent
   ],
   imports: [
     BrowserModule,

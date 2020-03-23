@@ -17,6 +17,12 @@ import { AboutComponent } from './dashboard/about/about.component';
 import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
 import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
 import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
+import { ManifestComponent } from './dashboard/manifest/manifest.component';
+import { MapsComponent } from './dashboard/maps/maps.component';
+import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission.component';
+import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
+import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
+import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
 
 
 const routes: Routes = [
@@ -24,10 +30,21 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
+      { path: 'manifest', component: ManifestComponent },
+      { 
+        path: 'maps', 
+        component: MapsComponent,
+        children: [
+          { path: '', redirectTo: 'no2-emission', pathMatch: 'full' },
+          { path: 'no2-emission', component: No2EmissionComponent },
+          { path: 'europe', component: EuropeanContextComponent },
+          { path: 'social-interest-points', component: SocialInterestPointsComponent },
+          { path: 'frontier-situation', component: FrontierSituationComponent }
+        ]
+      },
       { 
         path: 'main', 
         component: MainComponent,
@@ -41,10 +58,9 @@ const routes: Routes = [
         path: 'statistics', 
         component: StatisticsComponent,
         children: [
-          { path: '', redirectTo: 'relation-cases', pathMatch: 'full' },
-          { path: 'relation-cases', component: RelationCasesComponent },
+          { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
           { path: 'general-statistics', component: GeneralStatisticsComponent },
-          { path: 'maps', component: CoronavirusEuropeComponent }
+          { path: 'relation-cases', component: RelationCasesComponent }
         ]
       },
       { 

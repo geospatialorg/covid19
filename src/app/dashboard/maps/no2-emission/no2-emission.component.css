@@ -1,0 +1,19 @@
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.map-content {
+    margin: 0;
+    height: calc(100% - 45px);
+    overflow-y: auto;
+}
+
+
+@media (max-width: 550px) {
+    .map-content {
+        margin: 0;
+        height: calc(100% - 83px);
+        overflow-y: unset;
+    }
+}

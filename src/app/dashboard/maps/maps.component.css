@@ -1,0 +1,11 @@
+.new-row {
+    margin-left: 5px !important;
+}
+
+@media (max-width: 550px) {
+    .new-row {
+       margin-left: unset !important;
+       margin-top: 5px !important;
+    }
+}
+

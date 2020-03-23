@@ -4,15 +4,21 @@
     </div>
     <ul class="topbar-menu">
         <li>
-            <a [routerLink]="['/dashboard/main']"><i class="pi pi-home"></i> Acasa</a>
+            <a [routerLink]="['/dashboard/main']" routerLinkActive="active"><i class="pi pi-home"></i> <span>COVID-19</span></a>
         </li>
         <li>
-            <a [routerLink]="['/dashboard/statistics']"><i class="pi pi-chart-line"></i> Statistici</a>
+            <a [routerLink]="['/dashboard/maps']" routerLinkActive="active"><i class="pi pi-compass"></i> <span>Hărți</span></a>
         </li>
         <li>
-            <a [routerLink]="['/dashboard/about']"><i class="pi pi-info-circle"></i> Despre</a>
+            <a [routerLink]="['/dashboard/statistics']" routerLinkActive="active"><i class="pi pi-chart-line"></i> <span>Statistici</span></a>
         </li>
-        <li *ngIf="currentUser">
+        <li>
+            <a [routerLink]="['/dashboard/manifest']" routerLinkActive="active"><i class="pi pi-users"></i> <span>Manifest</span></a>
+        </li>
+        <li>
+            <a [routerLink]="['/dashboard/about']" routerLinkActive="active"><i class="pi pi-info-circle"></i> <span>Despre</span></a>
+        </li>
+        <!-- <li *ngIf="currentUser">
             <a [routerLink]="['/dashboard/administration/patients-list']"><i class="pi pi-desktop"></i> Administrare</a>
         </li>
         <li *ngIf="!currentUser">
@@ -27,6 +33,6 @@
                 <i class="pi pi-sign-in"></i>
                 Logout
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
