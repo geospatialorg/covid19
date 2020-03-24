@@ -31,8 +31,8 @@ export class DashboardService {
         return this.http.get<any>( `${environment.apiUrl}/dashboard/getGlobalStat`, { params });
     }
 
-    getCasesByGender( params?: any){
-        return this.http.get<any>( `${environment.apiUrl}/dashboard/getCasesByGender`, { params });
+    getPercentageByGender( params?: any){
+        return this.http.get<any>( `${environment.apiUrl}/dashboard/getPercentageByGender`, { params });
     }
 
     getCasesByAgeGroup( params?: any){

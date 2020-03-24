@@ -144,7 +144,7 @@ router
     });
 
 router
-    .route('/getCasesByGender')
+    .route('/getPercentageByGender')
     .get((req, res) => {
 
         let params_no = 0;
