@@ -491,7 +491,7 @@ export class GeneralStatisticsComponent implements OnInit {
             let _data = data.data;
             configDistributionBySex.options.title.text += ' ['+_data.timestamp+']';
             configDistributionBySex.data.datasets[0].data = [
-                (_data['feminim']).toFixed(2),
+                (_data['feminin']).toFixed(2),
                 (_data['masculin']).toFixed(2),
                 (_data['copii']).toFixed(2)
             ];
