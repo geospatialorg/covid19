@@ -103,23 +103,35 @@ export class GeneralStatisticsComponent implements OnInit {
         type: 'line',
         data: {
             labels: [],
-            datasets: [
-                {
-                    label: 'Cazuri confirmate',
-                    backgroundColor: this.chartColors.yellow,
-                    borderColor: this.chartColors.yellow,
-                    data: [],
-                    fill: false,
-                    // showLine: false,
-                    borderWidth: 3
-                }
-            ]
-        },
-        plugins: {
-            pluginAnnotation
+            datasets: [{
+                label: 'Cazuri confirmate',
+                backgroundColor: 'rgb(255, 205, 86)',
+                borderColor: 'rgb(255, 205, 86)',
+                data: [],
+                fill: false,
+                borderWidth: 3,
+            },
+            {
+                label: 'Cazuri active',
+                backgroundColor: 'rgb(0, 204, 102)',
+                borderColor: 'rgb(0, 204, 102)',
+                data: [],
+                fill: false,
+                borderWidth: 2,
+            },
+            {
+                label: 'Decese',
+                backgroundColor: 'rgb(0, 0, 0)',
+                borderColor: 'rgb(0, 0, 0)',
+                data: [],
+                fill: false,
+                borderWidth: 2,
+            }
+        ]
         },
         options: {
-            responsive: false,
+            responsive: true,
+            aspectRatio: 1,
             title: {
                 display: true,
                 text: 'Ziua față de cazuri cumulative',
@@ -138,20 +150,40 @@ export class GeneralStatisticsComponent implements OnInit {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Ziua'
+                        labelString: 'Ziua',
+                        beginAtZero: false
                     }
                 }],
                 yAxes: [{
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Cumulativ'
+                        labelString: 'Cumulativ',
+                        beginAtZero: false
                     }
                 }]
             },
             annotation: {
                 drawTime: 'beforeDatasetsDraw',
                 annotations: [
+                    {
+                        id: 'masura-4',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '27',
+                        borderColor: 'rgba(255, 153, 0,0.8)',
+                        borderWidth: 4,
+                        label: {
+                            backgroundColor: 'rgba(255, 153, 0,0.8)',
+                            position: "top",
+                            content: "OM 3",
+                            enabled: true,
+                            yPadding: 2,
+                            xAdjust: 20
+                        }
+                    },
                     {
                         id: 'masura-3',
                         type: 'line',
@@ -202,7 +234,61 @@ export class GeneralStatisticsComponent implements OnInit {
                             enabled: true,
                             yPadding: 2
                         },
+                    },
+                    /*
+                    {
+                        id: 'efect-masura-1',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [3, 3],
+                        scaleID: 'x-axis-0',
+                        value: '23',
+                        borderColor: 'green',
+                        borderWidth: 1,
+                        label: {
+                            backgroundColor: 'green',
+                            position: "top",
+                            content: "Efect1",
+                            enabled: true,
+                            fontSize: 8,
+                            yPadding: 4,
+                            position: "top",
+                            yAdjust: -2
+                        }
+                    },
+                    {
+                        id: 'a-line-3',
+                        type: 'line',
+                        mode: 'horizontal',
+                        borderDash: [2, 2],
+                        scaleID: 'y-axis-0',
+                        value: '168',
+                        borderColor: 'black',
+                        borderWidth: 2,
+                    },
+                    {	
+                        id: 'masura-1',
+                        type: 'box',
+                        xScaleID: 'x-axis-0',
+                        yScaleID: 'y-axis-0',
+                        xMin: '14',
+                        xMax: '23',
+                        yMin: '309',
+                        yMax: '307',
+                        backgroundColor:'green'
+                    },
+                    {	
+                        id: 'masura-2',
+                        type: 'box',
+                        xScaleID: 'x-axis-0',
+                        yScaleID: 'y-axis-0',
+                        xMin: '0',
+                        xMax: '0',
+                        yMin: '0',
+                        yMax: '0',
+                        backgroundColor:'black'
                     }
+                    */
                 ]
             }
         }
@@ -213,13 +299,15 @@ export class GeneralStatisticsComponent implements OnInit {
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
-            let _trendline = { x: [], y: [], pairs: [], dates: [] };
+            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [] };
     
             for (let i=0; i<_data.length; i++) {
                 _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
 
                 _trendline.x.push(_data[i]['day_no']);
                 _trendline.y.push(_data[i]['total_case']);
+                _trendline.active.push(_data[i]['total_case']-_data[i]['total_healed']-_data[i]['total_dead']);
+                _trendline.dead.push(_data[i]['total_dead']);
                 _trendline.dates.push(_data[i]['day_case']+' ['+_data[i]['day_no']+']')
                 _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
             }
@@ -238,7 +326,7 @@ export class GeneralStatisticsComponent implements OnInit {
             let _ds = [
                 { 
                     'values': regression.exponential(_trendline.pairs),
-                    'function': 'Creștere exponențială',
+                    'function': 'Creștere exponențială (cazuri confirmate)',
                     'visible': true
                 }, 
                 {
@@ -251,7 +339,7 @@ export class GeneralStatisticsComponent implements OnInit {
                     'function': 'Creștere liniara',
                     'visible': false
                 }
-            ];
+            ]
     
             let pal = palette('tol-rainbow', _ds.length).map(function(hex){return '#' + hex;});
     
@@ -280,7 +368,9 @@ export class GeneralStatisticsComponent implements OnInit {
     
             configTrendline['data']['labels'] = _trendline.dates;
             configTrendline['data']['datasets'][0]['data'] = _trendline.y;
-    
+            configTrendline['data']['datasets'][1]['data'] = _trendline.active;
+            configTrendline['data']['datasets'][2]['data'] = _trendline.dead;
+            
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
