@@ -276,7 +276,7 @@ export class GraphicsComponent implements OnInit {
 
     var margin = {top: 50, right: 20, bottom: 20, left: 50},
         width = this.parentWidth - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom,
+        height = 450 - margin.top - margin.bottom,
         svg_width = width + margin.left + margin.right,
         svg_height = height + margin.top + margin.bottom;
 

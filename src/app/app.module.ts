@@ -79,6 +79,7 @@ import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission
 import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
 import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
+import { HospitalInfrastructureComponent } from './dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/
     No2EmissionComponent,
     EuropeanContextComponent,
     SocialInterestPointsComponent,
-    FrontierSituationComponent
+    FrontierSituationComponent,
+    HospitalInfrastructureComponent
   ],
   imports: [
     BrowserModule,
