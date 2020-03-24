@@ -12,6 +12,7 @@
 /api/config.js
 api/config.js
 config.js
+/api/public
 
 # profiling files
 chrome-profiler-events*.json
@@ -49,3 +50,4 @@ testem.log
 .DS_Store
 Thumbs.db
 config.js
+

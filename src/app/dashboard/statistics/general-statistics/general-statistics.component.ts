@@ -105,7 +105,7 @@ export class GeneralStatisticsComponent implements OnInit {
             labels: [],
             datasets: [
                 {
-                    label: 'cazuri [Romania]',
+                    label: 'Cazuri confirmate',
                     backgroundColor: this.chartColors.yellow,
                     borderColor: this.chartColors.yellow,
                     data: [],
@@ -150,78 +150,63 @@ export class GeneralStatisticsComponent implements OnInit {
                 }]
             },
             annotation: {
-                drawTime: 'afterDatasetsDraw',
-                annotations: [{
-                    id: 'a-line-1', // optional
-                    type: 'line',
-                    mode: 'vertical',
-                    borderDash: [2, 2],
-                    scaleID: 'x-axis-0',
-                    value: '19',
-                    borderColor: 'red',
-                    borderWidth: 2,
-                    label: {
-                        backgroundColor: 'rgba(0,0,0,0.8)',
-                        position: "top",
-                        content: "Stare de Urgenta",
-                        enabled: true
+                drawTime: 'beforeDatasetsDraw',
+                annotations: [
+                    {
+                        id: 'masura-3',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '24',
+                        borderColor: 'rgba(51,51,153,0.8)',
+                        borderWidth: 2,
+                        label: {
+                            backgroundColor: 'rgba(51,51,153,0.8)',
+                            position: "top",
+                            content: "OM 2",
+                            enabled: true,
+                            yPadding: 2
+                        }
+                    },
+                    {
+                        id: 'masura-2',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '19',
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            position: "top",
+                            content: "Stare de Urgenta",
+                            enabled: true,
+                            yPadding: 2
+                        }
+                    },
+                    {
+                        id: 'masura-1',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '14',
+                        borderColor: 'green',
+                        borderWidth: 2,
+                        label: {
+                            backgroundColor: 'green',
+                            position: "top",
+                            content: "Inchidere Scoli/Gradinite",
+                            enabled: true,
+                            yPadding: 2
+                        },
                     }
-                },
-                {
-                    id: 'a-line-2', // optional
-                    type: 'line',
-                    mode: 'vertical',
-                    borderDash: [2, 2],
-                    scaleID: 'x-axis-0',
-                    value: '14',
-                    borderColor: 'red',
-                    borderWidth: 2,
-                    label: {
-                        backgroundColor: 'rgba(0,0,0,0.8)',
-                        position: "top",
-                        content: "Inchidere Scoli/Gradinite",
-                        enabled: true
-                    }
-                }
                 ]
             }
         }
     };
-
-    // $.getJSON({
-    //   url: '/api/dashboard/getDailyCaseReport',
-    //   success: function(data) {
-    //       let _data = data.data.data;
-    //       let _datasets = [];
-    //       let _trendline = { x: [], y: [], pairs: [] };
-
-    //       for (let i=0; i<_data.length; i++) {
-    //           _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
-    //           _trendline.x.push(_data[i]['day_no']);
-    //           _trendline.y.push(_data[i]['total_case']);
-    //           _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
-    //       }
-
-    //       let lr = regression.exponential(_trendline.pairs);
-    //       let lrds = []
-    //       for (let i=0; i<lr.points.length; i++) {
-    //           lrds.push(lr.points[i][1]);
-    //       }
-    //       configDailyCases['data']['datasets'][0]['data'] = _datasets;
-
-    //       let ctxDailyCases = self.canvasDailyCases.nativeElement.getContext('2d');
-
-    //       let myLine = new Chart(ctxDailyCases, configDailyCases);
-
-    //       configTrendline['data']['labels'] = _trendline.x;
-    //       configTrendline['data']['datasets'][0]['data'] = _trendline.y;
-    //       configTrendline['data']['datasets'][1]['data'] = lrds;
-    //       configTrendline['data']['datasets'][1]['label'] = lr.string + '  R^2=' + lr.r2;
-
-    //       var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
-    //       myLine = new Chart(ctxTrendline, configTrendline);
-    //     }
-    // });
 
     $.getJSON({
         url: '/api/dashboard/getDailyCaseReport',
@@ -253,15 +238,18 @@ export class GeneralStatisticsComponent implements OnInit {
             let _ds = [
                 { 
                     'values': regression.exponential(_trendline.pairs),
-                    'function': 'exp' 
+                    'function': 'Creștere exponențială',
+                    'visible': true
                 }, 
                 {
                     'values': regression.logarithmic(_trendline.pairs),
-                    'function': 'log'
+                    'function': 'Creștere logaritmică',
+                    'visible': false
                 },
                 {
                     'values': regression.linear(_trendline.pairs),
-                    'function': 'linear'
+                    'function': 'Creștere liniara',
+                    'visible': false
                 }
             ];
     
@@ -270,22 +258,24 @@ export class GeneralStatisticsComponent implements OnInit {
             let pointsds = [];
     
             for (var i in _ds) {
-                pointsds[i] = [];
+                if (_ds[i].visible) {
+                    pointsds[i] = [];
 
-                for (var j in _ds[i].values.points) {
-                    pointsds[i].push(_ds[i].values.points[j][1]);
+                    for (var j in _ds[i].values.points) {
+                        pointsds[i].push(_ds[i].values.points[j][1]);
+                    }
+                    
+                    let dss: any = {};
+                    dss.label = _ds[i].function + ' [ ' + _ds[i].values.string + ' R^2='+_ds[i].values.r2 + ' ]';
+                    dss.backgroundColor = pal[i];
+                    dss.data = pointsds[i];
+                    dss.fill = false;
+                    dss.borderColor = pal[i];
+                    dss.borderWidth = 1;
+                    dss.pointRadius = 0;
+                    
+                    configTrendline['data']['datasets'].push(dss);
                 }
-                
-                let dss: any = {};
-                dss.label = _ds[i].values.string + ' R^2='+_ds[i].values.r2 + ' ['+_ds[i].function+']';
-                dss.backgroundColor = pal[i];
-                dss.data = pointsds[i];
-                dss.fill = false;
-                dss.borderColor = pal[i];
-                dss.borderWidth = 1;
-                dss.pointRadius = 0;
-                
-                configTrendline['data']['datasets'].push(dss);
             }
     
             configTrendline['data']['labels'] = _trendline.dates;
@@ -302,8 +292,6 @@ export class GeneralStatisticsComponent implements OnInit {
             myLine = new Chart(ctxTrendline, configTrendline);
             }
         });
-
-    
   }
 
   drawCharts2(){
@@ -352,82 +340,6 @@ export class GeneralStatisticsComponent implements OnInit {
             label: 'Generation Z'
         }
     }
-
-    // by age intervals
-    let _bai = {
-        'a0_9': {
-            intervals: {
-                'min': 0,
-                'max': 9
-            },
-            count: 8,
-            label: '0-9'
-        },
-        'a10_19': {
-            intervals: {
-                'min': 10,
-                'max': 19,
-            },
-            count: 19,
-            label: '10-19'
-        },
-        'a20-29': {
-            intervals: {
-                'min': 20,
-                'max': 29,
-            },
-            count: 60,
-            label: '20-29'
-        },
-        'a30-39': {
-            intervals: {
-                'min': 30,
-                'max': 39,
-            },
-            count: 110,
-            label: '30-39'
-        },
-        'a40-49': {
-            intervals: {
-                'min': 40,
-                'max': 49,
-            },
-            count: 112,
-            label: '40-49'
-        },
-        'a50-59': {
-            intervals: {
-                'min': 50,
-                'max': 59,
-            },
-            count: 79,
-            label: '50-59'
-        },
-        'a60-69': {
-            intervals: {
-                'min': 60,
-                'max': 69,
-            },
-            count: 27,
-            label: '60-69'
-        },
-        'a70-79': {
-            intervals: {
-                'min': 70,
-                'max': 79,
-            },
-            count: 17,
-            label: '70-79'
-        },
-        'a80plus': {
-            intervals: {
-                'min': 80,
-                'max': 89,
-            },
-            count: 1,
-            label: '80+'
-        }
-    };
 
     var configFreqByGeneration = {
       type: 'outlabeledPie',
@@ -544,6 +456,52 @@ export class GeneralStatisticsComponent implements OnInit {
 				}
 			}
     };
+
+    $.getJSON({
+        url: '/api/dashboard/getCasesByAgeGroup',
+        success: function(data) {
+            let _data = data.data;
+            configFreqByAge.options.title.text += ' ['+_data.timestamp+']';
+            for (var e in _data) {
+                if (e != 'timestamp') {
+                    configFreqByAge.data.datasets[0].data.push(_data[e]);
+                    configFreqByAge.data.labels.push(e.replace('g', '').replace('plus', ''));
+                }
+            }
+
+            /*
+            for (var e in Object.keys(_bai)){
+                var k = Object.keys(_bai)[e];
+                configFreqByAge.data.datasets[0].data.push(_bai[k].count);
+                configFreqByAge.data.labels.push(_bai[k].label);
+            }
+            */
+
+            var ctxFBA = self.canvasFreqByAge.nativeElement.getContext('2d');
+            if (self.mainGrid.nativeElement.offsetWidth < 550) {
+                ctxFBA.canvas.height = 320;
+            }
+            let myGraph3 = new Chart(ctxFBA, configFreqByAge);
+        }
+    });
+
+    $.getJSON({
+        url: '/api/dashboard/getPercentageByGender',
+        success: function(data) {
+            let _data = data.data;
+            configDistributionBySex.options.title.text += ' ['+_data.timestamp+']';
+            configDistributionBySex.data.datasets[0].data = [
+                (_data['feminim']).toFixed(2),
+                (_data['masculin']).toFixed(2),
+                (_data['copii']).toFixed(2)
+            ];
+            var ctxDBS = self.canvasDistributionBySex.nativeElement.getContext('2d');
+            if(self.mainGrid.nativeElement.offsetWidth < 550){
+              ctxDBS.canvas.height = 220;
+              }
+            let myGraph1 = new Chart(ctxDBS, configDistributionBySex);
+        }
+    });
     
     $.getJSON({
       url: '/api/statistics/getCaseRelations',
@@ -554,69 +512,36 @@ export class GeneralStatisticsComponent implements OnInit {
           _total = _data.length,
           myLine;
           
-          for (let i=0; i<_data.length; i++) {
-              if (_data[i].properties.gender == 'Bărbat') {
-                  _men += 1;
-              } else {
-                  _women += 1;
-              }
-
-              for (var e in Object.keys(_bti)){
-                  var _k = Object.keys(_bti)[e];
-                  if (_data[i].properties.age != null) {
-                      if (_data[i].properties.age >= _bti[_k].intervals.min && _data[i].properties.age <= _bti[_k].intervals.max) {
-                          _bti[_k].count += 1;
-                      }
-                  }
-              }
-            //   for (var e in Object.keys(_bai)){
-            //       var _k = Object.keys(_bai)[e];
-            //       if (_data[i].properties.age != null) {
-            //           if (_data[i].properties.age >= _bai[_k].intervals.min && _data[i].properties.age <= _bai[_k].intervals.max) {
-            //               _bai[_k].count += 1;
-            //           }
-            //       }
-            //   }
-          }
-        //   configDistributionBySex.data.datasets[0].data = [
-        //       ((_women*100)/_total).toFixed(2), 
-        //       ((_men*100)/_total).toFixed(2)
-        //   ];
-
-        configDistributionBySex.data.datasets[0].data = [
-            (50).toFixed(2),
-            (46).toFixed(2),
-            (4).toFixed(2)
-        ];
+        for (let i=0; i<_data.length; i++) {
+            if (_data[i].properties.gender == 'Bărbat') {
+                _men += 1;
+            } else {
+                _women += 1;
+            }
+            for (var e in Object.keys(_bti)){
+                var _k = Object.keys(_bti)[e];
+                if (_data[i].properties.age != null) {
+                    if (_data[i].properties.age >= _bti[_k].intervals.min && _data[i].properties.age <= _bti[_k].intervals.max) {
+                        _bti[_k].count += 1;
+                    }
+                }
+            }
+        }
           
           for (var e in Object.keys(_bti)){
               var k = Object.keys(_bti)[e];
               configFreqByGeneration.data.datasets[0].data.push(_bti[k].count);
               configFreqByGeneration.data.labels.push(_bti[k].label);
           }
-          
-          for (var e in Object.keys(_bai)){
-              var k = Object.keys(_bai)[e];
-              configFreqByAge.data.datasets[0].data.push(_bai[k].count);
-              configFreqByAge.data.labels.push(_bai[k].label);
-          }
 
-          var ctxDBS = self.canvasDistributionBySex.nativeElement.getContext('2d');
-          if(self.mainGrid.nativeElement.offsetWidth < 550){
-            ctxDBS.canvas.height = 220;
-            }
-          let myGraph1 = new Chart(ctxDBS, configDistributionBySex);
+          /*
           var ctxFBG = self.canvasFreqByGeneration.nativeElement.getContext('2d');
           if(self.mainGrid.nativeElement.offsetWidth < 550){
             ctxFBG.canvas.height = 210;
             }
           let myGraph2 = new Chart(ctxFBG, configFreqByGeneration);
-          var ctxFBA = self.canvasFreqByAge.nativeElement.getContext('2d');
-          if(self.mainGrid.nativeElement.offsetWidth < 550){
-            ctxFBA.canvas.height = 320;
-            }
-          let myGraph3 = new Chart(ctxFBA, configFreqByAge);
-      }
+          */
+        }
   });
   }
 
