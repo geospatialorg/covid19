@@ -300,8 +300,15 @@ export class GeneralStatisticsComponent implements OnInit {
             let _data = data.data.data;
             let _datasets = [];
             let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [] };
-    
-            for (let i=0; i<_data.length; i++) {
+            let d = new Date();
+            let h = d.getHours();
+            let dl = 0
+            if (h > 13) {
+                dl = _data.length;
+            } else {
+                dl = _data.length - 1;
+            }
+            for (let i=0; i<dl; i++) {
                 _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
 
                 _trendline.x.push(_data[i]['day_no']);
@@ -370,7 +377,7 @@ export class GeneralStatisticsComponent implements OnInit {
             configTrendline['data']['datasets'][0]['data'] = _trendline.y;
             configTrendline['data']['datasets'][1]['data'] = _trendline.active;
             configTrendline['data']['datasets'][2]['data'] = _trendline.dead;
-            
+
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
