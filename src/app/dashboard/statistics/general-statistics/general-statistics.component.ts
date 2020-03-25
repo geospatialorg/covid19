@@ -99,35 +99,48 @@ export class GeneralStatisticsComponent implements OnInit {
 			}
     };
 
-    var configTrendline = {
+    let configTrendline = {
         type: 'line',
         data: {
             labels: [],
-            datasets: [{
-                label: 'Cazuri confirmate',
-                backgroundColor: 'rgb(255, 205, 86)',
-                borderColor: 'rgb(255, 205, 86)',
-                data: [],
-                fill: false,
-                borderWidth: 3,
-            },
-            {
-                label: 'Cazuri active',
-                backgroundColor: 'rgb(0, 204, 102)',
-                borderColor: 'rgb(0, 204, 102)',
-                data: [],
-                fill: false,
-                borderWidth: 2,
-            },
-            {
-                label: 'Decese',
-                backgroundColor: 'rgb(0, 0, 0)',
-                borderColor: 'rgb(0, 0, 0)',
-                data: [],
-                fill: false,
-                borderWidth: 2,
-            }
-        ]
+            datasets: [
+                {
+                    label: 'Cazuri confirmate',
+                    backgroundColor: 'rgb(255, 205, 86)',
+                    borderColor: 'rgb(255, 205, 86)',
+                    data: [],
+                    fill: false,
+                    //showLine: false,
+                    borderWidth: 3,
+                },
+                {
+                    label: 'Cazuri active',
+                    backgroundColor: 'rgb(0, 102, 204)',
+                    borderColor: 'rgb(0, 102, 204)',
+                    data: [],
+                    fill: false,
+                    //showLine: false,
+                    borderWidth: 2,
+                },
+                {
+                    label: 'Decese',
+                    backgroundColor: 'rgb(0, 0, 0)',
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: [],
+                    fill: false,
+                    //showLine: false,
+                    borderWidth: 2,
+                },
+                {
+                    label: 'Vindecați',
+                    backgroundColor: 'rgb(0, 204, 102)',
+                    borderColor: 'rgb(0, 204, 102)',
+                    data: [],
+                    fill: false,
+                    //showLine: false,
+                    borderWidth: 2,
+                }
+            ]
         },
         options: {
             responsive: true,
@@ -174,14 +187,13 @@ export class GeneralStatisticsComponent implements OnInit {
                         scaleID: 'x-axis-0',
                         value: '27',
                         borderColor: 'rgba(255, 153, 0,0.8)',
-                        borderWidth: 4,
+                        borderWidth: 3,
                         label: {
                             backgroundColor: 'rgba(255, 153, 0,0.8)',
                             position: "top",
                             content: "OM 3",
                             enabled: true,
-                            yPadding: 2,
-                            xAdjust: 20
+                            yPadding: 2
                         }
                     },
                     {
@@ -233,64 +245,13 @@ export class GeneralStatisticsComponent implements OnInit {
                             content: "Inchidere Scoli/Gradinite",
                             enabled: true,
                             yPadding: 2
-                        },
-                    },
-                    /*
-                    {
-                        id: 'efect-masura-1',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [3, 3],
-                        scaleID: 'x-axis-0',
-                        value: '23',
-                        borderColor: 'green',
-                        borderWidth: 1,
-                        label: {
-                            backgroundColor: 'green',
-                            position: "top",
-                            content: "Efect1",
-                            enabled: true,
-                            fontSize: 8,
-                            yPadding: 4,
-                            position: "top",
-                            yAdjust: -2
                         }
-                    },
-                    {
-                        id: 'a-line-3',
-                        type: 'line',
-                        mode: 'horizontal',
-                        borderDash: [2, 2],
-                        scaleID: 'y-axis-0',
-                        value: '168',
-                        borderColor: 'black',
-                        borderWidth: 2,
-                    },
-                    {	
-                        id: 'masura-1',
-                        type: 'box',
-                        xScaleID: 'x-axis-0',
-                        yScaleID: 'y-axis-0',
-                        xMin: '14',
-                        xMax: '23',
-                        yMin: '309',
-                        yMax: '307',
-                        backgroundColor:'green'
-                    },
-                    {	
-                        id: 'masura-2',
-                        type: 'box',
-                        xScaleID: 'x-axis-0',
-                        yScaleID: 'y-axis-0',
-                        xMin: '0',
-                        xMax: '0',
-                        yMin: '0',
-                        yMax: '0',
-                        backgroundColor:'black'
                     }
-                    */
                 ]
             }
+        },
+        plugins: {
+            pluginAnnotation
         }
     };
 
@@ -299,11 +260,11 @@ export class GeneralStatisticsComponent implements OnInit {
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
-            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [] };
+            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [] };
             let d = new Date();
             let h = d.getHours();
-            let dl = 0
-            if (h > 13) {
+            let dl = 0;
+            if (h > 13 || _data[_data.length-1]['new_case_no'] > 0) {
                 dl = _data.length;
             } else {
                 dl = _data.length - 1;
@@ -315,6 +276,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 _trendline.y.push(_data[i]['total_case']);
                 _trendline.active.push(_data[i]['total_case']-_data[i]['total_healed']-_data[i]['total_dead']);
                 _trendline.dead.push(_data[i]['total_dead']);
+                _trendline.healed.push(_data[i]['total_healed']);
                 _trendline.dates.push(_data[i]['day_case']+' ['+_data[i]['day_no']+']')
                 _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
             }
@@ -377,6 +339,7 @@ export class GeneralStatisticsComponent implements OnInit {
             configTrendline['data']['datasets'][0]['data'] = _trendline.y;
             configTrendline['data']['datasets'][1]['data'] = _trendline.active;
             configTrendline['data']['datasets'][2]['data'] = _trendline.dead;
+            configTrendline['data']['datasets'][3]['data'] = _trendline.healed;
 
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){

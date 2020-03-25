@@ -45,9 +45,13 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+final-index.html
 
 # System Files
 .DS_Store
 Thumbs.db
 config.js
+
+
+
 
