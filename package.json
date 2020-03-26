@@ -9,7 +9,9 @@
     "build-prod": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "serve-https": "http-server ./dist/covid/ -c-1 --ssl --cert localhost.crt --key localhost.key -p 8080",
+    "build-and-serve": "npm run build-prod && npm run serve-https"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +23,9 @@
     "@angular/forms": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/pwa": "^0.900.7",
     "@angular/router": "~8.2.14",
+    "@angular/service-worker": "~8.2.14",
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@schematics/angular": "^9.0.5",
     "chart.js": "^2.9.3",

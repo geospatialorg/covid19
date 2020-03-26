@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,7 +79,13 @@ import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission
 import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
 import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { InstallPromptComponent } from './_components/install-prompt/install-prompt.component';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {PwaService} from './_services/_pwa.svc';
 
+const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
 
 @NgModule({
   declarations: [
@@ -107,7 +113,8 @@ import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/
     No2EmissionComponent,
     EuropeanContextComponent,
     SocialInterestPointsComponent,
-    FrontierSituationComponent
+    FrontierSituationComponent,
+    InstallPromptComponent
   ],
   imports: [
     BrowserModule,
@@ -159,13 +166,17 @@ import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/
     ToastModule,
     SliderModule,
     SpinnerModule,
-    ChartModule
+    ChartModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: true, registrationStrategy: 'registerImmediately'}),
+    OverlayPanelModule,
   ],
   providers: [
     MessageService,
     ConfirmationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    // {provide: APP_INITIALIZER, useFactory: pwaServiceInitializer, deps: [PwaService], multi: true},
   ],
   bootstrap: [AppComponent]
 })

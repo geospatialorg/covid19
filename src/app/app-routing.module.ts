@@ -34,8 +34,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
       { path: 'manifest', component: ManifestComponent },
-      { 
-        path: 'maps', 
+      {
+        path: 'maps',
         component: MapsComponent,
         children: [
           { path: '', redirectTo: 'no2-emission', pathMatch: 'full' },
@@ -45,8 +45,8 @@ const routes: Routes = [
           { path: 'frontier-situation', component: FrontierSituationComponent }
         ]
       },
-      { 
-        path: 'main', 
+      {
+        path: 'main',
         component: MainComponent,
         children: [
           { path: 'map', component: MapComponent },
@@ -54,8 +54,8 @@ const routes: Routes = [
           { path: 'graphics', component: GraphicsComponent }
         ]
       },
-      { 
-        path: 'statistics', 
+      {
+        path: 'statistics',
         component: StatisticsComponent,
         children: [
           { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
@@ -63,13 +63,13 @@ const routes: Routes = [
           { path: 'relation-cases', component: RelationCasesComponent }
         ]
       },
-      { 
-        path: 'administration', 
+      {
+        path: 'administration',
         component: AdministrationComponent,
         canActivate: [AuthGuard],
         children: [
           { path: '', redirectTo: 'patients-list', pathMatch: 'full' },
-          { path: 'patients-list', 
+          { path: 'patients-list',
             component: PatientsListComponent,
             children: [
               { path: 'add-new-patient', component: AddNewPatientComponent }
@@ -80,7 +80,8 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'login', component: LoginComponent, resolve: { skipLoggedIn: SkipIfLoggedIn } }
+  { path: 'login', component: LoginComponent, resolve: { skipLoggedIn: SkipIfLoggedIn } },
+  { path: '**', redirectTo: '/dashboard/main' }
 ];
 
 
