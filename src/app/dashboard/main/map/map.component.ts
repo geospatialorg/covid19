@@ -26,6 +26,7 @@ export class MapComponent implements OnInit {
   mapData: any[] = [];
   interval = null;
   appConfig = appConfig;
+  activeTab = 1;
 
   selectedFeature: any = null;
 
@@ -55,6 +56,10 @@ export class MapComponent implements OnInit {
           return (y0 + y1) / 2;
       }
       return y0 + (x - x0) * (y1 - y0) / (x1 - x0);
+  }
+
+  setActiveTab(tab){
+    this.activeTab = tab;
   }
 
   getGeojsonData(){
@@ -231,6 +236,22 @@ export class MapComponent implements OnInit {
       });
     });
 
+    this.map.on('singleclick', (ev)=> {
+      if (ev.dragging) return;
+      ev.preventDefault();
+
+      if (self.selectedFeature !== null) {
+        self.selectedFeature.setStyle(iconStyle);
+        self.selectedFeature = null;
+      }
+
+      let coords = self.map.getEventCoordinate(ev.originalEvent);
+
+      var feature = iconLayer.getSource().getClosestFeatureToCoordinate(coords);
+      self.selectedFeature = feature;
+      feature.setStyle(highlightStyle);
+    });
+
     this.interval = setInterval(()=> {
       this.getData().then(data => {
         iconLayer.getSource().clear();
@@ -244,6 +265,7 @@ export class MapComponent implements OnInit {
   ngDestroy(){
     if(this.interval) clearInterval(this.interval);
     this.map.off('pointermove');
+    this.map.off('singleclick');
   }
 
 

@@ -1,11 +1,10 @@
 module.exports = {
     auth: {
         jwtTokenSecret: '',
-         tokenExpireTime: '2h'
-        //tokenExpireTime: 60
+         tokenExpireTime: ''
     },
     app: {
-        port: '6200',
+        port: '',
         apiPath: '/api'
     },
     db: {

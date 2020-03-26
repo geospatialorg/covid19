@@ -51,30 +51,14 @@ tooltip_div.tooltip {
     /* visibility: visible; */
 }
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 550px) {
-    .wrapper {
-        width: 97%;
-        /* max-width: 767px; */
-    }
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 850px) {
-    .wrapper {
-        width: 97%;
-        /* max-width: 1200px; */
-        float: none;
-    }
-}
-
-iframe {
+#statistics iframe {
     width: 50%;
     height: 1000px;
 }
 
 @media (max-width: 600px) {
-    iframe {
-        width: 100%;
+    #statistics iframe {
+        width: 90%;
+        height: 100%;
     }
 }

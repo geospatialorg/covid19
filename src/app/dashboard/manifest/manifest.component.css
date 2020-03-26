@@ -1,0 +1,101 @@
+#manifest-area {
+    padding: 10px;
+    width: 50%; 
+    margin: 0 auto;
+    text-align: justify;
+}
+
+#manifest-antet div{
+    width: 50%;
+    display: inline-block;
+}
+
+#manifest-date {
+    vertical-align: top;
+    text-align: right;
+    padding-top: 30px;
+}
+
+#manifest-to span{
+    width: 50px;
+    display: inline-block;
+}
+
+@media (max-width: 550px) {
+    #manifest-area {
+        font-size: 12px;
+        width: 100%;
+        margin: unset;
+    }
+
+    #manifest-antet div {
+        display: block;
+        width: 100%;
+    }
+
+    #manifest-date {
+        vertical-align: unset;
+        text-align: right;
+        padding-top: 10px;
+    }
+
+    #manifest-logo {
+        text-align: center;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 900px) {
+    #manifest-area {
+        width: 90%;
+    }
+}
+
+@media (min-width:901px) and (max-width: 1024px) {
+    #manifest-area {
+        width: 75%;
+    }
+}
+
+/* #manifest-area {
+    text-align: center; 
+    height: 100%;
+}
+
+#manifest-area iframe {
+    width: 60%;
+    height: 99%;
+}
+
+@media (max-width: 360px) {
+    #manifest-area{
+        overflow: hidden;
+    }
+    #manifest-area iframe {
+        width: 150%;
+        margin-left: -85px;
+        margin-top: -60px;
+        height: 130%;
+        
+        height: calc(100% + 50px);
+    }
+}
+
+@media (min-width: 361px) and (max-width: 550px) {
+    #manifest-area{
+        overflow: hidden;
+    }
+    #manifest-area iframe {
+        width: 145%;
+        margin-left: -85px;
+        margin-top: -60px;
+        height: 130%;
+        
+        height: calc(100% + 50px);
+    }
+}
+
+@media (min-width: 551px) and (max-width: 900px) {
+    #manifest-area iframe {
+        width: 100%;
+    }
+} */
