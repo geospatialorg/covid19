@@ -50,6 +50,7 @@ tooltip_div.tooltip {
     font-family:  "EB Garamond", serif;
     /* visibility: visible; */
 }
+
 #statistics iframe {
     width: 50%;
     height: 1000px;

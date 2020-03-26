@@ -5,7 +5,7 @@
       <h2  style="color: #4daf4a;">{{totalHealed}}</h2>
     </div>
 
-    <div style="overflow-y: auto; max-height: 360px" class="borderlessTable">
+    <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
       <p-table [value]="tableDataRecovered" id="addNewRasterTable" selectionMode="single">
         <ng-template pTemplate="header">
           <tr>
@@ -34,7 +34,7 @@
         <h2>Total decese</h2>
         <h2 style="color: #a65628;">{{totalDeads}}</h2>
 
-        <div style="overflow-y: auto; max-height: 360px" class="borderlessTable">
+        <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
           <p-table [value]="tableDataDeath" id="addNewRasterTable" selectionMode="single">
             <ng-template pTemplate="header">
               <tr>

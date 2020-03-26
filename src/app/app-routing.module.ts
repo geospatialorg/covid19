@@ -23,6 +23,8 @@ import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission
 import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
 import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
+import { HospitalInfrastructureComponent } from './dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
+import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/counties-cases.component';
 
 
 const routes: Routes = [
@@ -42,7 +44,8 @@ const routes: Routes = [
           { path: 'no2-emission', component: No2EmissionComponent },
           { path: 'europe', component: EuropeanContextComponent },
           { path: 'social-interest-points', component: SocialInterestPointsComponent },
-          { path: 'frontier-situation', component: FrontierSituationComponent }
+          { path: 'frontier-situation', component: FrontierSituationComponent },
+          { path: 'hospital-infrastructure', component: HospitalInfrastructureComponent }
         ]
       },
       { 
@@ -60,7 +63,8 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
           { path: 'general-statistics', component: GeneralStatisticsComponent },
-          { path: 'relation-cases', component: RelationCasesComponent }
+          { path: 'relation-cases', component: RelationCasesComponent },
+          { path: 'counties-cases', component: CountiesCasesComponent }
         ]
       },
       { 

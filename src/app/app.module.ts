@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { ErrorInterceptor, JwtInterceptor } from './_interceptors';
 
 // primeng modules
+import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {ContextMenuModule} from 'primeng/contextmenu';
@@ -79,6 +80,8 @@ import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission
 import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
 import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
+import { HospitalInfrastructureComponent } from './dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
+import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/counties-cases.component';
 
 
 @NgModule({
@@ -107,7 +110,9 @@ import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/
     No2EmissionComponent,
     EuropeanContextComponent,
     SocialInterestPointsComponent,
-    FrontierSituationComponent
+    FrontierSituationComponent,
+    HospitalInfrastructureComponent,
+    CountiesCasesComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +126,7 @@ import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/
     FormsModule,
     ReactiveFormsModule,
 
+    SidebarModule,
     ButtonModule,
     InputTextModule,
     CalendarModule,
