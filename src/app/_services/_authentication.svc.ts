@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-   
+
 
     constructor( private http: HttpClient, public router: Router){
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -43,7 +43,7 @@ export class AuthenticationService {
 
         this.currentUserSubject.next(currentUser);
     }
-    
+
     getToken(){
         return JSON.parse(localStorage.getItem('currentUser')).token;
     }
@@ -64,12 +64,12 @@ export class AuthenticationService {
     }
 
     clearSession(){
-        
+
 
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
         // return this.router.navigateByUrl('/');
-        this.router.routeReuseStrategy.shouldReuseRoute = ( ) => false; 
+        this.router.routeReuseStrategy.shouldReuseRoute = ( ) => false;
         return this.router.navigate([this.router.url]);
     }
 
@@ -80,5 +80,5 @@ export class AuthenticationService {
     checkToken(params: any){
 		return this.http.post<any>( `${environment.apiUrl}/authentication/checkToken`, params );
     }
-    
+
 }
