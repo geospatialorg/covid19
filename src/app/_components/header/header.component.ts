@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   items: MenuItem[];
   currentUser: any = null;
 
+  displaySidebar: boolean = false;
+
   constructor(
       private AuthSvc: AuthenticationService
   ) { }
@@ -24,7 +26,12 @@ export class HeaderComponent implements OnInit {
     ev.preventDefault();
     this.AuthSvc.logout().subscribe( res => {
         this.AuthSvc.clearSession();
+        this.displaySidebar = false;
     })
+  }
+
+  showSidebar(val){
+    this.displaySidebar = val;
   }
 
 }

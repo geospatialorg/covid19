@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { ErrorInterceptor, JwtInterceptor } from './_interceptors';
 
 // primeng modules
+import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {ContextMenuModule} from 'primeng/contextmenu';
@@ -125,6 +126,7 @@ import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/co
     FormsModule,
     ReactiveFormsModule,
 
+    SidebarModule,
     ButtonModule,
     InputTextModule,
     CalendarModule,
