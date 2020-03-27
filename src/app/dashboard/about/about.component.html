@@ -23,13 +23,7 @@
         Până de curând am oferit acces la datele colectate via GDrive. Datorită cererilor prea mari, ne vedem siliți să oprim accesul în acest mod. Datele pot fi accesate în format JSON prin intermediul unui API dedicat (momentan e static, pe viitor vom analiza posibilitatea de a permite aplicarea de filtre):
     </p>
     <ul>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getCasesByCounty" title="https://covid19.geo-spatial.org/api/dashboard/getCasesByCounty" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getCasesByCounty</a></li>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getDeadCasesByCounty" title="https://covid19.geo-spatial.org/api/dashboard/getDeadCasesByCounty" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getDeadCasesByCounty</a></li>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getHealthCasesByCounty" title="https://covid19.geo-spatial.org/api/dashboard/getHealthCasesByCounty" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getHealthCasesByCounty</a></li>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport" title="https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getDailyCaseReport</a></li>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getCaseRelations" title="https://covid19.geo-spatial.org/api/dashboard/getCaseRelations" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getCaseRelations</a></li>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getPercentageByGender" title="https://covid19.geo-spatial.org/api/dashboard/getPercentageByGender" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getPercentageByGender</a></li>
-        <li><a href="https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup" title="https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup" target="_blank">https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup</a></li>
+        <li *ngFor="let item of apiLinks"><a href="{{item.url}}" title="{{item.title}}" target="_blank">{{item.title}}</a></li>
     </ul>
 
     <p>
@@ -53,32 +47,11 @@
         Demersul 100% voluntar este inițiat și susținut de către geo-spatial.org. Din echipă fac parte (ordine alfabetică):
     </p>
     <ul>
-        <li>Cristina Alexa</li>
-        <li>Bogdan Antonescu</li>
-        <li>Cristi Boboc</li>
-        <li>Octavian Borcan</li>
-        <li>Marius Budileanu</li>
-        <li>Andrei Cipu</li>
-        <li>Vasile Crăciunescu</li>
-        <li>Mihai Dumitru</li>
-        <li>Bogdan Grama</li>
-        <li>Claudia Ifrim</li>
-        <li>Codrina Ilie</li>
-        <li>Robert Ille</li>
-        <li>Iulian Iuga</li>
-        <li>Gabriel Iuhasz</li>
-        <li>Razvan Moldovan</li>
-        <li>Marian Neagul</li>
-        <li>Ion Nedelcu</li>
-        <li>Silviu Panica</li>
-        <li>Gabriela Stancu</li>
-        <li>Daniel Urdă</li>
-        <li>Ruxandra Vâlcu</li>
-        <li>Cristina Vrînceanu</li>
+        <li *ngFor="let item of colaborators">{{item}}</li>
     </ul>
 
     <h3>Infrastructură</h3>
-    <p>Serviciul este susținut de SAGE Group.</p>
+    <p>Serviciul este susținut de <a href="http://www.sage.ieat.ro/" title="SAGE Group" target="_blank">SAGE Group</a>.</p>
 
     <h3>Contact</h3>
     <p>Pentru implicare, întrebări și sugestii ne puteți scrie pe <a href="mailto:covid19@geo-spatial.org" title="e-mail">e-mail</a>, <a href="https://groups.yahoo.com/neo/groups/geo-spatial/info" target="_blank" title="https://groups.yahoo.com/neo/groups/geo-spatial/info">lista de discuții</a> sau pe canalul <a href="http://bit.ly/2TzN9Yx" title="Slack" target="_blank">Slack</a>.</p>
@@ -86,12 +59,7 @@
     <h3>Proiecte similare </h3>
     <p>Alte proiecte asemănătoare în România: </p>
     <ul>
-        <li><a href="https://coronavirus.casajurnalistului.ro/" title="Monitorizare Coronavirus" target="_blank">Monitorizare Coronavirus</a></li>
-        <li><a href="https://instnsp.maps.arcgis.com/apps/opsdashboard/index.html#/5eced796595b4ee585bcdba03e30c127" title="Harta INSP" target="_blank">Harta INSP</a></li>
-        <li><a href="https://www.hartacoronavirus.ro/" title="https://www.hartacoronavirus.ro" target="_blank">Hhttps://www.hartacoronavirus.ro</a></li>
-        <li><a href="https://covid19-romania.appspot.com/" title="https://covid19-romania.appspot.com/" target="_blank">https://covid19-romania.appspot.com/</a></li>
-        <li><a href="https://covid19ro.org" title="https://covid19ro.org" target="_blank">https://covid19ro.org</a></li>
-        <li><a href="https://coronavirus-esriro.hub.arcgis.com" title="Esri Romania COVID - 19 Hub" target="_blank">Esri Romania COVID - 19 Hub</a></li>
+        <li *ngFor="let item of projects"><a href="{{item.url}}" title="{{item.title}}" target="_blank">{{item.title}}</a></li>
     </ul>
 
     <h3>Disclaimer </h3>
