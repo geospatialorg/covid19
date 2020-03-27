@@ -14,8 +14,8 @@ import * as pluginAnnotation from 'chartjs-plugin-annotation';
 })
 export class GeneralStatisticsComponent implements OnInit {
   @ViewChild('canvasDailyCases', {static: true}) canvasDailyCases: ElementRef;
+  @ViewChild('canvasGrowthRate', {static: true}) canvasGrowthRate: ElementRef;
   @ViewChild('canvasDistributionBySex', {static: true}) canvasDistributionBySex: ElementRef;
-  @ViewChild('canvasFreqByGeneration', {static: true}) canvasFreqByGeneration: ElementRef;
   @ViewChild('canvasFreqByAge', {static: true}) canvasFreqByAge: ElementRef;
   @ViewChild('canvasTrendline', {static: true}) canvasTrendline: ElementRef;
   @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
@@ -39,6 +39,131 @@ export class GeneralStatisticsComponent implements OnInit {
 
   drawCharts1(){
     let self = this;
+
+    let chartsAnnonations = [
+        {
+            id: 'masura-5',
+            type: 'line',
+            mode: 'vertical',
+            borderDash: [2, 2],
+            scaleID: 'x-axis-0',
+            value: '27',
+            borderColor: 'rgba(255, 153, 0,0.8)',
+            borderWidth: 4,
+            label: {
+                backgroundColor: 'rgba(255, 153, 0,0.8)',
+                position: "top",
+                content: "OM 3",
+                enabled: true,
+                yPadding: 2
+            },
+            onClick: function(e) {
+                window.open('http://legislatie.just.ro/Public/DetaliiDocument/224340', '_blank');
+            },
+            onMouseover: function(e) {
+                //e.target.style.cursor = 'pointer';
+            },
+            onMouseout: function(e) {
+                //e.target.style.cursor = 'default';
+            }
+        },
+        {
+            id: 'masura-4',
+            type: 'line',
+            mode: 'vertical',
+            borderDash: [2, 2],
+            scaleID: 'x-axis-0',
+            value: '24',
+            borderColor: 'rgba(51,51,153,0.8)',
+            borderWidth: 2,
+            label: {
+                backgroundColor: 'rgba(51,51,153,0.8)',
+                position: "top",
+                content: "OM 2",
+                enabled: true,
+                yPadding: 2
+            },
+            onClick: function(e) {
+                window.open('http://legislatie.just.ro/Public/DetaliiDocument/224284', '_blank');
+            },
+            onMouseover: function(e) {
+                //e.target.style.cursor = 'pointer';
+            },
+            onMouseout: function(e) {
+                //e.target.style.cursor = 'default';
+            }
+        },
+        {
+            id: 'masura-3',
+            type: 'line',
+            mode: 'vertical',
+            borderDash: [2, 2],
+            scaleID: 'x-axis-0',
+            value: '20',
+            borderColor: 'rgb(102, 153, 153)',
+            borderWidth: 2,
+            label: {
+                backgroundColor: 'rgb(102, 153, 153)',
+                position: "top",
+                content: "OM 1",
+                enabled: true,
+                yPadding: 2,
+                yAdjust: 20
+            },
+            onClick: function(e) {
+                window.open('http://legislatie.just.ro/Public/DetaliiDocument/223888', '_blank');
+            },
+            onMouseover: function(e) {
+                //e.target.style.cursor = 'pointer';
+            },
+            onMouseout: function(e) {
+                //e.target.style.cursor = 'default';
+            }
+        },
+        {
+            id: 'masura-2',
+            type: 'line',
+            mode: 'vertical',
+            borderDash: [2, 2],
+            scaleID: 'x-axis-0',
+            value: '19',
+            borderColor: 'black',
+            borderWidth: 2,
+            label: {
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                position: "top",
+                content: "Stare de Urgenta",
+                enabled: true,
+                yPadding: 2
+            },
+            onClick: function(e) {
+                window.open('https://www.presidency.ro/ro/media/decret-semnat-de-presedintele-romaniei-domnul-klaus-iohannis-privind-instituirea-starii-de-urgenta-pe-teritoriul-romaniei', '_blank');
+            },
+            onMouseover: function(e, el) {
+                //e.target.style.cursor = 'pointer';
+            },
+            onMouseout: function(e, el) {
+                //e.target.style.cursor = 'default';
+            }
+        },
+        {
+            id: 'masura-1',
+            type: 'line',
+            mode: 'vertical',
+            borderDash: [2, 2],
+            scaleID: 'x-axis-0',
+            value: '14',
+            borderColor: 'green',
+            borderWidth: 2,
+            label: {
+                backgroundColor: 'green',
+                position: "top",
+                content: "Inchidere Scoli/Gradinite",
+                enabled: true,
+                yPadding: 2
+            },
+        }
+    ]
 
     let configDailyCases = {
       type: 'line',
@@ -218,130 +343,86 @@ export class GeneralStatisticsComponent implements OnInit {
             annotation: {
                 drawTime: 'beforeDatasetsDraw',
                 events: ['click', 'mouseover'],
-                annotations: [
+                annotations: []
+            }
+        },
+        plugins: {
+            pluginAnnotation
+        }
+    };
+
+    let configGrowthRate = {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Rata de creștere',
+                    backgroundColor: 'rgb(204, 0, 102)',
+                    borderColor: 'rgb(204, 0, 102)',
+                    lineTension: 0,
+                    data: [],
+                    fill: false,
+                    pointRadius: 0,
+                    yAxisID: 'growth',
+                    //showLine: false,
+                    borderWidth: 0.5,
+                    bezierCurve: false,
+                    hidden: true
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                onHover: function(e) {
+                    e.target.style.cursor = 'pointer';
+                },
+                onLeave: function(e) {
+                    e.target.style.cursor = 'default';
+                }
+            },
+            title: {
+                display: true,
+                text: 'Ziua față de cazuri cumulative',
+                fontSize: 18
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [
                     {
-                        id: 'masura-5',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '27',
-                        borderColor: 'rgba(255, 153, 0,0.8)',
-                        borderWidth: 4,
-                        label: {
-                            backgroundColor: 'rgba(255, 153, 0,0.8)',
-                            position: "top",
-                            content: "OM 3",
-                            enabled: true,
-                            yPadding: 2
-                        },
-                        onClick: function(e) {
-                            window.open('http://legislatie.just.ro/Public/DetaliiDocument/224340', '_blank');
-                        },
-                        onMouseover: function(e) {
-                            //e.target.style.cursor = 'pointer';
-                        },
-                        onMouseout: function(e) {
-                            //e.target.style.cursor = 'default';
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Ziua',
+                            beginAtZero: false
                         }
-                    },
+                    }
+                ],
+                yAxes: [
                     {
-                        id: 'masura-4',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '24',
-                        borderColor: 'rgba(51,51,153,0.8)',
-                        borderWidth: 2,
-                        label: {
-                            backgroundColor: 'rgba(51,51,153,0.8)',
-                            position: "top",
-                            content: "OM 2",
-                            enabled: true,
-                            yPadding: 2
-                        },
-                        onClick: function(e) {
-                            window.open('http://legislatie.just.ro/Public/DetaliiDocument/224284', '_blank');
-                        },
-                        onMouseover: function(e) {
-                            //e.target.style.cursor = 'pointer';
-                        },
-                        onMouseout: function(e) {
-                            //e.target.style.cursor = 'default';
+                        display: true,
+                        position: 'left',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Rata de creștere',
+                            beginAtZero: false
                         }
-                    },
-                    {
-                        id: 'masura-3',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '20',
-                        borderColor: 'rgb(102, 153, 153)',
-                        borderWidth: 2,
-                        label: {
-                            backgroundColor: 'rgb(102, 153, 153)',
-                            position: "top",
-                            content: "OM 1",
-                            enabled: true,
-                            yPadding: 2,
-                            yAdjust: 20
-                        },
-                        onClick: function(e) {
-                            window.open('http://legislatie.just.ro/Public/DetaliiDocument/223888', '_blank');
-                        },
-                        onMouseover: function(e) {
-                            //e.target.style.cursor = 'pointer';
-                        },
-                        onMouseout: function(e) {
-                            //e.target.style.cursor = 'default';
-                        }
-                    },
-                    {
-                        id: 'masura-2',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '19',
-                        borderColor: 'black',
-                        borderWidth: 2,
-                        label: {
-                            backgroundColor: 'rgba(0,0,0,0.8)',
-                            position: "top",
-                            content: "Stare de Urgenta",
-                            enabled: true,
-                            yPadding: 2
-                        },
-                        onClick: function(e) {
-                            window.open('https://www.presidency.ro/ro/media/decret-semnat-de-presedintele-romaniei-domnul-klaus-iohannis-privind-instituirea-starii-de-urgenta-pe-teritoriul-romaniei', '_blank');
-                        },
-                        onMouseover: function(e, el) {
-                            //e.target.style.cursor = 'pointer';
-                        },
-                        onMouseout: function(e, el) {
-                            //e.target.style.cursor = 'default';
-                        }
-                    },
-                    {
-                        id: 'masura-1',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [2, 2],
-                        scaleID: 'x-axis-0',
-                        value: '14',
-                        borderColor: 'green',
-                        borderWidth: 2,
-                        label: {
-                            backgroundColor: 'green',
-                            position: "top",
-                            content: "Inchidere Scoli/Gradinite",
-                            enabled: true,
-                            yPadding: 2
-                        },
                     }
                 ]
+            },
+            annotation: {
+                drawTime: 'beforeDatasetsDraw',
+                events: ['click', 'mouseover'],
+                annotations: []
             }
         },
         plugins: {
@@ -440,7 +521,7 @@ export class GeneralStatisticsComponent implements OnInit {
             configTrendline['data']['datasets'][1]['data'] = _trendline.active;
             configTrendline['data']['datasets'][2]['data'] = _trendline.dead;
             configTrendline['data']['datasets'][3]['data'] = _trendline.healed;
-            //configTrendline['data']['datasets'][4]['data'] = _trendline.growth;
+            configTrendline['options']['annotation']['annotations'].push(...chartsAnnonations);
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
@@ -450,9 +531,19 @@ export class GeneralStatisticsComponent implements OnInit {
                 ctxTrendline.canvas.width = self.mainGrid.nativeElement.offsetWidth - 50;
             }
             myLine = new Chart(ctxTrendline, configTrendline);
+
+            configGrowthRate['data']['labels'] = _trendline.dates;
+            configGrowthRate['data']['datasets'][0]['data'] = _trendline.growth;
+            configGrowthRate['options']['annotation']['annotations'].push(...chartsAnnonations);
+            console.log(configGrowthRate)
+            var ctxGrowthRate = self.canvasGrowthRate.nativeElement.getContext('2d');
+            if(self.mainGrid.nativeElement.offsetWidth < 550){
+                ctxGrowthRate.canvas.height = 220;
             }
-        });
-  }
+            myLine = new Chart(ctxGrowthRate, configGrowthRate);
+        }
+    });
+}
 
   drawCharts2(){
     let self = this;
