@@ -178,26 +178,30 @@ export class GeneralStatisticsComponent implements OnInit {
             },
             annotation: {
                 drawTime: 'beforeDatasetsDraw',
+                events: ['click'],
                 annotations: [
                     {
-                        id: 'masura-4',
+                        id: 'masura-5',
                         type: 'line',
                         mode: 'vertical',
                         borderDash: [2, 2],
                         scaleID: 'x-axis-0',
                         value: '27',
                         borderColor: 'rgba(255, 153, 0,0.8)',
-                        borderWidth: 3,
+                        borderWidth: 4,
                         label: {
                             backgroundColor: 'rgba(255, 153, 0,0.8)',
                             position: "top",
                             content: "OM 3",
                             enabled: true,
                             yPadding: 2
+                        },
+                        onClick: function(e) {
+                            window.open('https://www.mai.gov.ro/ordonanta-militara-nr-3-din-24-03-2020-privind-masuri-de-prevenire-a-raspandirii-covid-19/', '_blank');
                         }
                     },
                     {
-                        id: 'masura-3',
+                        id: 'masura-4',
                         type: 'line',
                         mode: 'vertical',
                         borderDash: [2, 2],
@@ -211,6 +215,30 @@ export class GeneralStatisticsComponent implements OnInit {
                             content: "OM 2",
                             enabled: true,
                             yPadding: 2
+                        },
+                        onClick: function(e) {
+                            window.open('http://legislatie.just.ro/Public/DetaliiDocument/224284', '_blank');
+                        }
+                    },
+                    {
+                        id: 'masura-3',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [2, 2],
+                        scaleID: 'x-axis-0',
+                        value: '20',
+                        borderColor: 'rgb(102, 153, 153)',
+                        borderWidth: 2,
+                        label: {
+                            backgroundColor: 'rgb(102, 153, 153)',
+                            position: "top",
+                            content: "OM 1",
+                            enabled: true,
+                            yPadding: 2,
+                            yAdjust: 20
+                        },
+                        onClick: function(e) {
+                            window.open('http://legislatie.just.ro/Public/DetaliiDocument/223888', '_blank');
                         }
                     },
                     {
@@ -228,6 +256,9 @@ export class GeneralStatisticsComponent implements OnInit {
                             content: "Stare de Urgenta",
                             enabled: true,
                             yPadding: 2
+                        },
+                        onClick: function(e) {
+                            window.open('https://www.presidency.ro/ro/media/decret-semnat-de-presedintele-romaniei-domnul-klaus-iohannis-privind-instituirea-starii-de-urgenta-pe-teritoriul-romaniei', '_blank');
                         }
                     },
                     {
@@ -245,8 +276,62 @@ export class GeneralStatisticsComponent implements OnInit {
                             content: "Inchidere Scoli/Gradinite",
                             enabled: true,
                             yPadding: 2
+                        },
+                    },
+                    /*
+                    {
+                        id: 'efect-masura-1',
+                        type: 'line',
+                        mode: 'vertical',
+                        borderDash: [3, 3],
+                        scaleID: 'x-axis-0',
+                        value: '23',
+                        borderColor: 'green',
+                        borderWidth: 1,
+                        label: {
+                            backgroundColor: 'green',
+                            position: "top",
+                            content: "Efect1",
+                            enabled: true,
+                            fontSize: 8,
+                            yPadding: 4,
+                            position: "top",
+                            yAdjust: -2
                         }
+                    },
+                    {
+                        id: 'a-line-3',
+                        type: 'line',
+                        mode: 'horizontal',
+                        borderDash: [2, 2],
+                        scaleID: 'y-axis-0',
+                        value: '168',
+                        borderColor: 'black',
+                        borderWidth: 2,
+                    },
+                    {	
+                        id: 'masura-1',
+                        type: 'box',
+                        xScaleID: 'x-axis-0',
+                        yScaleID: 'y-axis-0',
+                        xMin: '14',
+                        xMax: '23',
+                        yMin: '309',
+                        yMax: '307',
+                        backgroundColor:'green'
+                    },
+                    {	
+                        id: 'masura-2',
+                        type: 'box',
+                        xScaleID: 'x-axis-0',
+                        yScaleID: 'y-axis-0',
+                        xMin: '0',
+                        xMax: '0',
+                        yMin: '0',
+                        yMax: '0',
+                        backgroundColor:'black'
                     }
+                    */
                 ]
             }
         },
