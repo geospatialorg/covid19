@@ -1,4 +1,5 @@
 # Covid
+Project home: https://covid19.geo-spatial.org/dashboard/main
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
 
