@@ -33,12 +33,6 @@ export class GeneralStatisticsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    Chart.scaleService.updateScaleDefaults('linear', {
-        ticks: {
-            min: 0
-        }
-    });
-
     this.drawCharts1();
     this.drawCharts2();
   }
@@ -145,6 +139,14 @@ export class GeneralStatisticsComponent implements OnInit {
         options: {
             responsive: true,
             aspectRatio: 1,
+            legend: {
+                onHover: function(e) {
+                    e.target.style.cursor = 'pointer';
+                },
+                onLeave: function(e) {
+                    e.target.style.cursor = 'default';
+                }
+            },
             title: {
                 display: true,
                 text: 'Ziua față de cazuri cumulative',
@@ -167,18 +169,43 @@ export class GeneralStatisticsComponent implements OnInit {
                         beginAtZero: false
                     }
                 }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
+                yAxes: [
+                    {
                         display: true,
-                        labelString: 'Cumulativ',
-                        beginAtZero: false
+                        type: 'logarithmic',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Cumulativ',
+                            beginAtZero: false
+                        },
+                        ticks: {
+                            callback: function (value, index, values) {
+                                return value;
+                            },
+                            min: 0
+                        },
+                        afterBuildTicks: function(chart){
+                            var maxTicks = 20;
+                            var maxLog = Math.log(chart.ticks[0]);
+                            var minLogDensity = maxLog / maxTicks;
+                            var ticks = [];
+                            var currLog = -Infinity;
+                            var tickLst = chart.ticks.reverse();
+                            for (var t in tickLst) {
+                              var log = Math.max(0, Math.log(tickLst[t]));
+                              if (log - currLog > minLogDensity){
+                                ticks.push(tickLst[t]);
+                                currLog = log;
+                              }
+                            }
+                            chart.ticks = ticks;
+                        }
                     }
-                }]
+                ]
             },
             annotation: {
                 drawTime: 'beforeDatasetsDraw',
-                events: ['click'],
+                events: ['click', 'mouseover'],
                 annotations: [
                     {
                         id: 'masura-5',
@@ -197,7 +224,13 @@ export class GeneralStatisticsComponent implements OnInit {
                             yPadding: 2
                         },
                         onClick: function(e) {
-                            window.open('https://www.mai.gov.ro/ordonanta-militara-nr-3-din-24-03-2020-privind-masuri-de-prevenire-a-raspandirii-covid-19/', '_blank');
+                            window.open('http://legislatie.just.ro/Public/DetaliiDocument/224340', '_blank');
+                        },
+                        onMouseover: function(e) {
+                            //e.target.style.cursor = 'pointer';
+                        },
+                        onMouseout: function(e) {
+                            //e.target.style.cursor = 'default';
                         }
                     },
                     {
@@ -218,6 +251,12 @@ export class GeneralStatisticsComponent implements OnInit {
                         },
                         onClick: function(e) {
                             window.open('http://legislatie.just.ro/Public/DetaliiDocument/224284', '_blank');
+                        },
+                        onMouseover: function(e) {
+                            //e.target.style.cursor = 'pointer';
+                        },
+                        onMouseout: function(e) {
+                            //e.target.style.cursor = 'default';
                         }
                     },
                     {
@@ -239,6 +278,12 @@ export class GeneralStatisticsComponent implements OnInit {
                         },
                         onClick: function(e) {
                             window.open('http://legislatie.just.ro/Public/DetaliiDocument/223888', '_blank');
+                        },
+                        onMouseover: function(e) {
+                            //e.target.style.cursor = 'pointer';
+                        },
+                        onMouseout: function(e) {
+                            //e.target.style.cursor = 'default';
                         }
                     },
                     {
@@ -259,6 +304,12 @@ export class GeneralStatisticsComponent implements OnInit {
                         },
                         onClick: function(e) {
                             window.open('https://www.presidency.ro/ro/media/decret-semnat-de-presedintele-romaniei-domnul-klaus-iohannis-privind-instituirea-starii-de-urgenta-pe-teritoriul-romaniei', '_blank');
+                        },
+                        onMouseover: function(e, el) {
+                            //e.target.style.cursor = 'pointer';
+                        },
+                        onMouseout: function(e, el) {
+                            //e.target.style.cursor = 'default';
                         }
                     },
                     {
@@ -277,61 +328,7 @@ export class GeneralStatisticsComponent implements OnInit {
                             enabled: true,
                             yPadding: 2
                         },
-                    },
-                    /*
-                    {
-                        id: 'efect-masura-1',
-                        type: 'line',
-                        mode: 'vertical',
-                        borderDash: [3, 3],
-                        scaleID: 'x-axis-0',
-                        value: '23',
-                        borderColor: 'green',
-                        borderWidth: 1,
-                        label: {
-                            backgroundColor: 'green',
-                            position: "top",
-                            content: "Efect1",
-                            enabled: true,
-                            fontSize: 8,
-                            yPadding: 4,
-                            position: "top",
-                            yAdjust: -2
-                        }
-                    },
-                    {
-                        id: 'a-line-3',
-                        type: 'line',
-                        mode: 'horizontal',
-                        borderDash: [2, 2],
-                        scaleID: 'y-axis-0',
-                        value: '168',
-                        borderColor: 'black',
-                        borderWidth: 2,
-                    },
-                    {	
-                        id: 'masura-1',
-                        type: 'box',
-                        xScaleID: 'x-axis-0',
-                        yScaleID: 'y-axis-0',
-                        xMin: '14',
-                        xMax: '23',
-                        yMin: '309',
-                        yMax: '307',
-                        backgroundColor:'green'
-                    },
-                    {	
-                        id: 'masura-2',
-                        type: 'box',
-                        xScaleID: 'x-axis-0',
-                        yScaleID: 'y-axis-0',
-                        xMin: '0',
-                        xMax: '0',
-                        yMin: '0',
-                        yMax: '0',
-                        backgroundColor:'black'
                     }
-                    */
                 ]
             }
         },
