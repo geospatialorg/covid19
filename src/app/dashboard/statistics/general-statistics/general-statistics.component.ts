@@ -9,7 +9,7 @@ import * as pluginAnnotation from 'chartjs-plugin-annotation';
 @Component({
   selector: 'app-general-statistics',
   templateUrl: './general-statistics.component.html',
-  styleUrls: ['./general-statistics.component.css'],
+  styleUrls: ['./general-statistics.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class GeneralStatisticsComponent implements OnInit {
@@ -280,7 +280,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 _trendline.dates.push(_data[i]['day_case']+' ['+_data[i]['day_no']+']')
                 _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
             }
-    
+
             // Cazuri pe zile
             configDailyCases['data']['datasets'][0]['data'] = _datasets;
             let ctxDailyCases = self.canvasDailyCases.nativeElement.getContext('2d');
@@ -290,14 +290,14 @@ export class GeneralStatisticsComponent implements OnInit {
             }
 
             let myLine = new Chart(ctxDailyCases, configDailyCases);
-    
+
             // Ziua fata de cazuri cumulative
             let _ds = [
-                { 
+                {
                     'values': regression.exponential(_trendline.pairs),
                     'function': 'Creștere exponențială (cazuri confirmate)',
                     'visible': true
-                }, 
+                },
                 {
                     'values': regression.logarithmic(_trendline.pairs),
                     'function': 'Creștere logaritmică',
@@ -309,11 +309,11 @@ export class GeneralStatisticsComponent implements OnInit {
                     'visible': false
                 }
             ]
-    
+
             let pal = palette('tol-rainbow', _ds.length).map(function(hex){return '#' + hex;});
-    
+
             let pointsds = [];
-    
+
             for (var i in _ds) {
                 if (_ds[i].visible) {
                     pointsds[i] = [];
@@ -321,7 +321,7 @@ export class GeneralStatisticsComponent implements OnInit {
                     for (var j in _ds[i].values.points) {
                         pointsds[i].push(_ds[i].values.points[j][1]);
                     }
-                    
+
                     let dss: any = {};
                     dss.label = _ds[i].function + ' [ ' + _ds[i].values.string + ' R^2='+_ds[i].values.r2 + ' ]';
                     dss.backgroundColor = pal[i];
@@ -330,11 +330,11 @@ export class GeneralStatisticsComponent implements OnInit {
                     dss.borderColor = pal[i];
                     dss.borderWidth = 1;
                     dss.pointRadius = 0;
-                    
+
                     configTrendline['data']['datasets'].push(dss);
                 }
             }
-    
+
             configTrendline['data']['labels'] = _trendline.dates;
             configTrendline['data']['datasets'][0]['data'] = _trendline.y;
             configTrendline['data']['datasets'][1]['data'] = _trendline.active;
@@ -411,7 +411,7 @@ export class GeneralStatisticsComponent implements OnInit {
           }]
       },
       plugins: {
-        pluginPiechartOutlabels 
+        pluginPiechartOutlabels
       },
       options: {
           zoomOutPercentage: 50,
@@ -562,7 +562,7 @@ export class GeneralStatisticsComponent implements OnInit {
             let myGraph1 = new Chart(ctxDBS, configDistributionBySex);
         }
     });
-    
+
     $.getJSON({
       url: '/api/statistics/getCaseRelations',
       success: function(data) {
@@ -571,7 +571,7 @@ export class GeneralStatisticsComponent implements OnInit {
           _men = 0,
           _total = _data.length,
           myLine;
-          
+
         for (let i=0; i<_data.length; i++) {
             if (_data[i].properties.gender == 'Bărbat') {
                 _men += 1;
@@ -587,7 +587,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 }
             }
         }
-          
+
           for (var e in Object.keys(_bti)){
               var k = Object.keys(_bti)[e];
               configFreqByGeneration.data.datasets[0].data.push(_bti[k].count);
