@@ -58,14 +58,15 @@ export class GeneralStatisticsComponent implements OnInit {
                 yPadding: 2
             },
             onClick: function(e) {
+                
                 window.open('http://legislatie.just.ro/Public/DetaliiDocument/224340', '_blank');
             },
-            onMouseover: function(e) {
-                //e.target.style.cursor = 'pointer';
-            },
-            onMouseout: function(e) {
-                //e.target.style.cursor = 'default';
-            }
+            // onMouseover: function(e) {
+            //     //e.target.style.cursor = 'pointer';
+            // },
+            // onMouseout: function(e) {
+            //     //e.target.style.cursor = 'default';
+            // }
         },
         {
             id: 'masura-4',
@@ -86,12 +87,12 @@ export class GeneralStatisticsComponent implements OnInit {
             onClick: function(e) {
                 window.open('http://legislatie.just.ro/Public/DetaliiDocument/224284', '_blank');
             },
-            onMouseover: function(e) {
-                //e.target.style.cursor = 'pointer';
-            },
-            onMouseout: function(e) {
-                //e.target.style.cursor = 'default';
-            }
+            // onMouseover: function(e) {
+            //     //e.target.style.cursor = 'pointer';
+            // },
+            // onMouseout: function(e) {
+            //     //e.target.style.cursor = 'default';
+            // }
         },
         {
             id: 'masura-3',
@@ -113,12 +114,12 @@ export class GeneralStatisticsComponent implements OnInit {
             onClick: function(e) {
                 window.open('http://legislatie.just.ro/Public/DetaliiDocument/223888', '_blank');
             },
-            onMouseover: function(e) {
-                //e.target.style.cursor = 'pointer';
-            },
-            onMouseout: function(e) {
-                //e.target.style.cursor = 'default';
-            }
+            // onMouseover: function(e) {
+            //     //e.target.style.cursor = 'pointer';
+            // },
+            // onMouseout: function(e) {
+            //     //e.target.style.cursor = 'default';
+            // }
         },
         {
             id: 'masura-2',
@@ -139,12 +140,12 @@ export class GeneralStatisticsComponent implements OnInit {
             onClick: function(e) {
                 window.open('https://www.presidency.ro/ro/media/decret-semnat-de-presedintele-romaniei-domnul-klaus-iohannis-privind-instituirea-starii-de-urgenta-pe-teritoriul-romaniei', '_blank');
             },
-            onMouseover: function(e, el) {
-                //e.target.style.cursor = 'pointer';
-            },
-            onMouseout: function(e, el) {
-                //e.target.style.cursor = 'default';
-            }
+            // onMouseover: function(e, el) {
+            //     //e.target.style.cursor = 'pointer';
+            // },
+            // onMouseout: function(e, el) {
+            //     //e.target.style.cursor = 'default';
+            // }
         },
         {
             id: 'masura-1',
@@ -411,6 +412,7 @@ export class GeneralStatisticsComponent implements OnInit {
                     {
                         display: true,
                         position: 'left',
+                        id: 'growth',
                         scaleLabel: {
                             display: true,
                             labelString: 'Rata de creștere',
