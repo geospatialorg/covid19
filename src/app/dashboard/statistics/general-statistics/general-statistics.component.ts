@@ -535,7 +535,6 @@ export class GeneralStatisticsComponent implements OnInit {
             configGrowthRate['data']['labels'] = _trendline.dates;
             configGrowthRate['data']['datasets'][0]['data'] = _trendline.growth;
             configGrowthRate['options']['annotation']['annotations'].push(...chartsAnnonations);
-            console.log(configGrowthRate)
             var ctxGrowthRate = self.canvasGrowthRate.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxGrowthRate.canvas.height = 220;
