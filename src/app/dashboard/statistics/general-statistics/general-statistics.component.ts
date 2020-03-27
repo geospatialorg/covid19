@@ -200,7 +200,19 @@ export class GeneralStatisticsComponent implements OnInit {
                             }
                             chart.ticks = ticks;
                         }
+                    },
+                    /*
+                    {
+                        display: true,
+                        position: 'left',
+                        id: 'growth',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Rata de creștere',
+                            beginAtZero: false
+                        }
                     }
+                    */
                 ]
             },
             annotation: {
@@ -342,18 +354,24 @@ export class GeneralStatisticsComponent implements OnInit {
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
-            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [] };
+            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [], growth: [] };
             let d = new Date();
             let h = d.getHours();
             let dl = 0;
-            if (h > 13 || _data[_data.length-1]['new_case_no'] > 0) {
+            if (h >= 13 || _data[_data.length-1]['new_case_no'] > 0) {
                 dl = _data.length;
             } else {
                 dl = _data.length - 1;
             }
             for (let i=0; i<dl; i++) {
+                if (i == 0) {
+                    _trendline.growth.push(0.00);
+                } else if (i == 1) {
+                    _trendline.growth.push(1.00);
+                } else {
+                    _trendline.growth.push((_data[i]['total_case']-_data[i-1]['total_case'])/_data[i-1]['total_case']);
+                }
                 _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
-
                 _trendline.x.push(_data[i]['day_no']);
                 _trendline.y.push(_data[i]['total_case']);
                 _trendline.active.push(_data[i]['total_case']-_data[i]['total_healed']-_data[i]['total_dead']);
@@ -422,7 +440,7 @@ export class GeneralStatisticsComponent implements OnInit {
             configTrendline['data']['datasets'][1]['data'] = _trendline.active;
             configTrendline['data']['datasets'][2]['data'] = _trendline.dead;
             configTrendline['data']['datasets'][3]['data'] = _trendline.healed;
-
+            //configTrendline['data']['datasets'][4]['data'] = _trendline.growth;
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
