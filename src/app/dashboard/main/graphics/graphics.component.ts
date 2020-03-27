@@ -6,7 +6,7 @@ import { environment as appConfig } from '../../../../environments/environment';
 @Component({
   selector: 'app-graphics',
   templateUrl: './graphics.component.html',
-  styleUrls: ['./graphics.component.css'],
+  styleUrls: ['./graphics.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class GraphicsComponent implements OnInit {

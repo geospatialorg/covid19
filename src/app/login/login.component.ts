@@ -6,12 +6,12 @@ import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
-  
+
   loginFormHasErrors: boolean;
   loginFormErrors: any;
   invalidLoginMessage: string;
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    this.loginFormHasErrors = false; 
+    this.loginFormHasErrors = false;
 
     this.loginFormErrors = {
       noPassword: !this.password
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     }
 
     // de pus in functiune cand se modifica in baza de date
-    let pass = CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex);    
+    let pass = CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex);
 
     this.authSvc.login(this.username, pass).subscribe(async (res) => {
       if(!res.success){
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         return;
       }
 
-     
+
       this.router.navigate(['/dashboard/administration']);
     });
   }
