@@ -5,7 +5,7 @@ import { environment as appConfig } from '../../../../environments/environment';
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
-  styleUrls: ['./left-menu.component.css']
+  styleUrls: ['./left-menu.component.scss']
 })
 export class LeftMenuComponent implements OnInit {
   tableData: any[] = [];

@@ -16,7 +16,7 @@ import { environment as appConfig } from '../../../../environments/environment';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css'],
+  styleUrls: ['./map.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
@@ -35,7 +35,7 @@ export class MapComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
     this.initMap();
   }
 
@@ -82,7 +82,7 @@ export class MapComponent implements OnInit {
         Object.keys(e).map(r => {
           feat.set(r, e[r]);
         });
-        
+
         // if(e.total_county > 0) iconStyle.getText().setText(e.county_code);
         // if(e.total_county > 0) iconStyle.getText().setText(e.total_county.toString());
 
@@ -98,7 +98,7 @@ export class MapComponent implements OnInit {
     this.mapData = await this.getData();
 
     let geojson = await this.getGeojsonData();
-    
+
     // let data = self.mapData.find(e => e.county_code === feature.get('county_code'));
 
     // console.log(data)
@@ -113,7 +113,7 @@ export class MapComponent implements OnInit {
     //   f.setStyle(iconStyle);
     //   vectorSource.addFeature(f);
     // }
-    
+
 
     var style = new Style({
       // fill: new Fill({
@@ -156,7 +156,7 @@ export class MapComponent implements OnInit {
     });
 
     let iconSource = new VectorSource();
-   
+
     var iconLayer = new VectorLayer({
       id: 'icons',
       source: iconSource

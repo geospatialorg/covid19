@@ -6,7 +6,7 @@ import { AdministrationService } from 'src/app/_services';
 @Component({
   selector: 'app-add-new-patient',
   templateUrl: './add-new-patient.component.html',
-  styleUrls: ['./add-new-patient.component.css'],
+  styleUrls: ['./add-new-patient.component.scss'],
   providers: [ConfirmationService]
 })
 export class AddNewPatientComponent implements OnInit, OnDestroy {
@@ -43,9 +43,9 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
     setTimeout( () => {
       document.getElementById('inputDigit1').addEventListener('keydown', function(e) {
         var key   = e.keyCode ? e.keyCode : e.which;
-        
+
         if (!( [8, 9, 13, 27, 46].indexOf(key) !== -1 ||
-             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) ||
              (key >= 35 && key <= 40) ||
              (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
              (key >= 96 && key <= 105)
@@ -54,9 +54,9 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
 
       document.getElementById('inputDigit2').addEventListener('keydown', function(e) {
         var key   = e.keyCode ? e.keyCode : e.which;
-        
+
         if (!( [8, 9, 13, 27, 46].indexOf(key) !== -1 ||
-             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) ||
              (key >= 35 && key <= 40) ||
              (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
              (key >= 96 && key <= 105)
@@ -65,9 +65,9 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
 
       document.getElementById('inputDigit3').addEventListener('keydown', function(e) {
         var key   = e.keyCode ? e.keyCode : e.which;
-        
+
         if (!( [8, 9, 13, 27, 46].indexOf(key) !== -1 ||
-             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+             (key == 65 && ( e.ctrlKey || e.metaKey  ) ) ||
              (key >= 35 && key <= 40) ||
              (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
              (key >= 96 && key <= 105)
@@ -108,7 +108,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
 
     if(!this.idPatient) {
       let dd = this.defaultDate.getDate();
-      let mm = this.defaultDate.getMonth()+1; 
+      let mm = this.defaultDate.getMonth()+1;
       let yyyy = this.defaultDate.getFullYear();
 
       let day;
@@ -118,7 +118,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
       } else {
         day = dd;
       }
-      
+
       if(mm<10) {
          month =String('0'+mm);
       } else {
@@ -186,7 +186,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
       this.AdminSvc.getUatCombo({ county_code: detailsPatient.county_code }).subscribe(res => {
         if(res && res.data && res.data.data) {
           this.uatList = res.data.data;
-          
+
           this.myForm.patchValue({
             'case_no': detailsPatient.case_no,
             'source_no': detailsPatient.source_no,
@@ -242,13 +242,13 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
 
   saveForm() {
     this.myFormSubmitted = true;
-    this.myFormHasErrors = false; 
+    this.myFormHasErrors = false;
 
     this.myFormErrors = {
-      noCaseNoSelected: this.myForm.controls['case_no'].errors && 
-        this.myForm.controls['case_no'].errors['required'] || false, 
+      noCaseNoSelected: this.myForm.controls['case_no'].errors &&
+        this.myForm.controls['case_no'].errors['required'] || false,
 
-      noDateSelected: this.myForm.controls['diagnostic_date'].errors && 
+      noDateSelected: this.myForm.controls['diagnostic_date'].errors &&
         this.myForm.controls['diagnostic_date'].errors['required'] || false,
     }
 
@@ -284,7 +284,7 @@ export class AddNewPatientComponent implements OnInit, OnDestroy {
         this.uatResultList = [...this.uatList];
 
         if(this.uatResultList.length === 0) {
-          this.myForm.controls['siruta'].setValue(null); 
+          this.myForm.controls['siruta'].setValue(null);
         }
       }
     });

@@ -24,6 +24,7 @@ import { EuropeanContextComponent } from './dashboard/maps/european-context/euro
 import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
 import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
 import { HospitalInfrastructureComponent } from './dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
+import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/counties-cases.component';
 
 
 const routes: Routes = [
@@ -62,7 +63,8 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
           { path: 'general-statistics', component: GeneralStatisticsComponent },
-          { path: 'relation-cases', component: RelationCasesComponent }
+          { path: 'relation-cases', component: RelationCasesComponent },
+          { path: 'counties-cases', component: CountiesCasesComponent }
         ]
       },
       { 
