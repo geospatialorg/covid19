@@ -369,7 +369,7 @@ export class GeneralStatisticsComponent implements OnInit {
                     //showLine: false,
                     borderWidth: 0.5,
                     bezierCurve: false,
-                    hidden: true
+                    hidden: false
                 }
             ]
         },
