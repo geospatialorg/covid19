@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MapComponent } from './dashboard/main/map/map.component';
-import { LeftMenuComponent } from './dashboard/main/left-menu/left-menu.component';
-import { GraphicsComponent } from './dashboard/main/graphics/graphics.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './_guards/auth.guard.service';
-import { SkipIfLoggedIn } from './_guards/skipIfLoggedIn.guard';
-import { AdministrationComponent } from './dashboard/administration/administration.component';
-import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
-import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
-import { MainComponent } from './dashboard/main/main.component';
-import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
-import { StatisticsComponent } from './dashboard/statistics/statistics.component';
-import { AboutComponent } from './dashboard/about/about.component';
-import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
-import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
-import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
-import { ManifestComponent } from './dashboard/manifest/manifest.component';
-import { MapsComponent } from './dashboard/maps/maps.component';
-import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission.component';
-import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
-import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
-import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
-import { HospitalInfrastructureComponent } from './dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
-import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/counties-cases.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MapComponent } from './components/dashboard/main/map/map.component';
+import { LeftMenuComponent } from './components/dashboard/main/left-menu/left-menu.component';
+import { GraphicsComponent } from './components/dashboard/main/graphics/graphics.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard.service';
+import { SkipIfLoggedIn } from './guards/skipIfLoggedIn.guard';
+import { AdministrationComponent } from './components/dashboard/administration/administration.component';
+import { UserListComponent } from './components/dashboard/administration/user-list/user-list.component';
+import { PatientsListComponent } from './components/dashboard/administration/patients-list/patients-list.component';
+import { MainComponent } from './components/dashboard/main/main.component';
+import { AddNewPatientComponent } from './components/dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
+import { StatisticsComponent } from './components/dashboard/statistics/statistics.component';
+import { AboutComponent } from './components/dashboard/about/about.component';
+import { RelationCasesComponent } from './components/dashboard/statistics/relation-cases/relation-cases.component';
+import { GeneralStatisticsComponent } from './components/dashboard/statistics/general-statistics/general-statistics.component';
+import { CoronavirusEuropeComponent } from './components/dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
+import { ManifestComponent } from './components/dashboard/manifest/manifest.component';
+import { MapsComponent } from './components/dashboard/maps/maps.component';
+import { No2EmissionComponent } from './components/dashboard/maps/no2-emission/no2-emission.component';
+import { EuropeanContextComponent } from './components/dashboard/maps/european-context/european-context.component';
+import { SocialInterestPointsComponent } from './components/dashboard/maps/social-interest-points/social-interest-points.component';
+import { FrontierSituationComponent } from './components/dashboard/maps/frontier-situation/frontier-situation.component';
+import { HospitalInfrastructureComponent } from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
+import { CountiesCasesComponent } from './components/dashboard/statistics/counties-cases/counties-cases.component';
 
 
 const routes: Routes = [
@@ -36,8 +36,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
       { path: 'manifest', component: ManifestComponent },
-      { 
-        path: 'maps', 
+      {
+        path: 'maps',
         component: MapsComponent,
         children: [
           { path: '', redirectTo: 'no2-emission', pathMatch: 'full' },
@@ -48,16 +48,16 @@ const routes: Routes = [
           { path: 'hospital-infrastructure', component: HospitalInfrastructureComponent }
         ]
       },
-      { 
-        path: 'main', 
+      {
+        path: 'main',
         component: MainComponent
       },
-      { 
-        path: 'main?:map', 
+      {
+        path: 'main?:map',
         component: MainComponent
       },
-      { 
-        path: 'statistics', 
+      {
+        path: 'statistics',
         component: StatisticsComponent,
         children: [
           { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
@@ -66,13 +66,13 @@ const routes: Routes = [
           { path: 'counties-cases', component: CountiesCasesComponent }
         ]
       },
-      { 
-        path: 'administration', 
+      {
+        path: 'administration',
         component: AdministrationComponent,
         canActivate: [AuthGuard],
         children: [
           { path: '', redirectTo: 'patients-list', pathMatch: 'full' },
-          { path: 'patients-list', 
+          { path: 'patients-list',
             component: PatientsListComponent,
             children: [
               { path: 'add-new-patient', component: AddNewPatientComponent }
