@@ -353,12 +353,15 @@ body .ui-panel {
 
 
 .xs-only {
-    display: none;
+    display: none !important;
 }
 
 @media screen and (max-width: 550px) {
     .xs-only {
-        display: block;
+        display: unset !important;
+    }
+    h2.xs-only {
+        display: block !important;
     }
 }
 

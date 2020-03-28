@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DashboardService } from 'src/app/_services';
 import { environment as appConfig } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
-  styleUrls: ['./left-menu.component.scss']
+  styleUrls: ['./left-menu.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LeftMenuComponent implements OnInit {
   tableData: any[] = [];

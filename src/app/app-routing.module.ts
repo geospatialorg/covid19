@@ -50,12 +50,11 @@ const routes: Routes = [
       },
       { 
         path: 'main', 
-        component: MainComponent,
-        children: [
-          { path: 'map', component: MapComponent },
-          { path: 'left-menu', component: LeftMenuComponent },
-          { path: 'graphics', component: GraphicsComponent }
-        ]
+        component: MainComponent
+      },
+      { 
+        path: 'main?:map', 
+        component: MainComponent
       },
       { 
         path: 'statistics', 
