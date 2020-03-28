@@ -6,7 +6,6 @@
 
 .header .logo {
     width: 30%;
-    cursor: pointer;
 }
 
 .header .topbar-menu {
@@ -52,7 +51,7 @@
         padding-top: 15px;
         padding-bottom: 10px;
     }
-
+    
     .header .logo {
         width: 100%;
     }
@@ -72,7 +71,7 @@
         padding-top: 15px;
         padding-bottom: 10px;
     }
-
+    
     .header .logo, .header .topbar-menu {
         width: 100%;
     }
@@ -127,7 +126,7 @@
       text-align: center;
       font-size: 14px;
       padding: 0 8px;
-    }
+    }   
 }
 
 /**** SIDEBAR MENU ********/
