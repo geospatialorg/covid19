@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {SharedService} from '../../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-counties-cases',
@@ -8,7 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CountiesCasesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Cazuri pe judete',
+      'covid, romania',
+      `Cazuri pe judete`
+    );
+  }
 
   ngOnInit(): void {
   }

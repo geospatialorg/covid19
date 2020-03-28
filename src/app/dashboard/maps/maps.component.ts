@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {SharedService} from '../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-maps',
@@ -8,7 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class MapsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Hărți',
+      'hărți, covid, românia',
+      `Hărți informative despre diferite aspecte privind COVID, noxe, puncte de interes social, infrastructura spitaliceasca`
+    );
+  }
 
   ngOnInit(): void {
   }

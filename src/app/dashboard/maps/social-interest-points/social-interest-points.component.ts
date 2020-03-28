@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {StatisticsService} from '../../../_services';
+import {SharedService} from '../../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-social-interest-points',
@@ -8,7 +10,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SocialInterestPointsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private StatisticsSvc: StatisticsService, private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Puncte de interes social',
+      'puncte de interes, bancomate, farmacii, cabinate veterinare',
+      `Puncte de interes social`
+    );
+  }
 
   ngOnInit(): void {
   }
