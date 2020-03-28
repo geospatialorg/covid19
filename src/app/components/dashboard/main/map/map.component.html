@@ -1,24 +1,29 @@
 <ul id="layers" class="lg-only">
-    <li *ngFor="let item of maps"><button pButton label="{{item.title}}" [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"  (click)="setActiveLayer(item)"></button></li>
-    <!-- <li><button pButton label="Cazuri active" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li>
-    <li><button pButton label="Vindecari" [ngClass]="{'ui-button-secondary': activeMap.id !== 'healed'}" (click)="setActiveLayer('healed')"></button></li>
-    <li><button pButton label="Decese" [ngClass]="{'ui-button-secondary': activeMap.id !== 'deaths'}" (click)="setActiveLayer('deaths')"></button></li> -->
+  <li *ngFor="let item of maps">
+    <button pButton
+            label="{{item.title}}"
+            [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"
+            (click)="setActiveLayer(item)">
+    </button>
+  </li>
+  <!-- <li><button pButton label="Cazuri active" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li>
+  <li><button pButton label="Vindecari" [ngClass]="{'ui-button-secondary': activeMap.id !== 'healed'}" (click)="setActiveLayer('healed')"></button></li>
+  <li><button pButton label="Decese" [ngClass]="{'ui-button-secondary': activeMap.id !== 'deaths'}" (click)="setActiveLayer('deaths')"></button></li> -->
 </ul>
-<h2 class="xs-only" style="text-align: center;">Harta cazuri</h2>
-<p-dropdown class="xs-only" [options]="maps" [(ngModel)]="activeMap" optionLabel="title" [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}"></p-dropdown>
+<h2 class="xs-only" style="text-align: center;">Hartă cazuri</h2>
+<p-dropdown class="xs-only"
+            [options]="maps"
+            [(ngModel)]="activeMap"
+            optionLabel="title"
+            [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}">
+</p-dropdown>
 
-<div *ngIf="activeMap.id === 'confirmed'" style="height: calc(100% - 45px);">
-    <app-confirmed-map></app-confirmed-map>
-</div>
-
-<div *ngIf="activeMap.id === 'active'" style="height: calc(100% - 45px);">
-    <app-active-map></app-active-map>
-</div>
-
-<div *ngIf="activeMap.id === 'healed'" style="height: calc(100% - 45px);">
-    <app-healed-map></app-healed-map>
-</div>
-
-<div *ngIf="activeMap.id === 'deaths'" style="height: calc(100% - 45px);">
-    <app-deaths-map></app-deaths-map>
+<div id="map">
+  <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
+    <h3>{{selectedFeature.get('county')}}</h3>
+    <p>Cazuri confirmate: {{selectedFeature.get('total_county')}}</p>
+    <p>Total vindecari: {{selectedFeature.get('total_healed')}}</p>
+    <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
+    <p>Cazuri active: {{selectedFeature.get('total_active')}}</p>
+  </div>
 </div>
