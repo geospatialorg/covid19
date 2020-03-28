@@ -1,0 +1,9 @@
+<div id="map">
+    <div class="info-modal" *ngIf="selectedFeature">
+        <h3>{{selectedFeature.get('county')}}</h3>
+        <p>Cazuri confirmate: {{selectedFeature.get('total_county')}}</p>
+        <p>Total vindecari: {{selectedFeature.get('total_healed')}}</p>
+        <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
+        <p>Cazuri active: {{selectedFeature.get('total_active') }}</p>
+    </div>
+</div>

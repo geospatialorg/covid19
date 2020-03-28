@@ -82,6 +82,10 @@ import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-
 import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
 import { HospitalInfrastructureComponent } from './dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
 import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/counties-cases.component';
+import { ConfirmedMapComponent } from './dashboard/main/map/confirmed-map/confirmed-map.component';
+import { ActiveMapComponent } from './dashboard/main/map/active-map/active-map.component';
+import { HealedMapComponent } from './dashboard/main/map/healed-map/healed-map.component';
+import { DeathsMapComponent } from './dashboard/main/map/deaths-map/deaths-map.component';
 
 
 @NgModule({
@@ -112,7 +116,11 @@ import { CountiesCasesComponent } from './dashboard/statistics/counties-cases/co
     SocialInterestPointsComponent,
     FrontierSituationComponent,
     HospitalInfrastructureComponent,
-    CountiesCasesComponent
+    CountiesCasesComponent,
+    ConfirmedMapComponent,
+    ActiveMapComponent,
+    HealedMapComponent,
+    DeathsMapComponent
   ],
   imports: [
     BrowserModule,

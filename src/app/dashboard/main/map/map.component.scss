@@ -4,6 +4,20 @@
     position: relative;
 }
 
+#layers {
+    margin:5px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#layers li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#layers li .ui-button-secondary {
+    background-color: #ddd;
+}
 
 @media screen and (max-width: 600px) {
     #map {
