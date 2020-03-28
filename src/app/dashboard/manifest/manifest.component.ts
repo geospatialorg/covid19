@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {SharedService} from '../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-manifest',
@@ -8,7 +9,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ManifestComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Manifest',
+      'manifest, covid, românia',
+      `Asociația geo-spatial.org solicită autorităților
+      să ofere public o prezentare completă, structurată a
+      tuturor cazurilor oficiale (confirmate, vindecări, decese) actualizată cât mai des posibil,
+       pentru a disemina aceste informații vitale și a evita apariția informațiilor
+       false, potențial alarmiste.`
+    );
+  }
 
   ngOnInit(): void {
   }

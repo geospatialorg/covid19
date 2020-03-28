@@ -5,6 +5,7 @@ import * as regression from 'regression';
 import * as palette from 'google-palette';
 import * as pluginPiechartOutlabels from 'chartjs-plugin-piechart-outlabels';
 import * as pluginAnnotation from 'chartjs-plugin-annotation';
+import {SharedService} from '../../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-general-statistics',
@@ -30,7 +31,13 @@ export class GeneralStatisticsComponent implements OnInit {
     grey: 'rgb(201, 203, 207)'
   }
 
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Statistici generale',
+      'statistici, covid',
+      `Corona virus în Europa`
+    );
+  }
 
   ngOnInit(): void {
     this.drawCharts1();
@@ -58,7 +65,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 yPadding: 2
             },
             onClick: function(e) {
-                
+
                 window.open('http://legislatie.just.ro/Public/DetaliiDocument/224340', '_blank');
             },
             // onMouseover: function(e) {

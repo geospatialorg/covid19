@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as d3 from 'd3';
 import { environment as appConfig } from '../../../../environments/environment';
 import { StatisticsService } from '../../../_services';
+import {SharedService} from '../../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-relation-cases',
@@ -14,9 +15,13 @@ export class RelationCasesComponent implements OnInit {
   jsonPath: string = "";
   svg: any;
 
-  constructor(
-    private StatisticsSvc: StatisticsService
-  ) { }
+  constructor(private StatisticsSvc: StatisticsService, private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Relationare cazuri',
+      'relationare, cazuri',
+      `Relationare cazuri`
+    );
+  }
 
   ngOnInit(): void {
   }

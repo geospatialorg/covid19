@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import {SharedService} from '../_services/shared-service.svc';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,19 @@ import {MenuItem} from 'primeng/api';
 export class DashboardComponent implements OnInit {
   items: MenuItem[];
 
-
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      null,
+      'dashboard, covid, românia',
+      `Dashboard COVID`
+    );
+  }
 
   ngOnInit(): void {
     this.items = [
       {label: 'Home', icon: 'pi pi-fw pi-home'},
       {label: 'Calendar', icon: 'pi pi-fw pi-calendar'}
-    ]
+    ];
   }
 
 }

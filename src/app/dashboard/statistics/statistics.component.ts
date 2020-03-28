@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {SharedService} from '../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-statistics',
@@ -7,8 +8,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class StatisticsComponent implements OnInit {
-  constructor(
-  ) { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Statistici',
+      'statistici, covid, românia',
+      `Staistici informative despre diferite aspecte privind COVID`
+    );
+  }
 
   ngOnInit(): void {
   }

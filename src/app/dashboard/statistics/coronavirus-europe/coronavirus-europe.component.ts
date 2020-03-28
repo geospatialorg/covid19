@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {SharedService} from '../../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-coronavirus-europe',
@@ -8,7 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CoronavirusEuropeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Corona Virus Europa',
+      'covid, europa',
+      `Corona virus în Europa`
+    );
+  }
 
   ngOnInit(): void {
   }

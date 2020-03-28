@@ -6,7 +6,7 @@
     </div>
 
     <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
-      <p-table [value]="tableDataRecovered" id="addNewRasterTable" selectionMode="single">
+      <p-table [value]="tableDataRecovered" class="addNewRasterTable" selectionMode="single">
         <ng-template pTemplate="header">
           <tr>
             <th>Vindecări înregistrate pe județ</th>
@@ -35,7 +35,7 @@
         <h2 style="color: #a65628;">{{totalDeads}}</h2>
 
         <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
-          <p-table [value]="tableDataDeath" id="addNewRasterTable" selectionMode="single">
+          <p-table [value]="tableDataDeath" class="addNewRasterTable" selectionMode="single">
             <ng-template pTemplate="header">
               <tr>
                 <th>Decese înregistrate pe județ</th>
@@ -60,6 +60,6 @@
   </div>
 
   <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12">
-    <app-graphics [parentWidth]="rightMenu.offsetWidth"></app-graphics>
+    <app-graphics [parentWidth]="rightMenu.offsetWidth" *ngIf="dataReady"></app-graphics>
   </div>
 </div>

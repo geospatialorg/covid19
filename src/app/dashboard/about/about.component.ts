@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SharedService} from '../../_services/shared-service.svc';
 
 @Component({
   selector: 'app-about',
@@ -10,17 +11,42 @@ export class AboutComponent implements OnInit {
   projects: any[] = [];
   apiLinks: any[] = [];
 
-  constructor() {}
+  constructor(private sharedService: SharedService) {
+    this.sharedService.setMeta(
+      'Despre proiect',
+      'despre proiect, covid, românia',
+      `Detalii despre proiectul COVID 19 România`
+    );
+  }
 
   ngOnInit(): void {
     this.colaborators = [
-      'Cristina Alexa','Bogdan Antonescu','Cristi Boboc','Octavian Borcan','Marius Budileanu','Andrei Cipu','Mihai Dumitru','Bogdan Grama','Claudia Ifrim','Codrina Ilie',
-      'Robert Ille','Iulian Iuga','Gabriel Iuhasz','Razvan Moldovan','Marian Neagul','Ion Nedelcu','Silviu Panica','Gabriela Stancu','Daniel Urdă','Ruxandra Vâlcu','Cristina Vrînceanu'
+      'Cristina Alexa',
+      'Bogdan Antonescu',
+      'Cristi Boboc',
+      'Octavian Borcan',
+      'Marius Budileanu',
+      'Andrei Cipu',
+      'Mihai Dumitru',
+      'Bogdan Grama',
+      'Claudia Ifrim',
+      'Codrina Ilie',
+      'Robert Ille',
+      'Iulian Iuga',
+      'Gabriel Iuhasz',
+      'Răzvan Moldovan',
+      'Marian Neagul',
+      'Ion Nedelcu',
+      'Silviu Panica',
+      'Gabriela Stancu',
+      'Daniel Urdă',
+      'Ruxandra Vâlcu',
+      'Cristina Vrînceanu'
     ].sort((a, b) => {
-      var nameA: any = a.split(' ');
+      let nameA: any = a.split(' ');
       nameA = nameA[nameA.length - 1].toLowerCase();
 
-      var nameB: any = b.split(' ');
+      let nameB: any = b.split(' ');
       nameB = nameB[nameB.length - 1].toLowerCase();
 
       return nameA.localeCompare(nameB);
@@ -52,7 +78,7 @@ export class AboutComponent implements OnInit {
         title: 'Esri Romania COVID - 19 Hub'
       }
     ];
-    
+
     this.apiLinks = [
       {
         url: 'https://covid19.geo-spatial.org/api/dashboard/getCasesByCounty',
@@ -82,7 +108,7 @@ export class AboutComponent implements OnInit {
         url: 'https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup',
         title: 'https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup'
       }
-    ]
+    ];
   }
 
 }
