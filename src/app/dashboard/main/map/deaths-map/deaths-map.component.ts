@@ -39,7 +39,7 @@ export class DeathsMapComponent implements OnInit {
   }
 
   getData(){
-    return this.DashboardSvc.getDeadCasesByCounty().toPromise().then( res => {
+    return this.DashboardSvc.getCasesByCounty().toPromise().then( res => {
       if(res &&  res.data && res.data.data) {
         return res.data.data.map(e => {
           e.total_active = e.total_county - e.total_healed - e.total_dead;

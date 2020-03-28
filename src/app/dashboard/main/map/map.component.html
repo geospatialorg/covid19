@@ -1,5 +1,5 @@
 <ul id="layers" class="lg-only">
-    <li *ngFor="let item of maps"><button pButton label="{{item.title}}" [ngClass]="{'ui-button-secondary': item.id !== 'confirmed'}"  (click)="setActiveLayer(item)"></button></li>
+    <li *ngFor="let item of maps"><button pButton label="{{item.title}}" [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"  (click)="setActiveLayer(item)"></button></li>
     <!-- <li><button pButton label="Cazuri active" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li>
     <li><button pButton label="Vindecari" [ngClass]="{'ui-button-secondary': activeMap.id !== 'healed'}" (click)="setActiveLayer('healed')"></button></li>
     <li><button pButton label="Decese" [ngClass]="{'ui-button-secondary': activeMap.id !== 'deaths'}" (click)="setActiveLayer('deaths')"></button></li> -->
