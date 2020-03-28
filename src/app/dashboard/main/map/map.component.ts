@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
       },
       {
         id: 'healed',
-        title: 'Vindecari'
+        title: 'Vindecări'
       },
       {
         id: 'deaths',
