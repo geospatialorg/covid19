@@ -20,7 +20,7 @@ export class RightMenuComponent implements OnInit, OnDestroy {
   appConfig: any = appConfig;
 
   getDeadCasesByCounty$ = this.DashboardSvc.getDeadCasesByCounty();
-  getHealthCasesByCounty$ = this.DashboardSvc.getDeadCasesByCounty();
+  getHealthCasesByCounty$ = this.DashboardSvc.getHealthCasesByCounty();
 
   dataReady = false;
 
@@ -36,15 +36,15 @@ export class RightMenuComponent implements OnInit, OnDestroy {
 
   private loadData() {
     combineLatest([this.getDeadCasesByCounty$, this.getHealthCasesByCounty$])
-      .pipe(map(([deadCasesByCounty, deadHealthByCounty]) => ({deadCasesByCounty, deadHealthByCounty})))
+      .pipe(map(([deadCasesByCounty, healthCasesByCounty]) => ({deadCasesByCounty, healthCasesByCounty})))
       .subscribe(pair => {
         if (pair.deadCasesByCounty && pair.deadCasesByCounty.data && pair.deadCasesByCounty.data.data) {
           this.tableDataDeath = pair.deadCasesByCounty.data.data;
           this.totalDeads = pair.deadCasesByCounty.data.total;
         }
-        if (pair.deadHealthByCounty && pair.deadHealthByCounty.data && pair.deadHealthByCounty.data.data) {
-          this.tableDataRecovered = pair.deadHealthByCounty.data.data;
-          this.totalHealed = pair.deadHealthByCounty.data.total;
+        if (pair.healthCasesByCounty && pair.healthCasesByCounty.data && pair.healthCasesByCounty.data.data) {
+          this.tableDataRecovered = pair.healthCasesByCounty.data.data;
+          this.totalHealed = pair.healthCasesByCounty.data.total;
         }
 
         this.dataReady = true;
