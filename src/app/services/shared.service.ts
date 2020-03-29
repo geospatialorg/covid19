@@ -20,4 +20,8 @@ export class SharedService {
       this.metaService.addTag({name: 'description', content: description});
     }
   }
+
+  getGeojsonData() {
+    return fetch('assets/counties.geojson').then((response) => response.json()).then((json) => json);
+  }
 }
