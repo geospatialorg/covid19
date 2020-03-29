@@ -214,6 +214,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
+    
     source.clear();
     const maxCases = this.mapData.map(county => county[this.activeMap.dataKey]).sort((a, b) => b - a);
     this.mapData.map(e => {
@@ -238,6 +239,7 @@ export class MapComponent implements OnInit, OnDestroy {
         Object.keys(e).map(r => {
           feat.set(r, e[r]);
         });
+
         feat.setStyle(iconStyle);
         source.addFeature(feat);
       }

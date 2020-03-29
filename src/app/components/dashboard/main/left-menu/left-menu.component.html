@@ -15,6 +15,7 @@
           <td style="text-align: left;">
             <span style="font-weight: bold;">{{item.total_case + " "}}</span>
             <span>{{item.county}}</span>
+            <a *ngIf="item.referinta" style="float: right;" href="{{item.referinta}}" target="_blank" title="Click pentru referință"><i class="fa fa-link"></i></a>
           </td>
       </tr>
     </ng-template>
