@@ -22,11 +22,14 @@
   <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
     <h3>{{selectedFeature.get('county')}}</h3>
     <p>
-      Cazuri confirmate: {{selectedFeature.get('total_county')}}
+      Cazuri confirmate: {{selectedFeature.get('total_case')}}
       <em style="display: block;font-size: 12px;">(după locul confirmării)</em>
     </p>
-    <p>Total vindecari: {{selectedFeature.get('total_healed')}}</p>
+    <p>
+      Total vindecari: {{selectedFeature.get('total_healed')}}
+      <em style="display: block;font-size: 12px;">(după locul externării)</em>
+    </p>
     <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
-    <p>Cazuri active: {{selectedFeature.get('total_active')}}</p>
+    <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> -->
   </div>
 </div>

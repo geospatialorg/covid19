@@ -13,15 +13,15 @@ export class DashboardService {
   }
 
   getCasesByCounty(params?: any) {
-    return this.http.get<any>(`${environment.apiUrl}/dashboard/getCasesByCounty`, {params});
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/v2/getCasesByCounty`, {params});
   }
 
   getHealthCasesByCounty(params?: any) {
-    return this.http.get<any>(`${environment.apiUrl}/dashboard/getHealthCasesByCounty`, {params});
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/v2/getHealthCasesByCounty`, {params});
   }
 
   getDeadCasesByCounty(params?: any) {
-    return this.http.get<any>(`${environment.apiUrl}/dashboard/getDeadCasesByCounty`, {params});
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/v2/getDeadCasesByCounty`, {params});
   }
 
   getDailyCaseReport(params?: any) {
@@ -38,5 +38,9 @@ export class DashboardService {
 
   getCasesByAgeGroup(params?: any) {
     return this.http.get<any>(`${environment.apiUrl}/dashboard/getCasesByAgeGroup`, {params});
+  }
+
+  getGeojsonData(params?: any) {
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/getGeojsonData`, {params});
   }
 }
