@@ -137,12 +137,12 @@ export class MapComponent implements OnInit, OnDestroy {
 
   async loadData() {
     this.mapData = await this.getData();
-    this.interval = setInterval(() => {
-      this.getData().then(data => {
-        this.mapData = data;
-        this.drawFeatures(this.mapIconLayer.getSource(), this.geojsonFeatures, this.iconStyle);
-      });
-    }, appConfig.data_refresh);
+    // this.interval = setInterval(() => {
+    //   this.getData().then(data => {
+    //     this.mapData = data;
+    //     this.drawFeatures(this.mapIconLayer.getSource(), this.geojsonFeatures, this.iconStyle);
+    //   });
+    // }, appConfig.data_refresh);
   }
   setActiveLayer(layer) {
     this.activeMap = layer;

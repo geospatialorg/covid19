@@ -1,0 +1,9 @@
+.disclaimer {
+    max-width: 450px;
+}
+
+@media screen and (max-width: 550px) {
+    .disclaimer {
+        max-width: 95vw;
+    }
+}

@@ -1,7 +1,10 @@
 <div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
   <h2 style="margin-bottom: 0;">Total confirmate</h2>
   <em style="font-size: 12px;">(după locul confirmării)</em>
-  <h2 style="color: #ff7f00;margin: 10px 0;">{{totalCases}}</h2>
+  <h2 style="color: #ff7f00;margin: 10px 0;">
+    {{totalCases}}
+    <i class="fa fa-info-circle" style="cursor: pointer;" (click)="showDisclaimer(true)" title="Disclaimer"></i>
+  </h2>
 </div>
 <div class="borderlessTable">
   <p-table [value]="tableData" class="addNewRasterTable" selectionMode="single">
@@ -22,4 +25,17 @@
   </p-table>
 </div>
 
-
+<p-dialog header="Atentie" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
+  <div style="text-align: justify;">
+    Deoarece autoritățile nu mai comunică județele unde au fost confirmate cazurile, multe din cazuri sunt etichetate cu locația "JUDEȚ NECUNOSCUT". 
+    Echipa de voluntari verifică sistematic presa locală și anunțurile autorităților publice locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații verificabile, 
+    mută cazurile din "JUDEȚ NECUNOSCUT" în județul corect de diagnosticare. Istoricul confirmărilor se poate accesa dând click pe link-ul referință din dreptul fiecărui județ. 
+    Pentru mai multe informații vă rugăm să consultați secțiunea <a href="https://covid19.geo-spatial.org/dashboard/about" target="_blank" title="Coronavirus COVID-19 România Project">"Despre"</a>
+  </div>
+  
+  <p-footer>
+    <div style="text-align: center;">
+      <button pButton type="button" label="Inchide" (click)="showDisclaimer(false)"></button>
+    </div>
+  </p-footer>
+</p-dialog>

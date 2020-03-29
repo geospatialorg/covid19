@@ -41,7 +41,9 @@ export class AboutComponent implements OnInit {
       'Gabriela Stancu',
       'Daniel Urdă',
       'Ruxandra Vâlcu',
-      'Cristina Vrînceanu'
+      'Cristina Vrînceanu',
+      'Ionelia Drăgoi',
+      'Vasile Crăciunescu'
     ].sort((a, b) => {
       let nameA: any = a.split(' ');
       nameA = nameA[nameA.length - 1].toLowerCase();
