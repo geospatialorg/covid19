@@ -21716,10 +21716,10 @@
 		"geometry": null,
 		"properties": {
 			"gid": 43,
-			"county": "JUDEȚ NECUNOSCUT",
+			"county": "NECUNOSCUT",
 			"county_code": "NA",
-			"x_cen": 3237055.015571961,
-			"y_cen": 5512746.1667744
+			"x_cen": 3320047.7630520216,
+			"y_cen": 5482486.390609888
 		}
 	}]
 }
