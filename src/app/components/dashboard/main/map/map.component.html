@@ -8,9 +8,7 @@
                 (click)="setActiveLayer(item)">
         </button>
       </li>
-      <!-- <li><button pButton label="Cazuri active" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li>
-      <li><button pButton label="Vindecari" [ngClass]="{'ui-button-secondary': activeMap.id !== 'healed'}" (click)="setActiveLayer('healed')"></button></li>
-      <li><button pButton label="Decese" [ngClass]="{'ui-button-secondary': activeMap.id !== 'deaths'}" (click)="setActiveLayer('deaths')"></button></li> -->
+    <!-- <li><button pButton label="Zone carantina" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li> -->
     </ul>
   </div>
 </div>
@@ -35,4 +33,9 @@
     </p>
     <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
     <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> --></div>
+
+    <div class="info-modal" *ngIf="selectedQuarantineZone">
+      <h3>{{selectedQuarantineZone.get('uat')}}</h3>
+      <p>Populatie: {{selectedQuarantineZone.get('population')}}</p>
+    </div>
 </div>

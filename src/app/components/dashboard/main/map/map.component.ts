@@ -71,13 +71,28 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       },
       dataKey: 'total_dead'
+    },
+    {
+      id: 'quarantine',
+      title: 'Zone carantină',
+      alt_id: 'zone_carantina',
+      style: null,
+      dataKey: null
     }
+  ];
+
+  quarantineColors : any[] = [
+    "rgba(222, 0, 11, 0.5)",
+    "rgba(222, 0, 11, 0.5)",
+    // "rgba(255, 171, 69, 0.5)",
+    "rgba(251, 255, 0, 0.5)"
   ];
 
   map: Map;
   mapData: any[] = [];
 
   selectedFeature: any = null;
+  selectedQuarantineZone: any = null;
 
   private interval: any;
 
@@ -124,7 +139,7 @@ export class MapComponent implements OnInit, OnDestroy {
         entry = this.maps[0];
       }
       this.activeMap = entry;
-      this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
+      if(this.activeMap.style) this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
       this.initMap();
     });
   }
@@ -211,6 +226,24 @@ export class MapComponent implements OnInit, OnDestroy {
       });
       this.map = this.initOpenLayerMap(this.mapIconLayer, self, this.iconStyle, highlightStyle);
     }
+
+    if(this.activeMap.id === 'quarantine'){
+      this.map.getLayers().getArray().map(e => {
+        if(['icons'].includes(e.get('id'))){
+          e.setVisible(false);
+        } else {
+          e.setVisible(true);
+        }
+      });
+    } else {
+      this.map.getLayers().getArray().map(e => {
+        if(['counties_quarantine'].includes(e.get('id'))){
+          e.setVisible(false);
+        } else {
+          e.setVisible(true);
+        }
+      });
+    }
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
@@ -280,12 +313,52 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     });
 
+    const styleB = new Style({
+      // fill: new Fill({
+      //   color: 'rgba(255, 0, 0, 0.3)'
+      // }),
+      // stroke: new Stroke({
+      //   color: '#984ea3',
+      //   width: 1
+      // }),
+      // text: new Text({
+      //   font: '12px Calibri,sans-serif',
+      //   fill: new Fill({
+      //     color: '#000'
+      //   }),
+      //   stroke: new Stroke({
+      //     color: '#fff',
+      //     width: 4
+      //   })
+      // })
+    });
+
+    const vectorLayerB = new VectorLayer({
+      id: 'counties_quarantine',
+      source: new VectorSource({
+        url: './assets/uat_q.json',
+        format: new GeoJSON()
+      }),
+      visible: false,
+      style(feature) {
+        if(feature.get('quarantine')){
+          styleB.setFill(new Fill({
+            color: self.quarantineColors[feature.get('quarantine')-1]
+          }));
+        }
+
+        // styleB.getText().setText(feature.get('county_code'));
+        return styleB;
+      }
+    });
+
     const map = new Map({
       layers: [
         new TileLayer({
           source: new OSM()
         }),
         vectorLayer,
+        vectorLayerB,
         iconLayer
       ],
       target: 'map',
@@ -308,16 +381,36 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedFeature = null;
       }
 
+      if (self.selectedQuarantineZone !== null) {
+        let style = new Style({
+          fill: new Fill({
+            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine') - 1]
+          })
+        });
+
+        self.selectedQuarantineZone.setStyle(style);
+
+        self.selectedQuarantineZone = null;
+      }
+
       const pixel = ev.pixel;
 
       self.map.forEachFeatureAtPixel(pixel, (feature, layer) => {
-        if (layer.get('id') === 'counties') {
-          return;
+        if (layer.get('id') === 'icons') {
+          self.selectedFeature = feature;
+          feature.setStyle(highlightStyle);
+          return true;
+        } else if(layer.get('id') === 'counties_quarantine'){
+          let style = new Style({
+            fill: new Fill({
+              color: 'rgba(255, 171, 69, 0.5)'
+            })
+          });
+          self.selectedQuarantineZone = feature;
+          feature.setStyle(style);
+          return true;
         }
-
-        self.selectedFeature = feature;
-        feature.setStyle(highlightStyle);
-        return true;
+        
       });
     });
     //
