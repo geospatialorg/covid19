@@ -1,5 +1,5 @@
 * {
-    font-family: "Open Sans", "Helvetica Neue", sans-serif
+  font-family: "Open Sans", "Helvetica Neue", sans-serif
 }
 
 body, html {
@@ -8,303 +8,303 @@ body, html {
   /* overflow-y: hidden;*/
 }
 
-body .ui-table .ui-table-tbody tr td, body .ui-table .ui-table-thead tr th  {
-    border-top: none !important;
-    border-left: none !important;
-    border-right: none !important;
+body .ui-table .ui-table-tbody tr td, body .ui-table .ui-table-thead tr th {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
 }
 
 
 body .ui-table .ui-table-thead > tr > th {
-    position: -webkit-sticky;
-    position: sticky;
-    top: -5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -5px;
 }
 
 
 #bg_login {
-    background: url('assets/images/bkg.png') no-repeat center center fixed;
-    min-height: 100%;
-    /* min-width: 1024px; */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: url('assets/images/bkg.png') no-repeat center center fixed;
+  min-height: 100%;
+  /* min-width: 1024px; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
-    /* Set up proportionate scaling */
-    width: 100%;
-    height: auto;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
 
-    /* Set up positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .footer {
-    padding: 15px 15px 0 15px;
-    background-color: #1976d2;
-    color: #ffffff;
-    height: 45px;
-    font-size: 14px;
-    text-align: center;
+  padding: 15px 15px 0 15px;
+  background-color: #1976d2;
+  color: #ffffff;
+  height: 45px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .info-modal {
-    background-color: rgba(152,78,163, 0.8);
-    position: absolute;
-    z-index: 1000;
-    right: 5px;
-    top: 5px;
-    padding: 15px;
-    color: #ffffff;
+  background-color: rgba(152, 78, 163, 0.8);
+  position: absolute;
+  z-index: 1000;
+  right: 5px;
+  top: 5px;
+  padding: 15px;
+  color: #ffffff;
 }
 
 .info-modal p {
-    margin: 0;
-    font-size: 14px;
+  margin: 0;
+  font-size: 14px;
 }
 
 .info-modal h3 {
-    margin: 0;
-    margin-bottom: 10px;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 
 /* css adus cin cr0328 */
 /* You can add global styles to this file, and also import other style files */
 body .ui-table .ui-table-tbody > trr:nth-child(2n+1) {
-    background: #f8f8f8;
-    color: #252529;
-    border: 1px solid #d8d8dc;
+  background: #f8f8f8;
+  color: #252529;
+  border: 1px solid #d8d8dc;
 }
 
 html, body {
-    height: 100% !important;
+  height: 100% !important;
 }
 
 .disabled {
-    opacity: 0.3;
-    /* cursor: not-allowed; */
-    pointer-events: none;
+  opacity: 0.3;
+  /* cursor: not-allowed; */
+  pointer-events: none;
 }
 
 .disabled1 {
-    opacity: 0.3;
-    cursor: default !important;
-    /* pointer-events: none; */
+  opacity: 0.3;
+  cursor: default !important;
+  /* pointer-events: none; */
 }
 
 .custom-table-container {
-    height: 100%;
-    overflow-y: auto;
+  height: 100%;
+  overflow-y: auto;
 }
 
 
 .table-actions i.fa {
-    margin-right: 5px;
-    margin-left: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .table-actions i.fa.link {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .table-actions i.fa.fa-trash {
-    color: #d01919;
+  color: #d01919;
 }
 
 .table-actions i.fa.fa-edit {
-    color: #009c95;
+  color: #009c95;
 }
 
 .table-actions i.fa.fa-arrow-up {
-    color: green;
+  color: green;
 }
 
 .table-actions i.fa.fa-arrow-down {
-    color: green;
+  color: green;
 }
 
 .table-action {
-    font-size: 0.85em;
-    padding: 6px 8px;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-top: 2px;
-    display: inline-block;
+  font-size: 0.85em;
+  padding: 6px 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
+  display: inline-block;
 }
 
-.table-action:not(.pagination){
-    cursor: pointer;
-    border-radius: 3px;
-    border: 1px solid #fff;
+.table-action:not(.pagination) {
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #fff;
 }
 
 .table-action:not(.pagination):hover {
-    border: 1px solid teal;
-    background: #eee;
+  border: 1px solid teal;
+  background: #eee;
 }
 
 .table-action .current-page {
-    width: 35px;
-    text-align: center;
-    margin-right: 2px;
-    margin-left: 2px;
+  width: 35px;
+  text-align: center;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .table-summary {
-    padding: 3px 8px;
-    font-size: 0.85em;
+  padding: 3px 8px;
+  font-size: 0.85em;
 }
 
 .ui-panel-footer {
-    padding: 5px!important;
-    background-color: #eee !important;
+  padding: 5px !important;
+  background-color: #eee !important;
 }
 
 .ui-panel-content-wrapper {
-    height: 100%;
+  height: 100%;
 }
 
 .ui-panel-content {
-    height: calc(100% - 47px);
+  height: calc(100% - 47px);
 }
 
 .divider {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #fff;
-    display: inline;
-    margin: 0 8px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #fff;
+  display: inline;
+  margin: 0 8px;
 }
 
 .table-btn {
-    width: 100px !important;
-    font-size: 12px !important;
-    padding: 0 !important;
+  width: 100px !important;
+  font-size: 12px !important;
+  padding: 0 !important;
 }
 
-.ui-tabview-nav li a{
-    padding: 5px 10px !important;
-    font-size: 0.85em !important;
+.ui-tabview-nav li a {
+  padding: 5px 10px !important;
+  font-size: 0.85em !important;
 }
 
 .form-messages.error .messages {
-    border: 1px solid red;
-    color: #333;
-    background-color: rgba(255, 0, 0, 0.2)
+  border: 1px solid red;
+  color: #333;
+  background-color: rgba(255, 0, 0, 0.2)
 }
 
 
-.ui-form .field.error input, .ui-form .field.error textarea, .ui-form .field.error .ui-chkbox-box, .ui-form .field.error .ui-multiselect{
-    background-color: #f0d1d0 !important;
-    border: 1px solid red;
+.ui-form .field.error input, .ui-form .field.error textarea, .ui-form .field.error .ui-chkbox-box, .ui-form .field.error .ui-multiselect {
+  background-color: #f0d1d0 !important;
+  border: 1px solid red;
 }
 
 .ui-form .field.error .ui-dropdown {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .ui-form .field.error .ui-dropdown .ui-dropdown-label, .ui-form .field.error .ui-dropdown .ui-dropdown-trigger, .ui-form .field.error .ui-multiselect-trigger {
-    background-color: #f0d1d0 !important;
+  background-color: #f0d1d0 !important;
 
 }
 
 .ui-form .field {
-    padding: 8px;
-    display: block;
+  padding: 8px;
+  display: block;
 }
+
 .ui-form .field .field-label {
-    font-weight: bold;
-    display: block;
-    padding-bottom: 5px;
-    font-size: 0.75em;
+  font-weight: bold;
+  display: block;
+  padding-bottom: 5px;
+  font-size: 0.75em;
 }
 
-.ui-form .field.required .field-label::after{
-    content: ' *';
-    color: red;
+.ui-form .field.required .field-label::after {
+  content: ' *';
+  color: red;
 }
 
-.ui-form .field.inline .field-label{
-    display: inline;
-    padding-right: 10px;
+.ui-form .field.inline .field-label {
+  display: inline;
+  padding-right: 10px;
 }
 
 .ui-form .inline-fields .field {
-    display: inline-block;
+  display: inline-block;
 }
 
 .ui-form .field {
-    padding: 8px;
-    display: block;
+  padding: 8px;
+  display: block;
 }
 
 .ui-form .field .field-label {
-    font-weight: bold;
-    display: block;
-    padding-bottom: 5px;
-    font-size: 0.75em;
+  font-weight: bold;
+  display: block;
+  padding-bottom: 5px;
+  font-size: 0.75em;
 }
 
-.ui-form .field.required .field-label::after{
-    content: ' *';
-    color: red;
+.ui-form .field.required .field-label::after {
+  content: ' *';
+  color: red;
 }
 
-.ui-form .field.inline .field-label{
-    display: inline;
-    padding-right: 10px;
+.ui-form .field.inline .field-label {
+  display: inline;
+  padding-right: 10px;
 }
 
 .ui-form .inline-fields .field {
-    display: inline-block;
+  display: inline-block;
 }
 
-fieldset{
-    position: relative!important;
+fieldset {
+  position: relative !important;
 }
 
 .ellipsisClass {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 0px;
-    user-select: all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 0px;
+  user-select: all;
 }
 
 
 table th, table td {
-    font-size: 12px;
-    vertical-align: middle;
+  font-size: 12px;
+  vertical-align: middle;
 }
 
 table th {
-    padding-top: 11px !important;
-    padding-bottom: 10px !important;
+  padding-top: 11px !important;
+  padding-bottom: 10px !important;
 }
 
 table th.center-align, table td.center-align {
-    text-align: center;
+  text-align: center;
 }
 
 table th.right-align, table td.right-align {
-    text-align: right;
+  text-align: right;
 }
 
 table th.left-align, table td.left-align {
-    text-align: left;
+  text-align: left;
 }
 
 body .ui-panel {
-    height: 100%;
+  height: 100%;
 }
 
 #main-content {
-    height: calc(100% - 128px);
-    overflow-y: auto;
+  height: calc(100% - 128px);
+  overflow-y: auto;
 }
-
 
 
 #custom-grid {
@@ -313,36 +313,42 @@ body .ui-panel {
 }
 
 @media screen and (max-width: 600px) {
-    #custom-grid {
-        display: block;
-        flex-wrap: nowrap;
-    }
+  #custom-grid {
+    display: block;
+    flex-wrap: nowrap;
+  }
 }
 
 .outer {
-    display: table;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .middle {
-    display: table-cell;
-    vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .inner {
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px;
-    text-align: center;
-    /*whatever width you want*/
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  text-align: center;
+  /*whatever width you want*/
 }
 
 .text-center {
   text-align: center;
+}
+.no-padding {
+  padding: 0!important;
+}
+.no-margin {
+  margin: 0!important;
 }
 .page-container {
   padding: 10px;
@@ -353,16 +359,16 @@ body .ui-panel {
 
 
 .xs-only {
-    display: none !important;
+  display: none !important;
 }
 
 @media screen and (max-width: 550px) {
-    .xs-only {
-        display: unset !important;
-    }
-    h2.xs-only {
-        display: block !important;
-    }
+  .xs-only {
+    display: unset !important;
+  }
+  h2.xs-only {
+    display: block !important;
+  }
 }
 
 
@@ -386,7 +392,7 @@ body .ui-panel {
   }
 }
 
-@media (min-width:901px) and (max-width: 1024px) {
+@media (min-width: 901px) and (max-width: 1024px) {
   .page-container {
     width: 75%;
   }

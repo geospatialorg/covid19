@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DashboardService } from 'src/app/services';
+import {Component, OnInit} from '@angular/core';
+import {DashboardService} from 'src/app/services';
 
 
 @Component({
@@ -12,11 +12,14 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private DashboardSvc: DashboardService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.DashboardSvc.getGlobalStat().subscribe(res => {
-      if(res && res.data && res.data.data) this.lastUpdate = res.data.data[0].to_char;
+      if (res && res.data && res.data.data) {
+        this.lastUpdate = res.data.data[0].to_char;
+      }
     });
   }
 

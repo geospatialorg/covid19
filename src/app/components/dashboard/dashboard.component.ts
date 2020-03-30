@@ -9,7 +9,6 @@ import {SharedService} from '../../services/shared.service';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
-  items: MenuItem[];
 
   constructor(private sharedService: SharedService) {
     this.sharedService.setMeta(
@@ -19,11 +18,6 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.items = [
-      {label: 'Home', icon: 'pi pi-fw pi-home'},
-      {label: 'Calendar', icon: 'pi pi-fw pi-calendar'}
-    ];
-  }
+  ngOnInit(): void {}
 
 }
