@@ -78,6 +78,10 @@ export class AboutComponent implements OnInit {
       {
         url: 'https://coronavirus-esriro.hub.arcgis.com',
         title: 'Esri Romania COVID - 19 Hub'
+      },
+      {
+        url: 'https://datelazi.ro',
+        title: 'COVID-19: Date la Zi'
       }
     ];
 

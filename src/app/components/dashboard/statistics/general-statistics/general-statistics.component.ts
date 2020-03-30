@@ -50,11 +50,40 @@ export class GeneralStatisticsComponent implements OnInit {
     let chartsAnnonations = [
         {
             id: 'masura-5',
+            measureDate: '2020-03-29',
+            value: '-1',
             type: 'line',
             mode: 'vertical',
             borderDash: [2, 2],
             scaleID: 'x-axis-0',
-            value: '27',
+            borderColor: 'rgb(204, 102, 255)',
+            borderWidth: 4,
+            label: {
+                backgroundColor: 'rgb(204, 102, 255)',
+                position: "top",
+                content: "OM 4",
+                enabled: true,
+                yPadding: 2
+            },
+            onClick: function(e) {
+
+                window.open('http://legislatie.just.ro/Public/DetaliiDocument/224467', '_blank');
+            },
+            // onMouseover: function(e) {
+            //     //e.target.style.cursor = 'pointer';
+            // },
+            // onMouseout: function(e) {
+            //     //e.target.style.cursor = 'default';
+            // }
+        },
+        {
+            id: 'masura-5',
+            measureDate: '2020-03-24',
+            value: '-1',
+            type: 'line',
+            mode: 'vertical',
+            borderDash: [2, 2],
+            scaleID: 'x-axis-0',
             borderColor: 'rgba(255, 153, 0,0.8)',
             borderWidth: 4,
             label: {
@@ -77,11 +106,12 @@ export class GeneralStatisticsComponent implements OnInit {
         },
         {
             id: 'masura-4',
+            measureDate: '2020-03-21',
+            value: '24',
             type: 'line',
             mode: 'vertical',
             borderDash: [2, 2],
             scaleID: 'x-axis-0',
-            value: '24',
             borderColor: 'rgba(51,51,153,0.8)',
             borderWidth: 2,
             label: {
@@ -103,11 +133,12 @@ export class GeneralStatisticsComponent implements OnInit {
         },
         {
             id: 'masura-3',
+            measureDate: '2020-03-17',
+            value: '20',
             type: 'line',
             mode: 'vertical',
             borderDash: [2, 2],
             scaleID: 'x-axis-0',
-            value: '20',
             borderColor: 'rgb(102, 153, 153)',
             borderWidth: 2,
             label: {
@@ -130,11 +161,12 @@ export class GeneralStatisticsComponent implements OnInit {
         },
         {
             id: 'masura-2',
+            measureDate: '2020-03-16',
+            value: '19',
             type: 'line',
             mode: 'vertical',
             borderDash: [2, 2],
             scaleID: 'x-axis-0',
-            value: '19',
             borderColor: 'black',
             borderWidth: 2,
             label: {
@@ -156,11 +188,12 @@ export class GeneralStatisticsComponent implements OnInit {
         },
         {
             id: 'masura-1',
+            measureDate: '2020-03-11',
+            value: '14',
             type: 'line',
             mode: 'vertical',
             borderDash: [2, 2],
             scaleID: 'x-axis-0',
-            value: '14',
             borderColor: 'green',
             borderWidth: 2,
             label: {
@@ -171,7 +204,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 yPadding: 2
             },
         }
-    ]
+    ];
 
     let configDailyCases = {
       type: 'line',
@@ -393,7 +426,7 @@ export class GeneralStatisticsComponent implements OnInit {
             },
             title: {
                 display: true,
-                text: 'Ziua față de cazuri cumulative',
+                text: 'Ziua față de numarul de cazuri noi / numarul de cazuri totale',
                 fontSize: 18
             },
             tooltips: {
@@ -444,7 +477,8 @@ export class GeneralStatisticsComponent implements OnInit {
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
-            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [], growth: [] };
+            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [], annotations: $.extend(true, [], chartsAnnonations) };
+            let _growthrate = { x: [], y: [], annotations: $.extend(true, [], chartsAnnonations) }
             let d = new Date();
             let h = d.getHours();
             let dl = 0;
@@ -453,13 +487,17 @@ export class GeneralStatisticsComponent implements OnInit {
             } else {
                 dl = _data.length - 1;
             }
+            var ctgr = 0;
             for (let i=0; i<dl; i++) {
-                if (i == 0) {
-                    _trendline.growth.push(0.00);
-                } else if (i == 1) {
-                    _trendline.growth.push(1.00);
-                } else {
-                    _trendline.growth.push((_data[i]['total_case']-_data[i-1]['total_case'])/_data[i-1]['total_case']);
+                if (i > 10) {
+                    _growthrate.y.push((_data[i]['total_case']-_data[i-1]['total_case'])/_data[i]['total_case']);
+                    _growthrate.x.push(_data[i]['day_case'])
+                    for (var e in _growthrate.annotations) {
+                        if (_growthrate.annotations[e].measureDate == _data[i]['day_case']) {
+                            _growthrate.annotations[e].value = ctgr.toString();
+                        }
+                    }
+                    ctgr += 1;
                 }
                 _datasets.push({x: _data[i]['day_case'], y: _data[i]['new_case_no']});
                 _trendline.x.push(_data[i]['day_no']);
@@ -469,6 +507,11 @@ export class GeneralStatisticsComponent implements OnInit {
                 _trendline.healed.push(_data[i]['total_healed']);
                 _trendline.dates.push(_data[i]['day_case']+' ['+_data[i]['day_no']+']')
                 _trendline.pairs.push([_data[i]['day_no'], _data[i]['total_case']]);
+                for (var e in _trendline.annotations) {
+                    if (_trendline.annotations[e].measureDate == _data[i]['day_case']) {
+                        _trendline.annotations[e].value = i.toString();
+                    }
+                }
             }
 
             // Cazuri pe zile
@@ -524,14 +567,18 @@ export class GeneralStatisticsComponent implements OnInit {
                     configTrendline['data']['datasets'].push(dss);
                 }
             }
+            console.log(chartsAnnonations);
+            console.log(_trendline.annotations);
+            console.log(_growthrate.annotations);
 
             configTrendline['data']['labels'] = _trendline.dates;
             configTrendline['data']['datasets'][0]['data'] = _trendline.y;
             configTrendline['data']['datasets'][1]['data'] = _trendline.active;
             configTrendline['data']['datasets'][2]['data'] = _trendline.dead;
             configTrendline['data']['datasets'][3]['data'] = _trendline.healed;
-            configTrendline['options']['annotation']['annotations'].push(...chartsAnnonations);
+            configTrendline['options']['annotation']['annotations'] = _trendline.annotations;
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
+            
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
                 ctxTrendline.canvas.width = self.mainGrid.nativeElement.offsetWidth - 10;
@@ -541,14 +588,15 @@ export class GeneralStatisticsComponent implements OnInit {
             }
             myLine = new Chart(ctxTrendline, configTrendline);
 
-            configGrowthRate['data']['labels'] = _trendline.dates;
-            configGrowthRate['data']['datasets'][0]['data'] = _trendline.growth;
-            configGrowthRate['options']['annotation']['annotations'].push(...chartsAnnonations);
+            configGrowthRate['data']['labels'] = _growthrate.x;
+            configGrowthRate['data']['datasets'][0]['data'] = _growthrate.y;
+            configGrowthRate['options']['annotation']['annotations'] = _growthrate.annotations;
             var ctxGrowthRate = self.canvasGrowthRate.nativeElement.getContext('2d');
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxGrowthRate.canvas.height = 220;
             }
             myLine = new Chart(ctxGrowthRate, configGrowthRate);
+
         }
     });
 }
