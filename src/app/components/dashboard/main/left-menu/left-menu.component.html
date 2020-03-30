@@ -1,41 +1,59 @@
-<div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
-  <h2 style="margin-bottom: 0;">Total confirmate</h2>
-  <em style="font-size: 12px;">(după locul confirmării)</em>
-  <h2 style="color: #ff7f00;margin: 10px 0;">
-    {{totalCases}}
-    <i class="fa fa-info-circle" style="cursor: pointer;" (click)="showDisclaimer(true)" title="Disclaimer"></i>
-  </h2>
-</div>
-<div class="borderlessTable">
-  <p-table [value]="tableData" class="addNewRasterTable" selectionMode="single">
-    <ng-template pTemplate="header">
-      <tr>
-          <th>Cazuri confirmate pe județ</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-item>
-      <tr>
-          <td style="text-align: left;">
-            <span style="font-weight: bold;">{{item.total_case + " "}}</span>
-            <span>{{item.county}}</span>
-            <a *ngIf="item.referinta" style="float: right;" href="{{item.referinta}}" target="_blank" title="Click pentru referință"><i class="fa fa-link"></i></a>
-          </td>
-      </tr>
-    </ng-template>
-  </p-table>
+<div id="custom-grid" class="no-margin no-padding" #leftMenu>
+  <div class="ui-grid" style="width: 100%">
+    <div class="ui-g-12">
+      <p-card header="Total confirmate" [style]="{width: '100%', textAlign: 'center'}">
+        <em style="font-size: 12px;">(după locul confirmării)</em>
+        <h1 style="color: #ff7f00;">
+          {{totalCases}}
+          <i class="fa fa-info-circle" style="cursor: pointer;" (click)="showDisclaimer(true)" title="Disclaimer"></i>
+        </h1>
+      </p-card>
+    </div>
+  </div>
+  <div class="ui-grid">
+    <div class="ui-g-12" style="width: 100%">
+      <div class="ui-card ui-corner-all" style="">
+        <div class=" ui-card-body" style="">
+          <div style="overflow-y: auto;" class="borderlessTable">
+            <p-table [value]="tableData" class="addNewRasterTable" selectionMode="single">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Cazuri confirmate pe județ</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item>
+                <tr>
+                  <td style="text-align: left;">
+                    <span style="font-weight: bold;">{{item.total_case + " "}}</span>
+                    <span>{{item.county}}</span>
+                    <a *ngIf="item.referinta" style="float: right;"
+                       href="{{item.referinta}}"
+                       target="_blank"
+                       title="Click pentru referință">
+                      <i class="fa fa-link"></i>
+                    </a>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<p-dialog header="Atentie" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
-  <div style="text-align: justify;">
-    Deoarece autoritățile nu mai comunică județele unde au fost confirmate cazurile, multe din cazuri sunt etichetate cu locația "JUDEȚ NECUNOSCUT". 
-    Echipa de voluntari verifică sistematic presa locală și anunțurile autorităților publice locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații verificabile, 
-    mută cazurile din "JUDEȚ NECUNOSCUT" în județul corect de diagnosticare. Istoricul confirmărilor se poate accesa dând click pe link-ul referință din dreptul fiecărui județ. 
-    Pentru mai multe informații vă rugăm să consultați secțiunea <a href="https://covid19.geo-spatial.org/dashboard/about" target="_blank" title="Coronavirus COVID-19 România Project">"Despre"</a>
+<p-dialog header="Atenție" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
+  <div>
+    <p>Deoarece autoritățile nu mai comunică județele unde au fost confirmate cazurile, multe din cazuri sunt etichetate cu locația "JUDEȚ NECUNOSCUT".</p>
+    <p>Echipa de voluntari verifică sistematic presa locală și anunțurile autorităților publice locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații verificabile,
+      mută cazurile din "JUDEȚ NECUNOSCUT" în județul corect de diagnosticare. Istoricul confirmărilor se poate accesa dând click pe link-ul referință din dreptul fiecărui județ.</p>
+    <p>Pentru mai multe informații vă rugăm să consultați secțiunea <a href="https://covid19.geo-spatial.org/dashboard/about" target="_blank" title="Coronavirus COVID-19 România Project">"Despre"</a></p>
   </div>
-  
+
   <p-footer>
     <div style="text-align: center;">
-      <button pButton type="button" label="Inchide" (click)="showDisclaimer(false)"></button>
+      <button pButton type="button" label="Inchide"  class="ui-button-warning" (click)="showDisclaimer(false)"></button>
     </div>
   </p-footer>
 </p-dialog>

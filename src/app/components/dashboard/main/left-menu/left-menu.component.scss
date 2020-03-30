@@ -1,5 +1,18 @@
 .disclaimer {
     max-width: 450px;
+  p {
+    text-indent: 15px;
+    padding: 5px;
+  }
+  .ui-dialog-titlebar {
+    background-color: #ff7f00!important;
+    text-align: center;
+    font-size: 18px;
+  }
+  .ui-widget-content {
+    text-align: justify;
+    padding: 1em 0.75em!important;
+  }
 }
 
 @media screen and (max-width: 550px) {

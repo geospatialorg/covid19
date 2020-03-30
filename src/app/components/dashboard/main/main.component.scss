@@ -9,7 +9,7 @@
 #right-sidebar,
 #left-sidebar,
 #map-container {
-  height: 100%;
+  height: calc(100% - 50px);
   overflow-y: auto;
 }
 
