@@ -37,19 +37,19 @@ export class MapComponent implements OnInit, OnDestroy {
           color: 'rgba(228,26,28, 0.6)'
         }
       },
-      dataKey: 'total_county'
+      dataKey: 'total_case'
     },
-    {
-      id: 'active',
-      title: 'Cazuri active',
-      alt_id: 'cazuri_active',
-      style: {
-        fill: {
-          color: 'rgba(217,95,14, 0.8)'
-        }
-      },
-      dataKey: 'total_active'
-    },
+    // {
+    //   id: 'active',
+    //   title: 'Cazuri active',
+    //   alt_id: 'cazuri_active',
+    //   style: {
+    //     fill: {
+    //       color: 'rgba(217,95,14, 0.8)'
+    //     }
+    //   },
+    //   dataKey: 'total_active'
+    // },
     {
       id: 'healed',
       title: 'Vindecări',
@@ -129,14 +129,20 @@ export class MapComponent implements OnInit, OnDestroy {
     });
   }
 
+  private getGeojsonData(){
+    return this.dashboardService.getGeojsonData().toPromise().then(data => {
+      return data ? data : null;
+    });
+  }
+
   async loadData() {
     this.mapData = await this.getData();
-    this.interval = setInterval(() => {
-      this.getData().then(data => {
-        this.mapData = data;
-        this.drawFeatures(this.mapIconLayer.getSource(), this.geojsonFeatures, this.iconStyle);
-      });
-    }, appConfig.data_refresh);
+    // this.interval = setInterval(() => {
+    //   this.getData().then(data => {
+    //     this.mapData = data;
+    //     this.drawFeatures(this.mapIconLayer.getSource(), this.geojsonFeatures, this.iconStyle);
+    //   });
+    // }, appConfig.data_refresh);
   }
   setActiveLayer(layer) {
     this.activeMap = layer;
@@ -152,10 +158,11 @@ export class MapComponent implements OnInit, OnDestroy {
   private getData() {
     return this.dashboardService.getCasesByCounty().toPromise().then(res => {
       if (res && res.data && res.data.data) {
-        return res.data.data.map(e => {
-          e.total_active = e.total_county - e.total_healed - e.total_dead;
-          return e;
-        });
+        return res.data.data;
+        // return res.data.data.map(e => {
+        //   e.total_active = e.total_county - e.total_healed - e.total_dead;
+        //   return e;
+        // });
       }
 
       return [];
@@ -176,7 +183,8 @@ export class MapComponent implements OnInit, OnDestroy {
     const self = this;
 
     if (!this.geojsonFeatures) {
-      this.geojsonFeatures = (new GeoJSON()).readFeatures(await this.sharedService.getGeojsonData());
+      // this.geojsonFeatures = (new GeoJSON()).readFeatures(await this.sharedService.getGeojsonData());
+      this.geojsonFeatures = (new GeoJSON()).readFeatures(await this.getGeojsonData());
     }
 
     this.drawFeatures(this.mapIconLayer.getSource(), this.geojsonFeatures, this.iconStyle);
@@ -206,6 +214,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
+    
     source.clear();
     const maxCases = this.mapData.map(county => county[this.activeMap.dataKey]).sort((a, b) => b - a);
     this.mapData.map(e => {
@@ -230,6 +239,7 @@ export class MapComponent implements OnInit, OnDestroy {
         Object.keys(e).map(r => {
           feat.set(r, e[r]);
         });
+
         feat.setStyle(iconStyle);
         source.addFeature(feat);
       }

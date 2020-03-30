@@ -276,7 +276,7 @@ export class GraphicsComponent implements OnInit {
 
     var margin = {top: 50, right: 20, bottom: 20, left: 50},
         width = this.parentWidth - margin.left - margin.right,
-        height = 450 - margin.top - margin.bottom,
+        height = 380 - margin.top - margin.bottom,
         svg_width = width + margin.left + margin.right,
         svg_height = height + margin.top + margin.bottom;
 
@@ -332,12 +332,12 @@ export class GraphicsComponent implements OnInit {
 
     self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
 
-    self.interval = setInterval(async ()=> {
-        let cases_data = await this.getData();
-        self.svg.selectAll("*").remove();
+    // self.interval = setInterval(async ()=> {
+    //     let cases_data = await this.getData();
+    //     self.svg.selectAll("*").remove();
 
-        self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
-    }, this.appConfig.data_refresh);
+    //     self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
+    // }, this.appConfig.data_refresh);
   }
 
   ngOnDestroy(): void {

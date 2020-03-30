@@ -29,9 +29,9 @@ export class RightMenuComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadData();
-    this.interval = setInterval(() => {
-      this.loadData();
-    }, this.appConfig.data_refresh);
+    // this.interval = setInterval(() => {
+    //   this.loadData();
+    // }, this.appConfig.data_refresh);
   }
 
   private loadData() {

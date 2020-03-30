@@ -1,6 +1,7 @@
 const pool = require('../pgpool').getPool();
-
 let router = require('express').Router();
+const fs = require('fs');
+const path = require('path');
 
 router
     .route('/getDeadCasesByCounty')
@@ -197,6 +198,15 @@ router
             }
         );
 
+    });
+
+router
+    .route('/getGeojsonData')
+    .get((req, res) => {
+        fs.readFile(path.resolve(__dirname, '../counties.geojson'), 'utf8', (err, data)=> {
+            if(err) console.log(err);
+            res.status(200).send(data);
+        });
     });
 
 module.exports = router;
