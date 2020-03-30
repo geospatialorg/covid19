@@ -1,0 +1,67 @@
+<div id="custom-grid" style="margin: 0;" #rightMenu>
+  <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
+    <div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
+      <h2 style="margin-bottom: 0;">Total vindecări</h2>
+      <em style="font-size: 12px;">(după locul externării)</em>
+      <h2  style="color: #4daf4a;">{{totalHealed}}</h2>
+    </div>
+
+    <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
+      <p-table [value]="tableDataRecovered" class="addNewRasterTable" selectionMode="single">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Vindecări înregistrate pe județ</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td style="text-align: left;">
+                <span style="font-weight: bold;">{{item.total_healed + " "}}</span>
+                <span>{{item.county}}</span>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="1" *ngIf="tableDataRecovered.length === 0">Nu au fost înregistrate vindecări.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+  <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6">
+    <div style="border: 1px #efefef solid; margin-bottom: 5px; text-align: center;">
+        <h2 style="margin-bottom: 0;">Total decese</h2>
+        <em style="font-size: 12px;">&nbsp;</em>
+        <h2 style="color: #a65628;">{{totalDeads}}</h2>
+
+        <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
+          <p-table [value]="tableDataDeath" class="addNewRasterTable" selectionMode="single">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Decese înregistrate pe județ</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td style="text-align: left;">
+                    <span style="font-weight: bold;">{{item.total_dead + " "}}</span>
+                    <span>{{item.county}}</span>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="1" *ngIf="tableDataDeath.length === 0">Nu au fost înregistrate decese.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+    </div>
+  </div>
+
+  <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12">
+    <app-graphics [parentWidth]="rightMenu.offsetWidth" *ngIf="dataReady"></app-graphics>
+  </div>
+</div>

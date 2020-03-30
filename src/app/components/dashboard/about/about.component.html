@@ -1,0 +1,101 @@
+<div class="page-container">
+    <h2 class="text-center">Coronavirus COVID-19 România Project</h2>
+    <br>
+    <h3>Despre</h3>
+    <p>
+        Pe 11 martie 2020, Directorul general al Organizaţiei Mondiale a Sănătăţii (OMS), Tedros Adhanom Ghebreyesus anunța că COVID-19 este o pandemie și propune o serie de recomandări, dintre care, unele direcționate către publicul larg. Respectarea acestora cu strictețe de către fiecare dintre noi în următoarea perioadă este esențială și poate fi singura barieră dintre generația noastră și o catastrofă.
+        <br><br>
+        În data de 26 februarie, a fost confirmat și primul caz pe teritoriul României. Autoritățile și organizațiile media fac eforturi susținute în a informa populația în timp real cu privire la  răspândirea virusului COVID-19 în România prin comunicate de presă. O prezentarea completă, schematică a tuturor cazurilor oficiale (confirmate, vindecări, decese) actualizată cât mai des posibil, este însă esențială în a disemina aceste informații vitale.
+        <br><br>
+        Aceasta este motivația demersului nostru: <a href="https://covid19.geo-spatial.org/" title="Coronavirus COVID-19 România" target="_blank">Coronavirus COVID-19 România</a>. Prin utilizarea tehnologiilor open source, am realizat o hartă a distribuției spațiale a tuturor cazurilor COVID-19 confirmate oficial, o statistică care arată evoluția pe zile, precum și un grafic ce permite vizualizarea legăturilor de contaminare. Navigarea prin grafic prezintă și detaliile relevante fiecărui caz - vârsta, sexul  pacientului, localitatea în care a fost inițial depistat ca pozitiv, statusul, precum și sursa acestor informații.
+    </p>
+
+    <h3>Sursa datelor și politica de actualizare</h3>
+    <p>
+        Datele publicate în aplicație au fost extrase din comunicatele oficiale de presă ale Grupului de Comunicare Strategică al Ministerului Afacerilor Interne, 
+        Institutul Național de Sănătate Publică România, Direcțiile Județene de Sănătate Publică, precum și din presa locală.
+        <br><br>
+        Până în data de 19 martie când informațiile publicate au fost reduse semnificativ, aceste date erau actualizate imediat ce noi cazuri erau confirmate de către autoritățile române și comunicate. Datele erau preluate într-un tabel de către echipa de voluntari a proiectului, de unde ulterior erau actualizate în cadrul aplicației, precizandu-se județul unde s-a înregistrat cazul pozitiv, sexul și vârsta. 
+        <br><br>
+        <strong>Precizare importantă:</strong> Având în vedere schimbarea modului de raportarea a cazurilor confirmate oficial în publicarea doar a numărul total de cazuri pe teritoriul României, o singură dată pe zi la ora 13:00, am fost constrânși să actualizăm datele vizualizate în aplicație în două etape.
+    </p>
+    <p>
+        <em>Prima etapă</em> constă în introducerea tuturor cazurilor confirmate și anunțate în comunicatul de presă al Ministerului Sănătății, la ora 13:00, fără a le împărți însă pe județe, sex și grupă de vârstă din cauza faptului că aceste informații nu mai sunt transmise.
+    </p>
+    <p>
+        <em>Etapa a doua</em> a procesului de actualizare constă în a verifica paginile oficiale ale  Direcțiile Județene de Sănătate Publică și presa locală pentru a identifica noile cazuri confirmate în ziua curentă și astfel, pentru a completa informațiile lipsă, acolo unde este posibil.
+        Le suntem recunoscători celor de la <a href="https://coronavirus.casajurnalistului.ro/" title="Casa Jurnalistului" target="_blank">Casa Jurnalistului</a> pentru accesul 
+        la motorul lor grozav de căutare în presa online pe subiectul coronavirus. geo-spatial.org, cu sprijinul a 15 organizații civice, a redactat un <a href="https://covid19.geo-spatial.org/dashboard/manifest" title="Manifest pentru publicarea completă a datelor privind evoluția pandemiei Covid-19 pe teritoriul României" target="_blank">Manifest pentru publicarea completă a datelor privind evoluția pandemiei Covid-19 pe teritoriul României</a>. Demersuri similare au fost inițiate de către
+        <a href="https://presshub.ro/libertatea-de-exprimare/2020/03/21/presa-locala-denunta-tentativa-de-cenzura-din-partea-gcs/" title="PressHub" target="_blank">PressHub</a> și de către <a href="https://www.hotnews.ro/stiri-coronavirus-23751128-apel-guvern-transparenta-informatii-vocid-19-judete.htm" title="Fundațiile Comunitare alături de Asociația pentru Relații Comunitare" target="_blank">Fundațiile Comunitare alături de Asociația pentru Relații Comunitare</a>.
+    </p>
+    <p>
+        În ciuda eforturilor echipei de voluntari, din păcate, există lacune în completarea tuturor informațiilor necesare (județ, sex, vârstă, sursa de contaminare). Așadar, am ales o variantă de prezentare în care specificăm că nu cunoaștem localizarea cu precizie a cazului, acest lucru fiind marcat separat pe hartă, cu mențiunea de județ „NECUNOSCUT”. În situația în care apar informații în legătură cu cazurile confirmate în zilele precedente, echipa de voluntari actualizează datele colectate.
+    </p>
+    <p>
+        Menționăm că, în situația în care se realizează transferul pacienților din localitatea în care au fost inițial confirmați către un spital/centru de carantină din alt județ, noi nu preluăm modificarea în baza de date din cauza lipsei de consistență și transparenței a acestor tipuri de informații. Astfel, am decis să prezentăm pe hartă localizarea din momentul confirmării. 
+    </p>
+    <p>
+        Aceleași principii de actualizare sunt aplicate și pentru informațiile privind pacienții vindecați și cei care au decedat.  
+    </p>
+
+    <h3>Acces la datele colectate</h3>
+    <p>
+        Până de curând am oferit acces la datele colectate via GDrive. Datorită cererilor prea mari, ne vedem siliți să oprim accesul în acest mod. Datele pot fi accesate în format JSON prin intermediul unui API dedicat (momentan e static, pe viitor vom analiza posibilitatea de a permite aplicarea de filtre):
+    </p>
+    <ul>
+        <li *ngFor="let item of apiLinks"><a href="{{item.url}}" title="{{item.title}}" target="_blank">{{item.title}}</a></li>
+    </ul>
+
+    <p>
+        <strong>Actualizare 19.03.2020:</strong> Grupul de Comunicare Strategică a schimbat modul de informare, raportând în fiecare zi, la ora 13:00, doar totalul cazurilor
+        înregistrate la nivel național. Informațiile precum județul unde s-a înregistrat cazul pozitiv, sexul, vârsta și rezultatul anchetelor epidemiologice au fost suprimate,
+        făcându-ne misiunea foarte dificilă. În continuare, încercăm să oferim informații la nivel de județ prin scanarea manuală a presei centrale și locale.
+        Le suntem recunoscători celor de la <a href="https://coronavirus.casajurnalistului.ro/" title="Casa Jurnalistului" target="_blank">Casa Jurnalistului</a>  pentru accesul
+        la motorul lor grozav de căutare în presa online pe subiectul coronavirus. geo-spatial.org, cu sprijinul a 15 organizații civice, a redactat un
+        <a href="https://covid19.geo-spatial.org/dashboard/manifest" title="Manifest pentru publicarea completă a datelor privind evoluția pandemiei Covid-19 pe teritoriul României" target="_blank">Manifest pentru publicarea completă a datelor privind evoluția pandemiei Covid-19 pe teritoriul României</a>.
+        Demersuri similare au fost inițiate de către <a href="https://presshub.ro/libertatea-de-exprimare/2020/03/21/presa-locala-denunta-tentativa-de-cenzura-din-partea-gcs" title="PressHub" target="_blank">PressHub</a> și de către <a href="https://www.hotnews.ro/stiri-coronavirus-23751128-apel-guvern-transparenta-informatii-vocid-19-judete.htm" title="Fundațiile Comunitare alături de Asociația pentru Relații Comunitare" target="_blank">Fundațiile Comunitare alături de Asociația pentru Relații Comunitare</a>.
+    </p>
+
+    <h3>Codul sursă</h3>
+
+    <p>
+        Codul sursă al aplicație este publicat sub licență <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT" target="_blank">MIT</a> și poate fi accesat pe platforma <a href="https://github.com/geospatialorg/covid19" target="_blank" title="https://github.com/geospatialorg/covid19">GitHub</a>.
+    </p>
+
+    <h3>Echipa</h3>
+    <p>
+        Demersul 100% voluntar este inițiat și susținut de către geo-spatial.org. Din echipă fac parte (în ordine alfabetică):
+    </p>
+    <ul>
+        <li *ngFor="let item of colaborators">{{item}}</li>
+    </ul>
+
+    <h3>Infrastructură</h3>
+    <p>Serviciul este susținut de <a href="http://www.sage.ieat.ro/" title="SAGE Group" target="_blank">SAGE Group</a>.</p>
+
+    <h3>Contact</h3>
+    <p>Pentru implicare, întrebări și sugestii ne puteți scrie pe <a href="mailto:covid19@geo-spatial.org" title="e-mail">e-mail</a>, <a href="https://groups.yahoo.com/neo/groups/geo-spatial/info" target="_blank" title="https://groups.yahoo.com/neo/groups/geo-spatial/info">lista de discuții</a> sau pe canalul <a href="http://bit.ly/2TzN9Yx" title="Slack" target="_blank">Slack</a>.</p>
+
+    <h3>Proiecte similare </h3>
+    <p>Alte proiecte asemănătoare în România: </p>
+    <ul>
+        <li *ngFor="let item of projects"><a href="{{item.url}}" title="{{item.title}}" target="_blank">{{item.title}}</a></li>
+    </ul>
+
+    <h3>Disclaimer </h3>
+    <p>
+        geo-spatial.org nu va fi răspunzator pentru nici un fel de pagube directe, indirecte, accidentale rezultate din utilizarea sau imposibilitatea utilizării informațiilor din cadrul aplicației. Acesta este oferită în această formă, fără alte garanții. geo-spatial.org nu este și nu poate fi făcut responsabil pentru nepotriviri, indisponibilități sau alte defecte ale acestei aplicații sau ale conținutului ei.
+    </p>
+
+    <h3>Politica de confidențialitate </h3>
+    <p>Colectăm în mod automat informații statistice privind traficul pe site. Înregistrăm automat următoarele informații despre vizita dumneavoastră:</p>
+    <ul>
+        <li>Adresa IP (Internet Protocol) și furnizorul de servicii Internet;</li>
+        <li>Ora la care s-a accesat site-ul;</li>
+        <li>Tipul și limba browser-ului;</li>
+        <li>Sistem de operare;</li>
+        <li>Rezoluția ecranului.</li>
+    </ul>
+</div>
+
+

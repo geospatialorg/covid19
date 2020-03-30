@@ -1,25 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MapComponent } from './dashboard/main/map/map.component';
-import { LeftMenuComponent } from './dashboard/main/left-menu/left-menu.component';
-import { GraphicsComponent } from './dashboard/main/graphics/graphics.component';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { ErrorInterceptor, JwtInterceptor } from './_interceptors';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {MapComponent} from './components/dashboard/main/map/map.component';
+import {LeftMenuComponent} from './components/dashboard/main/left-menu/left-menu.component';
+import {GraphicsComponent} from './components/dashboard/main/graphics/graphics.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ErrorInterceptor, JwtInterceptor} from './interceptors';
 
 // primeng modules
+import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {ContextMenuModule} from 'primeng/contextmenu';
-import { RightMenuComponent } from './dashboard/main/right-menu/right-menu.component';
+import {RightMenuComponent} from './components/dashboard/main/right-menu/right-menu.component';
 import {TableModule} from 'primeng/table';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FooterComponent } from './_components/footer/footer.component';
-import { HeaderComponent } from './_components/header/header.component';
-import { MainComponent } from './dashboard/main/main.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {FooterComponent} from './components/footer/footer.component';
+import {HeaderComponent} from './components/header/header.component';
+import {MainComponent} from './components/dashboard/main/main.component';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
@@ -58,32 +59,34 @@ import {AccordionModule} from 'primeng/accordion';
 import {ToastModule} from 'primeng/toast';
 import {SliderModule} from 'primeng/slider';
 import {SpinnerModule} from 'primeng/spinner';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './components/login/login.component';
 import {ChartModule} from 'primeng/chart';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdministrationComponent } from './dashboard/administration/administration.component';
-import { PatientsListComponent } from './dashboard/administration/patients-list/patients-list.component';
-import { UserListComponent } from './dashboard/administration/user-list/user-list.component';
-import { AddNewPatientComponent } from './dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
-import { StatisticsComponent } from './dashboard/statistics/statistics.component';
-import { AboutComponent } from './dashboard/about/about.component';
-import { RelationCasesComponent } from './dashboard/statistics/relation-cases/relation-cases.component';
-import { GeneralStatisticsComponent } from './dashboard/statistics/general-statistics/general-statistics.component';
-import { CoronavirusEuropeComponent } from './dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
-import { ManifestComponent } from './dashboard/manifest/manifest.component';
-import { MapsComponent } from './dashboard/maps/maps.component';
-import { No2EmissionComponent } from './dashboard/maps/no2-emission/no2-emission.component';
-import { EuropeanContextComponent } from './dashboard/maps/european-context/european-context.component';
-import { SocialInterestPointsComponent } from './dashboard/maps/social-interest-points/social-interest-points.component';
-import { FrontierSituationComponent } from './dashboard/maps/frontier-situation/frontier-situation.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { InstallPromptComponent } from './_components/install-prompt/install-prompt.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AdministrationComponent} from './components/dashboard/administration/administration.component';
+import {PatientsListComponent} from './components/dashboard/administration/patients-list/patients-list.component';
+import {UserListComponent} from './components/dashboard/administration/user-list/user-list.component';
+import {AddNewPatientComponent} from './components/dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
+import {StatisticsComponent} from './components/dashboard/statistics/statistics.component';
+import {AboutComponent} from './components/dashboard/about/about.component';
+import {RelationCasesComponent} from './components/dashboard/statistics/relation-cases/relation-cases.component';
+import {GeneralStatisticsComponent} from './components/dashboard/statistics/general-statistics/general-statistics.component';
+import {CoronavirusEuropeComponent} from './components/dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
+import {ManifestComponent} from './components/dashboard/manifest/manifest.component';
+import {MapsComponent} from './components/dashboard/maps/maps.component';
+import {No2EmissionComponent} from './components/dashboard/maps/no2-emission/no2-emission.component';
+import {EuropeanContextComponent} from './components/dashboard/maps/european-context/european-context.component';
+import {SocialInterestPointsComponent} from './components/dashboard/maps/social-interest-points/social-interest-points.component';
+import {FrontierSituationComponent} from './components/dashboard/maps/frontier-situation/frontier-situation.component';
+import {HospitalInfrastructureComponent} from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
+import {CountiesCasesComponent} from './components/dashboard/statistics/counties-cases/counties-cases.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+
+import {InstallPromptComponent} from './components/install-prompt/install-prompt.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {PwaService} from './_services/_pwa.svc';
+import {PwaService} from './services/pwa.service';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
 
@@ -114,6 +117,8 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initP
     EuropeanContextComponent,
     SocialInterestPointsComponent,
     FrontierSituationComponent,
+    HospitalInfrastructureComponent,
+    CountiesCasesComponent,
     InstallPromptComponent
   ],
   imports: [
@@ -128,6 +133,7 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initP
     FormsModule,
     ReactiveFormsModule,
 
+    SidebarModule,
     ButtonModule,
     InputTextModule,
     CalendarModule,
@@ -174,10 +180,11 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initP
   providers: [
     MessageService,
     ConfirmationService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     // {provide: APP_INITIALIZER, useFactory: pwaServiceInitializer, deps: [PwaService], multi: true},
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

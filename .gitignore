@@ -12,6 +12,7 @@
 /api/config.js
 api/config.js
 config.js
+/api/public
 
 # profiling files
 chrome-profiler-events*.json
@@ -44,8 +45,13 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+final-index.html
 
 # System Files
 .DS_Store
 Thumbs.db
 config.js
+
+
+
+

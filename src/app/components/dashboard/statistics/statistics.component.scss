@@ -1,0 +1,16 @@
+.new-row {
+    margin-left: 5px !important;
+}
+
+@media (max-width: 550px) {
+    #maps-btn {
+        margin-left: 0 !important;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .new-row {
+        margin-left: unset !important;
+        margin-top: 5px !important;
+     }
+}

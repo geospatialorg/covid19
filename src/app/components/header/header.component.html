@@ -1,0 +1,87 @@
+<div class="header">
+    
+    <div class="logo" style="text-align: unset;">
+        <button pButton icon="pi pi-bars" class="ui-button-secondary ui-button-raised xs-only" (click)="showSidebar(true)"></button>
+        <h2 [routerLink]="['/dashboard/main']">Coronavirus COVID-19 România</h2>
+    </div>
+    <ul class="topbar-menu">
+        <li>
+            <a [routerLink]="['/dashboard/main']" routerLinkActive="active"><i class="pi pi-home"></i> <span>COVID-19</span></a>
+        </li>
+        <li>
+            <a [routerLink]="['/dashboard/maps']" routerLinkActive="active"><i class="pi pi-compass"></i> <span>Hărți</span></a>
+        </li>
+        <li>
+            <a [routerLink]="['/dashboard/statistics']" routerLinkActive="active"><i class="pi pi-chart-line"></i> <span>Statistici</span></a>
+        </li>
+        <li>
+            <a [routerLink]="['/dashboard/manifest']" routerLinkActive="active"><i class="pi pi-users"></i> <span>Manifest</span></a>
+        </li>
+        <li>
+            <a [routerLink]="['/dashboard/about']" routerLinkActive="active"><i class="pi pi-info-circle"></i> <span>Despre</span></a>
+        </li>
+        <li *ngIf="currentUser" class="lg-only">
+            <a [routerLink]="['/dashboard/administration/patients-list']"><i class="pi pi-desktop"></i> Administrare</a>
+        </li>
+        <li *ngIf="!currentUser" class="lg-only">
+            <a [routerLink]="['/login']">
+                <i class="pi pi-sign-in"></i>
+                <span>Login</span>
+            </a>
+        </li>
+
+        <li *ngIf="currentUser" class="lg-only">
+            <a href="#" (click)="doLogout($event)">
+                <i class="pi pi-sign-in"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<p-sidebar [(visible)]="displaySidebar" [showCloseIcon]="false" [style]="{padding: 0}">
+    
+    <h2 class="sidebar-title">
+        Coronavirus COVID-19 România
+        <!-- <button style="float: right" pButton class="ui-button-secondary ui-button-raised" icon="fa fa-times" (click)="showSidebar(false)"></button> -->
+    </h2>
+    <div class="sidebar-content">
+        <h3>MENIU NAVIGARE</h3>
+        <ul id="sidebar-menu">
+            <li>
+                <a (click)="showSidebar(false)" [routerLink]="['/dashboard/main']" routerLinkActive="active"><i class="pi pi-home"></i> <span>COVID-19</span></a>
+            </li>
+            <li>
+                <a (click)="showSidebar(false)" [routerLink]="['/dashboard/maps']" routerLinkActive="active"><i class="pi pi-compass"></i> <span>Hărți</span></a>
+            </li>
+            <li>
+                <a (click)="showSidebar(false)" [routerLink]="['/dashboard/statistics']" routerLinkActive="active"><i class="pi pi-chart-line"></i> <span>Statistici</span></a>
+            </li>
+            <li>
+                <a (click)="showSidebar(false)" [routerLink]="['/dashboard/manifest']" routerLinkActive="active"><i class="pi pi-users"></i> <span>Manifest</span></a>
+            </li>
+            <li>
+                <a (click)="showSidebar(false)" [routerLink]="['/dashboard/about']" routerLinkActive="active"><i class="pi pi-info-circle"></i> <span>Despre</span></a>
+            </li>
+            <li *ngIf="currentUser" class="lg-only">
+                <a (click)="showSidebar(false)" [routerLink]="['/dashboard/administration/patients-list']"><i class="pi pi-desktop"></i> Administrare</a>
+            </li>
+            <li *ngIf="!currentUser">
+                <a (click)="showSidebar(false)" [routerLink]="['/login']">
+                    <i class="pi pi-sign-in"></i>
+                    <span>Login</span>
+                </a>
+            </li>
+    
+            <li *ngIf="currentUser" class="lg-only">
+                <a href="#" (click)="doLogout($event)">
+                    <i class="pi pi-sign-in"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-footer">
+        <button pButton icon="fa fa-arrow-left" label="Inchide" style="width: 100%;padding: 3px;" (click)="showSidebar(false)"></button>
+    </div>
+</p-sidebar>

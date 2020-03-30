@@ -1,0 +1,32 @@
+#map {
+    width: 100%;
+    height: calc(100% - 45px);
+    position: relative;
+}
+
+#layers {
+    margin:5px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#layers li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#layers li .ui-button-secondary {
+    background-color: #ddd;
+}
+
+@media screen and (max-width: 600px) {
+    #map {
+        height: 340px;
+        position: relative;
+    }
+
+    #map-container {
+        width: calc(100% - 3px);
+        height: auto !important;
+    }
+}
