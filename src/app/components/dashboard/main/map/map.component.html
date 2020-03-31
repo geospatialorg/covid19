@@ -18,7 +18,7 @@
             [options]="maps"
             [(ngModel)]="activeMap"
             optionLabel="title"
-            [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}">
+            [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}" (onChange)="activeMapChange()">
 </p-dropdown>
 <div id="map" class="ui-card ui-corner-bottom">
   <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
