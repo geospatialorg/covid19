@@ -1,4 +1,4 @@
-<div id="custom-grid" class="no-margin no-padding" #rightMenu>
+<div id="custom-grid" class="no-margin no-padding" #rightMenu *ngIf="dataReady">
   <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 no-border no-padding">
     <div class="ui-grid ">
       <div class="ui-g-12">
@@ -48,7 +48,7 @@
       <div class="ui-g-12">
         <p-card header="Total decese" [style]="{width: '100%', textAlign: 'center'}">
           <em style="font-size: 12px;">&nbsp; &nbsp;</em>
-          <h1 style="color: #a65628;">{{totalDeads}}</h1>
+          <h1 style="color: #a65628;">{{totalDeaths}}</h1>
         </p-card>
       </div>
     </div>

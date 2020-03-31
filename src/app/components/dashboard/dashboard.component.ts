@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {SharedService} from '../../services/shared.service';
+import {DashboardService} from '../../services';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,7 @@ import {SharedService} from '../../services/shared.service';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private dashboardService: DashboardService) {
     this.sharedService.setMeta(
       null,
       'dashboard, covid, românia',
@@ -18,6 +18,6 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+  }
 }

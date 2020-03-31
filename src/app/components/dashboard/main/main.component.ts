@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 import {SharedService} from '../../../services/shared.service';
+import {DashboardService} from '../../../services';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +12,7 @@ import {SharedService} from '../../../services/shared.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private dashboardService: DashboardService) {
     this.sharedService.setMeta(
       null,
       'dashboard, covid, românia, cazuri confirmate',
@@ -18,7 +20,6 @@ export class MainComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() { }
 
 }

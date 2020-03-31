@@ -87,6 +87,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {PwaService} from './services/pwa.service';
 import {InstallPromptComponent} from './components/install-prompt/install-prompt.component';
+import {DashboardService} from './services';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initService();
 
@@ -180,6 +181,7 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initS
   providers: [
     MessageService,
     ConfirmationService,
+    DashboardService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: pwaServiceInitializer, deps: [PwaService], multi: true},

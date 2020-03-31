@@ -22,6 +22,7 @@ export class PwaService {
 
   initService() {
     this.iniNotificationPrompt();
+    this.initInstallPrompt();
   }
 
   public iniNotificationPrompt() {
@@ -35,6 +36,11 @@ export class PwaService {
   }
 
   public initInstallPrompt() {
+    // disable install for the moment
+    window.addEventListener('beforeinstallprompt', (event: any) => {
+      event.preventDefault();
+      return;
+    });
     // console.log(this.platform);
     // if (this.platform.ANDROID) {
     //   window.addEventListener('beforeinstallprompt', (event: any) => {
