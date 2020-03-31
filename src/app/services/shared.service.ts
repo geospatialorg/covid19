@@ -24,4 +24,8 @@ export class SharedService {
   getGeojsonData() {
     return fetch('assets/counties.geojson').then((response) => response.json()).then((json) => json);
   }
+
+  getGeojsonQuarantineData() {
+    return fetch('assets/uat_q.json').then((response) => response.json()).then((json) => json);
+  }
 }

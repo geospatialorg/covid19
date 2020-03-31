@@ -71,13 +71,28 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       },
       dataKey: 'total_dead'
+    },
+    {
+      id: 'quarantine',
+      title: 'Zone carantină',
+      alt_id: 'zone_carantina',
+      style: null,
+      dataKey: null
     }
+  ];
+
+  quarantineColors: any[] = [
+    'rgba(222, 0, 11, 0.5)',
+    'rgba(222, 0, 11, 0.5)',
+    // "rgba(255, 171, 69, 0.5)",
+    'rgba(251, 255, 0, 0.5)'
   ];
 
   map: Map;
   mapData: any[] = [];
 
   selectedFeature: any = null;
+  selectedQuarantineZone: any = null;
 
   private interval: any;
 
@@ -124,7 +139,7 @@ export class MapComponent implements OnInit, OnDestroy {
         entry = this.maps[0];
       }
       this.activeMap = entry;
-      this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
+      if(this.activeMap.style) this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
       this.initMap();
     });
   }
@@ -211,6 +226,24 @@ export class MapComponent implements OnInit, OnDestroy {
       });
       this.map = this.initOpenLayerMap(this.mapIconLayer, self, this.iconStyle, highlightStyle);
     }
+
+    if(this.activeMap.id === 'quarantine'){
+      this.map.getLayers().getArray().map(e => {
+        if(['icons'].includes(e.get('id'))){
+          e.setVisible(false);
+        } else {
+          e.setVisible(true);
+        }
+      });
+    } else {
+      this.map.getLayers().getArray().map(e => {
+        if(['counties_quarantine'].includes(e.get('id'))){
+          e.setVisible(false);
+        } else {
+          e.setVisible(true);
+        }
+      });
+    }
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
@@ -279,12 +312,34 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     });
 
+    const styleQuarantine = new Style({});
+
+    const vectorLayerQuarantine = new VectorLayer({
+      id: 'counties_quarantine',
+      source: new VectorSource({
+        url: './assets/uat_q.json',
+        format: new GeoJSON()
+      }),
+      visible: false,
+      style(feature) {
+        if(feature.get('quarantine')){
+          styleQuarantine.setFill(new Fill({
+            color: self.quarantineColors[feature.get('quarantine')-1]
+          }));
+        }
+
+        // styleB.getText().setText(feature.get('county_code'));
+        return styleQuarantine;
+      }
+    });
+
     const map = new Map({
       layers: [
         new TileLayer({
           source: new OSM()
         }),
         vectorLayer,
+        vectorLayerQuarantine,
         iconLayer
       ],
       target: 'map',
@@ -307,16 +362,36 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedFeature = null;
       }
 
+      if (self.selectedQuarantineZone !== null) {
+        let style = new Style({
+          fill: new Fill({
+            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine') - 1]
+          })
+        });
+
+        self.selectedQuarantineZone.setStyle(style);
+
+        self.selectedQuarantineZone = null;
+      }
+
       const pixel = ev.pixel;
 
       self.map.forEachFeatureAtPixel(pixel, (feature, layer) => {
-        if (layer.get('id') === 'counties') {
-          return;
+        if (layer.get('id') === 'icons') {
+          self.selectedFeature = feature;
+          feature.setStyle(highlightStyle);
+          return true;
+        } else if(layer.get('id') === 'counties_quarantine'){
+          let style = new Style({
+            fill: new Fill({
+              color: 'rgba(255, 171, 69, 0.5)'
+            })
+          });
+          self.selectedQuarantineZone = feature;
+          feature.setStyle(style);
+          return true;
         }
 
-        self.selectedFeature = feature;
-        feature.setStyle(highlightStyle);
-        return true;
       });
     });
     //
@@ -331,11 +406,33 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedFeature = null;
       }
 
+      if (self.selectedQuarantineZone !== null) {
+        let style = new Style({
+          fill: new Fill({
+            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine') - 1]
+          })
+        });
+        self.selectedQuarantineZone.setStyle(style);
+        self.selectedQuarantineZone = null;
+      }
+
       const coords = self.map.getEventCoordinate(ev.originalEvent);
 
-      const feature = iconLayer.getSource().getClosestFeatureToCoordinate(coords);
-      self.selectedFeature = feature;
-      feature.setStyle(highlightStyle);
+      if(self.activeMap.id === 'quarantine'){
+        const feature = vectorLayerQuarantine.getSource().getClosestFeatureToCoordinate(coords);
+        self.selectedQuarantineZone = feature;
+        let style = new Style({
+          fill: new Fill({
+            color: 'rgba(255, 171, 69, 0.5)'
+          })
+        });
+
+        feature.setStyle(style);
+      } else {
+        const feature = iconLayer.getSource().getClosestFeatureToCoordinate(coords);
+        self.selectedFeature = feature;
+        feature.setStyle(highlightStyle);
+      }
     });
     return map;
   }
@@ -345,6 +442,30 @@ export class MapComponent implements OnInit, OnDestroy {
       return (y0 + y1) / 2;
     }
     return y0 + (x - x0) * (y1 - y0) / (x1 - x0);
+  }
+
+  activeMapChange(){
+    if (this.selectedFeature !== null) {
+      this.selectedFeature.setStyle(this.iconStyle);
+      this.selectedFeature = null;
+    }
+
+    if (this.selectedQuarantineZone !== null) {
+      let style = new Style({
+        fill: new Fill({
+          color: this.quarantineColors[this.selectedQuarantineZone.get('quarantine') - 1]
+        })
+      });
+      this.selectedQuarantineZone.setStyle(style);
+      this.selectedQuarantineZone = null;
+    }
+
+    this.router.navigate(['/'], {
+      queryParams: {
+        map: this.activeMap.alt_id
+      },
+      queryParamsHandling: 'merge'
+    });
   }
 
   ngOnDestroy(): void {

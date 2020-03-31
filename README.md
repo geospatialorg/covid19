@@ -1,5 +1,10 @@
-# Covid
-Project home: https://covid19.geo-spatial.org/dashboard/main
+# Coronavirus COVID-19 România
+
+Project home: [https://covid19.geo-spatial.org/dashboard/main](https://covid19.geo-spatial.org/dashboard/main)
+
+About: [https://covid19.geo-spatial.org/dashboard/despre](https://covid19.geo-spatial.org/dashboard/despre)
+
+----
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.25.
 

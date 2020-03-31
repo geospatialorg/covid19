@@ -1,24 +1,29 @@
-<ul id="layers" class="lg-only">
-  <li *ngFor="let item of maps">
-    <button pButton
-            label="{{item.title}}"
-            [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"
-            (click)="setActiveLayer(item)">
-    </button>
-  </li>
-  <!-- <li><button pButton label="Cazuri active" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li>
-  <li><button pButton label="Vindecari" [ngClass]="{'ui-button-secondary': activeMap.id !== 'healed'}" (click)="setActiveLayer('healed')"></button></li>
-  <li><button pButton label="Decese" [ngClass]="{'ui-button-secondary': activeMap.id !== 'deaths'}" (click)="setActiveLayer('deaths')"></button></li> -->
-</ul>
-<h2 class="xs-only" style="text-align: center;">Hartă cazuri</h2>
-<p-dropdown class="xs-only"
-            [options]="maps"
-            [(ngModel)]="activeMap"
-            optionLabel="title"
-            [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}">
-</p-dropdown>
+<div class="ui-card ui-corner-top">
+  <div class="ui-card-body">
+    <div class="lg-only">
+      <ul id="layers">
+        <li *ngFor="let item of maps">
+          <button pButton
+                  label="{{item.title}}"
+                  [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"
+                  (click)="setActiveLayer(item)">
+          </button>
+        </li>
+        <!-- <li><button pButton label="Zone carantina" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li> -->
+      </ul>
+    </div>
+    <div class="xs-only">
+      <h2 style="text-align: center;">Hartă cazuri</h2>
 
-<div id="map">
+      <p-dropdown [options]="maps"
+                  [(ngModel)]="activeMap"
+                  optionLabel="title"
+                  [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}" (onChange)="activeMapChange()">
+      </p-dropdown>
+    </div>
+  </div>
+</div>
+<div id="map" class="ui-card ui-corner-bottom">
   <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
     <h3>{{selectedFeature.get('county')}}</h3>
     <p>
@@ -30,6 +35,10 @@
       <em style="display: block;font-size: 12px;">(după locul externării)</em>
     </p>
     <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
-    <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> -->
-  </div>
+    <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> --></div>
+
+    <div class="info-modal" *ngIf="selectedQuarantineZone">
+      <h3>{{selectedQuarantineZone.get('uat')}}</h3>
+      <p>Populatie: {{selectedQuarantineZone.get('population')}}</p>
+    </div>
 </div>
