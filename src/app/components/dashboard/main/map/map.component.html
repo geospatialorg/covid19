@@ -1,25 +1,28 @@
 <div class="ui-card ui-corner-top">
   <div class="ui-card-body">
-    <ul id="layers" class="lg-only">
-      <li *ngFor="let item of maps">
-        <button pButton
-                label="{{item.title}}"
-                [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"
-                (click)="setActiveLayer(item)">
-        </button>
-      </li>
-    <!-- <li><button pButton label="Zone carantina" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li> -->
-    </ul>
+    <div class="lg-only">
+      <ul id="layers">
+        <li *ngFor="let item of maps">
+          <button pButton
+                  label="{{item.title}}"
+                  [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"
+                  (click)="setActiveLayer(item)">
+          </button>
+        </li>
+        <!-- <li><button pButton label="Zone carantina" [ngClass]="{'ui-button-secondary': activeMap.id !== 'active'}" (click)="setActiveLayer('active')"></button></li> -->
+      </ul>
+    </div>
+    <div class="xs-only">
+      <h2 style="text-align: center;">Hartă cazuri</h2>
+
+      <p-dropdown [options]="maps"
+                  [(ngModel)]="activeMap"
+                  optionLabel="title"
+                  [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}" (onChange)="activeMapChange()">
+      </p-dropdown>
+    </div>
   </div>
 </div>
-<h2 class="xs-only" style="text-align: center;">Hartă cazuri</h2>
-
-<p-dropdown class="xs-only"
-            [options]="maps"
-            [(ngModel)]="activeMap"
-            optionLabel="title"
-            [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}" (onChange)="activeMapChange()">
-</p-dropdown>
 <div id="map" class="ui-card ui-corner-bottom">
   <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
     <h3>{{selectedFeature.get('county')}}</h3>

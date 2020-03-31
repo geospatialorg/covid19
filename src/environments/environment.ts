@@ -3,9 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: '/api',
+  apiUrl: 'https://covid19.geo-spatial.org/api',
   production: false,
-  data_refresh: 30*60*1000
+  data_refresh: 30 * 60 * 1000,
+  notification_request_delay: 10000
 };
 
 /*

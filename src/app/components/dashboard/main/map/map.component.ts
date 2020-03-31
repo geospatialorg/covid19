@@ -81,11 +81,11 @@ export class MapComponent implements OnInit, OnDestroy {
     }
   ];
 
-  quarantineColors : any[] = [
-    "rgba(222, 0, 11, 0.5)",
-    "rgba(222, 0, 11, 0.5)",
+  quarantineColors: any[] = [
+    'rgba(222, 0, 11, 0.5)',
+    'rgba(222, 0, 11, 0.5)',
     // "rgba(255, 171, 69, 0.5)",
-    "rgba(251, 255, 0, 0.5)"
+    'rgba(251, 255, 0, 0.5)'
   ];
 
   map: Map;
@@ -247,7 +247,6 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
-    
     source.clear();
     const maxCases = this.mapData.map(county => county[this.activeMap.dataKey]).sort((a, b) => b - a);
     this.mapData.map(e => {
@@ -392,7 +391,7 @@ export class MapComponent implements OnInit, OnDestroy {
           feature.setStyle(style);
           return true;
         }
-        
+
       });
     });
     //
