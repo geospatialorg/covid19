@@ -8,6 +8,7 @@ import {SharedService} from '../../../services/shared.service';
   encapsulation: ViewEncapsulation.None
 })
 export class StatisticsComponent implements OnInit {
+  links : any[];
   constructor(private sharedService: SharedService) {
     this.sharedService.setMeta(
       'Statistici',
@@ -17,5 +18,27 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.links = [
+      {
+        routerLink: '/dashboard/statistici/statistici-generale',
+        label: 'Statistici generale',
+        classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/dashboard/statistici/relationare-cazuri',
+        label: 'Relaționare cazuri',
+        classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/dashboard/statistici/repartitie-cazuri-judete',
+        label: 'Repartiția cazurilor pe județe',
+        classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/dashboard/statistici/situatie-europa',
+        label: 'Situația cazurilor în Europa',
+        classes: 'ui-button-secondary'
+      }
+    ];
   }
 }

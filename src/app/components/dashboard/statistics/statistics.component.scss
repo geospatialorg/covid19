@@ -1,6 +1,17 @@
-.new-row {
-    margin-left: 5px !important;
+.sub-menu {
+    background-color: rgba(25, 118, 210, 0.4);
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 5px;
 }
+
+.sub-menu button {
+    margin-right: 5px;
+}
+
+// .new-row {
+//     margin-left: 5px !important;
+// }
 
 @media (max-width: 550px) {
     #maps-btn {
@@ -10,7 +21,7 @@
     }
 
     .new-row {
-        margin-left: unset !important;
+        margin-right: unset !important;
         margin-top: 5px !important;
      }
 }

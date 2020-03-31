@@ -34,13 +34,13 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Hărți',
         icon: 'pi pi-compass',
-        routerLink: '/dashboard/maps',
+        routerLink: '/dashboard/harti',
         visible: true
       },
       {
         label: 'Statistici',
         icon: 'pi pi-chart-line',
-        routerLink: '/dashboard/statistics',
+        routerLink: '/dashboard/statistici',
         visible: true
       },
       {
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Despre',
         icon: 'pi pi-info-circle',
-        routerLink: '/dashboard/about',
+        routerLink: '/dashboard/despre',
         visible: true
       },
       {

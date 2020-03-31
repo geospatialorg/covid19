@@ -91,6 +91,16 @@ export class MapComponent implements OnInit, OnDestroy {
   map: Map;
   mapData: any[] = [];
 
+  mapView: any = {
+    center: [2747146.7966, 5749287.5195],
+    extent: [1591113.1808, 5183042.0140, 3918467.8180, 6368121.7005],
+    zoom: 4,
+    maxZoom: 15,
+    minZoom: 3
+  };
+
+  zoomedMax : boolean = false;
+
   selectedFeature: any = null;
   selectedQuarantineZone: any = null;
 
@@ -150,6 +160,11 @@ export class MapComponent implements OnInit, OnDestroy {
     });
   }
 
+  zoomMap(){
+    
+    
+  }
+
   async loadData() {
     this.mapData = await this.getData();
     // this.interval = setInterval(() => {
@@ -168,6 +183,25 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       queryParamsHandling: 'merge'
     });
+
+    // if(layer.id === 'quarantine'){
+    //   const l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
+    
+    //   if(l){
+    //     const extent = l.getSource().getExtent();
+    //     this.map.getView().fit(extent, 1000);
+    //   }
+    //   this.zoomedMax = false;
+    // } else {
+    //   if(!this.zoomedMax){
+    //     this.map.getView().animate({
+    //       zoom: this.mapView.zoom,
+    //       center: this.mapView.center,
+    //       duration: 500
+    //     });
+    //     this.zoomedMax = true;
+    //   }
+    // }
   }
 
   private getData() {
@@ -345,11 +379,11 @@ export class MapComponent implements OnInit, OnDestroy {
       ],
       target: 'map',
       view: new View({
-        center: [2747146.7966, 5749287.5195],
-        extent: [1591113.1808, 5183042.0140, 3918467.8180, 6368121.7005],
-        zoom: 4,
-        maxZoom: 15,
-        minZoom: 3
+        center: this.mapView.center,
+        extent: this.mapView.extent,
+        zoom: this.mapView.zoom,
+        maxZoom: this.mapView.maxZoom,
+        minZoom: this.mapView.minZoom
       })
     });
     //
