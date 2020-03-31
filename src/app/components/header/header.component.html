@@ -6,7 +6,7 @@
   <ul  class="topbar-menu">
     <ng-container *ngFor="let item of items" >
       <li *ngIf="item.visible">
-        <a [routerLink]="item.routerLink" >
+        <a [routerLink]="item.routerLink" routerLinkActive="active">
           <span class="topbar-submenu-icon" [class]="item.icon"></span>&nbsp;
           <span>{{item.label}}</span>
         </a>
