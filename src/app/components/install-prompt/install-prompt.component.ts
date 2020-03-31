@@ -8,16 +8,9 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 })
 export class InstallPromptComponent implements OnInit {
 
-  @ViewChild('oPanelInstall', {static: false}) installPanel;
-
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  openModal(event) {
-    this.installPanel.toggle(event);
   }
 
 }

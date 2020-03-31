@@ -84,11 +84,11 @@ import {HospitalInfrastructureComponent} from './components/dashboard/maps/hospi
 import {CountiesCasesComponent} from './components/dashboard/statistics/counties-cases/counties-cases.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 
-import {InstallPromptComponent} from './components/install-prompt/install-prompt.component';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {PwaService} from './services/pwa.service';
+import {InstallPromptComponent} from './components/install-prompt/install-prompt.component';
 
-const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
+const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initService();
 
 @NgModule({
   declarations: [
@@ -175,14 +175,14 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initP
     ChartModule,
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: true, registrationStrategy: 'registerImmediately'}),
-    OverlayPanelModule,
+    OverlayPanelModule
   ],
   providers: [
     MessageService,
     ConfirmationService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    // {provide: APP_INITIALIZER, useFactory: pwaServiceInitializer, deps: [PwaService], multi: true},
+    {provide: APP_INITIALIZER, useFactory: pwaServiceInitializer, deps: [PwaService], multi: true},
   ],
   bootstrap: [AppComponent]
 })

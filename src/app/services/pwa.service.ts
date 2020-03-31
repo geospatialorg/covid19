@@ -3,7 +3,9 @@ import {Injectable} from '@angular/core';
 import {Platform} from '@angular/cdk/platform';
 import {timer} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {InstallPromptComponent} from '../_components/install-prompt/install-prompt.component';
+import {InstallPromptComponent} from '../components/install-prompt/install-prompt.component';
+import {NotificationsService} from './notifications.service';
+import {environment as appConfig} from '../../environments/environment';
 
 
 @Injectable({
@@ -13,26 +15,40 @@ export class PwaService {
   private promptEvent: any;
 
   constructor(
-    private promptComponent: InstallPromptComponent,
-    private platform: Platform
+    private platform: Platform,
+    private notificationsService: NotificationsService
   ) {
   }
 
-  public initPwaPrompt() {
-    console.log(this.platform);
-    if (this.platform.ANDROID) {
-      window.addEventListener('beforeinstallprompt', (event: any) => {
-        event.preventDefault();
-        this.promptEvent = event;
-        this.openPromptComponent('android');
-      });
+  initService() {
+    this.iniNotificationPrompt();
+  }
+
+  public iniNotificationPrompt() {
+    if (this.notificationsService.canRequestPermission()) {
+      timer(appConfig.notification_request_delay)
+        .pipe(take(1))
+        .subscribe(() => {
+          this.notificationsService.requestPermission();
+        });
     }
-    if (this.platform.IOS) {
-      const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator['standalone']);
-      if (!isInStandaloneMode) {
-        this.openPromptComponent('ios');
-      }
-    }
+  }
+
+  public initInstallPrompt() {
+    // console.log(this.platform);
+    // if (this.platform.ANDROID) {
+    //   window.addEventListener('beforeinstallprompt', (event: any) => {
+    //     event.preventDefault();
+    //     this.promptEvent = event;
+    //     this.openPromptComponent('android');
+    //   });
+    // }
+    // if (this.platform.IOS) {
+    //   const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator['standalone']);
+    //   if (!isInStandaloneMode) {
+    //     this.openPromptComponent('ios');
+    //   }
+    // }
   }
 
   private openPromptComponent(mobileType: 'ios' | 'android') {
