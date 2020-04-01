@@ -91,7 +91,7 @@ export class MapComponent implements OnInit, OnDestroy {
   map: Map;
   mapData: any[] = [];
 
-  quarantineExtent: number[] = [2777098.47, 5954700.54, 2972709.08, 6104858.69]
+  quarantineExtent: number[] = [2777098.47, 5954700.54, 2972709.08, 6104858.69];
 
   mapView: any = {
     center: [2747146.7966, 5749287.5195],
@@ -101,7 +101,7 @@ export class MapComponent implements OnInit, OnDestroy {
     minZoom: 3
   };
 
-  zoomedMax : boolean = false;
+  zoomedMax: boolean = false;
 
   selectedFeature: any = null;
   selectedQuarantineZone: any = null;
@@ -153,12 +153,14 @@ export class MapComponent implements OnInit, OnDestroy {
         entry = this.maps[0];
       }
       this.activeMap = entry;
-      if(this.activeMap.style) this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
+      if (this.activeMap.style) {
+        this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
+      }
       this.initMap();
     });
   }
 
-  private getGeojsonData(){
+  private getGeojsonData() {
     return this.dashboardService.getGeojsonData().toPromise().then(data => {
       return data ? data : null;
     });
@@ -173,7 +175,7 @@ export class MapComponent implements OnInit, OnDestroy {
     //   });
     // }, appConfig.data_refresh);
   }
-  
+
   setActiveLayer(layer) {
     this.activeMap = layer;
 
@@ -184,13 +186,13 @@ export class MapComponent implements OnInit, OnDestroy {
       queryParamsHandling: 'merge'
     });
 
-    if(layer.id === 'quarantine'){
-      let l = this.map.getLayers().getArray().find(e => e.get('id') === "counties_quarantine");
-      console.log(l.getSource().getExtent())
+    if (layer.id === 'quarantine') {
+      let l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
+      console.log(l.getSource().getExtent());
       this.map.getView().fit(this.quarantineExtent);
       this.zoomedMax = false;
     } else {
-      if(!this.zoomedMax){
+      if (!this.zoomedMax) {
         this.map.getView().animate({
           zoom: this.mapView.zoom,
           center: this.mapView.center,
@@ -258,9 +260,9 @@ export class MapComponent implements OnInit, OnDestroy {
       this.map = this.initOpenLayerMap(this.mapIconLayer, self, this.iconStyle, highlightStyle);
     }
 
-    if(this.activeMap.id === 'quarantine'){
+    if (this.activeMap.id === 'quarantine') {
       this.map.getLayers().getArray().map(e => {
-        if(['icons'].includes(e.get('id'))){
+        if (['icons'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
@@ -272,14 +274,14 @@ export class MapComponent implements OnInit, OnDestroy {
 
     } else {
       this.map.getLayers().getArray().map(e => {
-        if(['counties_quarantine', 'roads', 'checkpoints'].includes(e.get('id'))){
+        if (['counties_quarantine', 'roads', 'checkpoints'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
         }
       });
     }
-    
+
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
@@ -314,19 +316,19 @@ export class MapComponent implements OnInit, OnDestroy {
     });
   }
 
-  quarantineStyles(feature){
+  quarantineStyles(feature) {
     const stroke = new Stroke({
       color: '#984ea3',
       width: 0.3
     });
-    
+
     const styleQuarantine = new Style({
       stroke: stroke
     });
-    
-    if(feature && feature.get('quarantine')){
+
+    if (feature && feature.get('quarantine')) {
       styleQuarantine.setFill(new Fill({
-        color: this.quarantineColors[feature.get('quarantine')-1]
+        color: this.quarantineColors[feature.get('quarantine') - 1]
       }));
     }
 
@@ -340,12 +342,12 @@ export class MapComponent implements OnInit, OnDestroy {
     return [styleQuarantine, styleQuarantineHover];
   }
 
-  roadsStyles(){
+  roadsStyles() {
     const stroke = new Stroke({
       color: '#0166CC',
       width: 2
     });
-    
+
     const styleRoads = new Style({
       stroke: stroke,
       // fill: new Fill({
@@ -363,7 +365,7 @@ export class MapComponent implements OnInit, OnDestroy {
     return [styleRoads, styleRoadsHover];
   }
 
-  checkpointsStyles(){
+  checkpointsStyles() {
     const stroke = new Stroke({
       color: '#0166CC',
       width: 1
@@ -372,13 +374,13 @@ export class MapComponent implements OnInit, OnDestroy {
     var fill = new Fill({
       color: 'rgba(255,255,255,0.4)'
     });
-    
+
     const styleCheckpoints = new Style({
-        image: new Circle({
-          fill: fill,
-          stroke: stroke,
-          radius: 5
-        })
+      image: new Circle({
+        fill: fill,
+        stroke: stroke,
+        radius: 5
+      })
     });
 
     // const styleQuarantineHover = new Style({
@@ -528,19 +530,19 @@ export class MapComponent implements OnInit, OnDestroy {
           self.selectedFeature = feature;
           feature.setStyle(highlightStyle);
           return true;
-        } else if(layer.get('id') === 'counties_quarantine'){
+        } else if (layer.get('id') === 'counties_quarantine') {
           let style = self.quarantineStyles(null)[1];
 
           self.selectedQuarantineZone = feature;
           feature.setStyle(style);
           return true;
-        } else if(layer.get('id') === 'roads'){
-            let style = self.roadsStyles()[1];
+        } else if (layer.get('id') === 'roads') {
+          let style = self.roadsStyles()[1];
 
-            self.selectedRoad = feature;
-            feature.setStyle(style);
-            return true;
-        } else if(layer.get('id') === 'checkpoints'){
+          self.selectedRoad = feature;
+          feature.setStyle(style);
+          return true;
+        } else if (layer.get('id') === 'checkpoints') {
           self.selectedCheckpoint = feature;
           // feature.getStyle().setFill(new Fill(this.activeMap.style.fill))
           return true;
@@ -572,7 +574,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
       const coords = self.map.getEventCoordinate(ev.originalEvent);
 
-      if(self.activeMap.id === 'quarantine'){
+      if (self.activeMap.id === 'quarantine') {
         const feature = vectorLayerQuarantine.getSource().getClosestFeatureToCoordinate(coords);
         self.selectedQuarantineZone = feature;
         let style = new Style({
@@ -599,7 +601,7 @@ export class MapComponent implements OnInit, OnDestroy {
     return y0 + (x - x0) * (y1 - y0) / (x1 - x0);
   }
 
-  activeMapChange(){
+  activeMapChange() {
     if (this.selectedFeature !== null) {
       this.selectedFeature.setStyle(this.iconStyle);
       this.selectedFeature = null;

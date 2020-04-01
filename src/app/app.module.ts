@@ -88,8 +88,11 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {PwaService} from './services/pwa.service';
 import {InstallPromptComponent} from './components/install-prompt/install-prompt.component';
 import {DashboardService} from './services';
+import {environment} from '../environments/environment';
+import {NotificationsService} from './services/notifications.service';
 
-const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initService();
+const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
+const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
 
 @NgModule({
   declarations: [
@@ -175,7 +178,10 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initS
     SpinnerModule,
     ChartModule,
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: true, registrationStrategy: 'registerImmediately'}),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.enable_service_worker,
+      registrationStrategy: 'registerImmediately'
+    }),
     OverlayPanelModule
   ],
   providers: [
@@ -185,6 +191,7 @@ const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.initS
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: APP_INITIALIZER, useFactory: pwaServiceInitializer, deps: [PwaService], multi: true},
+    {provide: APP_INITIALIZER, useFactory: notificationsServiceInitializer, deps: [NotificationsService], multi: true},
   ],
   bootstrap: [AppComponent]
 })

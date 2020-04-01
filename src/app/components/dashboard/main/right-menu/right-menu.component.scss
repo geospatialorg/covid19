@@ -1,0 +1,14 @@
+.right-menu {
+  width: 100%;
+  .borderlessTable {
+    overflow-y: auto;
+    max-height: 180px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .borderlessTable {
+      overflow-y: hidden;
+      max-height: 100%;
+    }
+  }
+}

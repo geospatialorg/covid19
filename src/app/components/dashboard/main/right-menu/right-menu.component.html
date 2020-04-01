@@ -1,4 +1,4 @@
-<div id="custom-grid" class="no-margin no-padding" #rightMenu *ngIf="dataReady">
+<div id="custom-grid" class="no-margin no-padding right-menu" #rightMenu *ngIf="dataReady">
   <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 no-border no-padding">
     <div class="ui-grid ">
       <div class="ui-g-12">
@@ -14,7 +14,7 @@
       <div class="ui-g-12">
         <div class="ui-card ui-corner-all">
           <div class=" ui-card-body">
-            <div style="overflow-y: auto; max-height: 180px" class="borderlessTable">
+            <div class="borderlessTable">
               <p-table [value]="tableDataRecovered" class="addNewRasterTable" selectionMode="single">
                 <ng-template pTemplate="header">
                   <tr>
@@ -89,7 +89,7 @@
   <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12">
 
     <p-card [style]="{width: '100%', height: '100%', textAlign: 'center'}">
-      <app-graphics [parentWidth]="rightMenu.offsetWidth" *ngIf="dataReady"></app-graphics>
+      <app-graphics [parentWidth]="rightMenu.offsetWidth"></app-graphics>
     </p-card>
   </div>
 </div>

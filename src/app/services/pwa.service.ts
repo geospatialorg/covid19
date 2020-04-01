@@ -1,11 +1,8 @@
 import {Injectable} from '@angular/core';
 
 import {Platform} from '@angular/cdk/platform';
-import {timer} from 'rxjs';
-import {take} from 'rxjs/operators';
-import {InstallPromptComponent} from '../components/install-prompt/install-prompt.component';
-import {NotificationsService} from './notifications.service';
-import {environment as appConfig} from '../../environments/environment';
+import {environment, environment as appConfig} from '../../environments/environment';
+import {SwUpdate} from '@angular/service-worker';
 
 
 @Injectable({
@@ -16,31 +13,39 @@ export class PwaService {
 
   constructor(
     private platform: Platform,
-    private notificationsService: NotificationsService
+    private swUpdate: SwUpdate
   ) {
   }
 
-  initService() {
-    this.iniNotificationPrompt();
-    this.initInstallPrompt();
-  }
-
-  public iniNotificationPrompt() {
-    if (this.notificationsService.canRequestPermission()) {
-      timer(appConfig.notification_request_delay)
-        .pipe(take(1))
-        .subscribe(() => {
-          this.notificationsService.requestPermission();
-        });
+  init() {
+    if (this.enabled()) {
+      // do magic
+      this.promptInstall();
     }
   }
 
-  public initInstallPrompt() {
+  enabled() {
+    return environment.enable_service_worker && environment.enable_pwa_mobile_install;
+  }
+
+
+  promptInstall() {
+
     // disable install for the moment
-    window.addEventListener('beforeinstallprompt', (event: any) => {
-      event.preventDefault();
-      return;
-    });
+    if (true || !this.enabled()) {
+      window.addEventListener('beforeinstallprompt', (event: any) => {
+        event.preventDefault();
+        return;
+      });
+    }
+    return;
+
+    // navigator.serviceWorker.addEventListener('controllerchange', () => {
+    //   // This fires when the service worker controlling this page
+    //   // changes, eg a new worker has skipped waiting and become
+    //   // the new active worker.
+    // });
+
     // console.log(this.platform);
     // if (this.platform.ANDROID) {
     //   window.addEventListener('beforeinstallprompt', (event: any) => {
@@ -55,6 +60,28 @@ export class PwaService {
     //     this.openPromptComponent('ios');
     //   }
     // }
+    //
+    //
+    // this.swUpdate.available.subscribe(event => {
+    //   console.log('current version is', event.current);
+    //   console.log('available version is', event.available);
+    // });
+    // this.swUpdate.activated.subscribe(event => {
+    //   console.log('old version was', event.previous);
+    //   console.log('new version is', event.current);
+    // });
+    //
+    // this.swUpdate.available.subscribe(event => {
+    //   this.swUpdate.activateUpdate().then(() => this.updateApp());
+    // });
+  }
+
+  private updateApp() {
+    console.log('app update')
+    // found some cases when path is 500, not sure why, maybe because sw updates
+    document.location.href = document.location.origin;
+    console.log('The app is updating right now');
+
   }
 
   private openPromptComponent(mobileType: 'ios' | 'android') {

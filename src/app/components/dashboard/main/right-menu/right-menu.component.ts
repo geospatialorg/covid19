@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardService} from 'src/app/services';
 import {environment as appConfig} from '../../../../../environments/environment';
 import {combineLatest, forkJoin} from 'rxjs';
@@ -11,7 +11,7 @@ import {AllCasesByCountyResponse} from '../../../../interfaces/all-cases-by-coun
   templateUrl: './right-menu.component.html',
   styleUrls: ['./right-menu.component.scss']
 })
-export class RightMenuComponent implements OnInit, OnDestroy {
+export class RightMenuComponent implements OnInit, OnDestroy, AfterViewInit {
   tableDataDeath: any[] = [];
   tableDataRecovered: any[] = [];
   totalDeaths = 0;
@@ -19,25 +19,28 @@ export class RightMenuComponent implements OnInit, OnDestroy {
 
   dataReady = false;
 
-  constructor(private dashboardService: DashboardService) {
-  }
+  constructor(private dashboardService: DashboardService) {}
 
 
   ngOnInit(): void {
-    this.dashboardService.currentCases.subscribe((response: AllCasesByCountyResponse) => {
-      if (response.deaths && response.deaths.data) {
-        this.tableDataDeath = response.deaths.data;
-        this.totalDeaths = response.deaths.total;
-      }
-      if (response.healed && response.healed.data) {
-        this.tableDataRecovered = response.healed.data;
-        this.totalHealed = response.healed.total;
-      }
+    setTimeout(() => {
+      this.dashboardService.currentCases.subscribe((response: AllCasesByCountyResponse) => {
+        if (response.deaths && response.deaths.data) {
+          this.tableDataDeath = response.deaths.data;
+          this.totalDeaths = response.deaths.total;
+        }
+        if (response.healed && response.healed.data) {
+          this.tableDataRecovered = response.healed.data;
+          this.totalHealed = response.healed.total;
+        }
 
-      this.dataReady = true;
-    });
+        this.dataReady = true;
+      });
+    }, 10);
   }
 
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void {}
+
+  ngAfterViewInit(): void {}
+
 }

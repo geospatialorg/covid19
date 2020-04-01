@@ -119,13 +119,11 @@ export class DashboardService {
       const oldTotals = storedCases.confirmed + storedCases.deaths + storedCases.healed;
       if (newTotals !== oldTotals) {
         let message = '';
-        message += 'Cazuri confirmate: ' + newCases.confirmed + '. ';
-        message += 'Cazuri vindecate: ' + newCases.healed + '. ';
-        message += 'Decese: ' + newCases.deaths + '. ';
-        // delay the trigger a little bit
-        setTimeout(() => {
-          this.notificationsService.showNotification(message);
-        }, 5000);
+        message += '<p>Cazuri confirmate: ' + newCases.confirmed + '. <.p>';
+        message += '<p>Cazuri vindecate: ' + newCases.healed + '. </p>';
+        message += '<p>Decese: ' + newCases.deaths + '. </p>';
+
+        this.notificationsService.showNotification(message);
       }
     }
     this.storageService.set(TOTAL_CASES_KEY, newCases);
