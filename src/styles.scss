@@ -41,15 +41,6 @@ body .ui-table .ui-table-thead > tr > th {
   left: 0;
 }
 
-.footer {
-  padding: 15px 15px 0 15px;
-  background-color: #1976d2;
-  color: #ffffff;
-  height: 45px;
-  font-size: 14px;
-  text-align: center;
-}
-
 .info-modal {
   background-color: rgba(152, 78, 163, 0.8);
   position: absolute;
@@ -71,7 +62,7 @@ body .ui-table .ui-table-thead > tr > th {
 }
 
 
-/* css adus cin cr0328 */
+/* css adus din cr0328 */
 /* You can add global styles to this file, and also import other style files */
 body .ui-table .ui-table-tbody > trr:nth-child(2n+1) {
   background: #f8f8f8;
@@ -362,7 +353,7 @@ body .ui-panel {
   display: none !important;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
   .xs-only {
     display: unset !important;
   }

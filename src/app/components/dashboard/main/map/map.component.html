@@ -20,7 +20,7 @@
             optionLabel="title"
             [style]="{'width': '100%', 'margin-bottom': '5px', 'margin-top': '5px'}" (onChange)="activeMapChange()">
 </p-dropdown>
-<div id="map" class="ui-card ui-corner-bottom">
+<div id="map">
   <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
     <h3>{{selectedFeature.get('county')}}</h3>
     <p>
