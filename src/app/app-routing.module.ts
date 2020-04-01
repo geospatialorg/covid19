@@ -34,10 +34,10 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: '', redirectTo: 'main', pathMatch: 'full' },
-      { path: 'about', component: AboutComponent },
+      { path: 'despre', component: AboutComponent },
       { path: 'manifest', component: ManifestComponent },
       {
-        path: 'maps',
+        path: 'harti',
         component: MapsComponent,
         children: [
           { path: '', redirectTo: 'no2-emission', pathMatch: 'full' },
@@ -57,13 +57,14 @@ const routes: Routes = [
         component: MainComponent
       },
       {
-        path: 'statistics',
+        path: 'statistici',
         component: StatisticsComponent,
         children: [
-          { path: '', redirectTo: 'general-statistics', pathMatch: 'full' },
-          { path: 'general-statistics', component: GeneralStatisticsComponent },
-          { path: 'relation-cases', component: RelationCasesComponent },
-          { path: 'counties-cases', component: CountiesCasesComponent }
+          { path: '', redirectTo: 'statistici-generale', pathMatch: 'full' },
+          { path: 'statistici-generale', component: GeneralStatisticsComponent },
+          { path: 'relationare-cazuri', component: RelationCasesComponent },
+          { path: 'repartitie-cazuri-judete', component: CountiesCasesComponent },
+          { path: 'situatie-europa', component: CoronavirusEuropeComponent }
         ]
       },
       {

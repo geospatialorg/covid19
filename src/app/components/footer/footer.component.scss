@@ -1,14 +1,23 @@
+// .footer {
+//   padding: 10px 5px;
+//   background-color: #1976d2;
+//   color: #ffffff;
+//   font-size: 13px;
+//   text-align: center;
+// }
+
 .layout-footer {
-  color: #000000;
+  padding: 10px 5px;
+  color: #ffffff;
   font-weight: bold;
+  background-color: #1976d2;
+  font-size: 14px;
+  text-align: center;
+}
 
-  .footer-links {
-    float: right;
-    font-size: 24px;
-
-    a {
-      color: #000000;
-      margin-left: 16px;
-    }
+@media screen and (max-width: 600px) {
+  .layout-footer {
+    padding: 10px 5px;
+    font-size: 12px;
   }
 }
