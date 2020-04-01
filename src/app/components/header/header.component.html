@@ -1,5 +1,5 @@
 <div class="layout-topbar">
-  <div class="logo" style="text-align: unset;">
+  <div class="logo">
     <button pButton icon="pi pi-bars" class="ui-button-secondary ui-button-raised xs-only" (click)="showSidebar(true)"></button>
     <h2 [routerLink]="['/dashboard/main']">Coronavirus COVID-19 România</h2>
   </div>
@@ -18,7 +18,6 @@
 <p-sidebar [(visible)]="displaySidebar" [showCloseIcon]="false" [style]="{padding: 0}">
   <h2 class="sidebar-title">
     Coronavirus COVID-19 România
-    &lt;!&ndash; <button style="float: right" pButton class="ui-button-secondary ui-button-raised" icon="fa fa-times" (click)="showSidebar(false)"></button> &ndash;&gt;
   </h2>
   <div class="sidebar-content">
     <h3>MENIU NAVIGARE</h3>

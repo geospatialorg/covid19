@@ -1,0 +1,25 @@
+{
+"type": "FeatureCollection",
+"name": "puncte_verificare",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "Descriere": "DJ 178 Centrul localității Mihoveni" }, "geometry": { "type": "Point", "coordinates": [ 26.183583455379626, 47.678989841693763 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "Descriere": "DN 17 Trei Movile" }, "geometry": { "type": "Point", "coordinates": [ 26.145372465201188, 47.635490190825898 ] } },
+{ "type": "Feature", "properties": { "fid": 3, "Descriere": "DJ 209 C Moara" }, "geometry": { "type": "Point", "coordinates": [ 26.208827128774889, 47.618649430826132 ] } },
+{ "type": "Feature", "properties": { "fid": 4, "Descriere": "DN 2 cu DJ 74 C Cumpărătura" }, "geometry": { "type": "Point", "coordinates": [ 26.268469923668739, 47.581237276746066 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "Descriere": "DJ 208 A Bosanci spre Luncușoara" }, "geometry": { "type": "Point", "coordinates": [ 26.3395012580593, 47.594491917471061 ] } },
+{ "type": "Feature", "properties": { "fid": 6, "Descriere": "DJ 290 Văratec" }, "geometry": { "type": "Point", "coordinates": [ 26.38037681268127, 47.644594704731524 ] } },
+{ "type": "Feature", "properties": { "fid": 7, "Descriere": "DN 29 Salcea" }, "geometry": { "type": "Point", "coordinates": [ 26.382376503874124, 47.652635465118287 ] } },
+{ "type": "Feature", "properties": { "fid": 8, "Descriere": "DN 2 Pătrăuți" }, "geometry": { "type": "Point", "coordinates": [ 26.187103041918739, 47.702430561192294 ] } },
+{ "type": "Feature", "properties": { "fid": 9, "Descriere": "DC 59 Fetești" }, "geometry": { "type": "Point", "coordinates": [ 26.338824550224889, 47.706145015708678 ] } },
+{ "type": "Feature", "properties": { "fid": 10, "Descriere": "DN 29 A cu DJ 208D Adâncata" }, "geometry": { "type": "Point", "coordinates": [ 26.295512551971289, 47.740512366030593 ] } },
+{ "type": "Feature", "properties": { "fid": 11, "Descriere": "DN 2 Drăgușeni" }, "geometry": { "type": "Point", "coordinates": [ 26.489484121712582, 47.296072077071749 ] } },
+{ "type": "Feature", "properties": { "fid": 12, "Descriere": "DN 17 B Broșteni" }, "geometry": { "type": "Point", "coordinates": [ 25.692493487705587, 47.238454128884577 ] } },
+{ "type": "Feature", "properties": { "fid": 13, "Descriere": "DN 17 Poiana Stampei" }, "geometry": { "type": "Point", "coordinates": [ 25.139031097198888, 47.322932581151122 ] } },
+{ "type": "Feature", "properties": { "fid": 14, "Descriere": "DN 18 Cârlibaba" }, "geometry": { "type": "Point", "coordinates": [ 25.128231047064116, 47.571037399536216 ] } },
+{ "type": "Feature", "properties": { "fid": 15, "Descriere": "DJ 208 A Dolhasca" }, "geometry": { "type": "Point", "coordinates": [ 26.605993818764489, 47.429063025122701 ] } },
+{ "type": "Feature", "properties": { "fid": 16, "Descriere": "DN 2\/DN 29C Siret" }, "geometry": { "type": "Point", "coordinates": [ 26.070998956531746, 47.961637656179164 ] } },
+{ "type": "Feature", "properties": { "fid": 17, "Descriere": "DJ 208 C – Vorona (Botoșani)" }, "geometry": { "type": "Point", "coordinates": [ 26.643758941433177, 47.597184783030123 ] } },
+{ "type": "Feature", "properties": { "fid": 18, "Descriere": "DN 15 C – Oglinzi (Neamț)" }, "geometry": { "type": "Point", "coordinates": [ 26.373177764032054, 47.250860144215011 ] } }
+]
+}

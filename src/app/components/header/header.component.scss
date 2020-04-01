@@ -1,11 +1,12 @@
 .layout-topbar {
-  padding: 0 0 0 15px;
+  padding: 15px;
   background-color: #1976d2;
   color: #ffffff;
 
   .logo {
     width: 30%;
     cursor: pointer;
+    text-align: unset;
   }
 
   .topbar-menu {
@@ -20,8 +21,8 @@
 
   .topbar-menu li a {
     color: #fff;
-    line-height: 70px;
-    padding: 0 15px;
+    padding: 15px;
+    display: block;
   }
 
   .topbar-menu li a:hover {
@@ -32,14 +33,12 @@
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-  .topbar-menu li a span {
-    margin-left: 3px;
-  }
-
   .logo h2 {
+    text-align: center;
     font-size: 18px;
   }
 }
+
 
 @media screen and (max-width: 600px) {
   .layout-topbar {
@@ -61,35 +60,40 @@
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 991px) {
+@media screen and (min-width: 601px) and (max-width: 1055px){
   .layout-topbar {
-    padding: 15px;
-
     .logo {
       width: 100%;
       text-align: center;
-      display: none;
     }
 
     .logo h2 {
-      font-size: 14px;
+      font-size: 18px;
     }
 
     .topbar-menu {
-      height: auto;
+      padding-left: 0;
       width: 100%;
       display: flex;
       justify-content: space-around;
     }
 
+    .topbar-menu li {
+      min-width: 100px;
+    }
+
     .topbar-menu li a {
-      line-height: 44px;
       text-align: center;
       font-size: 14px;
-      padding: 0 8px;
+      padding: 5px;
+    }
+
+    .topbar-menu li a span.pi {
+      display: block;
     }
   }
 }
+
 
 /**** SIDEBAR MENU ********/
 
