@@ -14,6 +14,10 @@ const TOTAL_CASES_KEY = KEY_PREFIX + 'TOTALS';
   providedIn: 'root'
 })
 export class DashboardService {
+
+  /* set to true to see random totals and notification */
+  private testNotificationEnableRandomTotals = false;
+
   public cases: AllCasesByCountyResponse = {
     confirmed: {total: 0, data: []},
     deaths: {total: 0, data: []},
@@ -76,23 +80,7 @@ export class DashboardService {
           this.getDeadCasesByCounty(),
           this.getHealthCasesByCounty()
         ]).pipe(
-        map(
-          ([casesByCounty, deadCasesByCounty, healthCasesByCounty]): AllCasesByCountyResponse => {
-            // force data changes to test notifications
-            // const min = 10;
-            // const max = 10000;
-            //
-            // casesByCounty.data.total = casesByCounty.data.total + Math.floor(Math.random() * (max - min + 1)) + min;
-            // deadCasesByCounty.data.total = deadCasesByCounty.data.total + Math.floor(Math.random() * (max - min + 1)) + min;
-            // healthCasesByCounty.data.total = healthCasesByCounty.data.total + Math.floor(Math.random() * (max - min + 1)) + min;
-
-            return {
-              confirmed: casesByCounty.data ? casesByCounty.data : null,
-              deaths: deadCasesByCounty.data ? deadCasesByCounty.data : null,
-              healed: healthCasesByCounty.data ? healthCasesByCounty.data : null
-            };
-          }
-        )
+        map((response): AllCasesByCountyResponse => this.mapResponse(response))
         )
       )
     ).subscribe((response: AllCasesByCountyResponse) => {
@@ -119,13 +107,31 @@ export class DashboardService {
       const oldTotals = storedCases.confirmed + storedCases.deaths + storedCases.healed;
       if (newTotals !== oldTotals) {
         let message = '';
-        message += '<p>Cazuri confirmate: ' + newCases.confirmed + '. <.p>';
-        message += '<p>Cazuri vindecate: ' + newCases.healed + '. </p>';
-        message += '<p>Decese: ' + newCases.deaths + '. </p>';
+        message += 'Cazuri confirmate: ' + newCases.confirmed + '. ';
+        message += 'Cazuri vindecate: ' + newCases.healed + '. ';
+        message += 'Decese: ' + newCases.deaths + '. ';
 
         this.notificationsService.showNotification(message);
       }
     }
     this.storageService.set(TOTAL_CASES_KEY, newCases);
+  }
+
+  private mapResponse([casesByCounty, deadCasesByCounty, healthCasesByCounty]): AllCasesByCountyResponse {
+    // force data changes to test notifications
+    if (this.testNotificationEnableRandomTotals) {
+      const min = 10;
+      const max = 10000;
+
+      casesByCounty.data.total = casesByCounty.data.total + Math.floor(Math.random() * (max - min + 1)) + min;
+      deadCasesByCounty.data.total = deadCasesByCounty.data.total + Math.floor(Math.random() * (max - min + 1)) + min;
+      healthCasesByCounty.data.total = healthCasesByCounty.data.total + Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    return {
+      confirmed: casesByCounty.data ? casesByCounty.data : null,
+      deaths: deadCasesByCounty.data ? deadCasesByCounty.data : null,
+      healed: healthCasesByCounty.data ? healthCasesByCounty.data : null
+    };
   }
 }
