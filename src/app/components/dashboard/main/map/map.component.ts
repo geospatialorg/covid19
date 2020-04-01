@@ -11,7 +11,7 @@ import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import {OSM, Vector as VectorSource} from 'ol/source';
 
 import GeoJSON from 'ol/format/GeoJSON';
-import {Fill, Stroke, Style, Text} from 'ol/style';
+import {Fill, Stroke, Style, Text, Icon} from 'ol/style';
 import Circle from 'ol/geom/Circle';
 import Feature from 'ol/Feature';
 
@@ -91,6 +91,8 @@ export class MapComponent implements OnInit, OnDestroy {
   map: Map;
   mapData: any[] = [];
 
+  quarantineExtent: number[] = [2777098.47, 5954700.54, 2972709.08, 6104858.69]
+
   mapView: any = {
     center: [2747146.7966, 5749287.5195],
     extent: [1591113.1808, 5183042.0140, 3918467.8180, 6368121.7005],
@@ -103,6 +105,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
   selectedFeature: any = null;
   selectedQuarantineZone: any = null;
+  selectedRoad: any = null;
+  selectedCheckpoint: any = null;
 
   private interval: any;
 
@@ -160,11 +164,6 @@ export class MapComponent implements OnInit, OnDestroy {
     });
   }
 
-  zoomMap(){
-    
-    
-  }
-
   async loadData() {
     this.mapData = await this.getData();
     // this.interval = setInterval(() => {
@@ -174,6 +173,7 @@ export class MapComponent implements OnInit, OnDestroy {
     //   });
     // }, appConfig.data_refresh);
   }
+  
   setActiveLayer(layer) {
     this.activeMap = layer;
 
@@ -184,24 +184,21 @@ export class MapComponent implements OnInit, OnDestroy {
       queryParamsHandling: 'merge'
     });
 
-    // if(layer.id === 'quarantine'){
-    //   const l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
-    
-    //   if(l){
-    //     const extent = l.getSource().getExtent();
-    //     this.map.getView().fit(extent, 1000);
-    //   }
-    //   this.zoomedMax = false;
-    // } else {
-    //   if(!this.zoomedMax){
-    //     this.map.getView().animate({
-    //       zoom: this.mapView.zoom,
-    //       center: this.mapView.center,
-    //       duration: 500
-    //     });
-    //     this.zoomedMax = true;
-    //   }
-    // }
+    if(layer.id === 'quarantine'){
+      let l = this.map.getLayers().getArray().find(e => e.get('id') === "counties_quarantine");
+      console.log(l.getSource().getExtent())
+      this.map.getView().fit(this.quarantineExtent);
+      this.zoomedMax = false;
+    } else {
+      if(!this.zoomedMax){
+        this.map.getView().animate({
+          zoom: this.mapView.zoom,
+          center: this.mapView.center,
+          duration: 500
+        });
+        this.zoomedMax = true;
+      }
+    }
   }
 
   private getData() {
@@ -269,15 +266,20 @@ export class MapComponent implements OnInit, OnDestroy {
           e.setVisible(true);
         }
       });
+
+      self.map.getView().fit(this.quarantineExtent);
+      this.zoomedMax = false;
+
     } else {
       this.map.getLayers().getArray().map(e => {
-        if(['counties_quarantine'].includes(e.get('id'))){
+        if(['counties_quarantine', 'roads', 'checkpoints'].includes(e.get('id'))){
           e.setVisible(false);
         } else {
           e.setVisible(true);
         }
       });
     }
+    
   }
 
   private drawFeatures(source, geojsonFeatures, iconStyle) {
@@ -311,6 +313,83 @@ export class MapComponent implements OnInit, OnDestroy {
         source.addFeature(feat);
       }
     });
+  }
+
+  quarantineStyles(feature){
+    const stroke = new Stroke({
+      color: '#984ea3',
+      width: 0.3
+    });
+    
+    const styleQuarantine = new Style({
+      stroke: stroke
+    });
+    
+    if(feature && feature.get('quarantine')){
+      styleQuarantine.setFill(new Fill({
+        color: this.quarantineColors[feature.get('quarantine')-1]
+      }));
+    }
+
+    const styleQuarantineHover = new Style({
+      stroke: stroke,
+      fill: new Fill({
+        color: 'rgba(255, 171, 69, 0.5)'
+      })
+    });
+
+    return [styleQuarantine, styleQuarantineHover];
+  }
+
+  roadsStyles(){
+    const stroke = new Stroke({
+      color: '#0166CC',
+      width: 2
+    });
+    
+    const styleRoads = new Style({
+      stroke: stroke,
+      // fill: new Fill({
+      //   color: 'rgba(255, 171, 69, 0.5)'
+      // })
+    });
+
+    const styleRoadsHover = new Style({
+      stroke: new Stroke({
+        color: 'rgba(255, 171, 69, 0.5)',
+        width: 2
+      })
+    });
+
+    return [styleRoads, styleRoadsHover];
+  }
+
+  checkpointsStyles(){
+    const stroke = new Stroke({
+      color: '#0166CC',
+      width: 1
+    });
+
+    var fill = new Fill({
+      color: 'rgba(255,255,255,0.4)'
+    });
+    
+    const styleCheckpoints = new Style({
+        image: new Circle({
+          fill: fill,
+          stroke: stroke,
+          radius: 5
+        })
+    });
+
+    // const styleQuarantineHover = new Style({
+    //   stroke: stroke,
+    //   fill: new Fill({
+    //     color: 'rgba(255, 171, 69, 0.5)'
+    //   })
+    // });
+
+    return [styleCheckpoints];
   }
 
   private initOpenLayerMap(iconLayer, self: this, iconStyle, highlightStyle) {
@@ -347,25 +426,51 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     });
 
-    const styleQuarantine = new Style({});
-
     const vectorLayerQuarantine = new VectorLayer({
       id: 'counties_quarantine',
       source: new VectorSource({
         url: './assets/uat_q.json',
         format: new GeoJSON()
       }),
-      visible: false,
+      // visible: false,
       style(feature) {
-        if(feature.get('quarantine')){
-          styleQuarantine.setFill(new Fill({
-            color: self.quarantineColors[feature.get('quarantine')-1]
-          }));
-        }
-
-        // styleB.getText().setText(feature.get('county_code'));
-        return styleQuarantine;
+        return self.quarantineStyles(feature)[0];
       }
+    });
+
+    const vectorLayerRoads = new VectorLayer({
+      id: 'roads',
+      source: new VectorSource({
+        url: './assets/drumuri_principale_suceava_simplificat.geojson',
+        format: new GeoJSON()
+      }),
+      // visible: false,
+      style() {
+        return self.roadsStyles()[0];
+      }
+    });
+
+    const vectorLayerCheckpoints = new VectorLayer({
+      id: 'checkpoints',
+      source: new VectorSource({
+        url: './assets/puncte_verificare.geojson',
+        format: new GeoJSON()
+      }),
+      // visible: false,
+      // style(feature) {
+      //   console.log(feature)
+      //   var geometries = feature.getGeometry()
+
+      //       var startStyle = new Style({
+      //           geometry: geometries,
+      //           image: new Circle({
+      //               radius: 7,
+      //               fill: new Fill({
+      //                   color: '#32CD32'
+      //               })
+      //           })
+      //       });
+      // }
     });
 
     const map = new Map({
@@ -375,6 +480,8 @@ export class MapComponent implements OnInit, OnDestroy {
         }),
         vectorLayer,
         vectorLayerQuarantine,
+        vectorLayerRoads,
+        vectorLayerCheckpoints,
         iconLayer
       ],
       target: 'map',
@@ -398,15 +505,21 @@ export class MapComponent implements OnInit, OnDestroy {
       }
 
       if (self.selectedQuarantineZone !== null) {
-        let style = new Style({
-          fill: new Fill({
-            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine') - 1]
-          })
-        });
-
+        let style = self.quarantineStyles(self.selectedQuarantineZone)[0];
         self.selectedQuarantineZone.setStyle(style);
-
         self.selectedQuarantineZone = null;
+      }
+
+      if (self.selectedRoad !== null) {
+        let style = self.roadsStyles()[0];
+        self.selectedRoad.setStyle(style);
+        self.selectedRoad = null;
+      }
+
+      if (self.selectedCheckpoint !== null) {
+        // let style = self.roadsStyles()[0];
+        // self.selectedCheckpoint.setStyle(style);
+        self.selectedCheckpoint = null;
       }
 
       const pixel = ev.pixel;
@@ -417,13 +530,20 @@ export class MapComponent implements OnInit, OnDestroy {
           feature.setStyle(highlightStyle);
           return true;
         } else if(layer.get('id') === 'counties_quarantine'){
-          let style = new Style({
-            fill: new Fill({
-              color: 'rgba(255, 171, 69, 0.5)'
-            })
-          });
+          let style = self.quarantineStyles(null)[1];
+
           self.selectedQuarantineZone = feature;
           feature.setStyle(style);
+          return true;
+        } else if(layer.get('id') === 'roads'){
+            let style = self.roadsStyles()[1];
+
+            self.selectedRoad = feature;
+            feature.setStyle(style);
+            return true;
+        } else if(layer.get('id') === 'checkpoints'){
+          self.selectedCheckpoint = feature;
+          // feature.getStyle().setFill(new Fill(this.activeMap.style.fill))
           return true;
         }
         
@@ -469,6 +589,7 @@ export class MapComponent implements OnInit, OnDestroy {
         feature.setStyle(highlightStyle);
       }
     });
+
     return map;
   }
 
