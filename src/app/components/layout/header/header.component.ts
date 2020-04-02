@@ -11,7 +11,7 @@ import {AuthenticationService} from 'src/app/services';
 })
 export class HeaderComponent implements OnInit {
   currentUser: any = null;
-  items: MenuItem[];
+  menuItems: MenuItem[];
 
   displaySidebar = false;
 
@@ -23,36 +23,36 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.AuthSvc.currentUserValue;
 
-    this.items =  [
+    this.menuItems = [
       {
         label: 'COVID-19',
         icon: 'pi pi-home',
-        routerLink: '/dashboard/main',
+        routerLink: '',
         visible: true
       },
 
       {
         label: 'Hărți',
         icon: 'pi pi-compass',
-        routerLink: '/dashboard/harti',
+        routerLink: '/harti',
         visible: true
       },
       {
         label: 'Statistici',
         icon: 'pi pi-chart-line',
-        routerLink: '/dashboard/statistici',
+        routerLink: '/statistici',
         visible: true
       },
       {
         label: 'Manifest',
         icon: 'pi pi-users',
-        routerLink: '/dashboard/manifest',
+        routerLink: '/manifest',
         visible: true
       },
       {
         label: 'Despre',
         icon: 'pi pi-info-circle',
-        routerLink: '/dashboard/despre',
+        routerLink: '/despre',
         visible: true
       },
       {

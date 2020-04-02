@@ -473,7 +473,7 @@ export class GeneralStatisticsComponent implements OnInit {
     };
 
     $.getJSON({
-        url: '/api/dashboard/getDailyCaseReport',
+        url: '/api/main/getDailyCaseReport',
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
@@ -578,7 +578,7 @@ export class GeneralStatisticsComponent implements OnInit {
             configTrendline['data']['datasets'][3]['data'] = _trendline.healed;
             configTrendline['options']['annotation']['annotations'] = _trendline.annotations;
             var ctxTrendline = self.canvasTrendline.nativeElement.getContext('2d');
-            
+
             if(self.mainGrid.nativeElement.offsetWidth < 550){
                 ctxTrendline.canvas.height = 320;
                 ctxTrendline.canvas.width = self.mainGrid.nativeElement.offsetWidth - 10;
@@ -765,7 +765,7 @@ export class GeneralStatisticsComponent implements OnInit {
     };
 
     $.getJSON({
-        url: '/api/dashboard/getCasesByAgeGroup',
+        url: '/api/main/getCasesByAgeGroup',
         success: function(data) {
             let _data = data.data;
             configFreqByAge.options.title.text += ' ['+_data.timestamp+']';
@@ -793,7 +793,7 @@ export class GeneralStatisticsComponent implements OnInit {
     });
 
     $.getJSON({
-        url: '/api/dashboard/getPercentageByGender',
+        url: '/api/main/getPercentageByGender',
         success: function(data) {
             let _data = data.data;
             configDistributionBySex.options.title.text += ' ['+_data.timestamp+']';

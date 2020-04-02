@@ -3,10 +3,10 @@ import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {MapComponent} from './components/dashboard/main/map/map.component';
-import {LeftMenuComponent} from './components/dashboard/main/left-menu/left-menu.component';
-import {GraphicsComponent} from './components/dashboard/main/graphics/graphics.component';
+import {MainComponent} from './components/main/main.component';
+import {MapComponent} from './components/main/home/map/map.component';
+import {LeftMenuComponent} from './components/main/home/left-menu/left-menu.component';
+import {GraphicsComponent} from './components/main/home/graphics/graphics.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptor, JwtInterceptor} from './interceptors';
 
@@ -15,12 +15,12 @@ import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {ContextMenuModule} from 'primeng/contextmenu';
-import {RightMenuComponent} from './components/dashboard/main/right-menu/right-menu.component';
+import {RightMenuComponent} from './components/main/home/right-menu/right-menu.component';
 import {TableModule} from 'primeng/table';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {FooterComponent} from './components/footer/footer.component';
-import {HeaderComponent} from './components/header/header.component';
-import {MainComponent} from './components/dashboard/main/main.component';
+import {FooterComponent} from './components/layout/footer/footer.component';
+import {HeaderComponent} from './components/layout/header/header.component';
+import {HomeComponent} from './components/main/home/home.component';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
@@ -65,23 +65,23 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AdministrationComponent} from './components/dashboard/administration/administration.component';
-import {PatientsListComponent} from './components/dashboard/administration/patients-list/patients-list.component';
-import {UserListComponent} from './components/dashboard/administration/user-list/user-list.component';
-import {AddNewPatientComponent} from './components/dashboard/administration/patients-list/add-new-patient/add-new-patient.component';
-import {StatisticsComponent} from './components/dashboard/statistics/statistics.component';
-import {AboutComponent} from './components/dashboard/about/about.component';
-import {RelationCasesComponent} from './components/dashboard/statistics/relation-cases/relation-cases.component';
-import {GeneralStatisticsComponent} from './components/dashboard/statistics/general-statistics/general-statistics.component';
-import {CoronavirusEuropeComponent} from './components/dashboard/statistics/coronavirus-europe/coronavirus-europe.component';
-import {ManifestComponent} from './components/dashboard/manifest/manifest.component';
-import {MapsComponent} from './components/dashboard/maps/maps.component';
-import {No2EmissionComponent} from './components/dashboard/maps/no2-emission/no2-emission.component';
-import {EuropeanContextComponent} from './components/dashboard/maps/european-context/european-context.component';
-import {SocialInterestPointsComponent} from './components/dashboard/maps/social-interest-points/social-interest-points.component';
-import {FrontierSituationComponent} from './components/dashboard/maps/frontier-situation/frontier-situation.component';
-import {HospitalInfrastructureComponent} from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
-import {CountiesCasesComponent} from './components/dashboard/statistics/counties-cases/counties-cases.component';
+import {AdministrationComponent} from './components/main/administration/administration.component';
+import {PatientsListComponent} from './components/main/administration/patients-list/patients-list.component';
+import {UserListComponent} from './components/main/administration/user-list/user-list.component';
+import {AddNewPatientComponent} from './components/main/administration/patients-list/add-new-patient/add-new-patient.component';
+import {StatisticsComponent} from './components/main/statistics/statistics.component';
+import {AboutComponent} from './components/main/about/about.component';
+import {RelationCasesComponent} from './components/main/statistics/relation-cases/relation-cases.component';
+import {GeneralStatisticsComponent} from './components/main/statistics/general-statistics/general-statistics.component';
+import {CoronavirusEuropeComponent} from './components/main/statistics/coronavirus-europe/coronavirus-europe.component';
+import {ManifestComponent} from './components/main/manifest/manifest.component';
+import {MapsComponent} from './components/main/maps/maps.component';
+import {No2EmissionComponent} from './components/main/maps/no2-emission/no2-emission.component';
+import {EuropeanContextComponent} from './components/main/maps/european-context/european-context.component';
+import {SocialInterestPointsComponent} from './components/main/maps/social-interest-points/social-interest-points.component';
+import {FrontierSituationComponent} from './components/main/maps/frontier-situation/frontier-situation.component';
+import {HospitalInfrastructureComponent} from './components/main/maps/hospital-infrastructure/hospital-infrastructure.component';
+import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 
 import {OverlayPanelModule} from 'primeng/overlaypanel';
@@ -97,14 +97,14 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    MainComponent,
     MapComponent,
     LeftMenuComponent,
     GraphicsComponent,
     RightMenuComponent,
     FooterComponent,
     HeaderComponent,
-    MainComponent,
+    HomeComponent,
     LoginComponent,
     AdministrationComponent,
     PatientsListComponent,

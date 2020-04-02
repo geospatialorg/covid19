@@ -5,15 +5,15 @@ import {DashboardService} from '../../services';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DashboardComponent implements OnInit {
+export class MainComponent implements OnInit {
   constructor(private sharedService: SharedService, private dashboardService: DashboardService) {
     this.sharedService.setMeta(
       null,
-      'dashboard, covid, românia',
+      'main, covid, românia',
       `Dashboard COVID`
     );
   }

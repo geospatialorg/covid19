@@ -119,9 +119,9 @@ export class GraphicsComponent implements OnInit {
 
       /******************************** Legend ********************************/
       const statuses = [
-        { status: "total", color: "var(--main-confirmate)", label: "Cazuri confirmate"},
-        { status: "healed", color: "var(--main-recuperari)", label: "Recuperări" },
-        { status: "dead", color: "var(--main-decese)", label: "Decese" }
+        { status: "total", color: "var(--home-confirmate)", label: "Cazuri confirmate"},
+        { status: "healed", color: "var(--home-recuperari)", label: "Recuperări" },
+        { status: "dead", color: "var(--home-decese)", label: "Decese" }
     ];
 
       var legend = svg.append("g")

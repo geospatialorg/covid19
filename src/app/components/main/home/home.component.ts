@@ -5,17 +5,17 @@ import {DashboardService} from '../../../services';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class MainComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor(private sharedService: SharedService, private dashboardService: DashboardService) {
     this.sharedService.setMeta(
       null,
-      'dashboard, covid, românia, cazuri confirmate',
+      'main, covid, românia, cazuri confirmate',
       'Dashboard interactiv despre cazurile COVID19 confirmate în România'
     );
   }

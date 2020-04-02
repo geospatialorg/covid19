@@ -1,9 +1,0 @@
-<div class="sub-menu">
-    <button *ngFor="let item of links" pButton type="button"  class="{{item.classes}}" [routerLink]="item.routerLink" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="{{item.label}}"></button>
-    <!-- <button pButton type="button"  class="ui-button-secondary" [routerLink]="['/dashboard/statistics/general-statistics']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Statistici generale"></button>
-    <button style="margin-left: 10px" pButton type="button" class="ui-button-secondary" [routerLink]="['/dashboard/statistics/relation-cases']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Relationare cazuri"></button>
-    <button pButton type="button" class="ui-button-secondary new-row" [routerLink]="['/dashboard/statistics/counties-cases']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Repartiția cazurilor pe județe"></button> -->
-    <!-- <button pButton type="button" id="maps-btn" style="margin-left: 10px" class="ui-button-secondary" [routerLink]="['/dashboard/statistics/maps']" routerLinkActive="ui-button-info" [routerLinkActiveOptions]="{exact: true}" label="Hărți"></button> -->
-</div>
-
-<router-outlet></router-outlet>
