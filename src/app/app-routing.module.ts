@@ -25,6 +25,7 @@ import { SocialInterestPointsComponent } from './components/dashboard/maps/socia
 import { FrontierSituationComponent } from './components/dashboard/maps/frontier-situation/frontier-situation.component';
 import { HospitalInfrastructureComponent } from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
 import { CountiesCasesComponent } from './components/dashboard/statistics/counties-cases/counties-cases.component';
+import { LogsComponent } from './components/dashboard/logs/logs.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,10 @@ const routes: Routes = [
           { path: 'repartitie-cazuri-judete', component: CountiesCasesComponent },
           { path: 'situatie-europa', component: CoronavirusEuropeComponent }
         ]
+      },
+      {
+        path: 'jurnal-aplicatie',
+        component: LogsComponent
       },
       {
         path: 'administration',

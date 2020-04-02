@@ -44,6 +44,12 @@ export class HeaderComponent implements OnInit {
         visible: true
       },
       {
+        label: 'Jurnal aplicație',
+        icon: 'pi pi-file',
+        routerLink: '/dashboard/jurnal-aplicatie',
+        visible: true
+      },
+      {
         label: 'Manifest',
         icon: 'pi pi-users',
         routerLink: '/dashboard/manifest',
@@ -59,7 +65,8 @@ export class HeaderComponent implements OnInit {
         label: 'Login',
         icon: 'pi pi-sign-in',
         routerLink: '/login',
-        visible: !this.currentUser
+        // visible: !this.currentUser
+        visible: false
       },
       {
         label: 'Logout',

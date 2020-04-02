@@ -82,6 +82,7 @@ import { SocialInterestPointsComponent } from './components/dashboard/maps/socia
 import { FrontierSituationComponent } from './components/dashboard/maps/frontier-situation/frontier-situation.component';
 import { HospitalInfrastructureComponent } from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
 import { CountiesCasesComponent } from './components/dashboard/statistics/counties-cases/counties-cases.component';
+import { LogsComponent } from './components/dashboard/logs/logs.component';
 
 
 @NgModule({
@@ -112,7 +113,8 @@ import { CountiesCasesComponent } from './components/dashboard/statistics/counti
     SocialInterestPointsComponent,
     FrontierSituationComponent,
     HospitalInfrastructureComponent,
-    CountiesCasesComponent
+    CountiesCasesComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,
