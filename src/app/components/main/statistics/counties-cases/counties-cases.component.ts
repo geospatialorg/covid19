@@ -4,7 +4,7 @@ import {SharedService} from '../../../../services/shared.service';
 @Component({
   selector: 'app-counties-cases',
   templateUrl: './counties-cases.component.html',
-  styleUrls: ['./counties-cases.component.css'],
+  styleUrls: ['./counties-cases.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class CountiesCasesComponent implements OnInit {

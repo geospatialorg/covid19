@@ -12,6 +12,10 @@
 // .new-row {
 //     margin-left: 5px !important;
 // }
+::ng-deep .statistics-container {
+  height: calc(100% - 51px);
+  overflow-y: auto;
+}
 
 @media (max-width: 550px) {
     #maps-btn {

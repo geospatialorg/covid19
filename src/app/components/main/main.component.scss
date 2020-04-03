@@ -103,7 +103,12 @@
 //     }
 //   }
 // }
-
+// .layout-wrapper {
+//   height: 100%;
+//   &.layout-news-active {
+//     .layout-topbar {
+//       top: 70px;
+//     }
 // .layout-wrapper {
 //   height: 100%;
 //   &.layout-news-active {
@@ -598,7 +603,7 @@
 
 @media screen and (min-width: 601px) and (max-width: 1055px){
   .layout-content {
-    height: calc(100% - 180px);
+    height: calc(100% - 169px);
   }
 }
 

@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MenuModule} from 'primeng/menu';
 import {MenuItem} from 'primeng/api';
 import {AuthenticationService} from 'src/app/services';
 

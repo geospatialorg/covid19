@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       }
 
 
-      this.router.navigate(['/main/administration']);
+      this.router.navigate(['/administration']);
     });
   }
 

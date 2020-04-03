@@ -1,4 +1,4 @@
-<div id="custom-grid" class="no-margin no-padding" #leftMenu *ngIf="dataReady">
+<div id="custom-grid" class="no-margin no-padding left-menu" #leftMenu *ngIf="dataReady">
   <div class="ui-grid" style="width: 100%">
     <div class="ui-g-12">
       <p-card header="Total confirmate" [style]="{width: '100%', textAlign: 'center'}">
@@ -14,7 +14,7 @@
     <div class="ui-g-12" style="width: 100%">
       <div class="ui-card ui-corner-all">
         <div class=" ui-card-body">
-          <div style="overflow-y: auto;" class="borderlessTable">
+          <div class="borderlessTable">
             <p-table [value]="tableData" class="addNewRasterTable" selectionMode="single">
               <ng-template pTemplate="header">
                 <tr>

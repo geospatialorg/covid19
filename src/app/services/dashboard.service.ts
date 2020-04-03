@@ -24,12 +24,12 @@ export class DashboardService {
     healed: {total: 0, data: []},
   };
 
-  private casesSource = new BehaviorSubject<AllCasesByCountyResponse>({
+  private casesSourceSubject = new BehaviorSubject<AllCasesByCountyResponse>({
     confirmed: {total: 0, data: []},
     deaths: {total: 0, data: []},
     healed: {total: 0, data: []},
   });
-  currentCases = this.casesSource.asObservable();
+  currentCases = this.casesSourceSubject.asObservable();
 
 
   constructor(
@@ -89,10 +89,6 @@ export class DashboardService {
     });
   }
 
-  private changeCases(currentCases: AllCasesByCountyResponse) {
-    this.casesSource.next(currentCases);
-  }
-
   private computeTotals(response: AllCasesByCountyResponse) {
     const newCases = {
       confirmed: response.confirmed.total,
@@ -133,5 +129,9 @@ export class DashboardService {
       deaths: deadCasesByCounty.data ? deadCasesByCounty.data : null,
       healed: healthCasesByCounty.data ? healthCasesByCounty.data : null
     };
+  }
+
+  private changeCases(currentCases: AllCasesByCountyResponse) {
+    this.casesSourceSubject.next(currentCases);
   }
 }

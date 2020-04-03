@@ -6,6 +6,7 @@ import * as palette from 'google-palette';
 import * as pluginPiechartOutlabels from 'chartjs-plugin-piechart-outlabels';
 import * as pluginAnnotation from 'chartjs-plugin-annotation';
 import {SharedService} from '../../../../services/shared.service';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-general-statistics',
@@ -473,7 +474,7 @@ export class GeneralStatisticsComponent implements OnInit {
     };
 
     $.getJSON({
-        url: '/api/main/getDailyCaseReport',
+        url: environment.apiUrl + '/dashboard/getDailyCaseReport',
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
@@ -765,7 +766,7 @@ export class GeneralStatisticsComponent implements OnInit {
     };
 
     $.getJSON({
-        url: '/api/main/getCasesByAgeGroup',
+      url: environment.apiUrl + '/dashboard/getCasesByAgeGroup',
         success: function(data) {
             let _data = data.data;
             configFreqByAge.options.title.text += ' ['+_data.timestamp+']';
@@ -793,7 +794,7 @@ export class GeneralStatisticsComponent implements OnInit {
     });
 
     $.getJSON({
-        url: '/api/main/getPercentageByGender',
+        url: environment.apiUrl + '/dashboard/getPercentageByGender',
         success: function(data) {
             let _data = data.data;
             configDistributionBySex.options.title.text += ' ['+_data.timestamp+']';
@@ -811,7 +812,7 @@ export class GeneralStatisticsComponent implements OnInit {
     });
 
     $.getJSON({
-      url: '/api/statistics/getCaseRelations',
+      url: environment.apiUrl + '/statistics/getCaseRelations',
       success: function(data) {
           let _data = data.data.nodes,
           _women = 0,
