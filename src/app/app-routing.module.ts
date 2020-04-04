@@ -22,7 +22,7 @@ import {SocialInterestPointsComponent} from './components/main/maps/social-inter
 import {FrontierSituationComponent} from './components/main/maps/frontier-situation/frontier-situation.component';
 import {HospitalInfrastructureComponent} from './components/main/maps/hospital-infrastructure/hospital-infrastructure.component';
 import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
-import {LogsComponent} from './components/dashboard/logs/logs.component';
+import {LogsComponent} from './components/main/logs/logs.component';
 
 
 const routes: Routes = [

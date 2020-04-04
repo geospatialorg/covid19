@@ -29,9 +29,21 @@
   }
 }
 
-
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
   .disclaimer {
     max-width: 95vw;
+
+    p {
+      font-size: 12px;
+    }
+
+    .ui-dialog-titlebar {
+      font-size: 14px;
+      padding: 0.75em !important;
+    }
+
+    .ui-widget-content {
+      padding: 0.5em 1em !important;
+    }
   }
 }

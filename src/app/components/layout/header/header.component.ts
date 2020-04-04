@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Jurnal aplicație',
         icon: 'pi pi-file',
-        routerLink: '/dashboard/jurnal-aplicatie',
+        routerLink: '/jurnal-aplicatie',
         visible: true
       },
       {
