@@ -1,5 +1,6 @@
-<div class="p-grid" style="margin: 0;height: calc(100% - 45px);overflow-y: auto;" #mainGrid>
-    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width">
-        <canvas id="canvasMobility" #canvasMobility></canvas>
-    </div>
+<div class="p-grid statistics-container no-margin no-padding">
+  <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" *ngIf="enableFeature">
+    <canvas id="canvasMobility" #canvasMobility></canvas>
+  </div>
+  <div class="text-center" style="width: 100%; padding: 30px;" *ngIf="!enableFeature">În curs de dezvoltare</div>
 </div>
