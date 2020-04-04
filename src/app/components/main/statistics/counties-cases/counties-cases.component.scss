@@ -1,0 +1,25 @@
+#counties-cases {
+  margin: 0;
+  height: calc(100% - 55px);
+  overflow-y: auto;
+  text-align: center;
+}
+
+#counties-cases iframe {
+  width: 100%;
+  height: calc(100% - 83px);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 600px) {
+  #counties-cases {
+    height: calc(100% - 83px);
+  }
+
+  #counties-cases iframe {
+    width: 100%;
+    height: 100%;
+  }
+}

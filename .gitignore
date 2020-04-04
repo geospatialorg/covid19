@@ -13,7 +13,6 @@
 api/config.js
 config.js
 /api/public
-changelog.json
 
 # profiling files
 chrome-profiler-events*.json

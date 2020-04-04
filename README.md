@@ -1,8 +1,8 @@
 # Coronavirus COVID-19 România
 
-Project home: [https://covid19.geo-spatial.org/dashboard/main](https://covid19.geo-spatial.org/dashboard/main)
+Project home: [https://covid19.geo-spatial.org/](https://covid19.geo-spatial.org/)
 
-About: [https://covid19.geo-spatial.org/dashboard/despre](https://covid19.geo-spatial.org/dashboard/despre)
+About: [https://covid19.geo-spatial.org/despre](https://covid19.geo-spatial.org/despre)
 
 ----
 
