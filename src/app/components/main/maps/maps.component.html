@@ -1,11 +1,11 @@
 <div class="sub-menu">
-  <ng-container *ngFor="let item of menuItems">
+  <ng-container *ngFor="let item of submenuItems">
     <button pButton
             type="button"
             class="ui-button-secondary"
             [routerLink]="[item.routerLink]"
             routerLinkActive="ui-button-info"
-            [routerLinkActiveOptions]="item.routerLinkActiveOptions"
+            [routerLinkActiveOptions]="{exact: true}"
             [label]="item.label"></button>
   </ng-container>
 </div>

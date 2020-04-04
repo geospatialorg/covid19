@@ -9,17 +9,13 @@ import {SharedService} from '../../../services/shared.service';
 })
 export class MapsComponent implements OnInit {
 
-  menuItems = [
+  submenuItems = [
     {
       routerLink: '/harti/no2-emission',
-      routerLinkActive: 'ui-button-info',
-      routerLinkActiveOptions: {exact: true},
-      label: 'Emisii NO2',
+      label: 'Concentrații NO2',
     },
     {
       routerLink: '/harti/europe',
-      routerLinkActive: 'ui-button-info',
-      routerLinkActiveOptions: {exact: true},
       label: 'Context european',
 
     },
@@ -31,14 +27,10 @@ export class MapsComponent implements OnInit {
     },
     {
       routerLink: '/harti/frontier-situation',
-      routerLinkActive: 'ui-button-info',
-      routerLinkActiveOptions: {exact: true},
       label: 'Situația la frontieră',
     },
     {
       routerLink: '/harti/hospital-infrastructure',
-      routerLinkActive: 'ui-button-info',
-      routerLinkActiveOptions: {exact: true},
       label: 'Infrastructura spitalicească',
     },
   ];

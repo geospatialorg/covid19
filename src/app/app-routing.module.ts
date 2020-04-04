@@ -23,8 +23,8 @@ import {FrontierSituationComponent} from './components/main/maps/frontier-situat
 import {HospitalInfrastructureComponent} from './components/main/maps/hospital-infrastructure/hospital-infrastructure.component';
 import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
 import {LogsComponent} from './components/main/logs/logs.component';
-import { MobilityComponent } from './components/dashboard/statistics/mobility/mobility.component';
-import { AirQualityComponent } from './components/dashboard/statistics/air-quality/air-quality.component';
+import { MobilityComponent } from './components/main/statistics/mobility/mobility.component';
+import { AirQualityComponent } from './components/main/statistics/air-quality/air-quality.component';
 
 
 const routes: Routes = [

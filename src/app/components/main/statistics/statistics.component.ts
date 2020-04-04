@@ -41,12 +41,12 @@ export class StatisticsComponent implements OnInit {
         classes: 'ui-button-secondary'
       },
       {
-        routerLink: '/dashboard/statistici/mobilitate',
+        routerLink: '/statistici/mobilitate',
         label: 'Mobilitate',
         classes: 'ui-button-secondary'
       },
       {
-        routerLink: '/dashboard/statistici/calitate-aer',
+        routerLink: '/statistici/calitate-aer',
         label: 'Calitate aer',
         classes: 'ui-button-secondary'
       }

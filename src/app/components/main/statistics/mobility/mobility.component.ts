@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-mobility',
   templateUrl: './mobility.component.html',
-  styleUrls: ['./mobility.component.css']
+  styleUrls: ['./mobility.component.scss']
 })
 export class MobilityComponent implements OnInit {
 
