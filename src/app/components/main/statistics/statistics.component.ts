@@ -39,6 +39,16 @@ export class StatisticsComponent implements OnInit {
         routerLink: '/statistici/situatie-europa',
         label: 'Situația cazurilor în Europa',
         classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/dashboard/statistici/mobilitate',
+        label: 'Mobilitate',
+        classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/dashboard/statistici/calitate-aer',
+        label: 'Calitate aer',
+        classes: 'ui-button-secondary'
       }
     ];
   }

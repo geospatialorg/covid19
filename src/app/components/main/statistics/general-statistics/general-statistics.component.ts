@@ -50,7 +50,7 @@ export class GeneralStatisticsComponent implements OnInit {
 
     let chartsAnnonations = [
         {
-            id: 'masura-5',
+            id: 'masura-6',
             measureDate: '2020-03-29',
             value: '-1',
             type: 'line',

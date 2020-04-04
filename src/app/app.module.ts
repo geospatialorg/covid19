@@ -84,6 +84,8 @@ import {HospitalInfrastructureComponent} from './components/main/maps/hospital-i
 import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
 import {LogsComponent} from './components/main/logs/logs.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
+import { MobilityComponent } from './components/dashboard/statistics/mobility/mobility.component';
+import { AirQualityComponent } from './components/dashboard/statistics/air-quality/air-quality.component';
 
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {PwaService} from './services/pwa.service';
@@ -125,6 +127,8 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     HospitalInfrastructureComponent,
     CountiesCasesComponent,
     LogsComponent,
+    MobilityComponent,
+    AirQualityComponent,
     InstallPromptComponent
   ],
   imports: [
