@@ -83,6 +83,8 @@ import { FrontierSituationComponent } from './components/dashboard/maps/frontier
 import { HospitalInfrastructureComponent } from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
 import { CountiesCasesComponent } from './components/dashboard/statistics/counties-cases/counties-cases.component';
 import { LogsComponent } from './components/dashboard/logs/logs.component';
+import { MobilityComponent } from './components/dashboard/statistics/mobility/mobility.component';
+import { AirQualityComponent } from './components/dashboard/statistics/air-quality/air-quality.component';
 
 
 @NgModule({
@@ -114,7 +116,9 @@ import { LogsComponent } from './components/dashboard/logs/logs.component';
     FrontierSituationComponent,
     HospitalInfrastructureComponent,
     CountiesCasesComponent,
-    LogsComponent
+    LogsComponent,
+    MobilityComponent,
+    AirQualityComponent
   ],
   imports: [
     BrowserModule,

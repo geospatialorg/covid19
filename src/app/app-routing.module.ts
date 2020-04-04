@@ -26,6 +26,8 @@ import { FrontierSituationComponent } from './components/dashboard/maps/frontier
 import { HospitalInfrastructureComponent } from './components/dashboard/maps/hospital-infrastructure/hospital-infrastructure.component';
 import { CountiesCasesComponent } from './components/dashboard/statistics/counties-cases/counties-cases.component';
 import { LogsComponent } from './components/dashboard/logs/logs.component';
+import { MobilityComponent } from './components/dashboard/statistics/mobility/mobility.component';
+import { AirQualityComponent } from './components/dashboard/statistics/air-quality/air-quality.component';
 
 
 const routes: Routes = [
@@ -41,7 +43,7 @@ const routes: Routes = [
         path: 'harti',
         component: MapsComponent,
         children: [
-          { path: '', redirectTo: 'no2-emission', pathMatch: 'full' },
+          { path: '', redirectTo: 'hospital-infrastructure', pathMatch: 'full' },
           { path: 'no2-emission', component: No2EmissionComponent },
           { path: 'europe', component: EuropeanContextComponent },
           { path: 'social-interest-points', component: SocialInterestPointsComponent },
@@ -65,7 +67,9 @@ const routes: Routes = [
           { path: 'statistici-generale', component: GeneralStatisticsComponent },
           { path: 'relationare-cazuri', component: RelationCasesComponent },
           { path: 'repartitie-cazuri-judete', component: CountiesCasesComponent },
-          { path: 'situatie-europa', component: CoronavirusEuropeComponent }
+          { path: 'situatie-europa', component: CoronavirusEuropeComponent },
+          { path: 'mobilitate', component: MobilityComponent },
+          { path: 'calitate-aer', component: AirQualityComponent }
         ]
       },
       {

@@ -8,6 +8,29 @@ import {SharedService} from '../../../services/shared.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MapsComponent implements OnInit {
+  maps: any[] = [
+    {
+      label: 'Infrastructura spitalicească',
+      router_link: '/dashboard/harti/hospital-infrastructure'
+    },
+    {
+      label: 'Context european',
+      router_link: '/dashboard/harti/europe'
+    },
+    {
+      label: 'Puncte de interes social',
+      router_link: '/dashboard/harti/social-interest-points'
+    },
+    {
+      label: 'Situația la frontieră',
+      router_link: '/dashboard/harti/frontier-situation'
+    },
+    
+    {
+      label: 'Concentrații NO2',
+      router_link: '/dashboard/harti/no2-emission'
+    }
+  ];
 
   constructor(private sharedService: SharedService) {
     this.sharedService.setMeta(
