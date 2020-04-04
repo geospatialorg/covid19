@@ -1,0 +1,12 @@
+<div class="sub-menu">
+    <button *ngFor="let item of links"
+            pButton type="button"
+            class="{{item.classes}}"
+            [routerLink]="item.routerLink"
+            routerLinkActive="ui-button-info"
+            [routerLinkActiveOptions]="{exact: true}"
+            label="{{item.label}}"></button>
+
+</div>
+
+<router-outlet></router-outlet>

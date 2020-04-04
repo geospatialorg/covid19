@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
         this.authSvc.checkToken({ token: route.queryParams.token }).subscribe(res => {
 
           if (!res.success) {
-            reject(this.router.navigate(['/dashboard'], {}));
+            reject(this.router.navigate([''], {}));
             return false;
           }
 
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
             });
           }
 
-          reject(this.router.navigate(['/dashboard'], {}));
+          reject(this.router.navigate([''], {}));
           return false;
         });
       });
@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate {
         return true;
       }
 
-      this.router.navigate(['/dashboard'], {});
+      this.router.navigate([''], {});
       return false;
     }
   }

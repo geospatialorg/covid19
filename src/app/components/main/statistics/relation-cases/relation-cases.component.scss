@@ -1,0 +1,13 @@
+
+
+#statistics iframe {
+    width: 100%;
+    height: 1000px;
+}
+
+@media (max-width: 600px) {
+    #statistics iframe {
+        width: 90%;
+        height: 100%;
+    }
+}

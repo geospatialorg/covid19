@@ -1,0 +1,31 @@
+//.sub-menu {
+//    background-color: rgba(25, 118, 210, 0.4);
+//    border-top: 1px solid #eee;
+//    border-bottom: 1px solid #eee;
+//    padding: 5px;
+//}
+//
+//.sub-menu button {
+//    margin-right: 5px;
+//}
+
+// .new-row {
+//     margin-left: 5px !important;
+// }
+::ng-deep .statistics-container {
+  height: calc(100% - 51px);
+  overflow-y: auto;
+}
+
+@media (max-width: 550px) {
+    #maps-btn {
+        margin-left: 0 !important;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .new-row {
+        margin-right: unset !important;
+        margin-top: 5px !important;
+     }
+}
