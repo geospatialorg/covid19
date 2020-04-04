@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
-import * as pluginAnnotation from 'chartjs-plugin-annotation';
 
 @Component({
   selector: 'app-mobility',
@@ -13,7 +12,7 @@ export class MobilityComponent implements OnInit {
   @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
 
   constructor() { }
-  enableFeature: false;
+  enableFeature : true = true;
 
   ngOnInit(): void {
     if (this.enableFeature) {
@@ -22,8 +21,8 @@ export class MobilityComponent implements OnInit {
   }
 
   drawChart3() {
-
-    const cfgWazers = {
+    let self = this;
+    let cfgWazers = {
       type: 'line',
       data: {
         datasets: [{
@@ -32,75 +31,69 @@ export class MobilityComponent implements OnInit {
           fill: false
         }
       ]
-    },
-    options: {
-      watermark: {
-        text: 'sage.ieat.ro'
       },
-      annotation: {
-          drawTime: 'beforeDatasetsDraw',
-          events: ['click', 'mouseover'],
-          // annotations: roMeasuresAnnotations
-      },
-      responsive: true,
-      title: {
-        display: true,
-        text: 'Utilizatori Waze',
-        fontSize: 18
-      },
-      tooltips: {
-          mode: 'index',
-          intersect: false,
-      },
-      hover: {
-          mode: 'nearest',
-          intersect: true
-      },
-      scales: {
-        xAxes: [{
-            type: 'time',
-            time: {
-                format: 'DD-MM-YYYY',
-                tooltipFormat: 'll',
-                unit: 'day',
-                unitStepSize: 5
-            },
-            display: true,
-            scaleLabel: {
-                display: true,
-                labelString: 'Data'
-            }
-        }],
-        yAxes: [{
-            // display: true,
-            scaleLabel: {
-                display: true,
-                labelString: 'Valoare indice'
-            }
-        }]
-      },
-      plugins: {
-        pluginAnnotation
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Utilizatori Waze',
+          fontSize: 18
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+          xAxes: [{
+              type: 'time',
+              time: {
+                  format: 'DD-MM-YYYY',
+                  tooltipFormat: 'll',
+                  unit: 'day',
+                  unitStepSize: 5
+              },
+              display: true,
+              scaleLabel: {
+                  display: true,
+                  labelString: 'Data'
+              }
+          }],
+          yAxes: [{
+              // display: true,
+              scaleLabel: {
+                  display: true,
+                  labelString: 'Valoare indice'
+              }
+          }]
+        }
       }
-    }
     };
 
     $.getJSON({
-      url: '/external/wazero/bu.2.json',
+      url: 'https://covid19.geo-spatial.org/external/wazero/bu.2.json',
       success(data) {
-        const sensorDataServer = [];
-        data.forEach(element => {
-          sensorDataServer.push({x: element.time, y: element.value});
-        });
+        const sensorDataServerY = [];
+        const sensorDataServerX = [];
+        for (var d in data) {
+          sensorDataServerY.push(data[d].value);
+          sensorDataServerX.push(data[d].time);
+        };
+
         const sensorData = {
           label: 'Numar wazers',
-          data: sensorDataServer,
-          backgroundColor: '#9999ff',
+          data: sensorDataServerY,
+          backgroundColor: '#9999ff0',
           borderColor: '#9999ff',
           fill: false
         };
 
-        const ctxMobility = this.canvasMobility.nativeElement.getContext('2d');
+        cfgWazers['data']['labels'] = sensorDataServerX;
+        cfgWazers.data.datasets = [sensorData, ];
+        const ctxMobility = self.canvasMobility.nativeElement.getContext('2d');
         const myLine = new Chart(ctxMobility, cfgWazers);
       }
     });

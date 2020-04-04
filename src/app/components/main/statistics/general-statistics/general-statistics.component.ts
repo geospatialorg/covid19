@@ -32,6 +32,8 @@ export class GeneralStatisticsComponent implements OnInit {
     grey: 'rgb(201, 203, 207)'
   }
 
+
+
   constructor(private sharedService: SharedService) {
     this.sharedService.setMeta(
       'Statistici generale',
@@ -47,8 +49,7 @@ export class GeneralStatisticsComponent implements OnInit {
 
   drawCharts1(){
     let self = this;
-
-    let chartsAnnonations = [
+    let chartAnnotations = [
         {
             id: 'masura-6',
             measureDate: '2020-03-29',
@@ -67,7 +68,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 yPadding: 2
             },
             onClick: function(e) {
-
+    
                 window.open('http://legislatie.just.ro/Public/DetaliiDocument/224467', '_blank');
             },
             // onMouseover: function(e) {
@@ -95,7 +96,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 yPadding: 2
             },
             onClick: function(e) {
-
+    
                 window.open('http://legislatie.just.ro/Public/DetaliiDocument/224340', '_blank');
             },
             // onMouseover: function(e) {
@@ -205,7 +206,7 @@ export class GeneralStatisticsComponent implements OnInit {
                 yPadding: 2
             },
         }
-    ];
+      ];
 
     let configDailyCases = {
       type: 'line',
@@ -478,8 +479,8 @@ export class GeneralStatisticsComponent implements OnInit {
         success: function(data) {
             let _data = data.data.data;
             let _datasets = [];
-            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [], annotations: $.extend(true, [], chartsAnnonations) };
-            let _growthrate = { x: [], y: [], annotations: $.extend(true, [], chartsAnnonations) }
+            let _trendline = { x: [], y: [], pairs: [], dates: [], active: [], dead: [], healed: [], annotations: $.extend(true, [], chartAnnotations) };
+            let _growthrate = { x: [], y: [], annotations: $.extend(true, [], chartAnnotations) }
             let d = new Date();
             let h = d.getHours();
             let dl = 0;
