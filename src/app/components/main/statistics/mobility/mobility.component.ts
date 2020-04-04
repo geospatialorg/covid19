@@ -36,7 +36,7 @@ export class MobilityComponent implements OnInit {
         responsive: true,
         title: {
           display: true,
-          text: 'Utilizatori Waze',
+          text: 'Utilizatori Waze București',
           fontSize: 18
         },
         tooltips: {

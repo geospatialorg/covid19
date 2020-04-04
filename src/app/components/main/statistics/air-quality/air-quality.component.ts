@@ -36,7 +36,7 @@ export class AirQualityComponent implements OnInit {
     let myLine;
 
     $.getJSON({
-      url: 'http://covid19.apps.sage.ieat.ro/aerlive.avg.json',
+      url: 'https://covid19.apps.sage.ieat.ro/aerlive.avg.json',
       success: function(data) {
         for (var key in diagrame) {
           var cfg_aer_live = {

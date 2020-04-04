@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SharedService} from '../../../services/shared.service';
+import { DashboardService, SharedService } from 'src/app/services';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -11,7 +12,9 @@ export class AboutComponent implements OnInit {
   projects: any[] = [];
   apiLinks: any[] = [];
 
-  constructor(private sharedService: SharedService) {
+  pageData: any;
+
+  constructor(private sharedService: SharedService, private dashboardService: DashboardService, private domSanitizer: DomSanitizer) {
     this.sharedService.setMeta(
       'Despre proiect',
       'despre proiect, covid, românia',
@@ -20,6 +23,10 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dashboardService.getJsonData({ file: 'despre.json' }).toPromise().then(res => {
+      this.pageData = this.domSanitizer.bypassSecurityTrustHtml((res.data[0].data));
+    });
+
     this.colaborators = [
       'Cristina Alexa',
       'Bogdan Antonescu',

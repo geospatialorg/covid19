@@ -3,6 +3,8 @@ let router = require('express').Router();
 const fs = require('fs');
 const path = require('path');
 
+let jsonDir = path.resolve(__dirname, '../json/');
+
 router
     .route('/getDeadCasesByCounty')
     .get((req, res) => {
@@ -207,6 +209,29 @@ router
             if(err) console.log(err);
             res.status(200).send(data);
         });
+    });
+
+router
+    .route('/getJsonData')
+    .get((req, res) => {
+        let params =  req.query,
+            file = params.file;
+        
+        try {
+            if (fs.existsSync(path.resolve(jsonDir , file))) {
+                fs.readFile(path.resolve(jsonDir , file), 'utf8', (err, data)=> {
+                    if(err) console.log(err);
+                    console.log(data)
+                    res.status(200).send({data: JSON.parse(data)});
+                });
+            } else {
+                res.status(200).send(null);
+            }
+        } catch(err) {
+            console.error(err)
+            
+        }
+        
     });
 
 module.exports = router;

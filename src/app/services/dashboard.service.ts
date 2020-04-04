@@ -134,4 +134,9 @@ export class DashboardService {
   private changeCases(currentCases: AllCasesByCountyResponse) {
     this.casesSourceSubject.next(currentCases);
   }
+
+  getJsonData(params: any) {
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/getJsonData`, {params});
+  }
+  
 }
