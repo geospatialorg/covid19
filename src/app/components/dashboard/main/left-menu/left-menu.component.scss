@@ -1,0 +1,38 @@
+.disclaimer {
+  max-width: 450px;
+
+  p {
+    text-indent: 15px;
+    padding: 5px;
+  }
+
+  .ui-dialog-titlebar {
+    background-color: #ff7f00 !important;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .ui-widget-content {
+    text-align: justify;
+    padding: 1em 0.75em !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .disclaimer {
+    max-width: 95vw;
+
+    p {
+      font-size: 12px;
+    }
+
+    .ui-dialog-titlebar {
+      font-size: 14px;
+      padding: 0.75em !important;
+    }
+
+    .ui-widget-content {
+      padding: 0.5em 1em !important;
+    }
+  }
+}

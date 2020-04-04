@@ -82,6 +82,7 @@ import {SocialInterestPointsComponent} from './components/main/maps/social-inter
 import {FrontierSituationComponent} from './components/main/maps/frontier-situation/frontier-situation.component';
 import {HospitalInfrastructureComponent} from './components/main/maps/hospital-infrastructure/hospital-infrastructure.component';
 import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
+import {LogsComponent} from './components/main/logs/logs.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 
 import {OverlayPanelModule} from 'primeng/overlaypanel';
@@ -123,6 +124,7 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     FrontierSituationComponent,
     HospitalInfrastructureComponent,
     CountiesCasesComponent,
+    LogsComponent,
     InstallPromptComponent
   ],
   imports: [
