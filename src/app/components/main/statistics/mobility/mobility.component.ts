@@ -6,25 +6,24 @@ import * as pluginAnnotation from 'chartjs-plugin-annotation';
 @Component({
   selector: 'app-mobility',
   templateUrl: './mobility.component.html',
-<<<<<<< HEAD:src/app/components/dashboard/statistics/mobility/mobility.component.ts
-  styleUrls: ['./mobility.component.css'],
-=======
   styleUrls: ['./mobility.component.scss']
->>>>>>> 50ec93e4bb42a7cb7543b7ae2bf6b92ee8a16558:src/app/components/main/statistics/mobility/mobility.component.ts
 })
 export class MobilityComponent implements OnInit {
   @ViewChild('canvasMobility', {static: true}) canvasMobility: ElementRef;
   @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
 
   constructor() { }
+  enableFeature: false;
 
   ngOnInit(): void {
-    this.drawChart3();
+    if (this.enableFeature) {
+      this.drawChart3();
+    }
   }
 
   drawChart3() {
 
-    let cfg_wazers = {
+    const cfgWazers = {
       type: 'line',
       data: {
         datasets: [{
@@ -36,17 +35,17 @@ export class MobilityComponent implements OnInit {
     },
     options: {
       watermark: {
-        text: "sage.ieat.ro"
+        text: 'sage.ieat.ro'
       },
       annotation: {
           drawTime: 'beforeDatasetsDraw',
           events: ['click', 'mouseover'],
-          //annotations: roMeasuresAnnotations
+          // annotations: roMeasuresAnnotations
       },
       responsive: true,
       title: {
         display: true,
-        text: "Utilizatori Waze",
+        text: 'Utilizatori Waze',
         fontSize: 18
       },
       tooltips: {
@@ -73,7 +72,7 @@ export class MobilityComponent implements OnInit {
             }
         }],
         yAxes: [{
-            //display: true,
+            // display: true,
             scaleLabel: {
                 display: true,
                 labelString: 'Valoare indice'
@@ -88,25 +87,24 @@ export class MobilityComponent implements OnInit {
 
     $.getJSON({
       url: '/external/wazero/bu.2.json',
-      success: function(data) {
-        var sensor_data_server = []
-        for (var i in data) {
-          sensor_data_server.push({'x': data[i]['time'], 'y': data[i]['value']})
-        }
-        var sensor_data = {
-          label: "Numar wazers",
-          data: sensor_data_server,
+      success(data) {
+        const sensorDataServer = [];
+        data.forEach(element => {
+          sensorDataServer.push({x: element.time, y: element.value});
+        });
+        const sensorData = {
+          label: 'Numar wazers',
+          data: sensorDataServer,
           backgroundColor: '#9999ff',
           borderColor: '#9999ff',
           fill: false
-        }
+        };
 
-        var ctxMobility = self.canvasMobility.nativeElement.getContext('2d');
-        let myLine = new Chart(ctxMobility, cfg_wazers);
+        const ctxMobility = this.canvasMobility.nativeElement.getContext('2d');
+        const myLine = new Chart(ctxMobility, cfgWazers);
       }
     });
-    
-  
+
   }
 
 }
