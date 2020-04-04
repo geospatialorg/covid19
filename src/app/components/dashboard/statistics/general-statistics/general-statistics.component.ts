@@ -567,9 +567,6 @@ export class GeneralStatisticsComponent implements OnInit {
                     configTrendline['data']['datasets'].push(dss);
                 }
             }
-            console.log(chartsAnnonations);
-            console.log(_trendline.annotations);
-            console.log(_growthrate.annotations);
 
             configTrendline['data']['labels'] = _trendline.dates;
             configTrendline['data']['datasets'][0]['data'] = _trendline.y;
