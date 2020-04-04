@@ -1,3 +1,6 @@
-<div class="p-grid statistics-container no-margin no-padding" #mainGrid>
-  <div class="text-center" style="width: 100%; padding: 30px;">În curs de dezvoltare</div>
+<div class="p-grid statistics-container no-margin no-padding">
+  <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" *ngIf="enableFeature">
+    <canvas id="canvasMobility" #canvasMobility></canvas>
+  </div>
+  <div class="text-center" style="width: 100%; padding: 30px;" *ngIf="!enableFeature">În curs de dezvoltare</div>
 </div>
