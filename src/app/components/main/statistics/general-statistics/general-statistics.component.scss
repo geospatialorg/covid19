@@ -20,6 +20,11 @@
     display: block;
 }
 
+.statistics-container iframe {
+    height: 550px;
+    width: 100%;
+}
+
 
 @media (max-width: 550px) {
     .full-width {
@@ -32,6 +37,10 @@
 
     .only-large {
         display: none;
+    }
+
+    .statistics-container iframe {
+        height: 300px;
     }
 }
 

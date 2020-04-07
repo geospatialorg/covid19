@@ -43,8 +43,8 @@ export class GeneralStatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.drawCharts1();
-    this.drawCharts2();
+    // this.drawCharts1();
+    // this.drawCharts2();
   }
 
   drawCharts1(){

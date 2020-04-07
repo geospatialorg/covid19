@@ -91,7 +91,7 @@ export class MapComponent implements OnInit, OnDestroy {
   map: Map;
   mapData: any[] = [];
 
-  quarantineExtent: number[] = [2777098.47, 5954700.54, 2972709.08, 6104858.69];
+  quarantineExtent: number[] = [2677179.36455241, 5461128.75086669,3185868.66761265, 6204834.36059817];
 
   mapView: any = {
     center: [2747146.7966, 5749287.5195],
@@ -345,7 +345,7 @@ export class MapComponent implements OnInit, OnDestroy {
   roadsStyles() {
     const stroke = new Stroke({
       color: '#0166CC',
-      width: 2
+      width: 1
     });
 
     const styleRoads = new Style({
@@ -358,7 +358,7 @@ export class MapComponent implements OnInit, OnDestroy {
     const styleRoadsHover = new Style({
       stroke: new Stroke({
         color: 'rgba(255, 171, 69, 0.5)',
-        width: 2
+        width: 1
       })
     });
 
@@ -442,7 +442,8 @@ export class MapComponent implements OnInit, OnDestroy {
     const vectorLayerRoads = new VectorLayer({
       id: 'roads',
       source: new VectorSource({
-        url: './assets/drumuri_principale_suceava_simplificat.geojson',
+        // url: './assets/drumuri_principale_suceava_simplificat.geojson',
+        url: './assets/retea_rutiera_principala_ro_clip_simplificat.geojson',
         format: new GeoJSON()
       }),
       // visible: false,

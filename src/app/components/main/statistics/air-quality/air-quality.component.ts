@@ -15,7 +15,7 @@ export class AirQualityComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.drawChart4();
+    // this.drawChart4();
   }
 
   drawChart4(){

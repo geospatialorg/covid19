@@ -23,9 +23,11 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardService.getJsonData({ file: 'despre.json' }).toPromise().then(res => {
-      this.pageData = this.domSanitizer.bypassSecurityTrustHtml((res.data[0].data));
-    });
+    // this.dashboardService.getJsonData({ file: 'despre.json' }).toPromise().then(res => {
+    //   this.pageData = this.domSanitizer.bypassSecurityTrustHtml((res.data[0].data));
+    // });
+
+    fetch('assets/despre.json').then((response) => response.json()).then((json) => this.pageData = json[0].data);
 
     this.colaborators = [
       'Cristina Alexa',
