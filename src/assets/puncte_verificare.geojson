@@ -19,7 +19,7 @@
 { "type": "Feature", "properties": { "fid": 14, "Descriere": "DN 18 Cârlibaba" }, "geometry": { "type": "Point", "coordinates": [ 25.128231047064116, 47.571037399536216 ] } },
 { "type": "Feature", "properties": { "fid": 15, "Descriere": "DJ 208 A Dolhasca" }, "geometry": { "type": "Point", "coordinates": [ 26.605993818764489, 47.429063025122701 ] } },
 { "type": "Feature", "properties": { "fid": 16, "Descriere": "DN 2\/DN 29C Siret" }, "geometry": { "type": "Point", "coordinates": [ 26.070998956531746, 47.961637656179164 ] } },
-{ "type": "Feature", "properties": { "fid": 17, "Descriere": "DJ 208 C – Vorona (Botoșani)" }, "geometry": { "type": "Point", "coordinates": [ 26.643758941433177, 47.597184783030123 ] } },
+{ "type": "Feature", "properties": { "fid": 17, "Descriere": "DJ 208 C – Vorona (Botoșani)" }, "geometry": { "type": "Point", "coordinates": [ 26.594532734745986, 47.542989516970742 ] } },
 { "type": "Feature", "properties": { "fid": 18, "Descriere": "DN 15 C – Oglinzi (Neamț)" }, "geometry": { "type": "Point", "coordinates": [ 26.373177764032054, 47.250860144215011 ] } },
 { "type": "Feature", "properties": { "fid": 19, "Descriere": "DN 2A Est" }, "geometry": { "type": "Point", "coordinates": [ 27.680317193263345, 44.643457624125908 ] } },
 { "type": "Feature", "properties": { "fid": 20, "Descriere": "DN 2A Vest" }, "geometry": { "type": "Point", "coordinates": [ 27.630684666440068, 44.640294302555994 ] } },

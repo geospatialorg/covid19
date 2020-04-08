@@ -25,6 +25,7 @@ import Feature from 'ol/Feature';
 export class MapComponent implements OnInit, OnDestroy {
   maxRadius = 40000;
   minRadius = 7500;
+  milestone: number = 100;
 
   activeMap: any;
   maps: any[] = [
@@ -83,9 +84,9 @@ export class MapComponent implements OnInit, OnDestroy {
 
   quarantineColors: any[] = [
     'rgba(222, 0, 11, 0.5)',
-    'rgba(222, 0, 11, 0.5)',
-    // "rgba(255, 171, 69, 0.5)",
-    'rgba(251, 255, 0, 0.5)'
+    'rgba(251, 255, 0, 0.5)',
+    'rgba(222, 0, 11, 0.5)'
+    
   ];
 
   map: Map;
@@ -110,6 +111,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private interval: any;
 
+  over: any[];
+
   private mapIconLayer: VectorLayer = new VectorLayer({
     id: 'icons',
     source: new VectorSource()
@@ -117,10 +120,11 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private iconStyle: Style = new Style({
     stroke: new Stroke({
+      // color: '#ffff33',
       color: '#ffff33',
       width: 0.5
     }),
-    fill: null,
+    fill: new Fill(),
     text: new Text({
       font: '12px Calibri,sans-serif',
       fill: new Fill({
@@ -132,6 +136,50 @@ export class MapComponent implements OnInit, OnDestroy {
       })
     })
   });
+
+  private confirmedStyles: Style[] = [
+    // < 100
+    new Style({
+      stroke: new Stroke({
+        color: '#e41a1c',
+        width: 1
+      }),
+      // fill: new Fill({
+      //   color: 'rgba(228,26,28, 0.8)'
+      // })
+    }),
+    // > 100
+    new Style({
+      stroke: new Stroke({
+        color: '#e41a1c',
+        width: 1
+      }),
+      fill: new Fill({
+        color: 'rgba(255,237,160, 0.8)'
+      })
+    }),
+
+    // highlight
+    new Style({
+      stroke: new Stroke({
+        color: '#e41a1c',
+        width: 0.5
+      }),
+      fill: new Fill({
+        color: 'rgba(255,255,51, 0.6)'
+      }),
+      text: new Text({
+        font: '12px Calibri,sans-serif',
+        fill: new Fill({
+          color: '#000'
+        }),
+        stroke: new Stroke({
+          color: '#fff',
+          width: 3
+        })
+      })
+    })
+  ];
 
   private geojsonFeatures;
 
@@ -188,10 +236,14 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (layer.id === 'quarantine') {
       let l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
-      console.log(l.getSource().getExtent());
       this.map.getView().fit(this.quarantineExtent);
       this.zoomedMax = false;
+      this.over = [];
     } else {
+      this.over = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestone).map(e => e.county_code);
+      let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
+      countiesLayer.getSource().refresh();
+
       if (!this.zoomedMax) {
         this.map.getView().animate({
           zoom: this.mapView.zoom,
@@ -238,26 +290,8 @@ export class MapComponent implements OnInit, OnDestroy {
     this.drawFeatures(this.mapIconLayer.getSource(), this.geojsonFeatures, this.iconStyle);
 
     if (!this.map) {
-      const highlightStyle = new Style({
-        stroke: new Stroke({
-          color: '#e41a1c',
-          width: 0.5
-        }),
-        fill: new Fill({
-          color: 'rgba(255,255,51, 0.6)'
-        }),
-        text: new Text({
-          font: '12px Calibri,sans-serif',
-          fill: new Fill({
-            color: '#000'
-          }),
-          stroke: new Stroke({
-            color: '#fff',
-            width: 3
-          })
-        })
-      });
-      this.map = this.initOpenLayerMap(this.mapIconLayer, self, this.iconStyle, highlightStyle);
+      
+      this.map = this.initOpenLayerMap(this.mapIconLayer, self, this.iconStyle, this.confirmedStyles[2]);
     }
 
     if (this.activeMap.id === 'quarantine') {
@@ -311,12 +345,14 @@ export class MapComponent implements OnInit, OnDestroy {
         });
 
         feat.setStyle(iconStyle);
+
         source.addFeature(feat);
       }
     });
   }
 
   quarantineStyles(feature) {
+    console.log(feature)
     const stroke = new Stroke({
       color: '#984ea3',
       width: 0.3
@@ -328,7 +364,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (feature && feature.get('quarantine')) {
       styleQuarantine.setFill(new Fill({
-        color: this.quarantineColors[feature.get('quarantine') - 1]
+        color: this.quarantineColors[feature.get('quarantine')]
       }));
     }
 
@@ -366,54 +402,70 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   checkpointsStyles() {
-    const stroke = new Stroke({
-      color: '#0166CC',
-      width: 1
-    });
-
-    var fill = new Fill({
-      color: 'rgba(255,255,255,0.4)'
-    });
-
-    const styleCheckpoints = new Style({
-      image: new Circle({
-        fill: fill,
-        stroke: stroke,
-        radius: 5
+    const styleCheckpoints: Style[] = [
+      //default
+      new Style({
+        image: new Icon({
+          opacity: 1,
+          src: 'data:image/svg+xml;utf8,' + this.drawIcon(),
+          scale: 0.3
+        })
+      }),
+      //hover
+      new Style({
+        image: new Icon({
+          opacity: 1,
+          src: 'data:image/svg+xml;utf8,' + this.drawIcon('rgba(197,27,138, .8)'),
+          scale: 0.3
+        })
       })
-    });
+    ];
 
-    // const styleQuarantineHover = new Style({
-    //   stroke: stroke,
-    //   fill: new Fill({
-    //     color: 'rgba(255, 171, 69, 0.5)'
-    //   })
-    // });
-
-    return [styleCheckpoints];
+    return styleCheckpoints;
   }
 
   private initOpenLayerMap(iconLayer, self: this, iconStyle, highlightStyle) {
 
-    const style = new Style({
-      // fill: new Fill({
-      //   color: 'rgba(255, 255, 255, 0.3)'
-      // }),
-      stroke: new Stroke({
-        color: '#984ea3',
-        width: 1
+    const styles: Style[] = [
+      // default
+      new Style({
+        stroke: new Stroke({
+          color: '#984ea3',
+          width: 1
+        }),
+        text: new Text({
+          font: '12px Calibri,sans-serif',
+          fill: new Fill({
+            color: '#000'
+          }),
+          stroke: new Stroke({
+            color: '#fff',
+            width: 4
+          })
+        })
       }),
-      text: new Text({
-        font: '12px Calibri,sans-serif',
+      new Style({
         fill: new Fill({
-          color: '#000'
+          color: 'rgba(255,255,217, 0.6)'
         }),
         stroke: new Stroke({
-          color: '#fff',
-          width: 4
+          color: '#984ea3',
+          width: 1
+        }),
+        text: new Text({
+          font: '12px Calibri,sans-serif',
+          fill: new Fill({
+            color: '#000'
+          }),
+          stroke: new Stroke({
+            color: '#fff',
+            width: 4
+          })
         })
       })
-    });
+  ];
+  
+    this.over = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestone).map(e => e.county_code);
 
     const vectorLayer = new VectorLayer({
       id: 'counties',
@@ -422,18 +474,25 @@ export class MapComponent implements OnInit, OnDestroy {
         format: new GeoJSON()
       }),
       style(feature) {
-        style.getText().setText(feature.get('county_code'));
-        return style;
+        let s = styles[0];
+        
+        if(self.over.includes(feature.get('county_code'))){
+          s = styles[1];
+        } 
+
+        if(!s.getText()) s.setText(new Text());
+        s.getText().setText(feature.get('county_code'));
+        
+        return s;
       }
     });
 
     const vectorLayerQuarantine = new VectorLayer({
       id: 'counties_quarantine',
       source: new VectorSource({
-        url: './assets/uat_q.json',
+        url: '/api/dashboard/getGeojson?name=uat.geojson',
         format: new GeoJSON()
       }),
-      // visible: false,
       style(feature) {
         return self.quarantineStyles(feature)[0];
       }
@@ -442,15 +501,14 @@ export class MapComponent implements OnInit, OnDestroy {
     const vectorLayerRoads = new VectorLayer({
       id: 'roads',
       source: new VectorSource({
-        // url: './assets/drumuri_principale_suceava_simplificat.geojson',
         url: './assets/retea_rutiera_principala_ro_clip_simplificat.geojson',
         format: new GeoJSON()
       }),
-      // visible: false,
       style() {
         return self.roadsStyles()[0];
       }
     });
+    
 
     const vectorLayerCheckpoints = new VectorLayer({
       id: 'checkpoints',
@@ -458,21 +516,7 @@ export class MapComponent implements OnInit, OnDestroy {
         url: './assets/puncte_verificare.geojson',
         format: new GeoJSON()
       }),
-      // visible: false,
-      // style(feature) {
-      //   console.log(feature)
-      //   var geometries = feature.getGeometry()
-
-      //       var startStyle = new Style({
-      //           geometry: geometries,
-      //           image: new Circle({
-      //               radius: 7,
-      //               fill: new Fill({
-      //                   color: '#32CD32'
-      //               })
-      //           })
-      //       });
-      // }
+      style: self.checkpointsStyles()[0]
     });
 
     const map = new Map({
@@ -519,8 +563,7 @@ export class MapComponent implements OnInit, OnDestroy {
       }
 
       if (self.selectedCheckpoint !== null) {
-        // let style = self.roadsStyles()[0];
-        // self.selectedCheckpoint.setStyle(style);
+        self.selectedCheckpoint.setStyle(self.checkpointsStyles()[0]);
         self.selectedCheckpoint = null;
       }
 
@@ -545,6 +588,7 @@ export class MapComponent implements OnInit, OnDestroy {
           return true;
         } else if (layer.get('id') === 'checkpoints') {
           self.selectedCheckpoint = feature;
+          feature.setStyle(self.checkpointsStyles()[1]);
           // feature.getStyle().setFill(new Fill(this.activeMap.style.fill))
           return true;
         }
@@ -559,14 +603,15 @@ export class MapComponent implements OnInit, OnDestroy {
       ev.preventDefault();
 
       if (self.selectedFeature !== null) {
-        self.selectedFeature.setStyle(iconStyle);
+          self.selectedFeature.setStyle(iconStyle);
+        
         self.selectedFeature = null;
       }
 
       if (self.selectedQuarantineZone !== null) {
         let style = new Style({
           fill: new Fill({
-            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine') - 1]
+            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine')]
           })
         });
         self.selectedQuarantineZone.setStyle(style);
@@ -604,19 +649,21 @@ export class MapComponent implements OnInit, OnDestroy {
 
   activeMapChange() {
     if (this.selectedFeature !== null) {
-      this.selectedFeature.setStyle(this.iconStyle);
+      this.selectedFeature.setStyle(this.confirmedStyles[0]);
       this.selectedFeature = null;
     }
 
     if (this.selectedQuarantineZone !== null) {
       let style = new Style({
         fill: new Fill({
-          color: this.quarantineColors[this.selectedQuarantineZone.get('quarantine') - 1]
+          color: this.quarantineColors[this.selectedQuarantineZone.get('quarantine')]
         })
       });
       this.selectedQuarantineZone.setStyle(style);
       this.selectedQuarantineZone = null;
     }
+
+    
 
     this.router.navigate(['/'], {
       queryParams: {
@@ -634,5 +681,14 @@ export class MapComponent implements OnInit, OnDestroy {
     }
     // this.map.off('pointermove');
     // this.map.off('singleclick');
+  }
+
+  drawIcon( fill='rgba(217,95,14, 0.78)', sc='black', sw="3"){
+    let svg = `
+    <svg height="50" width="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="25" cy="25" r="20" stroke="${sc}" stroke-width="${sw}" fill="${fill}" />
+    </svg>`;
+
+    return svg;
   }
 }

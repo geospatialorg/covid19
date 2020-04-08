@@ -4,6 +4,32 @@ const fs = require('fs');
 const path = require('path');
 
 let jsonDir = path.resolve(__dirname, '../json/');
+let geojsonDir = path.resolve(__dirname, '../geojson/');
+
+function generateQuarantineJson(){
+
+    let query = `select COVID.GET_LYR_QUARANTINE_UAT() as data`;
+
+    pool.query(query,
+        [ ],
+        function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+
+            let filepath = path.resolve(geojsonDir, 'uat.geojson');
+            fs.closeSync(fs.openSync(filepath, 'w'));
+
+            fs.writeFileSync(filepath, JSON.stringify(result.rows[0].data));
+        }
+    );
+}
+
+generateQuarantineJson();
+
+setInterval(() => {
+    generateQuarantineJson();
+}, 5*60*1000);
 
 router
     .route('/getDeadCasesByCounty')
@@ -207,6 +233,18 @@ router
     .get((req, res) => {
         fs.readFile(path.resolve(__dirname, '../counties.geojson'), 'utf8', (err, data)=> {
             if(err) console.log(err);
+            res.status(200).send(data);
+        });
+    });
+
+router
+    .route('/getGeojson')
+    .get((req, res) => {
+        console.log(req)
+        fs.readFile(path.resolve(geojsonDir, req.query.name), 'utf8', (err, data)=> {
+            if(err) console.log(err);
+            console.log(data);
+
             res.status(200).send(data);
         });
     });
