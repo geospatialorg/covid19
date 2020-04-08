@@ -16,7 +16,7 @@ export class MobilityComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.enableFeature) {
-      this.drawChart3();
+      // this.drawChart3();
     }
   }
 
