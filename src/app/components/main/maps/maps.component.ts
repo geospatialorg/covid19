@@ -11,8 +11,8 @@ export class MapsComponent implements OnInit {
 
   submenuItems = [
     {
-      routerLink: '/harti/no2-emission',
-      label: 'Concentrații NO2',
+      routerLink: '/harti/hospital-infrastructure',
+      label: 'Infrastructura spitalicească',
     },
     {
       routerLink: '/harti/europe',
@@ -30,9 +30,9 @@ export class MapsComponent implements OnInit {
       label: 'Situația la frontieră',
     },
     {
-      routerLink: '/harti/hospital-infrastructure',
-      label: 'Infrastructura spitalicească',
-    },
+      routerLink: '/harti/no2-emission',
+      label: 'Concentrații NO2',
+    }
   ];
 
   constructor(private sharedService: SharedService) {
