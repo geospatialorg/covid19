@@ -240,13 +240,23 @@ router
 router
     .route('/getGeojson')
     .get((req, res) => {
-        console.log(req)
-        fs.readFile(path.resolve(geojsonDir, req.query.name), 'utf8', (err, data)=> {
-            if(err) console.log(err);
-            console.log(data);
+        res.header('Cache-Control', 'no-cache, no-store');
 
-            res.status(200).send(data);
-        });
+        let files = fs.readdirSync(geojsonDir);
+
+        if(files.includes(req.query.name)){
+            fs.readFile(path.resolve(geojsonDir, req.query.name), 'utf8', (err, data)=> {
+                if(err) console.log(err);
+    
+                res.status(200).send(data);
+            });
+        }
+
+        // fs.readFile(path.resolve(geojsonDir, req.query.name), 'utf8', (err, data)=> {
+        //     if(err) console.log(err);
+
+        //     res.status(200).send(data);
+        // });
     });
 
 router
@@ -259,7 +269,6 @@ router
             if (fs.existsSync(path.resolve(jsonDir , file))) {
                 fs.readFile(path.resolve(jsonDir , file), 'utf8', (err, data)=> {
                     if(err) console.log(err);
-                    console.log(data)
                     res.status(200).send({data: JSON.parse(data)});
                 });
             } else {
@@ -270,6 +279,34 @@ router
             
         }
         
+    });
+
+router
+    .route('/getDailyCases')
+    .get((req, res) => {
+
+        let params_no = 0;
+        let qp = Array.from(Array(params_no).keys(), x => `$${x+1}`).join(',');
+        let query = `select COVID.GET_NEW_DAILY_CASES(${qp}) as data`;
+
+            
+        pool.query(query,
+            [  ],
+            function (err, result) {
+                if (err) {
+                    res.status(400).send({
+                        success: false
+                    });
+    
+                    return console.error('error running query', err);
+                }
+    
+                res.status(200).send({
+                    data: result.rows[0].data || null
+                });
+            }
+        );
+
     });
 
 module.exports = router;

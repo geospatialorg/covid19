@@ -37,7 +37,12 @@ export class StatisticsComponent implements OnInit {
       },
       {
         routerLink: '/statistici/situatie-europa',
-        label: 'Situația cazurilor în Europa',
+        label: 'Cazuri în Europa (heatmap)',
+        classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/statistici/situatie-europa-grafic',
+        label: 'Cazuri în Europa (grafic)',
         classes: 'ui-button-secondary'
       },
       {

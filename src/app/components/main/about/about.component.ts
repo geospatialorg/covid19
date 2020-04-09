@@ -93,6 +93,7 @@ export class AboutComponent implements OnInit {
         title: 'COVID-19: Date la Zi'
       }
     ];
+    
 
     this.apiLinks = [
       {
@@ -122,6 +123,10 @@ export class AboutComponent implements OnInit {
       {
         url: 'https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup',
         title: 'https://covid19.geo-spatial.org/api/dashboard/getCasesByAgeGroup'
+      },
+      {
+        url: 'https://covid19.geo-spatial.org/api/dashboard/getDailyCases',
+        title: 'https://covid19.geo-spatial.org/api/dashboard/getDailyCases'
       }
     ];
   }

@@ -93,6 +93,7 @@ import {InstallPromptComponent} from './components/install-prompt/install-prompt
 import {DashboardService} from './services';
 import {environment} from '../environments/environment';
 import {NotificationsService} from './services/notifications.service';
+import { EuropaCasesGraphComponent } from './components/main/statistics/europa-cases-graph/europa-cases-graph.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -129,7 +130,8 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     LogsComponent,
     MobilityComponent,
     AirQualityComponent,
-    InstallPromptComponent
+    InstallPromptComponent,
+    EuropaCasesGraphComponent
   ],
   imports: [
     BrowserModule,
