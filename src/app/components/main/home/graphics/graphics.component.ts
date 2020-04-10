@@ -74,21 +74,24 @@ export class GraphicsComponent implements OnInit {
       svg.selectAll("dot")
           .data(data)
           .enter().append("circle")
-              .attr("r", 5)
+              .attr("r", 3)
+              .attr("class", "dot_total")
               .attr("cx", function(d) { return x(d.date); })
               .attr("cy", function(d) { return y(d.total_case); });
 
       svg.selectAll("dot")
           .data(data)
           .enter().append("circle")
-              .attr("r", 5)
+              .attr("r", 3)
+              .attr("class", "dot_healed")
               .attr("cx", function(d) { return d.total_healed !== 0 ? x(d.date) : null; })
               .attr("cy", function(d) { return y(d.total_healed); });
 
       svg.selectAll("dot")
           .data(data)
           .enter().append("circle")
-              .attr("r", 5)
+              .attr("r", 3)
+              .attr("class", "dot_dead")
               .attr("cx", function(d) { return d.total_dead !== 0 ? x(d.date) : null; })
               .attr("cy", function(d) { return y(d.total_dead); });
 
@@ -103,17 +106,17 @@ export class GraphicsComponent implements OnInit {
 
       /******************************** Labels ********************************/
       var xLabel = svg.append("text")
-          .attr("y", height + 50)
+          .attr("y", height + 45)
           .attr("x", width / 2)
-          .attr("font-size", "18px")
+          .attr("font-size", "16px")
           .attr("text-anchor", "middle")
           .text("Perioadă de timp");
 
       var yLabel = svg.append("text")
           .attr("transform", "rotate(-90)")
           .attr("y", -35)
-          .attr("x", -220)
-          .attr("font-size", "18px")
+          .attr("x", -125)
+          .attr("font-size", "16px")
           .attr("text-anchor", "middle")
           .text("Număr de persoane");
 
@@ -274,7 +277,7 @@ export class GraphicsComponent implements OnInit {
     let cases_data = await this.getData();
     let self = this;
 
-    var margin = {top: 50, right: 20, bottom: 20, left: 50},
+    var margin = {top: 50, right: 20, bottom: 50, left: 50},
         width = this.parentWidth - margin.left - margin.right,
         height = 350 - margin.top - margin.bottom,
         svg_width = width + margin.left + margin.right,
@@ -283,41 +286,17 @@ export class GraphicsComponent implements OnInit {
     self.x = d3.scaleTime().range([0, width]);
     self.y = d3.scaleLinear().range([height, 0]);
 
-    var valueline_total = d3.line()
+    const valueline_total = d3.line()
       .x(function(d:any) { return self.x(d.date); })
       .y(function(d:any) { return self.y(d.total_case); });
 
-    var valueline_healed = d3.line()
+    const valueline_healed = d3.line()
       .x(function(d:any) { return d.total_healed !== 0 ? self.x(d.date) : null; })
       .y(function(d:any) { return self.y(d.total_healed); });
 
-    var valueline_dead = d3.line()
+    const valueline_dead = d3.line()
       .x(function(d:any) { return d.total_dead !== 0 ? self.x(d.date) : null; })
       .y(function(d: any) { return self.y(d.total_dead); });
-
-    // const promises = [
-    //   d3.json(self.jsonPath)
-    // ];
-
-
-    // Promise.all(promises).then( data => {
-    //     const cases_data = data[0].data;
-    //     console.log(cases_data)
-
-    //     // // parse the date / time
-    //     // var parseTime = d3.timeParse("%Y-%m-%d");
-
-    //     // // format the data
-    //     // cases_data.forEach(function(d) {
-    //     //     d.date = parseTime(d.day_case);
-    //     //     d.date.toLocaleDateString('ro-RO');
-    //     //     d.total_case = +d.total_case;
-    //     // });
-
-    //     // self.changeView(cases_data, self.svg, self.x, self.y, valueline_total, valueline_dead, valueline_healed, width, margin, height);
-    // }).catch(
-    //     error => console.log(error)
-    // );
 
     self.svg = d3.select("#chart")
             .append("svg")

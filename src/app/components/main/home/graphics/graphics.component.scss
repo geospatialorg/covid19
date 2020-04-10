@@ -1,8 +1,8 @@
 
 :root {
-    --main-confirmate:steelblue ;
-    --main-recuperari: limegreen;
-    --main-decese: #b2beb5;
+    --home-confirmate:steelblue ;
+    --home-recuperari: limegreen;
+    --home-decese: #b2beb5;
 }
 
 .wrapper {
@@ -13,6 +13,7 @@
 svg.chart-group {
     width: 100%;
     max-width: 900px;
+    font: 12px sans-serif;
 }
 
 path { 
@@ -29,13 +30,26 @@ path {
 }
 
 .line_total {
-    stroke: var(--main-confirmate);
+    stroke: var(--home-confirmate);
 }
 .line_healed {
-    stroke: var(--main-recuperari);
+    stroke: var(--home-recuperari);
 }
 .line_dead {
-    stroke: var(--main-decese);
+    stroke: var(--home-decese);
+}
+
+.dot_total {
+    fill: var(--home-confirmate);
+    stroke: #333;
+}
+.dot_healed {
+    fill: var(--home-recuperari);
+    stroke: #333;
+}
+.dot_dead {
+    fill: var(--home-decese);
+    stroke: #333;
 }
 
 .overlay {
