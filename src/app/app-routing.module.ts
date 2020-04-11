@@ -31,8 +31,6 @@ import { EuropeSituationComponent } from './components/main/statistics/europe-si
 
 
 const routes: Routes = [
-  // {path: '', redirectTo: 'main', pathMatch: 'full'},
-  // {path: '', redirectTo: 'home', pathMatch: 'full'},
   {
     path: '',
     component: MainComponent,

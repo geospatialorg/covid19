@@ -1,7 +1,7 @@
 <div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
     <p-dropdown id="graph-list" [options]="list"
         [(ngModel)]="activeChart"
-        optionLabel="title">
+        optionLabel="title" (onChange)="updateQueryParams()">
     </p-dropdown>
 </div>
 
