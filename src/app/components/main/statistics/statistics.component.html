@@ -9,4 +9,19 @@
 
 </div>
 
+
+<!-- <div class="sub-menu" [ngClass]="{'with-arrows': false}">
+    <button pButton *ngIf="showArrows" type="button" [disabled]="false" class="arrow-btn left" icon="fa fa-arrow-left" (click)="moveScroll('l')"></button> 
+    <button pButton *ngIf="showArrows" type="button" [disabled]="false" class="arrow-btn right" icon="fa fa-arrow-right" (click)="moveScroll('r')"></button>
+    <div class="s-m-container" style="width: 100%;" #containerContent>
+        <button *ngFor="let item of links"
+        pButton type="button"
+        class="{{item.classes}}"
+        [routerLink]="item.routerLink"
+        routerLinkActive="ui-button-info"
+        [routerLinkActiveOptions]="{exact: true}"
+        label="{{item.label}}"></button>
+    </div>
+</div> -->
+
 <router-outlet></router-outlet>

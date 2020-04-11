@@ -1,0 +1,11 @@
+<div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+    <p-dropdown id="graph-list" [options]="list"
+        [(ngModel)]="activeChart"
+        optionLabel="title">
+    </p-dropdown>
+</div>
+
+<div class="p-grid statistics-container no-margin no-padding" id="europe-situation-graph"  #mainGrid style="height: calc(100% - 105px)">
+    <iframe *ngIf="activeChart.id > 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+    <iframe id="full" *ngIf="activeChart.id == 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+</div>

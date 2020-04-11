@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, ViewChild, ElementRef} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
 
 @Component({
@@ -8,7 +8,11 @@ import {SharedService} from '../../../services/shared.service';
   encapsulation: ViewEncapsulation.None
 })
 export class StatisticsComponent implements OnInit {
+  @ViewChild('container', { static: true }) container: ElementRef
+  @ViewChild('containerContent', { static: true }) containerContent: ElementRef
   links: any[];
+
+  showArrows: boolean = false
 
   constructor(private sharedService: SharedService) {
     this.sharedService.setMeta(
@@ -19,6 +23,8 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // console.log(this.container.nativeElement.offsetWidth, this.containerContent.nativeElement.scrollWidth)
+    // console.log(this.containerContent.nativeElement.scrollLeft)
     this.links = [
       {
         routerLink: '/statistici/statistici-generale',
@@ -35,14 +41,24 @@ export class StatisticsComponent implements OnInit {
         label: 'Repartiția cazurilor pe județe',
         classes: 'ui-button-secondary'
       },
+      // {
+      //   routerLink: '/statistici/situatie-europa',
+      //   label: 'Cazuri în Europa (heatmap)',
+      //   classes: 'ui-button-secondary'
+      // },
+      // {
+      //   routerLink: '/statistici/situatie-europa-grafic',
+      //   label: 'Cazuri în Europa (grafic)',
+      //   classes: 'ui-button-secondary'
+      // },
       {
         routerLink: '/statistici/situatie-europa',
-        label: 'Cazuri în Europa (heatmap)',
+        label: 'Europa',
         classes: 'ui-button-secondary'
       },
       {
-        routerLink: '/statistici/situatie-europa-grafic',
-        label: 'Cazuri în Europa (grafic)',
+        routerLink: '/statistici/teste-efectuate',
+        label: 'Teste efectuate',
         classes: 'ui-button-secondary'
       },
       {
@@ -57,4 +73,27 @@ export class StatisticsComponent implements OnInit {
       }
     ];
   }
+
+  moveScroll(direction){
+    if(direction === 'r'){
+      this.containerContent.nativeElement.scrollLeft += 100;
+    } else {
+      this.containerContent.nativeElement.scrollLeft -= 100;
+    }
+    
+    console.log(this.containerContent.nativeElement.scrollLeft)
+  }
+
+//   $('.scrollleft').click(function () {
+//     console.log('ok')
+//     $('#scrollbar').animate({
+//         scrollLeft: '-=153'
+//     }, 1000, 'easeOutQuad');
+// });
+// $('.scrollright').click(function () {
+//     console.log('ok')
+//     $('#scrollbar').animate({
+//         scrollLeft: '+=153'
+//     }, 1000, 'easeOutQuad');
+// });
 }

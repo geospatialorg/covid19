@@ -1,24 +1,24 @@
-#europe-confirmed-graph iframe {
-    width: 54%;
+#tests-graph iframe {
+    width: 44%;
     height: 100%;
     margin: 0 auto;
 }
 
 @media(max-width: 1000px) {
-    #europe-confirmed-graph iframe {
+    #tests-graph iframe {
         width: 100%;
     }
 }
 
 @media(min-width: 1001px) and (max-width: 1200px) {
-    #europe-confirmed-graph iframe {
-        width: 70%;
+    #tests-graph iframe {
+        width: 60%;
     }
 }
 
 @media(min-width: 1201px) and (max-width: 1368px) {
-    #europe-confirmed-graph iframe {
-        width: 65%;
+    #tests-graph iframe {
+        width: 55%;
     }
 }
 /* 
@@ -27,6 +27,3 @@
         width: 54%;
     }
 } */
-
-
-

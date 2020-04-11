@@ -1,0 +1,42 @@
+#europe-situation-graph iframe {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#europe-situation-graph iframe#full {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#graph-list .ui-dropdown {
+    width: 30%;
+}
+
+@media(max-width: 1000px) {
+    .ui-dropdown {
+        width: 90% !important;
+    }
+    #europe-situation-graph iframe {
+        width: 100%;
+    }
+}
+
+@media(min-width: 1001px) and (max-width: 1200px) {
+    #graph-list .ui-dropdown {
+        width: 50%;
+    }
+    #europe-situation-graph iframe {
+        width: 70%;
+    }
+}
+
+@media(min-width: 1201px) and (max-width: 1368px) {
+    #graph-list .ui-dropdown {
+        width: 40%;
+    }
+    #europe-situation-graph iframe {
+        width: 65%;
+    }
+}

@@ -26,6 +26,8 @@ import {LogsComponent} from './components/main/logs/logs.component';
 import { MobilityComponent } from './components/main/statistics/mobility/mobility.component';
 import { AirQualityComponent } from './components/main/statistics/air-quality/air-quality.component';
 import { EuropaCasesGraphComponent } from './components/main/statistics/europa-cases-graph/europa-cases-graph.component';
+import { DailyTestsComponent } from './components/main/statistics/daily-tests/daily-tests.component';
+import { EuropeSituationComponent } from './components/main/statistics/europe-situation/europe-situation.component';
 
 
 const routes: Routes = [
@@ -62,10 +64,12 @@ const routes: Routes = [
           {path: 'statistici-generale', component: GeneralStatisticsComponent},
           {path: 'relationare-cazuri', component: RelationCasesComponent},
           {path: 'repartitie-cazuri-judete', component: CountiesCasesComponent},
-          {path: 'situatie-europa', component: CoronavirusEuropeComponent},
-          {path: 'situatie-europa-grafic', component: EuropaCasesGraphComponent},
+          // {path: 'situatie-europa', component: CoronavirusEuropeComponent},
+          // {path: 'situatie-europa-grafic', component: EuropaCasesGraphComponent},
+          {path: 'teste-efectuate', component: DailyTestsComponent},
           {path: 'mobilitate', component: MobilityComponent},
-          {path: 'calitate-aer', component: AirQualityComponent}
+          {path: 'calitate-aer', component: AirQualityComponent},
+          {path: 'situatie-europa', component: EuropeSituationComponent}
         ]
       },
       {

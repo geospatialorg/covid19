@@ -29,3 +29,31 @@
         margin-top: 5px !important;
      }
 }
+
+.s-m-container {
+  overflow-x: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.sub-menu {
+  position: relative;
+
+  .arrow-btn {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .arrow-btn.left {
+    left: 0;
+  }
+
+  .arrow-btn.right {
+    right: 0;
+  }
+}
+
+.sub-menu.with-arrows {
+  padding-left: 42px;
+  padding-right: 42px;
+}
