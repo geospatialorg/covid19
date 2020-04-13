@@ -20,7 +20,7 @@ export class EuropeSituationComponent implements OnInit {
     this.list = [
       {
         id: 1,
-        title: 'Evoluția cazurilor în Europe (heatmap)',
+        title: 'Evoluția cazurilor în Europa (heatmap)',
         url: this.getSafeUrl('https://covid19.geo-spatial.org/charts/heatmap/index.html'),
         path: 'evolutie-cazuri-confirmate-europa-heatmap'
       },

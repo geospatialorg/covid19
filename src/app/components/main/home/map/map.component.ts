@@ -14,6 +14,8 @@ import GeoJSON from 'ol/format/GeoJSON';
 import {Fill, Stroke, Style, Text, Icon} from 'ol/style';
 import Circle from 'ol/geom/Circle';
 import Feature from 'ol/Feature';
+import {defaults as defaultControls, Control} from 'ol/control';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -82,12 +84,46 @@ export class MapComponent implements OnInit, OnDestroy {
     }
   ];
 
-  quarantineColors: any[] = [
-    'rgba(222, 0, 11, 0.5)',
-    'rgba(251, 255, 0, 0.5)',
-    'rgba(222, 0, 11, 0.5)'
-    
-  ];
+  qStyles: any = {
+    uat: {
+      default: {
+        stroke_color: '#984ea3',
+        stroke_width: 0.3,
+        fill_colors: [
+          'rgba(222, 0, 11, 0.5)',
+          'rgba(251, 255, 0, 0.5)',
+          'rgba(222, 0, 11, 0.5)'
+        ]
+      },
+      highlight: {
+        stroke_color: '#984ea3',
+        stroke_width: 0.3,
+        fill_color: 'rgba(255, 171, 69, 0.5)'
+      }
+    },
+    roads: {
+      default: {
+        stroke_color: 'rgba(1,102,204, .2)',
+        stroke_width: 1
+      },
+      highlight: {
+        stroke_color: 'rgba(255, 171, 69, .5)',
+        stroke_width: 1
+      }
+    },
+    checkpoints: {
+      default: {
+        stroke_color: 'black',
+        fill_color: 'rgba(217,95,14, 0.75)',
+        stroke_width: 3
+      },
+      highlight: {
+        stroke_color: 'black',
+        fill_color: 'rgba(197,27,138, .8)',
+        stroke_width: 3
+      }
+    }
+  }
 
   map: Map;
   mapData: any[] = [];
@@ -183,11 +219,15 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private geojsonFeatures;
 
+  legendVisible: boolean = false;
+  displayDisclaimer: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private dashboardService: DashboardService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private domSanitizer: DomSanitizer
   ) {
     this.activeMap = this.maps[0];
     this.loadData();
@@ -203,6 +243,9 @@ export class MapComponent implements OnInit, OnDestroy {
       this.activeMap = entry;
       if (this.activeMap.style) {
         this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
+      }
+      if(this.activeMap.id === 'healed') {
+        this.showDisclaimer(true);
       }
       this.initMap();
     });
@@ -233,6 +276,10 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       queryParamsHandling: 'merge'
     });
+
+    if(layer.id === 'healed') {
+      this.showDisclaimer(true);
+    }
 
     if (layer.id === 'quarantine') {
       let l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
@@ -352,10 +399,9 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   quarantineStyles(feature) {
-    console.log(feature)
     const stroke = new Stroke({
-      color: '#984ea3',
-      width: 0.3
+      color: this.qStyles.uat.default.stroke_color,
+      width: this.qStyles.uat.default.stroke_width
     });
 
     const styleQuarantine = new Style({
@@ -364,14 +410,14 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (feature && feature.get('quarantine')) {
       styleQuarantine.setFill(new Fill({
-        color: this.quarantineColors[feature.get('quarantine')]
+        color: this.qStyles.uat.default.fill_colors[feature.get('quarantine')]
       }));
     }
 
     const styleQuarantineHover = new Style({
       stroke: stroke,
       fill: new Fill({
-        color: 'rgba(255, 171, 69, 0.5)'
+        color: this.qStyles.uat.highlight.fill_color
       })
     });
 
@@ -379,22 +425,17 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   roadsStyles() {
-    const stroke = new Stroke({
-      color: '#0166CC',
-      width: 1
-    });
-
     const styleRoads = new Style({
-      stroke: stroke,
-      // fill: new Fill({
-      //   color: 'rgba(255, 171, 69, 0.5)'
-      // })
+      stroke: new Stroke({
+        color: this.qStyles.roads.default.stroke_color,
+        width: this.qStyles.roads.default.stroke_width
+      })
     });
 
     const styleRoadsHover = new Style({
       stroke: new Stroke({
-        color: 'rgba(255, 171, 69, 0.5)',
-        width: 1
+        color: this.qStyles.roads.highlight.stroke_color,
+        width: this.qStyles.roads.highlight.stroke_width
       })
     });
 
@@ -415,7 +456,7 @@ export class MapComponent implements OnInit, OnDestroy {
       new Style({
         image: new Icon({
           opacity: 1,
-          src: 'data:image/svg+xml;utf8,' + this.drawIcon('rgba(197,27,138, .8)'),
+          src: 'data:image/svg+xml;utf8,' + this.drawIcon(this.qStyles.checkpoints.highlight.fill_color),
           scale: 0.3
         })
       })
@@ -425,6 +466,44 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   private initOpenLayerMap(iconLayer, self: this, iconStyle, highlightStyle) {
+
+    let ShowLegend = (function (Control){
+
+      let element;
+
+      function ShowLegend(opt_options) {
+        var options = opt_options || {};
+
+        var button = document.createElement('button');
+        button.innerHTML = 'L';
+
+        element = document.createElement('div');
+        element.className = 'show-legend ol-unselectable ol-control';
+        element.appendChild(button);
+
+        Control.call(this, {
+          element: element,
+          target: options.target
+        });
+
+        button.addEventListener('click', this.showLegend.bind(this), false);
+      }
+
+      if ( Control ) ShowLegend.__proto__ = Control;
+      ShowLegend.prototype = Object.create( Control && Control.prototype );
+      ShowLegend.prototype.constructor = ShowLegend;
+
+      ShowLegend.prototype.showLegend = function showLegend () {
+        self.legendVisible = ! self.legendVisible;
+        if(self.legendVisible) {
+          element.classList.add('show-legend-active');
+        } else {
+          element.classList.remove('show-legend-active');
+        }
+      };
+
+      return ShowLegend;
+    }(Control));
 
     const styles: Style[] = [
       // default
@@ -520,6 +599,9 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     const map = new Map({
+      controls: defaultControls().extend([
+        new ShowLegend(null)
+      ]),
       layers: [
         new TileLayer({
           source: new OSM()
@@ -611,7 +693,7 @@ export class MapComponent implements OnInit, OnDestroy {
       if (self.selectedQuarantineZone !== null) {
         let style = new Style({
           fill: new Fill({
-            color: self.quarantineColors[self.selectedQuarantineZone.get('quarantine')]
+            color: self.qStyles.uat.default.fill_colors[self.selectedQuarantineZone.get('quarantine')]
           })
         });
         self.selectedQuarantineZone.setStyle(style);
@@ -656,14 +738,12 @@ export class MapComponent implements OnInit, OnDestroy {
     if (this.selectedQuarantineZone !== null) {
       let style = new Style({
         fill: new Fill({
-          color: this.quarantineColors[this.selectedQuarantineZone.get('quarantine')]
+          color: this.qStyles.uat.default.fill_colors[this.selectedQuarantineZone.get('quarantine')]
         })
       });
       this.selectedQuarantineZone.setStyle(style);
       this.selectedQuarantineZone = null;
     }
-
-    
 
     this.router.navigate(['/'], {
       queryParams: {
@@ -683,12 +763,86 @@ export class MapComponent implements OnInit, OnDestroy {
     // this.map.off('singleclick');
   }
 
-  drawIcon( fill='rgba(217,95,14, 0.78)', sc='black', sw="3"){
+  drawIcon( fill=this.qStyles.checkpoints.default.fill_color, sc=this.qStyles.checkpoints.default.stroke_color, sw=this.qStyles.checkpoints.default.stroke_width){
     let svg = `
     <svg height="50" width="50" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <circle cx="25" cy="25" r="20" stroke="${sc}" stroke-width="${sw}" fill="${fill}" />
     </svg>`;
 
     return svg;
+  }
+
+  showDisclaimer(val) {
+    this.displayDisclaimer = val;
+  }
+
+  generateLegend(){
+    let map = this.maps.find(e => e.id === this.activeMap.id);
+
+    const options = {
+      width: 200,
+      height: 65,
+      text_fill: '#000',
+      font_size: 12,
+      font_family: 'Verdana',
+      big_radius: 10,
+      small_radius: 6,
+      stroke_width: 1,
+      big_fill: null,
+      small_fill: 'rgba(44,162,95, 0.7)',
+      hightlight_fill: 'rgba(255,255,51, 0.6)'
+    };
+
+    if(this.activeMap.id === 'quarantine') {
+      options.height = 110;
+    }
+
+    if(this.activeMap.id === 'confirmed') {
+      options.height = 105;
+    }
+
+    let legend =  `
+      <svg width="${options.width}" height="${options.height}">  
+    `;
+
+    if(this.activeMap.id === 'quarantine'){
+      legend += `
+        <polygon points="5,20 8,13 20,10 25,20 20,25  10,27 5,20" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[0]}" stroke-width="${options.stroke_width}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="23">Zone in carantină</text>
+
+        <polygon points="5,45 8,38 20,35 25,45 20,50  10,52 5,45" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[1]}" stroke-width="${options.stroke_width}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">Zone cu statut special</text>
+
+        <circle cx="14" cy="68" r="${options.small_radius}" stroke="${this.qStyles.checkpoints.default.stroke_color}" stroke-width="${options.stroke_width}" fill="${this.qStyles.checkpoints.default.fill_color}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="73">Punct control</text>
+
+        <line x1="5" y1="92" x2="20" y2="92" style="stroke: ${this.qStyles.roads.default.stroke_color};stroke-width:2" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="95">Drum</text>
+      `;
+    } else {
+      legend += `
+  
+        <circle cx="13" cy="12" r="${options.big_radius}" stroke="#ffff33" stroke-width="${options.stroke_width}" fill="${map.style.fill.color}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="17">${map.title}</text>
+
+        <circle cx="13" cy="43" r="${options.big_radius}" stroke="#e41a1c" stroke-width="${options.stroke_width}" fill="${options.hightlight_fill}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">Inregistrare selectată</text>
+      `;
+
+      if(this.activeMap.id === 'confirmed') {
+        legend += `
+          <rect x="3" y="65" width="20" height="20" style="fill:rgba(255,255,217, 0.6);stroke-width:0.8;stroke: #984ea3" />
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">Judete cu mai mult de 100</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">cazuri confirmate</text>
+        `;
+      }
+    }
+
+    legend += `
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    `;
+
+    return this.domSanitizer.bypassSecurityTrustHtml(legend);
   }
 }

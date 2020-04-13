@@ -4,7 +4,7 @@
             class="{{item.classes}}"
             [routerLink]="item.routerLink"
             routerLinkActive="ui-button-info"
-            [routerLinkActiveOptions]="{exact: true}"
+            [routerLinkActiveOptions]="{pathMatch: 'prefix'}"
             label="{{item.label}}"></button>
 
 </div>

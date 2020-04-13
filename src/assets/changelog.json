@@ -1,6 +1,6 @@
 [
     {
-        "Anun\u021b": "<p><strong>03.04.2020 13:00</strong>: A fost actualizat\u0103 <a href=\"https://covid19.geo-spatial.org\" target=\"_blank\">harta cu num\u0103rul de cazuri</a> \u0219i cea cu <a href=\"https://covid19.geo-spatial.org\" target=\"_blank\">num\u0103rul de vindec\u0103ri</a> pe baza <a href=\"https://stirioficiale.ro/informatii/buletin-de-presa-3-aprilie-2020-ora-13-00\" target=\"_blank\">datelor oficiale</a>.</p>"
+        "Anun\u021b": "<p><strong>03.04.2020 13:00</strong>: A fost actualizat\u0103 <a href=\"https://covid19.geo-spatial.org\" target=\"_blank\">harta cu num\u0103rul de cazuri</a> \u0219i <span style=\"color: blue;\">cea</span>  cu <a href=\"https://covid19.geo-spatial.org\" target=\"_blank\">num\u0103rul de vindec\u0103ri</a> pe baza <a href=\"https://stirioficiale.ro/informatii/buletin-de-presa-3-aprilie-2020-ora-13-00\" target=\"_blank\">datelor oficiale</a>.</p>"
     },
     {
         "Anun\u021b": "<p><strong>02.04.2020 13:00</strong>: A fost actualizat\u0103 <a href=\"https://covid19.geo-spatial.org\" target=\"_blank\">harta cu num\u0103rul de cazuri</a> \u0219i cea cu <a href=\"https://covid19.geo-spatial.org\" target=\"_blank\">num\u0103rul de vindec\u0103ri</a>. Autorit\u0103\u021bile au revenit la <a href=\"https://stirioficiale.ro/informatii/buletin-de-presa-2-aprilie-2020-ora-13-00\" target=\"_blank\">raportarea cazurilor la nivel de jude\u021b</a>.</p>"

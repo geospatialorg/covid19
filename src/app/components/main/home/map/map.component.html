@@ -35,7 +35,13 @@
       <em style="display: block;font-size: 12px;">(după locul externării)</em>
     </p>
     <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
-    <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> --></div>
+    <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> -->
+  </div>
+
+  <div class="map-legend" *ngIf="legendVisible">
+    <p><strong>Legenda</strong></p>
+    <div [innerHtml]="generateLegend()"></div>
+  </div>
 
     <div class="info-modal" *ngIf="selectedQuarantineZone">
       <h3>{{selectedQuarantineZone.get('uat')}}</h3>
@@ -51,3 +57,28 @@
       <p>{{selectedCheckpoint.get('Descriere')}}</p>
     </div>
 </div>
+
+<p-dialog header="Atenție" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
+  <div>
+   <p>
+     Începând cu data de 02.04.2020, autoritățile nu mai comunică 
+    numărul de vindecări la nivel de județ, prezentând doar numărul total 
+    al pacienților declarați vindecați. Din această cauză, etichetăm 
+    vindecările noi cu cu locația "JUDEȚ NECUNOSCUT".
+  </p>
+
+  <p>
+    Echipa de voluntari 
+    verifică sistematic presa locală și anunțurile autorităților publice 
+    locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații 
+    verificabile, mută cazurile din "JUDEȚ NECUNOSCUT" în județul 
+    corect de vindecare.
+  </p> 
+  </div>
+
+  <p-footer>
+    <div style="text-align: center;">
+      <button pButton type="button" label="Inchide"  class="ui-button-warning" (click)="showDisclaimer(false)"></button>
+    </div>
+  </p-footer>
+</p-dialog>
