@@ -1,0 +1,14 @@
+<div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+    <p-dropdown id="deaths-list" [options]="list"
+        [(ngModel)]="activeChart"
+        optionLabel="title" (onChange)="onGraphChange()">
+    </p-dropdown>
+</div>
+
+<!-- <iframe width="" height="" seamless frameborder="0" scrolling="no" src=""></iframe>
+<iframe width="" height="" seamless frameborder="0" scrolling="no" src=""></iframe> -->
+
+<div class="p-grid no-margin no-padding"  #mainGrid style="height: calc(100% - 105px);">
+    <!-- <iframe *ngIf="activeChart.id > 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe> -->
+    <iframe *ngIf="activeChart" width="{{ activeChart.width }}" height="{{activeChart.height}}" seamless frameborder="0" scrolling="no" [src]="activeChart.url"></iframe>
+</div>

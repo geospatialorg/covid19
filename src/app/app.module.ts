@@ -96,6 +96,8 @@ import {NotificationsService} from './services/notifications.service';
 import { EuropaCasesGraphComponent } from './components/main/statistics/europa-cases-graph/europa-cases-graph.component';
 import { DailyTestsComponent } from './components/main/statistics/daily-tests/daily-tests.component';
 import { EuropeSituationComponent } from './components/main/statistics/europe-situation/europe-situation.component';
+import { CommunityComponent } from './components/main/community/community.component';
+import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -135,7 +137,9 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     InstallPromptComponent,
     EuropaCasesGraphComponent,
     DailyTestsComponent,
-    EuropeSituationComponent
+    EuropeSituationComponent,
+    CommunityComponent,
+    DeathsComponent
   ],
   imports: [
     BrowserModule,

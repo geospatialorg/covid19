@@ -28,6 +28,8 @@ import { AirQualityComponent } from './components/main/statistics/air-quality/ai
 import { EuropaCasesGraphComponent } from './components/main/statistics/europa-cases-graph/europa-cases-graph.component';
 import { DailyTestsComponent } from './components/main/statistics/daily-tests/daily-tests.component';
 import { EuropeSituationComponent } from './components/main/statistics/europe-situation/europe-situation.component';
+import { CommunityComponent } from './components/main/community/community.component';
+import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
 
 
 const routes: Routes = [
@@ -67,12 +69,17 @@ const routes: Routes = [
           {path: 'teste-efectuate', component: DailyTestsComponent},
           {path: 'mobilitate', component: MobilityComponent},
           {path: 'calitate-aer', component: AirQualityComponent},
-          {path: 'situatie-europa', component: EuropeSituationComponent}
+          {path: 'situatie-europa', component: EuropeSituationComponent},
+          {path: 'decese', component: DeathsComponent}
         ]
       },
       {
         path: 'jurnal-aplicatie',
         component: LogsComponent
+      },
+      {
+        path: 'comunitate',
+        component: CommunityComponent
       },
       {
         path: 'administration',

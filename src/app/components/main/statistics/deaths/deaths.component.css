@@ -1,0 +1,25 @@
+iframe {
+    margin: 0 auto;
+}
+
+#deaths-list .ui-dropdown {
+    width: 30%;
+}
+
+@media(max-width: 1000px) {
+    #deaths-list .ui-dropdown {
+        width: 90% !important;
+    }
+}
+
+@media(min-width: 1001px) and (max-width: 1200px) {
+    #deaths-list .ui-dropdown {
+        width: 50%;
+    }
+}
+
+@media(min-width: 1201px) and (max-width: 1368px) {
+    #deaths-list .ui-dropdown {
+        width: 40%;
+    }
+}

@@ -32,6 +32,11 @@ export class StatisticsComponent implements OnInit {
         classes: 'ui-button-secondary'
       },
       {
+        routerLink: '/statistici/decese',
+        label: 'Decese',
+        classes: 'ui-button-secondary'
+      },
+      {
         routerLink: '/statistici/relationare-cazuri',
         label: 'Relaționare cazuri',
         classes: 'ui-button-secondary'
@@ -51,11 +56,7 @@ export class StatisticsComponent implements OnInit {
       //   label: 'Cazuri în Europa (grafic)',
       //   classes: 'ui-button-secondary'
       // },
-      {
-        routerLink: '/statistici/situatie-europa',
-        label: 'Europa',
-        classes: 'ui-button-secondary'
-      },
+      
       {
         routerLink: '/statistici/teste-efectuate',
         label: 'Teste efectuate',
@@ -69,6 +70,11 @@ export class StatisticsComponent implements OnInit {
       {
         routerLink: '/statistici/calitate-aer',
         label: 'Calitate aer',
+        classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/statistici/situatie-europa',
+        label: 'Europa',
         classes: 'ui-button-secondary'
       }
     ];

@@ -50,8 +50,14 @@ export class HeaderComponent implements OnInit {
       },
       {
         label: 'Manifest',
-        icon: 'pi pi-users',
+        icon: 'fa fa-fist-raised',
         routerLink: '/manifest',
+        visible: true
+      },
+      {
+        label: 'Comunitate',
+        icon: 'pi pi-users',
+        routerLink: '/comunitate',
         visible: true
       },
       {
