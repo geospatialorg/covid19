@@ -98,6 +98,7 @@ import { DailyTestsComponent } from './components/main/statistics/daily-tests/da
 import { EuropeSituationComponent } from './components/main/statistics/europe-situation/europe-situation.component';
 import { CommunityComponent } from './components/main/community/community.component';
 import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
+import { CommunitiesComponent } from './components/main/maps/communities/communities.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -139,7 +140,8 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     DailyTestsComponent,
     EuropeSituationComponent,
     CommunityComponent,
-    DeathsComponent
+    DeathsComponent,
+    CommunitiesComponent
   ],
   imports: [
     BrowserModule,

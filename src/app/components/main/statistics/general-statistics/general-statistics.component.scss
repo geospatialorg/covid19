@@ -25,6 +25,15 @@
     width: 100%;
 }
 
+.statistics-container #canvasDaily iframe {
+    height: 925px;
+    width: 100%;
+}
+
+.statistics-container #canvasByAge iframe, .statistics-container #canvasByGender iframe {
+    height: 550px;
+    width: 100%;
+}
 
 @media (max-width: 550px) {
     .full-width {

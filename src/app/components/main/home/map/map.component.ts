@@ -27,7 +27,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class MapComponent implements OnInit, OnDestroy {
   maxRadius = 40000;
   minRadius = 7500;
-  milestone: number = 100;
+  milestones: number[] = [100, 300];
 
   activeMap: any;
   maps: any[] = [
@@ -128,7 +128,7 @@ export class MapComponent implements OnInit, OnDestroy {
   map: Map;
   mapData: any[] = [];
 
-  quarantineExtent: number[] = [2677179.36455241, 5461128.75086669,3185868.66761265, 6204834.36059817];
+  // quarantineExtent: number[] = [1591113.1808, 5183042.0140, 3918467.8180, 6368121.7005];
 
   mapView: any = {
     center: [2747146.7966, 5749287.5195],
@@ -138,7 +138,7 @@ export class MapComponent implements OnInit, OnDestroy {
     minZoom: 3
   };
 
-  zoomedMax: boolean = false;
+  // zoomedMax: boolean = false;
 
   selectedFeature: any = null;
   selectedQuarantineZone: any = null;
@@ -147,7 +147,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private interval: any;
 
-  over: any[];
+  over: any[] = [];
 
   private mapIconLayer: VectorLayer = new VectorLayer({
     id: 'icons',
@@ -283,22 +283,23 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (layer.id === 'quarantine') {
       let l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
-      this.map.getView().fit(this.quarantineExtent);
-      this.zoomedMax = false;
+      // this.map.getView().fit(this.quarantineExtent);
+      // this.zoomedMax = false;
       this.over = [];
     } else {
-      this.over = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestone).map(e => e.county_code);
+      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
+      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
       let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
       countiesLayer.getSource().refresh();
 
-      if (!this.zoomedMax) {
-        this.map.getView().animate({
-          zoom: this.mapView.zoom,
-          center: this.mapView.center,
-          duration: 500
-        });
-        this.zoomedMax = true;
-      }
+      // if (!this.zoomedMax) {
+      //   this.map.getView().animate({
+      //     zoom: this.mapView.zoom,
+      //     center: this.mapView.center,
+      //     duration: 500
+      //   });
+      //   this.zoomedMax = true;
+      // }
     }
   }
 
@@ -350,8 +351,8 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       });
 
-      self.map.getView().fit(this.quarantineExtent);
-      this.zoomedMax = false;
+      // self.map.getView().fit(this.quarantineExtent);
+      // this.zoomedMax = false;
 
     } else {
       this.map.getLayers().getArray().map(e => {
@@ -541,10 +542,30 @@ export class MapComponent implements OnInit, OnDestroy {
             width: 4
           })
         })
+      }),
+      new Style({
+        fill: new Fill({
+          color: 'rgba(254,224,139, 0.6)'
+        }),
+        stroke: new Stroke({
+          color: '#984ea3',
+          width: 1
+        }),
+        text: new Text({
+          font: '12px Calibri,sans-serif',
+          fill: new Fill({
+            color: '#000'
+          }),
+          stroke: new Stroke({
+            color: '#fff',
+            width: 4
+          })
+        })
       })
   ];
   
-    this.over = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestone).map(e => e.county_code);
+    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
+    this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
 
     const vectorLayer = new VectorLayer({
       id: 'counties',
@@ -555,9 +576,13 @@ export class MapComponent implements OnInit, OnDestroy {
       style(feature) {
         let s = styles[0];
         
-        if(self.over.includes(feature.get('county_code'))){
+        if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
           s = styles[1];
-        } 
+        }
+
+        if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+          s = styles[2];
+        }
 
         if(!s.getText()) s.setText(new Text());
         s.getText().setText(feature.get('county_code'));
@@ -798,7 +823,7 @@ export class MapComponent implements OnInit, OnDestroy {
     }
 
     if(this.activeMap.id === 'confirmed') {
-      options.height = 105;
+      options.height = 135;
     }
 
     let legend =  `
@@ -832,8 +857,12 @@ export class MapComponent implements OnInit, OnDestroy {
       if(this.activeMap.id === 'confirmed') {
         legend += `
           <rect x="3" y="65" width="20" height="20" style="fill:rgba(255,255,217, 0.6);stroke-width:0.8;stroke: #984ea3" />
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">Judete cu mai mult de 100</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">Judete cu mai mult de ${this.milestones[0]}</text>
           <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">cazuri confirmate</text>
+
+          <rect x="3" y="100" width="20" height="20" style="fill:rgba(254,224,139, 0.6);stroke-width:0.8;stroke: #984ea3" />
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">Judete cu mai mult de ${this.milestones[1]}</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">cazuri confirmate</text>
         `;
       }
     }

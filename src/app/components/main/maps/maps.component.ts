@@ -15,9 +15,12 @@ export class MapsComponent implements OnInit {
       label: 'Infrastructura spitalicească',
     },
     {
+      routerLink: '/harti/comunitati-marginalizate',
+      label: 'Comunități marginalizate',
+    },
+    {
       routerLink: '/harti/europe',
       label: 'Context european',
-
     },
     {
       routerLink: '/harti/social-interest-points',

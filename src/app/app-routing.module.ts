@@ -30,6 +30,7 @@ import { DailyTestsComponent } from './components/main/statistics/daily-tests/da
 import { EuropeSituationComponent } from './components/main/statistics/europe-situation/europe-situation.component';
 import { CommunityComponent } from './components/main/community/community.component';
 import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
+import { CommunitiesComponent } from './components/main/maps/communities/communities.component';
 
 
 const routes: Routes = [
@@ -53,7 +54,8 @@ const routes: Routes = [
           {path: 'europe', component: EuropeanContextComponent},
           {path: 'social-interest-points', component: SocialInterestPointsComponent},
           {path: 'frontier-situation', component: FrontierSituationComponent},
-          {path: 'hospital-infrastructure', component: HospitalInfrastructureComponent}
+          {path: 'hospital-infrastructure', component: HospitalInfrastructureComponent},
+          {path: 'comunitati-marginalizate', component: CommunitiesComponent}
         ]
       },
       {
