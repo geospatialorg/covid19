@@ -67,7 +67,9 @@
 			"cod_judet": "DJ",
 			"uat": "ȚUGLUI",
 			"population": 2901,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -128,7 +130,9 @@
 			"cod_judet": "DJ",
 			"uat": "TERPEZIȚA",
 			"population": 1759,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -195,7 +199,9 @@
 			"cod_judet": "IF",
 			"uat": "VIDRA",
 			"population": 8214,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -266,7 +272,9 @@
 			"cod_judet": "DJ",
 			"uat": "CALOPĂR",
 			"population": 3886,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -329,7 +337,9 @@
 			"cod_judet": "DJ",
 			"uat": "VELA",
 			"population": 1951,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -390,7 +400,9 @@
 			"cod_judet": "PH",
 			"uat": "BUCOV",
 			"population": 11105,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -480,7 +492,9 @@
 			"cod_judet": "DJ",
 			"uat": "FILIAȘI",
 			"population": 18553,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -533,7 +547,9 @@
 			"cod_judet": "PH",
 			"uat": "BĂICOI",
 			"population": 19535,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -593,7 +609,9 @@
 			"cod_judet": "BC",
 			"uat": "ITEȘTI",
 			"population": 1622,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -650,7 +668,9 @@
 			"cod_judet": "SV",
 			"uat": "SALCEA",
 			"population": 10023,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -698,7 +718,9 @@
 			"cod_judet": "PH",
 			"uat": "BĂRCĂNEȘTI",
 			"population": 9661,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -774,7 +796,9 @@
 			"cod_judet": "PH",
 			"uat": "VALEA CĂLUGĂREASCĂ",
 			"population": 10777,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -836,7 +860,9 @@
 			"cod_judet": "CT",
 			"uat": "23 AUGUST",
 			"population": 5530,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -897,7 +923,9 @@
 			"cod_judet": "CT",
 			"uat": "TUZLA",
 			"population": 6940,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -947,7 +975,9 @@
 			"cod_judet": "IF",
 			"uat": "GLINA",
 			"population": 7224,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -1029,7 +1059,9 @@
 			"cod_judet": "DJ",
 			"uat": "SEGARCEA",
 			"population": 8084,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1075,7 +1107,9 @@
 			"cod_judet": "DJ",
 			"uat": "CÂRCEA",
 			"population": 2007,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1143,7 +1177,9 @@
 			"cod_judet": "DJ",
 			"uat": "TEASC",
 			"population": 3190,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1209,7 +1245,9 @@
 			"cod_judet": "CT",
 			"uat": "AGIGEA",
 			"population": 7103,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -1271,7 +1309,9 @@
 			"cod_judet": "CT",
 			"uat": "TECHIRGHIOL",
 			"population": 7665,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -1360,7 +1400,9 @@
 			"cod_judet": "DJ",
 			"uat": "CRAIOVA",
 			"population": 298751,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1420,7 +1462,9 @@
 			"cod_judet": "PH",
 			"uat": "TÂRGȘORU VECHI",
 			"population": 9523,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1458,7 +1502,9 @@
 			"cod_judet": "PH",
 			"uat": "PLOPENI",
 			"population": 9382,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1568,7 +1614,9 @@
 			"cod_judet": "CS",
 			"uat": "REȘIȚA",
 			"population": 82390,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -1635,7 +1683,9 @@
 			"cod_judet": "AG",
 			"uat": "BĂBANA",
 			"population": 2920,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -1717,7 +1767,9 @@
 			"cod_judet": "DJ",
 			"uat": "MURGAȘI",
 			"population": 2609,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -1766,7 +1818,9 @@
 			"cod_judet": "BH",
 			"uat": "SÂNTANDREI",
 			"population": 4533,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -1829,7 +1883,9 @@
 			"cod_judet": "BH",
 			"uat": "BORȘ",
 			"population": 3866,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -1882,7 +1938,9 @@
 			"cod_judet": "SJ",
 			"uat": "VÂRȘOLȚ",
 			"population": 2326,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -1958,7 +2016,9 @@
 			"cod_judet": "SJ",
 			"uat": "CREACA",
 			"population": 2856,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -2033,7 +2093,9 @@
 			"cod_judet": "DJ",
 			"uat": "VÂRVORU DE JOS",
 			"population": 2918,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2076,7 +2138,9 @@
 			"cod_judet": "DJ",
 			"uat": "COȘOVENI",
 			"population": 3123,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2130,7 +2194,9 @@
 			"cod_judet": "DJ",
 			"uat": "MALU MARE",
 			"population": 3390,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2242,7 +2308,9 @@
 			"cod_judet": "BV",
 			"uat": "ZĂRNEȘTI",
 			"population": 25658,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -2393,7 +2461,9 @@
 			"cod_judet": "BV",
 			"uat": "SĂCELE",
 			"population": 33410,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -2452,7 +2522,9 @@
 			"cod_judet": "TM",
 			"uat": "BUCOVĂȚ",
 			"population": 1480,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -2511,7 +2583,9 @@
 			"cod_judet": "PH",
 			"uat": "DUMBRĂVEȘTI",
 			"population": 3756,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2581,7 +2655,9 @@
 			"cod_judet": "DJ",
 			"uat": "BRĂDEȘTI",
 			"population": 4532,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2637,7 +2713,9 @@
 			"cod_judet": "PH",
 			"uat": "BRAZI",
 			"population": 8436,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2692,7 +2770,9 @@
 			"cod_judet": "DJ",
 			"uat": "PIELEȘTI",
 			"population": 3551,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2746,7 +2826,9 @@
 			"cod_judet": "TM",
 			"uat": "ȘAG",
 			"population": 2916,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -2801,7 +2883,9 @@
 			"cod_judet": "BV",
 			"uat": "BOD",
 			"population": 4650,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -2848,7 +2932,9 @@
 			"cod_judet": "MS",
 			"uat": "CORUNCA",
 			"population": 2258,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -2896,7 +2982,9 @@
 			"cod_judet": "DJ",
 			"uat": "GHERCEȘTI",
 			"population": 1625,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -2941,7 +3029,9 @@
 			"cod_judet": "IF",
 			"uat": "CORNETU",
 			"population": 5177,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -2984,7 +3074,9 @@
 			"cod_judet": "IF",
 			"uat": "COPĂCENI",
 			"population": 3222,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -3039,7 +3131,9 @@
 			"cod_judet": "MM",
 			"uat": "CAVNIC",
 			"population": 5145,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -3090,7 +3184,9 @@
 			"cod_judet": "DJ",
 			"uat": "IȘALNIȚA",
 			"population": 3906,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -3155,7 +3251,9 @@
 			"cod_judet": "BV",
 			"uat": "VULCAN",
 			"population": 4820,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -3237,7 +3335,9 @@
 			"cod_judet": "CS",
 			"uat": "CARAȘOVA",
 			"population": 3130,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -3294,7 +3394,9 @@
 			"cod_judet": "DJ",
 			"uat": "PREDEȘTI",
 			"population": 2009,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -3358,7 +3460,9 @@
 			"cod_judet": "AB",
 			"uat": "CIUGUD",
 			"population": 2846,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -3448,7 +3552,9 @@
 			"cod_judet": "BV",
 			"uat": "CODLEA",
 			"population": 24674,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -3540,7 +3646,9 @@
 			"cod_judet": "TM",
 			"uat": "ORȚIȘOARA",
 			"population": 4290,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -3602,7 +3710,9 @@
 			"cod_judet": "BC",
 			"uat": "FARAOANI",
 			"population": 5395,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -3674,7 +3784,9 @@
 			"cod_judet": "CS",
 			"uat": "DOGNECEA",
 			"population": 2050,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -3749,7 +3861,9 @@
 			"cod_judet": "AB",
 			"uat": "BERGHIN",
 			"population": 2112,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -3800,7 +3914,9 @@
 			"cod_judet": "SM",
 			"uat": "CĂPLENI",
 			"population": 3125,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -3871,7 +3987,9 @@
 			"cod_judet": "AB",
 			"uat": "SÂNTIMBRU",
 			"population": 3009,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -3924,7 +4042,9 @@
 			"cod_judet": "MS",
 			"uat": "LIVEZENI",
 			"population": 2772,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -3997,7 +4117,9 @@
 			"cod_judet": "BC",
 			"uat": "BUHOCI",
 			"population": 5011,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -4077,7 +4199,9 @@
 			"cod_judet": "MS",
 			"uat": "ERNEI",
 			"population": 5768,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -4126,7 +4250,9 @@
 			"cod_judet": "IF",
 			"uat": "BUFTEA",
 			"population": 21657,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -4194,7 +4320,9 @@
 			"cod_judet": "MS",
 			"uat": "SÂNGEORGIU DE MUREȘ",
 			"population": 9247,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -4247,7 +4375,9 @@
 			"cod_judet": "BC",
 			"uat": "MĂGURA",
 			"population": 4871,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -4297,7 +4427,9 @@
 			"cod_judet": "DJ",
 			"uat": "COȚOFENII DIN FAȚĂ",
 			"population": 2018,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -4350,7 +4482,9 @@
 			"cod_judet": "BC",
 			"uat": "SĂRATA",
 			"population": 2526,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -4415,7 +4549,9 @@
 			"cod_judet": "NT",
 			"uat": "GÂDINȚI",
 			"population": 2742,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -4477,7 +4613,9 @@
 			"cod_judet": "BV",
 			"uat": "PREJMER",
 			"population": 9283,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -4548,7 +4686,9 @@
 			"cod_judet": "CS",
 			"uat": "GORUIA",
 			"population": 890,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -4598,7 +4738,9 @@
 			"cod_judet": "PH",
 			"uat": "PĂULEȘTI",
 			"population": 5590,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -4662,7 +4804,9 @@
 			"cod_judet": "NT",
 			"uat": "SAGNA",
 			"population": 5086,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -4715,7 +4859,9 @@
 			"cod_judet": "CS",
 			"uat": "OCNA DE FIER",
 			"population": 736,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -4773,7 +4919,9 @@
 			"cod_judet": "DJ",
 			"uat": "BREASTA",
 			"population": 4050,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -4835,7 +4983,9 @@
 			"cod_judet": "BC",
 			"uat": "BACĂU",
 			"population": 175191,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -4919,7 +5069,9 @@
 			"cod_judet": "CJ",
 			"uat": "SĂVĂDISLA",
 			"population": 4428,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -4997,7 +5149,9 @@
 			"cod_judet": "CJ",
 			"uat": "CIURILA",
 			"population": 1512,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -5057,7 +5211,9 @@
 			"cod_judet": "VS",
 			"uat": "PUȘCAȘI",
 			"population": 3775,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -5118,7 +5274,9 @@
 			"cod_judet": "BC",
 			"uat": "TRAIAN",
 			"population": 2945,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -5173,7 +5331,9 @@
 			"cod_judet": "AG",
 			"uat": "BASCOV",
 			"population": 9886,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -5223,7 +5383,9 @@
 			"cod_judet": "VS",
 			"uat": "LAZA",
 			"population": 3170,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -5283,7 +5445,9 @@
 			"cod_judet": "NT",
 			"uat": "ONICENI",
 			"population": 3604,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -5354,7 +5518,9 @@
 			"cod_judet": "TM",
 			"uat": "SÂNMIHAIU ROMÂN",
 			"population": 5719,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -5415,7 +5581,9 @@
 			"cod_judet": "CS",
 			"uat": "LUPAC",
 			"population": 2930,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -5477,7 +5645,9 @@
 			"cod_judet": "CS",
 			"uat": "TÂRNOVA",
 			"population": 1782,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -5559,7 +5729,9 @@
 			"cod_judet": "HD",
 			"uat": "CĂLAN",
 			"population": 12767,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -5640,7 +5812,9 @@
 			"cod_judet": "BV",
 			"uat": "PREDEAL",
 			"population": 5227,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -5718,7 +5892,9 @@
 			"cod_judet": "VS",
 			"uat": "VASLUI",
 			"population": 70207,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -5790,7 +5966,9 @@
 			"cod_judet": "TM",
 			"uat": "GIARMATA",
 			"population": 6337,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -5871,7 +6049,9 @@
 			"cod_judet": "VS",
 			"uat": "ȘTEFAN CEL MARE",
 			"population": 3476,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -5926,7 +6106,9 @@
 			"cod_judet": "VS",
 			"uat": "MUNTENII DE SUS",
 			"population": 4144,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -6023,7 +6205,9 @@
 			"cod_judet": "VS",
 			"uat": "ZĂPODENI",
 			"population": 4066,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -6108,7 +6292,9 @@
 			"cod_judet": "AB",
 			"uat": "SEBEȘ",
 			"population": 29765,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -6162,7 +6348,9 @@
 			"cod_judet": "BC",
 			"uat": "PRĂJEȘTI",
 			"population": 2614,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -6243,7 +6431,9 @@
 			"cod_judet": "BC",
 			"uat": "FILIPEȘTI",
 			"population": 4782,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -6318,7 +6508,9 @@
 			"cod_judet": "BH",
 			"uat": "SÂNMARTIN",
 			"population": 9443,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -6380,7 +6572,9 @@
 			"cod_judet": "VS",
 			"uat": "BĂLTENI",
 			"population": 1560,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -6439,7 +6633,9 @@
 			"cod_judet": "NT",
 			"uat": "BIRA",
 			"population": 1918,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -6503,7 +6699,9 @@
 			"cod_judet": "BV",
 			"uat": "BUDILA",
 			"population": 4229,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -6566,7 +6764,9 @@
 			"cod_judet": "BH",
 			"uat": "TOBOLIU",
 			"population": 2308,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -6615,7 +6815,9 @@
 			"cod_judet": "BV",
 			"uat": "SÂNPETRU",
 			"population": 4492,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -6666,7 +6868,9 @@
 			"cod_judet": "BV",
 			"uat": "GHIMBAV",
 			"population": 5527,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -6736,7 +6940,9 @@
 			"cod_judet": "NT",
 			"uat": "VALEA URSULUI",
 			"population": 4326,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -6802,7 +7008,9 @@
 			"cod_judet": "SM",
 			"uat": "ODOREU",
 			"population": 5305,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -6872,7 +7080,9 @@
 			"cod_judet": "TM",
 			"uat": "GIROC",
 			"population": 6583,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -6927,7 +7137,9 @@
 			"cod_judet": "VS",
 			"uat": "DELEȘTI",
 			"population": 2415,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -6973,7 +7185,9 @@
 			"cod_judet": "IF",
 			"uat": "TUNARI",
 			"population": 4453,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -7054,7 +7268,9 @@
 			"cod_judet": "CJ",
 			"uat": "JUCU",
 			"population": 4261,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -7116,7 +7332,9 @@
 			"cod_judet": "BC",
 			"uat": "GÂRLENI",
 			"population": 6932,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -7173,7 +7391,9 @@
 			"cod_judet": "SM",
 			"uat": "AGRIȘ",
 			"population": 1915,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -7246,7 +7466,9 @@
 			"cod_judet": "CJ",
 			"uat": "CĂIANU",
 			"population": 2393,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -7302,7 +7524,9 @@
 			"cod_judet": "PH",
 			"uat": "BERCENI",
 			"population": 6245,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -7370,7 +7594,9 @@
 			"cod_judet": "AB",
 			"uat": "CRICĂU",
 			"population": 2197,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -7439,7 +7665,9 @@
 			"cod_judet": "AB",
 			"uat": "TEIUȘ",
 			"population": 7393,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -7523,7 +7751,9 @@
 			"cod_judet": "CJ",
 			"uat": "GÂRBĂU",
 			"population": 2593,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -7591,7 +7821,9 @@
 			"cod_judet": "BC",
 			"uat": "ODOBEȘTI",
 			"population": 2607,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -7677,7 +7909,9 @@
 			"cod_judet": "CJ",
 			"uat": "SÂNPAUL",
 			"population": 2546,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -7752,7 +7986,9 @@
 			"cod_judet": "TM",
 			"uat": "MOȘNIȚA NOUĂ",
 			"population": 5089,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -7827,7 +8063,9 @@
 			"cod_judet": "TM",
 			"uat": "SĂCĂLAZ",
 			"population": 7528,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -7922,7 +8160,9 @@
 			"cod_judet": "CJ",
 			"uat": "GILĂU",
 			"population": 8649,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -8006,7 +8246,9 @@
 			"cod_judet": "CJ",
 			"uat": "VULTURENI",
 			"population": 1446,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -8071,7 +8313,9 @@
 			"cod_judet": "IS",
 			"uat": "UNGHENI",
 			"population": 4387,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -8129,7 +8373,9 @@
 			"cod_judet": "VS",
 			"uat": "VĂLENI",
 			"population": 4636,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -8180,7 +8426,9 @@
 			"cod_judet": "TM",
 			"uat": "GHIRODA",
 			"population": 5630,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -8238,7 +8486,9 @@
 			"cod_judet": "BC",
 			"uat": "BUHUȘI",
 			"population": 19497,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -8311,7 +8561,9 @@
 			"cod_judet": "MS",
 			"uat": "SÂNPAUL",
 			"population": 4431,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -8397,7 +8649,9 @@
 			"cod_judet": "MS",
 			"uat": "UNGHENI",
 			"population": 7016,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -8494,7 +8748,9 @@
 			"cod_judet": "BV",
 			"uat": "TĂRLUNGENI",
 			"population": 8493,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -8570,7 +8826,9 @@
 			"cod_judet": "MS",
 			"uat": "ACĂȚARI",
 			"population": 4841,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -8648,7 +8906,9 @@
 			"cod_judet": "SJ",
 			"uat": "AGRIJ",
 			"population": 1421,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -8710,7 +8970,9 @@
 			"cod_judet": "BC",
 			"uat": "HORGEȘTI",
 			"population": 4971,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -8762,7 +9024,9 @@
 			"cod_judet": "NT",
 			"uat": "MOLDOVENI",
 			"population": 2365,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -8820,7 +9084,9 @@
 			"cod_judet": "NT",
 			"uat": "BAHNA",
 			"population": 3557,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -8913,7 +9179,9 @@
 			"cod_judet": "TM",
 			"uat": "TIMIȘOARA",
 			"population": 306854,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -8972,7 +9240,9 @@
 			"cod_judet": "HD",
 			"uat": "CÂRJIȚI",
 			"population": 685,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -9067,7 +9337,9 @@
 			"cod_judet": "AB",
 			"uat": "METEȘ",
 			"population": 2946,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -9160,7 +9432,9 @@
 			"cod_judet": "BH",
 			"uat": "NOJORID",
 			"population": 4828,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -9232,7 +9506,9 @@
 			"cod_judet": "TM",
 			"uat": "REMETEA MARE",
 			"population": 2090,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -9309,7 +9585,9 @@
 			"cod_judet": "MS",
 			"uat": "PĂNET",
 			"population": 6145,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -9381,7 +9659,9 @@
 			"cod_judet": "VS",
 			"uat": "LIPOVĂȚ",
 			"population": 4360,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -9477,7 +9757,9 @@
 			"cod_judet": "TM",
 			"uat": "PIȘCHIA",
 			"population": 2952,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -9520,7 +9802,9 @@
 			"cod_judet": "TM",
 			"uat": "DUMBRĂVIȚA",
 			"population": 5058,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -9574,7 +9858,9 @@
 			"cod_judet": "BC",
 			"uat": "HEMEIUȘ",
 			"population": 4953,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -9659,7 +9945,9 @@
 			"cod_judet": "AB",
 			"uat": "VINȚU DE JOS",
 			"population": 5443,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -9750,7 +10038,9 @@
 			"cod_judet": "CS",
 			"uat": "BOCȘA",
 			"population": 17005,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -9828,7 +10118,9 @@
 			"cod_judet": "DJ",
 			"uat": "ȘIMNICU DE SUS",
 			"population": 4486,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -9916,88 +10208,9 @@
 			"cod_judet": "SJ",
 			"uat": "ZALĂU",
 			"population": 64050,
-			"nr_zona": 21
-		}
-	}, {
-		"type": "Feature",
-		"geometry": {
-			"type": "MultiPolygon",
-			"crs": {
-				"type": "name",
-				"properties": {
-					"name": "EPSG:3857"
-				}
-			},
-			"coordinates": [
-				[
-					[
-						[2539420.22, 5871989.29],
-						[2539420.22, 5870175.93],
-						[2540277.38, 5869576.96],
-						[2540923.04, 5869496.02],
-						[2542058.5, 5868362.95],
-						[2542626.23, 5868362.95],
-						[2542247.74, 5867618.44],
-						[2542214.34, 5866566.52],
-						[2541713.41, 5865903.07],
-						[2542025.1, 5865320.57],
-						[2542136.42, 5863864.48],
-						[2542581.7, 5863670.35],
-						[2543104.9, 5862117.5],
-						[2542626.23, 5861389.69],
-						[2542292.27, 5860079.79],
-						[2543438.86, 5857816.22],
-						[2543305.27, 5856312.88],
-						[2542993.58, 5855698.69],
-						[2543305.27, 5854454.28],
-						[2544897.14, 5852886.89],
-						[2544886.01, 5852256.78],
-						[2544173.57, 5851432.86],
-						[2543427.73, 5849914.46],
-						[2542203.21, 5849284.57],
-						[2541423.97, 5849510.68],
-						[2540622.47, 5849203.82],
-						[2538006.47, 5847039.92],
-						[2537427.61, 5847169.09],
-						[2536537.05, 5848024.91],
-						[2534600.09, 5847863.43],
-						[2533531.42, 5847298.27],
-						[2532529.55, 5847152.95],
-						[2531460.88, 5847895.73],
-						[2530047.12, 5848154.1],
-						[2529167.7, 5849672.19],
-						[2530926.55, 5850237.51],
-						[2532362.57, 5851610.56],
-						[2534199.34, 5851739.8],
-						[2536548.18, 5854518.92],
-						[2537861.75, 5854114.92],
-						[2538707.78, 5855553.23],
-						[2538485.14, 5856135.09],
-						[2537249.49, 5856118.92],
-						[2536303.28, 5857121.1],
-						[2536047.24, 5858592.23],
-						[2535268.01, 5859821.06],
-						[2535646.49, 5860548.74],
-						[2535679.89, 5861567.59],
-						[2536370.07, 5863476.23],
-						[2537216.1, 5863880.66],
-						[2537093.65, 5864916.07],
-						[2537383.08, 5866501.79],
-						[2537071.38, 5867683.17],
-						[2537449.87, 5869350.33],
-						[2537149.31, 5870273.06],
-						[2537204.97, 5871633.06],
-						[2539420.22, 5871989.29]
-					]
-				]
-			]
-		},
-		"properties": {
-			"siruta": 4525,
-			"cod_judet": "AB",
-			"uat": "GÂRDA DE SUS",
-			"population": 1694,
-			"nr_zona": 1
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -10074,7 +10287,9 @@
 			"cod_judet": "IS",
 			"uat": "LEȚCANI",
 			"population": 7123,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -10150,7 +10365,9 @@
 			"cod_judet": "SJ",
 			"uat": "MIRȘID",
 			"population": 2255,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -10235,7 +10452,9 @@
 			"cod_judet": "SJ",
 			"uat": "ȘIMLEU SILVANIEI",
 			"population": 16181,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -10290,7 +10509,9 @@
 			"cod_judet": "HD",
 			"uat": "BĂCIA",
 			"population": 1896,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -10355,7 +10576,9 @@
 			"cod_judet": "SJ",
 			"uat": "MESEȘENII DE JOS",
 			"population": 3196,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -10410,7 +10633,9 @@
 			"cod_judet": "DJ",
 			"uat": "ALMĂJ",
 			"population": 1938,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -10478,7 +10703,9 @@
 			"cod_judet": "BH",
 			"uat": "BIHARIA",
 			"population": 4074,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -10558,7 +10785,9 @@
 			"cod_judet": "MS",
 			"uat": "CEUAȘU DE CÂMPIE",
 			"population": 5995,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -10614,7 +10843,9 @@
 			"cod_judet": "PH",
 			"uat": "ARICEȘTII RAHTIVANI",
 			"population": 8386,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -10668,7 +10899,9 @@
 			"cod_judet": "AG",
 			"uat": "MICEȘTI",
 			"population": 4536,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -10757,7 +10990,9 @@
 			"cod_judet": "SJ",
 			"uat": "HERECLEAN",
 			"population": 3625,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -10817,7 +11052,9 @@
 			"cod_judet": "IS",
 			"uat": "ARONEANU",
 			"population": 3209,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -10880,7 +11117,9 @@
 			"cod_judet": "SJ",
 			"uat": "CRIȘENI",
 			"population": 2795,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -10954,7 +11193,9 @@
 			"cod_judet": "CJ",
 			"uat": "FLOREȘTI",
 			"population": 16287,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -11030,7 +11271,9 @@
 			"cod_judet": "SJ",
 			"uat": "PERICEI",
 			"population": 3993,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -11102,7 +11345,9 @@
 			"cod_judet": "IS",
 			"uat": "MOVILENI",
 			"population": 3168,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -11186,7 +11431,9 @@
 			"cod_judet": "SJ",
 			"uat": "ȘĂRMĂȘAG",
 			"population": 6483,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -11253,7 +11500,9 @@
 			"cod_judet": "BH",
 			"uat": "GIRIȘU DE CRIȘ",
 			"population": 3631,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -11312,7 +11561,9 @@
 			"cod_judet": "SJ",
 			"uat": "DOBRIN",
 			"population": 1735,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -11400,7 +11651,9 @@
 			"cod_judet": "MM",
 			"uat": "MIREȘU MARE",
 			"population": 5127,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -11489,7 +11742,9 @@
 			"cod_judet": "CJ",
 			"uat": "BONȚIDA",
 			"population": 5131,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -11549,7 +11804,9 @@
 			"cod_judet": "BV",
 			"uat": "CRIZBAV",
 			"population": 2414,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -11628,7 +11885,9 @@
 			"cod_judet": "BC",
 			"uat": "BLĂGEȘTI",
 			"population": 7398,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -11689,7 +11948,9 @@
 			"cod_judet": "MM",
 			"uat": "COAȘ",
 			"population": 1409,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -11749,7 +12010,9 @@
 			"cod_judet": "BT",
 			"uat": "STĂUCENI",
 			"population": 3491,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -11841,7 +12104,9 @@
 			"cod_judet": "MM",
 			"uat": "CERNEȘTI",
 			"population": 3684,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -11952,7 +12217,9 @@
 			"cod_judet": "BV",
 			"uat": "RÂȘNOV",
 			"population": 16561,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -12035,7 +12302,9 @@
 			"cod_judet": "MM",
 			"uat": "BAIA SPRIE",
 			"population": 16580,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -12089,7 +12358,9 @@
 			"cod_judet": "BT",
 			"uat": "VLĂDENI",
 			"population": 5046,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -12157,7 +12428,9 @@
 			"cod_judet": "BH",
 			"uat": "INEU",
 			"population": 4406,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -12219,7 +12492,9 @@
 			"cod_judet": "SM",
 			"uat": "DOROLȚ",
 			"population": 3622,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -12287,7 +12562,9 @@
 			"cod_judet": "MS",
 			"uat": "GHEORGHE DOJA",
 			"population": 2927,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -12344,7 +12621,9 @@
 			"cod_judet": "BT",
 			"uat": "CURTEȘTI",
 			"population": 4761,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -12415,7 +12694,9 @@
 			"cod_judet": "MS",
 			"uat": "CRĂCIUNEȘTI",
 			"population": 4235,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -12477,7 +12758,9 @@
 			"cod_judet": "BH",
 			"uat": "PALEU",
 			"population": 2055,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -12557,7 +12840,9 @@
 			"cod_judet": "BT",
 			"uat": "RĂCHIȚI",
 			"population": 4870,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -12642,7 +12927,9 @@
 			"cod_judet": "SJ",
 			"uat": "JIBOU",
 			"population": 11229,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -12733,7 +13020,9 @@
 			"cod_judet": "SM",
 			"uat": "VALEA VINULUI",
 			"population": 1927,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -12783,7 +13072,9 @@
 			"cod_judet": "CS",
 			"uat": "BREBU NOU",
 			"population": 99,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -12883,7 +13174,9 @@
 			"cod_judet": "MM",
 			"uat": "ȘOMCUTA MARE",
 			"population": 8080,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -12947,7 +13240,9 @@
 			"cod_judet": "BH",
 			"uat": "CETARIU",
 			"population": 2194,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -13066,7 +13361,9 @@
 			"cod_judet": "CJ",
 			"uat": "APAHIDA",
 			"population": 10523,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -13148,7 +13445,9 @@
 			"cod_judet": "SJ",
 			"uat": "SĂLĂȚIG",
 			"population": 2925,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -13210,7 +13509,9 @@
 			"cod_judet": "VS",
 			"uat": "MUNTENII DE JOS",
 			"population": 4024,
-			"nr_zona": 20
+			"nr_zona": 20,
+			"nume_zona": "Zona Metropolitană Vaslui",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -13285,7 +13586,9 @@
 			"cod_judet": "SM",
 			"uat": "LAZURI",
 			"population": 5763,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -13354,7 +13657,9 @@
 			"cod_judet": "DJ",
 			"uat": "BUCOVĂȚ",
 			"population": 4164,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -13447,7 +13752,9 @@
 			"cod_judet": "SM",
 			"uat": "CULCIU",
 			"population": 4076,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -13507,7 +13814,9 @@
 			"cod_judet": "SV",
 			"uat": "HÂNȚEȘTI",
 			"population": 4073,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -13591,7 +13900,9 @@
 			"cod_judet": "SJ",
 			"uat": "CRASNA",
 			"population": 6593,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -13668,7 +13979,9 @@
 			"cod_judet": "SJ",
 			"uat": "CEHU SILVANIEI",
 			"population": 7780,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -13760,7 +14073,9 @@
 			"cod_judet": "SM",
 			"uat": "DOBA",
 			"population": 2847,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -13833,7 +14148,9 @@
 			"cod_judet": "BT",
 			"uat": "BOTOȘANI",
 			"population": 115642,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -13915,7 +14232,9 @@
 			"cod_judet": "SM",
 			"uat": "TURȚ",
 			"population": 7617,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -13961,7 +14280,9 @@
 			"cod_judet": "IF",
 			"uat": "DRAGOMIREȘTI-VALE",
 			"population": 4539,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -14061,7 +14382,9 @@
 			"cod_judet": "CJ",
 			"uat": "COJOCNA",
 			"population": 4367,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -14153,7 +14476,9 @@
 			"cod_judet": "CJ",
 			"uat": "CHINTENI",
 			"population": 2942,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -14215,7 +14540,9 @@
 			"cod_judet": "IS",
 			"uat": "REDIU",
 			"population": 4444,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -14289,7 +14616,9 @@
 			"cod_judet": "BT",
 			"uat": "MIHAI EMINESCU",
 			"population": 7232,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -14363,7 +14692,9 @@
 			"cod_judet": "MM",
 			"uat": "REMETEA CHIOARULUI",
 			"population": 2857,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -14420,7 +14751,9 @@
 			"cod_judet": "MS",
 			"uat": "SÂNCRAIU DE MUREȘ",
 			"population": 7519,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -14482,7 +14815,9 @@
 			"cod_judet": "BT",
 			"uat": "ROMA",
 			"population": 3391,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -14578,7 +14913,9 @@
 			"cod_judet": "BH",
 			"uat": "ORADEA",
 			"population": 204785,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -14668,7 +15005,9 @@
 			"cod_judet": "MM",
 			"uat": "COPALNIC-MĂNĂȘTUR",
 			"population": 5793,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -14750,7 +15089,9 @@
 			"cod_judet": "IS",
 			"uat": "POPRICANI",
 			"population": 8042,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -14836,7 +15177,9 @@
 			"cod_judet": "SV",
 			"uat": "UDEȘTI",
 			"population": 7749,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -14915,7 +15258,9 @@
 			"cod_judet": "BC",
 			"uat": "SĂUCEȘTI",
 			"population": 5279,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -14968,7 +15313,9 @@
 			"cod_judet": "BC",
 			"uat": "BEREȘTI-BISTRIȚA",
 			"population": 2129,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -15033,7 +15380,9 @@
 			"cod_judet": "BC",
 			"uat": "IZVORU BERHECIULUI",
 			"population": 1712,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -15106,7 +15455,9 @@
 			"cod_judet": "BC",
 			"uat": "SECUIENI",
 			"population": 2132,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -15182,7 +15533,9 @@
 			"cod_judet": "MM",
 			"uat": "CICÂRLĂU",
 			"population": 4053,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -15252,7 +15605,9 @@
 			"cod_judet": "SM",
 			"uat": "APA",
 			"population": 2859,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -15335,7 +15690,9 @@
 			"cod_judet": "CS",
 			"uat": "VĂLIUG",
 			"population": 925,
-			"nr_zona": 14
+			"nr_zona": 14,
+			"nume_zona": "Zona Metropolitană Reşiţa",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -15422,7 +15779,9 @@
 			"cod_judet": "MM",
 			"uat": "SATULUNG",
 			"population": 5879,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -15471,7 +15830,9 @@
 			"cod_judet": "MM",
 			"uat": "COLTĂU",
 			"population": 2397,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -15557,7 +15918,9 @@
 			"cod_judet": "MM",
 			"uat": "VALEA CHIOARULUI",
 			"population": 2182,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -15607,7 +15970,9 @@
 			"cod_judet": "BV",
 			"uat": "CRISTIAN",
 			"population": 4669,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -15663,7 +16028,9 @@
 			"cod_judet": "MM",
 			"uat": "SĂCĂLĂȘENI",
 			"population": 2566,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -15744,7 +16111,9 @@
 			"cod_judet": "SM",
 			"uat": "MEDIEȘU AURIT",
 			"population": 7215,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -15815,7 +16184,9 @@
 			"cod_judet": "BH",
 			"uat": "OȘORHEI",
 			"population": 6589,
-			"nr_zona": 11
+			"nr_zona": 11,
+			"nume_zona": "Zona Metropolitană Oradea",
+			"an_infiintare": 2005
 		}
 	}, {
 		"type": "Feature",
@@ -15877,7 +16248,9 @@
 			"cod_judet": "SV",
 			"uat": "DĂRMĂNEȘTI",
 			"population": 5868,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -15932,7 +16305,9 @@
 			"cod_judet": "SV",
 			"uat": "ADÂNCATA",
 			"population": 4153,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -15991,7 +16366,9 @@
 			"cod_judet": "SM",
 			"uat": "MICULA",
 			"population": 4035,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -16057,7 +16434,9 @@
 			"cod_judet": "BT",
 			"uat": "BUCECEA",
 			"population": 5214,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -16127,7 +16506,9 @@
 			"cod_judet": "SJ",
 			"uat": "BOCȘA",
 			"population": 3531,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -16194,7 +16575,9 @@
 			"cod_judet": "MM",
 			"uat": "SEINI",
 			"population": 10300,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -16264,7 +16647,9 @@
 			"cod_judet": "MM",
 			"uat": "DUMBRĂVIȚA",
 			"population": 4373,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -16344,7 +16729,9 @@
 			"cod_judet": "BV",
 			"uat": "FELDIOARA",
 			"population": 7078,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -16430,7 +16817,9 @@
 			"cod_judet": "SM",
 			"uat": "ORAȘU NOU",
 			"population": 3790,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -16489,7 +16878,9 @@
 			"cod_judet": "BV",
 			"uat": "HĂLCHIU",
 			"population": 4794,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -16571,7 +16962,9 @@
 			"cod_judet": "NT",
 			"uat": "STĂNIȚA",
 			"population": 2300,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -16637,7 +17030,9 @@
 			"cod_judet": "BV",
 			"uat": "HĂRMAN",
 			"population": 5448,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -16707,7 +17102,9 @@
 			"cod_judet": "PH",
 			"uat": "PLOIEȘTI",
 			"population": 226688,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -16795,7 +17192,9 @@
 			"cod_judet": "NT",
 			"uat": "ICUȘEȘTI",
 			"population": 4656,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -16852,7 +17251,9 @@
 			"cod_judet": "NT",
 			"uat": "POIENARI",
 			"population": 1610,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -16914,7 +17315,9 @@
 			"cod_judet": "PH",
 			"uat": "BOLDEȘTI-SCĂENI",
 			"population": 11388,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -16985,7 +17388,9 @@
 			"cod_judet": "CJ",
 			"uat": "BACIU",
 			"population": 9492,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -17035,7 +17440,9 @@
 			"cod_judet": "NT",
 			"uat": "RUGINOASA",
 			"population": 2011,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17088,7 +17495,9 @@
 			"cod_judet": "MS",
 			"uat": "CRISTEȘTI",
 			"population": 5892,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -17146,7 +17555,9 @@
 			"cod_judet": "NT",
 			"uat": "VĂLENI",
 			"population": 1757,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17200,7 +17611,9 @@
 			"cod_judet": "IS",
 			"uat": "TOMEȘTI",
 			"population": 12678,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -17274,7 +17687,9 @@
 			"cod_judet": "HD",
 			"uat": "PESTIȘU MIC",
 			"population": 1240,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -17328,7 +17743,9 @@
 			"cod_judet": "SV",
 			"uat": "SIMINICEA",
 			"population": 3038,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -17392,7 +17809,9 @@
 			"cod_judet": "NT",
 			"uat": "GHERĂEȘTI",
 			"population": 6531,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17449,7 +17868,9 @@
 			"cod_judet": "NT",
 			"uat": "ROMAN",
 			"population": 66389,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17534,7 +17955,9 @@
 			"cod_judet": "HD",
 			"uat": "HUNEDOARA",
 			"population": 69394,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -17600,7 +18023,9 @@
 			"cod_judet": "PH",
 			"uat": "BUȘTENI",
 			"population": 9981,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17647,7 +18072,9 @@
 			"cod_judet": "NT",
 			"uat": "BOTEȘTI",
 			"population": 4867,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17704,7 +18131,9 @@
 			"cod_judet": "NT",
 			"uat": "FĂUREI",
 			"population": 2170,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17756,7 +18185,9 @@
 			"cod_judet": "NT",
 			"uat": "TĂMĂȘENI",
 			"population": 9436,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17834,7 +18265,9 @@
 			"cod_judet": "NT",
 			"uat": "BOZIENI",
 			"population": 3093,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17918,7 +18351,9 @@
 			"cod_judet": "NT",
 			"uat": "ION CREANGĂ",
 			"population": 5854,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -17986,7 +18421,9 @@
 			"cod_judet": "NT",
 			"uat": "SECUIENI",
 			"population": 3503,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -18048,7 +18485,9 @@
 			"cod_judet": "SV",
 			"uat": "DUMBRĂVENI",
 			"population": 9117,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -18115,7 +18554,9 @@
 			"cod_judet": "NT",
 			"uat": "DOLJEȘTI",
 			"population": 7485,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -18175,7 +18616,9 @@
 			"cod_judet": "AG",
 			"uat": "MOȘOAIA",
 			"population": 4959,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -18241,7 +18684,9 @@
 			"cod_judet": "AG",
 			"uat": "ȘTEFĂNEȘTI",
 			"population": 14419,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -18290,7 +18735,9 @@
 			"cod_judet": "AG",
 			"uat": "MĂRĂCINENI",
 			"population": 5237,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -18359,7 +18806,9 @@
 			"cod_judet": "AG",
 			"uat": "PITEȘTI",
 			"population": 167032,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -18442,7 +18891,9 @@
 			"cod_judet": "SM",
 			"uat": "CAREI",
 			"population": 21986,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -18496,7 +18947,9 @@
 			"cod_judet": "NT",
 			"uat": "PÂNCEȘTI",
 			"population": 1476,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -18594,7 +19047,9 @@
 			"cod_judet": "SM",
 			"uat": "MOFTIN",
 			"population": 4226,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -18656,7 +19111,9 @@
 			"cod_judet": "SM",
 			"uat": "GHERȚA MICĂ",
 			"population": 3461,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -18749,7 +19206,9 @@
 			"cod_judet": "SM",
 			"uat": "BELTIUG",
 			"population": 3248,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -18807,7 +19266,9 @@
 			"cod_judet": "SM",
 			"uat": "FOIENI",
 			"population": 1877,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -18920,7 +19381,9 @@
 			"cod_judet": "SM",
 			"uat": "SATU MARE",
 			"population": 111329,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -18990,7 +19453,9 @@
 			"cod_judet": "SM",
 			"uat": "TEREBEȘTI",
 			"population": 1704,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -19052,7 +19517,9 @@
 			"cod_judet": "IF",
 			"uat": "GĂNEASA",
 			"population": 4680,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -19138,7 +19605,9 @@
 			"cod_judet": "SM",
 			"uat": "CRAIDOROLȚ",
 			"population": 2077,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -19202,7 +19671,9 @@
 			"cod_judet": "IS",
 			"uat": "BÂRNOVA",
 			"population": 5374,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -19248,7 +19719,9 @@
 			"cod_judet": "SM",
 			"uat": "BERVENI",
 			"population": 3512,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -19323,7 +19796,9 @@
 			"cod_judet": "SM",
 			"uat": "PĂULEȘTI",
 			"population": 5334,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -19367,7 +19842,9 @@
 			"cod_judet": "CT",
 			"uat": "COSTINEȘTI",
 			"population": 2672,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -19431,7 +19908,9 @@
 			"cod_judet": "IS",
 			"uat": "COMARNA",
 			"population": 4758,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -19523,7 +20002,9 @@
 			"cod_judet": "IS",
 			"uat": "SCHITU DUCA",
 			"population": 4509,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -19610,7 +20091,9 @@
 			"cod_judet": "SM",
 			"uat": "VIILE SATU MARE",
 			"population": 3461,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -19722,7 +20205,9 @@
 			"cod_judet": "IS",
 			"uat": "IAȘI",
 			"population": 304043,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -19815,7 +20300,9 @@
 			"cod_judet": "SM",
 			"uat": "ARDUD",
 			"population": 7174,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -19914,7 +20401,9 @@
 			"cod_judet": "IS",
 			"uat": "DOBROVĂȚ",
 			"population": 2473,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -20003,7 +20492,9 @@
 			"cod_judet": "IS",
 			"uat": "VICTORIA",
 			"population": 4472,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -20113,7 +20604,9 @@
 			"cod_judet": "CT",
 			"uat": "MIHAIL KOGĂLNICEANU",
 			"population": 10224,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -20198,7 +20691,9 @@
 			"cod_judet": "CT",
 			"uat": "POARTA ALBĂ",
 			"population": 5007,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -20278,7 +20773,9 @@
 			"cod_judet": "CT",
 			"uat": "CORBU",
 			"population": 6086,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -20349,7 +20846,9 @@
 			"cod_judet": "IS",
 			"uat": "ȚUȚORA",
 			"population": 2046,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -20430,7 +20929,9 @@
 			"cod_judet": "CT",
 			"uat": "NĂVODARI",
 			"population": 36439,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -20506,7 +21007,9 @@
 			"cod_judet": "IS",
 			"uat": "PAȘCANI",
 			"population": 42324,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -20569,7 +21072,9 @@
 			"cod_judet": "IS",
 			"uat": "HOLBOCA",
 			"population": 13373,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -20624,7 +21129,9 @@
 			"cod_judet": "IF",
 			"uat": "CORBEANCA",
 			"population": 4891,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -20683,7 +21190,9 @@
 			"cod_judet": "NT",
 			"uat": "BOGHICEA",
 			"population": 2630,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -20734,7 +21243,9 @@
 			"cod_judet": "BC",
 			"uat": "TAMAȘI",
 			"population": 3197,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -20817,7 +21328,9 @@
 			"cod_judet": "CT",
 			"uat": "VALU LUI TRAIAN",
 			"population": 11919,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -20909,7 +21422,9 @@
 			"cod_judet": "CJ",
 			"uat": "TURENI",
 			"population": 2453,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -20985,7 +21500,9 @@
 			"cod_judet": "CT",
 			"uat": "MURFATLAR",
 			"population": 10764,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -21050,7 +21567,9 @@
 			"cod_judet": "CT",
 			"uat": "CUMPĂNA",
 			"population": 12140,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -21103,7 +21622,9 @@
 			"cod_judet": "PH",
 			"uat": "BLEJOI",
 			"population": 8496,
-			"nr_zona": 13
+			"nr_zona": 13,
+			"nume_zona": "Zona Metropolitană Ploieşti",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -21194,7 +21715,9 @@
 			"cod_judet": "AB",
 			"uat": "IGHIU",
 			"population": 6584,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -21287,7 +21810,9 @@
 			"cod_judet": "AB",
 			"uat": "ALBA IULIA",
 			"population": 68741,
-			"nr_zona": 1
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -21352,7 +21877,9 @@
 			"cod_judet": "CJ",
 			"uat": "AITON",
 			"population": 1138,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -21429,7 +21956,9 @@
 			"cod_judet": "CJ",
 			"uat": "PETREȘTII DE JOS",
 			"population": 1644,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -21502,7 +22031,9 @@
 			"cod_judet": "CT",
 			"uat": "LUMINA",
 			"population": 9743,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -21586,7 +22117,9 @@
 			"cod_judet": "CT",
 			"uat": "OVIDIU",
 			"population": 14403,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -21669,7 +22202,9 @@
 			"cod_judet": "CJ",
 			"uat": "FELEACU",
 			"population": 3682,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -21728,7 +22263,9 @@
 			"cod_judet": "SV",
 			"uat": "IPOTEȘTI",
 			"population": 6006,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -21782,7 +22319,9 @@
 			"cod_judet": "IF",
 			"uat": "POPEȘTI LEORDENI",
 			"population": 17631,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -21857,7 +22396,9 @@
 			"cod_judet": "NT",
 			"uat": "HORIA",
 			"population": 7374,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -21927,7 +22468,9 @@
 			"cod_judet": "NT",
 			"uat": "DULCEȘTI",
 			"population": 2634,
-			"nr_zona": 15
+			"nr_zona": 15,
+			"nume_zona": "Zona Metropolitană Roman",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -21987,7 +22530,9 @@
 			"cod_judet": "BC",
 			"uat": "LUIZI-CĂLUGĂRA",
 			"population": 5265,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -22079,7 +22624,9 @@
 			"cod_judet": "BC",
 			"uat": "MĂRGINENI",
 			"population": 9659,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -22128,7 +22675,9 @@
 			"cod_judet": "IF",
 			"uat": "BERCENI",
 			"population": 4123,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -22189,7 +22738,9 @@
 			"cod_judet": "AG",
 			"uat": "BUDEASA",
 			"population": 3985,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -22262,7 +22813,9 @@
 			"cod_judet": "CJ",
 			"uat": "BORȘA",
 			"population": 1520,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -22335,7 +22888,9 @@
 			"cod_judet": "HD",
 			"uat": "SIMERIA",
 			"population": 13423,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -22433,7 +22988,9 @@
 			"cod_judet": "MM",
 			"uat": "TĂUȚII MĂGHERĂUȘ",
 			"population": 7775,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -22489,7 +23046,9 @@
 			"cod_judet": "SV",
 			"uat": "PĂTRĂUȚI",
 			"population": 5032,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -22612,7 +23171,9 @@
 			"cod_judet": "MM",
 			"uat": "BAIA MARE",
 			"population": 137735,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -22684,7 +23245,9 @@
 			"cod_judet": "MM",
 			"uat": "RECEA",
 			"population": 5838,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -22793,7 +23356,9 @@
 			"cod_judet": "SJ",
 			"uat": "HIDA",
 			"population": 2891,
-			"nr_zona": 21
+			"nr_zona": 21,
+			"nume_zona": "Zona Metropolitană Zalău",
+			"an_infiintare": 2015
 		}
 	}, {
 		"type": "Feature",
@@ -22899,7 +23464,9 @@
 			"cod_judet": "CJ",
 			"uat": "CLUJ-NAPOCA",
 			"population": 307136,
-			"nr_zona": 7
+			"nr_zona": 7,
+			"nume_zona": "Zona Metropolitană Cluj Napoca",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -22953,7 +23520,9 @@
 			"cod_judet": "IF",
 			"uat": "PETRĂCHIOAIA",
 			"population": 2905,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -23039,7 +23608,9 @@
 			"cod_judet": "MS",
 			"uat": "TÂRGU MUREȘ",
 			"population": 143702,
-			"nr_zona": 18
+			"nr_zona": 18,
+			"nume_zona": "Zona Metropolitană Târgu Mureş",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -23130,7 +23701,9 @@
 			"cod_judet": "CT",
 			"uat": "CONSTANȚA",
 			"population": 300385,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -23207,7 +23780,9 @@
 			"cod_judet": "IS",
 			"uat": "CIUREA",
 			"population": 12128,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -23282,7 +23857,9 @@
 			"cod_judet": "IS",
 			"uat": "MIROSLAVA",
 			"population": 11352,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -23330,7 +23907,9 @@
 			"cod_judet": "CT",
 			"uat": "EFORIE",
 			"population": 10514,
-			"nr_zona": 6
+			"nr_zona": 6,
+			"nume_zona": "Zona Metropolitană Constanţa",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -23378,7 +23957,9 @@
 			"cod_judet": "IF",
 			"uat": "GRĂDIȘTEA",
 			"population": 2978,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -23464,7 +24045,9 @@
 			"cod_judet": "BT",
 			"uat": "BĂLUȘENI",
 			"population": 4957,
-			"nr_zona": 4
+			"nr_zona": 4,
+			"nume_zona": "Zona Metropolitană Botoşani",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -23520,7 +24103,9 @@
 			"cod_judet": "TM",
 			"uat": "BECICHERECU MIC",
 			"population": 2769,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -23587,7 +24172,9 @@
 			"cod_judet": "TM",
 			"uat": "DUDEȘTII NOI",
 			"population": 2858,
-			"nr_zona": 19
+			"nr_zona": 19,
+			"nume_zona": "Zona Metropolitană Timişoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -23657,7 +24244,9 @@
 			"cod_judet": "BC",
 			"uat": "LETEA VECHE",
 			"population": 6654,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -23784,7 +24373,9 @@
 			"cod_judet": "BV",
 			"uat": "BRAȘOV",
 			"population": 276354,
-			"nr_zona": 5
+			"nr_zona": 5,
+			"nume_zona": "Zona Metropolitană Braşov",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -23841,7 +24432,9 @@
 			"cod_judet": "SV",
 			"uat": "STROIEȘTI",
 			"population": 3395,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -23892,7 +24485,9 @@
 			"cod_judet": "IF",
 			"uat": "JILAVA",
 			"population": 9761,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -23962,7 +24557,9 @@
 			"cod_judet": "SV",
 			"uat": "BOSANCI",
 			"population": 7175,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -24034,7 +24631,9 @@
 			"cod_judet": "SV",
 			"uat": "MOARA",
 			"population": 4938,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -24111,7 +24710,9 @@
 			"cod_judet": "SV",
 			"uat": "SUCEAVA",
 			"population": 107243,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -24178,7 +24779,9 @@
 			"cod_judet": "SV",
 			"uat": "MITOCU DRAGOMIRNEI",
 			"population": 4709,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -24238,7 +24841,9 @@
 			"cod_judet": "IF",
 			"uat": "MĂGURELE",
 			"population": 8871,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24287,7 +24892,9 @@
 			"cod_judet": "IF",
 			"uat": "DĂRĂȘTI-ILFOV",
 			"population": 2654,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24386,7 +24993,9 @@
 			"cod_judet": "IF",
 			"uat": "CERNICA",
 			"population": 10229,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24437,7 +25046,9 @@
 			"cod_judet": "IF",
 			"uat": "DOMNEȘTI",
 			"population": 6719,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24481,7 +25092,9 @@
 			"cod_judet": "IF",
 			"uat": "ȘTEFĂNEȘTII DE JOS",
 			"population": 5178,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24530,7 +25143,9 @@
 			"cod_judet": "IF",
 			"uat": "CHITILA",
 			"population": 13309,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24592,7 +25207,9 @@
 			"cod_judet": "IF",
 			"uat": "AFUMAȚI",
 			"population": 7037,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24647,7 +25264,9 @@
 			"cod_judet": "IF",
 			"uat": "CLINCENI",
 			"population": 5205,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24711,7 +25330,9 @@
 			"cod_judet": "IF",
 			"uat": "CIOLPANI",
 			"population": 4457,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24789,7 +25410,9 @@
 			"cod_judet": "IF",
 			"uat": "PERIȘ",
 			"population": 7212,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24845,7 +25468,9 @@
 			"cod_judet": "IF",
 			"uat": "NUCI",
 			"population": 2859,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24913,7 +25538,9 @@
 			"cod_judet": "IF",
 			"uat": "BRĂNEȘTI",
 			"population": 8667,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -24961,7 +25588,9 @@
 			"cod_judet": "IF",
 			"uat": "OTOPENI",
 			"population": 12032,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25030,7 +25659,9 @@
 			"cod_judet": "IF",
 			"uat": "BALOTEȘTI",
 			"population": 7014,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25088,7 +25719,9 @@
 			"cod_judet": "IF",
 			"uat": "DASCĂLU",
 			"population": 2576,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25153,7 +25786,9 @@
 			"cod_judet": "IF",
 			"uat": "MOARA VLĂSIEI",
 			"population": 6013,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25232,7 +25867,9 @@
 			"cod_judet": "IF",
 			"uat": "PANTELIMON",
 			"population": 21904,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25327,7 +25964,9 @@
 			"cod_judet": "IF",
 			"uat": "SNAGOV",
 			"population": 6552,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25412,7 +26051,109 @@
 			"cod_judet": "IF",
 			"uat": "GRUIU",
 			"population": 6792,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
+		}
+	}, {
+		"type": "Feature",
+		"geometry": {
+			"type": "MultiPolygon",
+			"crs": {
+				"type": "name",
+				"properties": {
+					"name": "EPSG:3857"
+				}
+			},
+			"coordinates": [
+				[
+					[
+						[2614905.97, 5824190.01],
+						[2616508.97, 5823545.84],
+						[2616520.1, 5824496],
+						[2617410.66, 5824624.85],
+						[2618802.15, 5824302.74],
+						[2620282.7, 5823207.68],
+						[2620672.32, 5823658.57],
+						[2623199.27, 5821935.64],
+						[2623911.72, 5820808.67],
+						[2624958.12, 5820615.49],
+						[2625670.57, 5820084.27],
+						[2626093.58, 5819295.54],
+						[2626193.77, 5818410.32],
+						[2626828.29, 5817702.2],
+						[2627674.32, 5817509.09],
+						[2627329.23, 5816672.32],
+						[2628409.02, 5815127.72],
+						[2628921.09, 5813824.68],
+						[2629967.5, 5812763.08],
+						[2631013.9, 5812328.83],
+						[2632605.77, 5812795.25],
+						[2632717.09, 5812135.83],
+						[2634286.69, 5812023.25],
+						[2635310.83, 5810768.91],
+						[2635566.87, 5810077.48],
+						[2635244.04, 5809434.35],
+						[2635845.17, 5808759.11],
+						[2635511.21, 5808389.35],
+						[2633952.74, 5804756.94],
+						[2633730.1, 5803937.45],
+						[2632861.8, 5804146.33],
+						[2632728.22, 5803246.56],
+						[2631960.12, 5802909.17],
+						[2630880.32, 5803198.36],
+						[2630268.06, 5803696.43],
+						[2629043.55, 5802764.58],
+						[2628876.57, 5802186.23],
+						[2628141.86, 5802138.04],
+						[2627551.86, 5801527.6],
+						[2626794.89, 5802057.71],
+						[2626883.95, 5802812.77],
+						[2626516.59, 5804130.26],
+						[2628175.25, 5804564.11],
+						[2627685.45, 5806717.62],
+						[2627084.32, 5808373.28],
+						[2627195.64, 5809450.43],
+						[2625559.25, 5810801.07],
+						[2624857.93, 5810929.71],
+						[2624791.14, 5811991.09],
+						[2623744.74, 5812602.24],
+						[2622364.38, 5814226.83],
+						[2621017.41, 5814468.13],
+						[2620527.6, 5815224.25],
+						[2618668.57, 5816189.61],
+						[2618379.14, 5816994.15],
+						[2616297.46, 5817171.16],
+						[2615473.7, 5817493],
+						[2614761.26, 5817138.97],
+						[2612946.75, 5817267.71],
+						[2612623.92, 5817058.51],
+						[2610397.53, 5816720.6],
+						[2609161.88, 5817380.35],
+						[2609228.68, 5818040.16],
+						[2610230.55, 5819585.27],
+						[2610731.49, 5820712.08],
+						[2610464.32, 5821468.74],
+						[2609529.24, 5822193.25],
+						[2609384.52, 5822676.3],
+						[2610208.29, 5823948.44],
+						[2611054.32, 5824222.22],
+						[2612045.06, 5823368.71],
+						[2612969.01, 5823433.12],
+						[2614115.6, 5824302.74],
+						[2614905.97, 5824190.01]
+					]
+				]
+			]
+		},
+		"properties": {
+			"siruta": 4366,
+			"cod_judet": "AB",
+			"uat": "GALDA DE JOS",
+			"population": 4421,
+			"nr_zona": 1,
+			"nume_zona": "Zona Metropolitană Alba Iulia",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -25467,7 +26208,9 @@
 			"cod_judet": "DJ",
 			"uat": "MISCHII",
 			"population": 1760,
-			"nr_zona": 8
+			"nr_zona": 8,
+			"nume_zona": "Zona Metropolitană Craiova",
+			"an_infiintare": 2009
 		}
 	}, {
 		"type": "Feature",
@@ -25508,7 +26251,9 @@
 			"cod_judet": "IF",
 			"uat": "DOBROEȘTI",
 			"population": 7479,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25581,7 +26326,9 @@
 			"cod_judet": "AG",
 			"uat": "ALBOTA",
 			"population": 3890,
-			"nr_zona": 12
+			"nr_zona": 12,
+			"nume_zona": "Zona Metropolitană Piteşti",
+			"an_infiintare": 2012
 		}
 	}, {
 		"type": "Feature",
@@ -25630,7 +26377,9 @@
 			"cod_judet": "IF",
 			"uat": "MOGOȘOAIA",
 			"population": 6444,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25674,7 +26423,9 @@
 			"cod_judet": "IF",
 			"uat": "VOLUNTARI",
 			"population": 35840,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -25736,7 +26487,9 @@
 			"cod_judet": "SV",
 			"uat": "VEREȘTI",
 			"population": 7270,
-			"nr_zona": 17
+			"nr_zona": 17,
+			"nume_zona": "Zona Metropolitană Suceava",
+			"an_infiintare": 2011
 		}
 	}, {
 		"type": "Feature",
@@ -25827,7 +26580,9 @@
 			"cod_judet": "SM",
 			"uat": "TĂȘNAD",
 			"population": 9304,
-			"nr_zona": 16
+			"nr_zona": 16,
+			"nume_zona": "Zona Metropolitană Satu Mare",
+			"an_infiintare": 2013
 		}
 	}, {
 		"type": "Feature",
@@ -25893,7 +26648,9 @@
 			"cod_judet": "IS",
 			"uat": "MOGOȘEȘTI",
 			"population": 5411,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -25969,7 +26726,9 @@
 			"cod_judet": "HD",
 			"uat": "DEVA",
 			"population": 66128,
-			"nr_zona": 9
+			"nr_zona": 9,
+			"nume_zona": "Zona Metropolitană Deva – Hunedoara",
+			"an_infiintare": 2008
 		}
 	}, {
 		"type": "Feature",
@@ -26022,7 +26781,9 @@
 			"cod_judet": "IF",
 			"uat": "BRAGADIRU",
 			"population": 11216,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -26066,7 +26827,9 @@
 			"cod_judet": "IF",
 			"uat": "1 DECEMBRIE",
 			"population": 6829,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -26115,7 +26878,9 @@
 			"cod_judet": "IF",
 			"uat": "CHIAJNA",
 			"population": 10171,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -26166,7 +26931,9 @@
 			"cod_judet": "MM",
 			"uat": "GROȘI",
 			"population": 2679,
-			"nr_zona": 3
+			"nr_zona": 3,
+			"nume_zona": "Zona Metropolitană Baia Mare",
+			"an_infiintare": 2006
 		}
 	}, {
 		"type": "Feature",
@@ -26210,7 +26977,9 @@
 			"cod_judet": "BC",
 			"uat": "GIOSENI",
 			"population": 3826,
-			"nr_zona": 2
+			"nr_zona": 2,
+			"nume_zona": "Zona Metropolitană Bacău",
+			"an_infiintare": 2007
 		}
 	}, {
 		"type": "Feature",
@@ -26251,7 +27020,9 @@
 			"cod_judet": "IS",
 			"uat": "VALEA LUPULUI",
 			"population": 4741,
-			"nr_zona": 10
+			"nr_zona": 10,
+			"nume_zona": "Zona Metropolitană Iaşi",
+			"an_infiintare": 2004
 		}
 	}, {
 		"type": "Feature",
@@ -26359,7 +27130,9 @@
 			"cod_judet": "B",
 			"uat": "BUCUREȘTI",
 			"population": 1937421,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}, {
 		"type": "Feature",
@@ -26421,7 +27194,9 @@
 			"cod_judet": "IF",
 			"uat": "CIOROGÂRLA",
 			"population": 5284,
-			"nr_zona": 22
+			"nr_zona": 22,
+			"nume_zona": "Zona Metropolitană Bucureşti",
+			"an_infiintare": 2016
 		}
 	}]
 }
