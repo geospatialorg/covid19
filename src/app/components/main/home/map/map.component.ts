@@ -28,6 +28,30 @@ export class MapComponent implements OnInit, OnDestroy {
   maxRadius = 40000;
   minRadius = 7500;
   milestones: number[] = [100, 300];
+  metropolitan_colors : string[] = [
+    '255,0,0',
+    '255,255,0',
+    '0,234,255',
+    '170,0,255',
+    '255,127,0',
+    '191,255,0',
+    '0,149,255',
+    '255,0,170',
+    '255,212,0',
+    '106,255,0',
+    '0,64,255',
+    '237,185,185',
+    '185,215,237',
+    '231,233,185',
+    '220,185,237',
+    '185,237,224',
+    '143,35,35',
+    '35,98,143',
+    '143,106,35',
+    '107,35,143',
+    '79,143,35',
+    '204,204,204'
+  ];
 
   activeMap: any;
   maps: any[] = [
@@ -74,6 +98,13 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       },
       dataKey: 'total_dead'
+    },
+    {
+      id: 'metropolitan_areas',
+      title: 'Zone metropolitane',
+      alt_id: 'zone_metropolitane',
+      style: null,
+      dataKey: null
     },
     {
       id: 'quarantine',
@@ -144,6 +175,7 @@ export class MapComponent implements OnInit, OnDestroy {
   selectedQuarantineZone: any = null;
   selectedRoad: any = null;
   selectedCheckpoint: any = null;
+  selectedMetropolitan: any = null;
 
   private interval: any;
 
@@ -244,6 +276,7 @@ export class MapComponent implements OnInit, OnDestroy {
       if (this.activeMap.style) {
         this.iconStyle.setFill(new Fill(this.activeMap.style.fill));
       }
+
       if(this.activeMap.id === 'healed') {
         this.showDisclaimer(true);
       }
@@ -281,25 +314,14 @@ export class MapComponent implements OnInit, OnDestroy {
       this.showDisclaimer(true);
     }
 
+    let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
+    countiesLayer.getSource().refresh();
+
     if (layer.id === 'quarantine') {
-      let l = this.map.getLayers().getArray().find(e => e.get('id') === 'counties_quarantine');
-      // this.map.getView().fit(this.quarantineExtent);
-      // this.zoomedMax = false;
       this.over = [];
     } else {
       this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
       this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
-      let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
-      countiesLayer.getSource().refresh();
-
-      // if (!this.zoomedMax) {
-      //   this.map.getView().animate({
-      //     zoom: this.mapView.zoom,
-      //     center: this.mapView.center,
-      //     duration: 500
-      //   });
-      //   this.zoomedMax = true;
-      // }
     }
   }
 
@@ -344,19 +366,24 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (this.activeMap.id === 'quarantine') {
       this.map.getLayers().getArray().map(e => {
-        if (['icons'].includes(e.get('id'))) {
+        if (['icons', 'metropolitan_areas'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
         }
       });
-
-      // self.map.getView().fit(this.quarantineExtent);
-      // this.zoomedMax = false;
-
-    } else {
+    } else if (this.activeMap.id === 'metropolitan_areas') {
       this.map.getLayers().getArray().map(e => {
         if (['counties_quarantine', 'roads', 'checkpoints'].includes(e.get('id'))) {
+          e.setVisible(false);
+        } else {
+          e.setVisible(true);
+        }
+      });
+    }
+    else {
+      this.map.getLayers().getArray().map(e => {
+        if (['counties_quarantine', 'roads', 'checkpoints', 'metropolitan_areas'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
@@ -423,6 +450,32 @@ export class MapComponent implements OnInit, OnDestroy {
     });
 
     return [styleQuarantine, styleQuarantineHover];
+  }
+
+  metropolitanStyles(feature) {
+    const stroke = new Stroke({
+      color: this.qStyles.uat.default.stroke_color,
+      width: this.qStyles.uat.default.stroke_width
+    });
+
+    const style = new Style({
+      stroke: stroke
+    });
+
+    if (feature) {
+      style.setFill(new Fill({
+        color: `rgba(${this.metropolitan_colors[feature.get('nr_zona')-1]}, .6)`
+      }));
+    }
+
+    const styleHover = new Style({
+      stroke: stroke,
+      fill: new Fill({
+        color: this.qStyles.uat.highlight.fill_color
+      })
+    });
+
+    return [style, styleHover];
   }
 
   roadsStyles() {
@@ -591,6 +644,17 @@ export class MapComponent implements OnInit, OnDestroy {
       }
     });
 
+    const vectorLayerMetropolitanAreas = new VectorLayer({
+      id: 'metropolitan_areas',
+      source: new VectorSource({
+        url: '/api/dashboard/getGeojson?name=metropolitan_zone.geojson',
+        format: new GeoJSON()
+      }),
+      style(feature) {
+        return self.metropolitanStyles(feature)[0];
+      }
+    });
+
     const vectorLayerQuarantine = new VectorLayer({
       id: 'counties_quarantine',
       source: new VectorSource({
@@ -632,6 +696,7 @@ export class MapComponent implements OnInit, OnDestroy {
           source: new OSM()
         }),
         vectorLayer,
+        vectorLayerMetropolitanAreas,
         vectorLayerQuarantine,
         vectorLayerRoads,
         vectorLayerCheckpoints,
@@ -663,6 +728,12 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedQuarantineZone = null;
       }
 
+      if (self.selectedMetropolitan !== null) {
+        let style = self.metropolitanStyles(self.selectedMetropolitan)[0];
+        self.selectedMetropolitan.setStyle(style);
+        self.selectedMetropolitan = null;
+      }
+
       if (self.selectedRoad !== null) {
         let style = self.roadsStyles()[0];
         self.selectedRoad.setStyle(style);
@@ -685,6 +756,12 @@ export class MapComponent implements OnInit, OnDestroy {
           let style = self.quarantineStyles(null)[1];
 
           self.selectedQuarantineZone = feature;
+          feature.setStyle(style);
+          return true;
+        }  else if (layer.get('id') === 'metropolitan_areas') {
+          let style = self.metropolitanStyles(null)[1];
+
+          self.selectedMetropolitan = feature;
           feature.setStyle(style);
           return true;
         } else if (layer.get('id') === 'roads') {
@@ -737,6 +814,16 @@ export class MapComponent implements OnInit, OnDestroy {
         });
 
         feature.setStyle(style);
+      } else if (self.activeMap.id === 'metropolitan_areas') {
+        const feature = vectorLayerMetropolitanAreas.getSource().getClosestFeatureToCoordinate(coords);
+        self.selectedMetropolitan = feature;
+        let style = new Style({
+          fill: new Fill({
+            color: 'rgba(255, 171, 69, 0.5)'
+          })
+        });
+
+        feature.setStyle(style);
       } else {
         const feature = iconLayer.getSource().getClosestFeatureToCoordinate(coords);
         self.selectedFeature = feature;
@@ -768,6 +855,11 @@ export class MapComponent implements OnInit, OnDestroy {
       });
       this.selectedQuarantineZone.setStyle(style);
       this.selectedQuarantineZone = null;
+    }
+
+    if (this.selectedMetropolitan !== null) {
+      this.selectedMetropolitan.setStyle(this.metropolitanStyles[0]);
+      this.selectedMetropolitan = null;
     }
 
     this.router.navigate(['/'], {

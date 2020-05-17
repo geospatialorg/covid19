@@ -25,11 +25,49 @@ function generateQuarantineJson(){
     );
 }
 
+function generateMetropolitanAreasJson(){
+    console.log('called')
+
+    let query = `select COVID.GET_LYR_METROPOLITAN_ZONE() as data`;
+
+    pool.query(query,
+        [ ],
+        function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+
+            let filepath = path.resolve(geojsonDir, 'metropolitan_zone.geojson');
+            fs.closeSync(fs.openSync(filepath, 'w'));
+
+            fs.writeFileSync(filepath, JSON.stringify(result.rows[0].data));
+        }
+    );
+}
+
 generateQuarantineJson();
+generateMetropolitanAreasJson();
 
 setInterval(() => {
     generateQuarantineJson();
+    generateMetropolitanAreasJson();
 }, 5*60*1000);
+
+function getGeojson(file, res) {
+    try {
+        if (fs.existsSync(path.resolve(geojsonDir , file))) {
+            fs.readFile(path.resolve(geojsonDir , file), 'utf8', (err, data)=> {
+                if(err) console.log(err);
+                res.status(200).send({data: JSON.parse(data)});
+            });
+        } else {
+            res.status(200).send(null);
+        }
+    } catch(err) {
+        console.error(err)
+        
+    }
+}
 
 router
     .route('/getDeadCasesByCounty')
@@ -308,5 +346,6 @@ router
         );
 
     });
+    
 
 module.exports = router;
