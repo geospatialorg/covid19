@@ -46,11 +46,11 @@ function generateMetropolitanAreasJson(){
 }
 
 generateQuarantineJson();
-generateMetropolitanAreasJson();
+// generateMetropolitanAreasJson();
 
 setInterval(() => {
     generateQuarantineJson();
-    generateMetropolitanAreasJson();
+    // generateMetropolitanAreasJson();
 }, 5*60*1000);
 
 function getGeojson(file, res) {
@@ -58,7 +58,7 @@ function getGeojson(file, res) {
         if (fs.existsSync(path.resolve(geojsonDir , file))) {
             fs.readFile(path.resolve(geojsonDir , file), 'utf8', (err, data)=> {
                 if(err) console.log(err);
-                res.status(200).send({data: JSON.parse(data)});
+                res.status(200).send(data);
             });
         } else {
             res.status(200).send(null);
@@ -345,6 +345,18 @@ router
             }
         );
 
+    });
+
+router
+    .route('/getMetropolitanAreasGeojson')
+    .get((req, res) => {
+        return getGeojson('metropolitan_zone.geojson', res);
+    });
+
+router
+    .route('/getQuarantineGeojson')
+    .get((req, res) => {
+        return getGeojson('uat.geojson', res);
     });
     
 

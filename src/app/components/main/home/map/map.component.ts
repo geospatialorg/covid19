@@ -647,7 +647,7 @@ export class MapComponent implements OnInit, OnDestroy {
     const vectorLayerMetropolitanAreas = new VectorLayer({
       id: 'metropolitan_areas',
       source: new VectorSource({
-        url: '/api/dashboard/getGeojson?name=metropolitan_zone.geojson',
+        url: '/api/dashboard/getMetropolitanAreasGeojson',
         format: new GeoJSON()
       }),
       style(feature) {
@@ -658,7 +658,7 @@ export class MapComponent implements OnInit, OnDestroy {
     const vectorLayerQuarantine = new VectorLayer({
       id: 'counties_quarantine',
       source: new VectorSource({
-        url: '/api/dashboard/getGeojson?name=uat.geojson',
+        url: '/api/dashboard/getQuarantineGeojson',
         format: new GeoJSON()
       }),
       style(feature) {
