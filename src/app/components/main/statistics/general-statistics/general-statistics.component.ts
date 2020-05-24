@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, HostListener } from '@angular/core';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 import * as regression from 'regression';
@@ -7,6 +7,8 @@ import * as pluginPiechartOutlabels from 'chartjs-plugin-piechart-outlabels';
 import * as pluginAnnotation from 'chartjs-plugin-annotation';
 import {SharedService} from '../../../../services/shared.service';
 import {environment} from '../../../../../environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-general-statistics',
@@ -21,6 +23,13 @@ export class GeneralStatisticsComponent implements OnInit {
   @ViewChild('canvasFreqByAge', {static: true}) canvasFreqByAge: ElementRef;
   @ViewChild('canvasTrendline', {static: true}) canvasTrendline: ElementRef;
   @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
+  @HostListener('window:resize', ['$event'])
+    onResize(event?) {
+    this.isMobile = window.innerWidth < 450;
+
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    }
 
   chartColors : any = {
     red: 'rgb(255, 99, 132)',
@@ -32,19 +41,85 @@ export class GeneralStatisticsComponent implements OnInit {
     grey: 'rgb(201, 203, 207)'
   }
 
+  list: any[];
+  activeChart: any;
 
+  isMobile: boolean = window.innerWidth < 450;
 
-  constructor(private sharedService: SharedService) {
+  screenHeight: number;
+  screenWidth: number;
+
+  constructor(
+      private sharedService: SharedService,
+      private sanitizer: DomSanitizer,
+      private route: ActivatedRoute,
+      private router: Router
+    ) {
     this.sharedService.setMeta(
       'Statistici generale',
       'statistici, covid',
       `Corona virus în Europa`
     );
+
+    
   }
 
   ngOnInit(): void {
     // this.drawCharts1();
     // this.drawCharts2();
+
+    this.list = [
+        {
+            id: 1,
+            title: 'Ziua fata de cazuri cumulative',
+            path: 'ziua-fata-de-cazuri-cumulative'
+        },
+        {
+            id: 2,
+            title: 'Cazuri pe zile',
+            path: 'cazuri-pe-zile'
+        },
+        {
+            id: 3,
+            title: 'Ziua fata de numarul de cazuri noi / numar de cazuri totale',
+            path: 'ziua-fata-de-cazuri-noi-cazuri-totale'
+        },
+        {
+            id: 4,
+            title: 'Frecventa pe grupe de varsta',
+            path: 'frecventa-grupe-varsta'
+        }
+    ];
+
+    this.route.queryParams.subscribe(params => {
+        let entry = params.chart ? this.list.find(e => e.path === params.chart) : undefined;
+  
+        if (!entry) entry = this.list[0];
+        
+        console.log(entry)
+
+        this.activeChart = entry;
+        this.updateQueryParams();
+      });
+  }
+
+  getSafeUrl(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+  }
+
+  updateQueryParams(){
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        chart: this.activeChart.path
+      },
+      queryParamsHandling: 'merge',
+      skipLocationChange: true
+    });
+  }
+
+  onGraphChange(){
+    this.updateQueryParams();
   }
 
   drawCharts1(){

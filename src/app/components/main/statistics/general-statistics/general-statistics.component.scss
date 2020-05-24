@@ -21,14 +21,14 @@
 }
 
 .statistics-container iframe {
-    height: 750px;
+    height: 700px;
     width: 100%;
 }
 
-.statistics-container #canvasDaily iframe {
-    height: 925px;
-    width: 100%;
-}
+// .statistics-container #canvasDaily iframe {
+//     // height: 925px;
+//     // width: 70%;
+// }
 
 .statistics-container #canvasByAge iframe, .statistics-container #canvasByGender iframe {
     height: 550px;
@@ -48,8 +48,34 @@
         display: none;
     }
 
-    .statistics-container iframe {
-        height: 300px;
+    .statistics-container iframe, .statistics-container #canvasDaily iframe, .statistics-container #canvasByGender iframe {
+        height: 320px;
+    }
+
+    .statistics-container #canvasByAge iframe {
+        height: 200px;
+    }
+}
+
+#statistics-list .ui-dropdown {
+    width: 30%;
+}
+
+@media(max-width: 1000px) {
+    #statistics-list .ui-dropdown {
+        width: 90% !important;
+    }
+}
+
+@media(min-width: 1001px) and (max-width: 1200px) {
+    #statistics-list .ui-dropdown {
+        width: 50%;
+    }
+}
+
+@media(min-width: 1201px) and (max-width: 1368px) {
+    #statistics-list .ui-dropdown {
+        width: 40%;
     }
 }
 

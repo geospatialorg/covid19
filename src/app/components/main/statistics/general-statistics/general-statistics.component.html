@@ -1,21 +1,43 @@
+<div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+    <p-dropdown id="statistics-list" [options]="list"
+        [(ngModel)]="activeChart"
+        optionLabel="title" (onChange)="onGraphChange()">
+    </p-dropdown>
+</div>
+
 <div class="p-grid statistics-container no-margin no-padding" #mainGrid>
-    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasTrend">
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasTrend" *ngIf="activeChart.id === 1">
+        <div style="width: 70%;margin: 0 auto;" *ngIf="!isMobile">
+            <iframe  id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression.html"></iframe>
+        </div>
         <!-- <canvas id="canvasTrendline" #canvasTrendline></canvas> -->
-        <iframe id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression.html"></iframe>
+        
+        <iframe *ngIf="isMobile" id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression-mobile.html"></iframe>
     </div>
 
-    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasDaily">
+    <!-- <iframe *ngIf="isMobile" id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression-mobile.html"></iframe> -->
+
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasDaily" *ngIf="activeChart.id === 2">
         <!-- <canvas id="canvasDailyCases" #canvasDailyCases></canvas> -->
-        <iframe seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/dailycases.html"></iframe>
+        <div style="width: 70%;margin: 0 auto;" *ngIf="!isMobile">
+            <iframe  seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/dailycases.html"></iframe>
+        </div>
+        <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/dailycases-mobile.html"></iframe>
     </div>
-    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasGrowth">
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasGrowth" *ngIf="activeChart.id === 3">
         <!-- <canvas id="canvasGrowthRate" #canvasGrowthRate></canvas> -->
-        <iframe seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/growthrate.html"></iframe>
+        <div style="width: 70%;margin: 0 auto;" *ngIf="!isMobile">
+            <iframe seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/growthrate.html"></iframe>
+        </div>
+        
+        <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/growthrate-mobile.html"></iframe>
     </div>
 
-    <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 full-width" id="canvasByAge">
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasByAge" *ngIf="activeChart.id === 4">
         <!-- <canvas id="canvasFreqByAge" #canvasFreqByAge></canvas> -->
-        <iframe seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/freqbyage.html"></iframe>
+        <div style="width: 60%;margin: 0 auto;">
+            <iframe seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/freqbyage.html"></iframe>
+        </div>
     </div>
 </div>
 

@@ -29,28 +29,31 @@ export class MapComponent implements OnInit, OnDestroy {
   minRadius = 7500;
   milestones: number[] = [100, 300];
   metropolitan_colors : string[] = [
-    '255,0,0',
     '255,255,0',
-    '0,234,255',
-    '170,0,255',
-    '255,127,0',
-    '191,255,0',
-    '0,149,255',
-    '255,0,170',
-    '255,212,0',
-    '106,255,0',
-    '0,64,255',
-    '237,185,185',
-    '185,215,237',
-    '231,233,185',
-    '220,185,237',
-    '185,237,224',
-    '143,35,35',
-    '35,98,143',
-    '143,106,35',
-    '107,35,143',
-    '79,143,35',
-    '204,204,204'
+    '0,255,0',
+    
+    // '0,234,255',
+    // '170,0,255',
+    // '255,127,0',
+    // '191,255,0',
+    // '0,149,255',
+    // '255,0,170',
+    // '255,212,0',
+    // '106,255,0',
+    // '0,64,255',
+    // '237,185,185',
+    // '185,215,237',
+    // '231,233,185',
+    // '220,185,237',
+    // '185,237,224',
+    // '143,35,35',
+    // '35,98,143',
+    // '143,106,35',
+    // '107,35,143',
+    // '79,143,35',
+    // '204,204,204',
+    // '0,60,48',
+    // '53,151,143'
   ];
 
   activeMap: any;
@@ -106,13 +109,13 @@ export class MapComponent implements OnInit, OnDestroy {
       style: null,
       dataKey: null
     },
-    {
-      id: 'quarantine',
-      title: 'Zone carantină',
-      alt_id: 'zone_carantina',
-      style: null,
-      dataKey: null
-    }
+    // {
+    //   id: 'quarantine',
+    //   title: 'Zone carantină',
+    //   alt_id: 'zone_carantina',
+    //   style: null,
+    //   dataKey: null
+    // }
   ];
 
   qStyles: any = {
@@ -455,7 +458,7 @@ export class MapComponent implements OnInit, OnDestroy {
   metropolitanStyles(feature) {
     const stroke = new Stroke({
       color: this.qStyles.uat.default.stroke_color,
-      width: this.qStyles.uat.default.stroke_width
+      width: 0.2
     });
 
     const style = new Style({
@@ -464,7 +467,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (feature) {
       style.setFill(new Fill({
-        color: `rgba(${this.metropolitan_colors[feature.get('nr_zona')-1]}, .6)`
+        // color: `rgba(${this.metropolitan_colors[feature.get('nr_zona')-1]}, .6)`
+        color: `rgba(${this.metropolitan_colors[feature.get('metropolitan_flag')-1]}, .3)`
       }));
     }
 
@@ -695,9 +699,10 @@ export class MapComponent implements OnInit, OnDestroy {
         new TileLayer({
           source: new OSM()
         }),
-        vectorLayer,
         vectorLayerMetropolitanAreas,
-        vectorLayerQuarantine,
+        vectorLayer,
+        
+        // vectorLayerQuarantine,
         vectorLayerRoads,
         vectorLayerCheckpoints,
         iconLayer
@@ -802,6 +807,11 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedQuarantineZone = null;
       }
 
+      if (self.selectedMetropolitan !== null) {
+        self.selectedMetropolitan.setStyle(this.metropolitanStyles[0]);
+        self.selectedMetropolitan = null;
+      }
+
       const coords = self.map.getEventCoordinate(ev.originalEvent);
 
       if (self.activeMap.id === 'quarantine') {
@@ -868,6 +878,16 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       queryParamsHandling: 'merge'
     });
+
+    let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
+    countiesLayer.getSource().refresh();
+
+    if (this.activeMap.id === 'quarantine') {
+      this.over = [];
+    } else {
+      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
+      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
+    }
   }
 
   ngOnDestroy(): void {

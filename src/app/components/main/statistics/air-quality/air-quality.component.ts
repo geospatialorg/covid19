@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 
@@ -11,6 +11,19 @@ export class AirQualityComponent implements OnInit {
   @ViewChild('canvasAirQ', {static: true}) canvasAirQ: ElementRef;
   @ViewChild('canvasNO2', {static: true}) canvasNO2: ElementRef;
   @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
+
+  @HostListener('window:resize', ['$event'])
+    onResize(event?) {
+    this.isMobile = window.innerWidth < 450;
+
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    }
+
+  isMobile: boolean = window.innerWidth < 450;
+
+  screenHeight: number;
+  screenWidth: number;
 
   constructor() { }
 

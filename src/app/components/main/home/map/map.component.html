@@ -59,8 +59,8 @@
 
     <div class="info-modal" *ngIf="selectedMetropolitan" style="max-width: 200px;">
       <h3>{{selectedMetropolitan.get('uat')}}</h3>
-      <p>Zona: {{selectedMetropolitan.get('nume_zona')}}</p>
-      <p>An infiintare: {{selectedMetropolitan.get('an_infiintare')}}</p>
+      <p *ngIf="selectedMetropolitan.get('metropolitan_zone')">Zona: {{selectedMetropolitan.get('metropolitan_zone')}}</p>
+      <!-- <p>An infiintare: {{selectedMetropolitan.get('an_infiintare')}}</p> -->
       <p>Populatie: {{selectedMetropolitan.get('population')}}</p>
     </div>
 </div>
