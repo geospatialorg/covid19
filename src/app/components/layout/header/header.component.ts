@@ -33,13 +33,13 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Hărți',
         icon: 'pi pi-compass',
-        routerLink: '/harti',
+        routerLink: '/harti/hospital-infrastructure',
         visible: true
       },
       {
         label: 'Statistici',
         icon: 'pi pi-chart-line',
-        routerLink: '/statistici',
+        routerLink: '/statistici/statistici-generale',
         visible: true
       },
       {

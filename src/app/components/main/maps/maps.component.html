@@ -1,4 +1,4 @@
-<div class="sub-menu">
+<!-- <div class="sub-menu">
   <ng-container *ngFor="let item of submenuItems">
     <button pButton
             type="button"
@@ -8,6 +8,28 @@
             [routerLinkActiveOptions]="{exact: true}"
             [label]="item.label"></button>
   </ng-container>
+</div> -->
+
+<div class="submenu" *ngIf="!isMobile">
+  <ul style="list-style-type: none;margin: 0;">
+      <li *ngFor="let item of submenuItems; let i = index" style="display: inline-block;">
+          <i class="far fa-square" *ngIf="i > 0"></i>
+          <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">{{item.label}}</a>
+      </li>
+  </ul>
+</div>
+
+<a class="submenu" style="cursor: pointer;display: block;" (click)="showSubmenu()" *ngIf="isMobile">
+  <i class="fa fa-angle-down"></i>
+  <span class="submenu-title">{{activeLink.label}}</span>
+</a>
+
+<div class="layout-submenu" *ngIf="submenuVisible && isMobile">
+  <ul>
+      <li *ngFor="let item of submenuItems">
+          <a routerLinkActive="active" (click)="changeRoute()" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">{{item.label}}</a>
+      </li>
+  </ul>
 </div>
 
 <router-outlet></router-outlet>

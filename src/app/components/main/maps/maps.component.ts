@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, HostListener} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-maps',
@@ -8,6 +9,23 @@ import {SharedService} from '../../../services/shared.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MapsComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+    onResize(event?) {
+    this.isMobile = window.innerWidth < 550;
+
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
+
+  activeLink: any = null;
+
+  subscription$ = null;
+  submenuVisible: boolean = false;
+
+  isMobile: boolean = window.innerWidth < 550;
+
+  screenHeight: number;
+  screenWidth: number;
 
   submenuItems = [
     {
@@ -38,7 +56,10 @@ export class MapsComponent implements OnInit {
     }
   ];
 
-  constructor(private sharedService: SharedService) {
+  constructor(
+    private sharedService: SharedService,
+    private router: Router
+    ) {
     this.sharedService.setMeta(
       'Hărți',
       'hărți, covid, românia',
@@ -47,6 +68,29 @@ export class MapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let current_url = this.router.url.split('?')[0];
+    this.activeLink = this.submenuItems.find(e => e.routerLink === current_url);
+
+    this.subscription$ = this.router.events.subscribe(event => {
+      if( event instanceof  NavigationEnd ){
+        current_url = event.url.split('?')[0];
+        this.activeLink = this.submenuItems.find(e => e.routerLink === current_url);
+      }
+    });
+  }
+
+  showSubmenu(){
+    this.submenuVisible = !this.submenuVisible;
+  }
+
+  changeRoute(){
+    this.submenuVisible = false;
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription$.unsubscribe();
   }
 
 }

@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewEncapsulation, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, HostListener} from '@angular/core';
 import {SharedService} from '../../../services/shared.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-statistics',
@@ -10,11 +11,31 @@ import {SharedService} from '../../../services/shared.service';
 export class StatisticsComponent implements OnInit {
   @ViewChild('container', { static: true }) container: ElementRef
   @ViewChild('containerContent', { static: true }) containerContent: ElementRef
+  @HostListener('window:resize', ['$event'])
+    onResize(event?) {
+    this.isMobile = window.innerWidth < 550;
+
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
+
   links: any[];
 
   showArrows: boolean = false
+  activeLink: any = null;
 
-  constructor(private sharedService: SharedService) {
+  subscription$ = null;
+  submenuVisible: boolean = false;
+
+  isMobile: boolean = window.innerWidth < 550;
+
+  screenHeight: number;
+  screenWidth: number;
+
+  constructor(
+    private sharedService: SharedService,
+    private router: Router
+  ) {
     this.sharedService.setMeta(
       'Statistici',
       'statistici, covid, românia',
@@ -23,6 +44,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     // console.log(this.container.nativeElement.offsetWidth, this.containerContent.nativeElement.scrollWidth)
     // console.log(this.containerContent.nativeElement.scrollLeft)
     this.links = [
@@ -78,6 +100,16 @@ export class StatisticsComponent implements OnInit {
         classes: 'ui-button-secondary'
       }
     ];
+
+    let current_url = this.router.url.split('?')[0];
+    this.activeLink = this.links.find(e => e.routerLink === current_url);
+
+    this.subscription$ = this.router.events.subscribe(event => {
+      if( event instanceof  NavigationEnd ){
+        current_url = event.url.split('?')[0];
+        this.activeLink = this.links.find(e => e.routerLink === current_url);
+      }
+    });
   }
 
   moveScroll(direction){
@@ -88,6 +120,20 @@ export class StatisticsComponent implements OnInit {
     }
     
     console.log(this.containerContent.nativeElement.scrollLeft)
+  }
+
+  showSubmenu(){
+    this.submenuVisible = !this.submenuVisible;
+  }
+
+  changeRoute(){
+    this.submenuVisible = false;
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription$.unsubscribe();
   }
 
 //   $('.scrollleft').click(function () {

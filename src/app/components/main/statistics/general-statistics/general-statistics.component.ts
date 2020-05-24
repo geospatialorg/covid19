@@ -88,6 +88,11 @@ export class GeneralStatisticsComponent implements OnInit {
             id: 4,
             title: 'Frecventa pe grupe de varsta',
             path: 'frecventa-grupe-varsta'
+        },
+        {
+            id: 5,
+            title: 'Numarul de reproductie R a virusului Covid-19 in Romania',
+            path: 'r-reproductie-covid'
         }
     ];
 
@@ -95,8 +100,6 @@ export class GeneralStatisticsComponent implements OnInit {
         let entry = params.chart ? this.list.find(e => e.path === params.chart) : undefined;
   
         if (!entry) entry = this.list[0];
-        
-        console.log(entry)
 
         this.activeChart = entry;
         this.updateQueryParams();
