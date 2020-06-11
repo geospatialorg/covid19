@@ -31,6 +31,10 @@ import { EuropeSituationComponent } from './components/main/statistics/europe-si
 import { CommunityComponent } from './components/main/community/community.component';
 import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
 import { CommunitiesComponent } from './components/main/maps/communities/communities.component';
+import { MobilityWazeComponent } from './components/main/statistics/mobility/mobility-waze/mobility-waze.component';
+import { MobilityAppleComponent } from './components/main/statistics/mobility/mobility-apple/mobility-apple.component';
+import { MobilityGoogleComponent } from './components/main/statistics/mobility/mobility-google/mobility-google.component';
+import { MobilityMapComponent } from './components/main/maps/mobility-map/mobility-map.component';
 
 
 const routes: Routes = [
@@ -55,7 +59,8 @@ const routes: Routes = [
           {path: 'social-interest-points', component: SocialInterestPointsComponent},
           {path: 'frontier-situation', component: FrontierSituationComponent},
           {path: 'hospital-infrastructure', component: HospitalInfrastructureComponent},
-          {path: 'comunitati-marginalizate', component: CommunitiesComponent}
+          {path: 'comunitati-marginalizate', component: CommunitiesComponent},
+          {path: 'mobilitate', component: MobilityMapComponent}
         ]
       },
       {
@@ -69,7 +74,16 @@ const routes: Routes = [
           // {path: 'situatie-europa', component: CoronavirusEuropeComponent},
           // {path: 'situatie-europa-grafic', component: EuropaCasesGraphComponent},
           {path: 'teste-efectuate', component: DailyTestsComponent},
-          {path: 'mobilitate', component: MobilityComponent},
+          {
+            path: 'mobilitate', 
+            component: MobilityComponent,
+            children: [
+              {path: '', redirectTo: 'waze', pathMatch: 'full'},
+              {path: 'waze', component: MobilityWazeComponent},
+              {path: 'apple', component: MobilityAppleComponent},
+              {path: 'google', component: MobilityGoogleComponent},
+            ]
+          },
           {path: 'calitate-aer', component: AirQualityComponent},
           {path: 'situatie-europa', component: EuropeSituationComponent},
           {path: 'decese', component: DeathsComponent}

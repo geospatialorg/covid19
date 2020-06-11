@@ -660,7 +660,7 @@
   margin: 0;
 }
 
-.layout-submenu ul li {
+.layout-submenu ul li{
   border-bottom: 1px solid #eee;
 }
 
@@ -676,5 +676,27 @@
 .layout-submenu li a.active {
   background-color: #1976d2;
   // color: #000 !important;
+}
+
+#mobility-list .ui-dropdown {
+  width: 20%;
+}
+
+@media(max-width: 1000px) {
+  #mobility-list .ui-dropdown {
+      width: 90% !important;
+  }
+}
+
+@media(min-width: 1001px) and (max-width: 1200px) {
+  #mobility-list .ui-dropdown {
+      width: 40%;
+  }
+}
+
+@media(min-width: 1201px) and (max-width: 1368px) {
+  #mobility-list .ui-dropdown {
+      width: 30%;
+  }
 }
 

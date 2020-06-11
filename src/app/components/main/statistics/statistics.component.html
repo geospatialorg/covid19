@@ -11,9 +11,24 @@
 
 <div class="submenu" *ngIf="!isMobile">
     <ul style="list-style-type: none;margin: 0;">
-        <li *ngFor="let item of links; let i = index" style="display: inline-block;">
+        <li *ngFor="let item of links; let i = index" style="display: inline-block;position: relative;">
             <i class="far fa-square" *ngIf="i > 0"></i>
-            <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">{{item.label}}</a>
+            <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">
+                {{item.label}}
+                <i class="fa fa-chevron-down" *ngIf="item.label === 'Mobilitate'"></i>
+            </a>
+
+            <ul class="menu-submenu" *ngIf="item.label === 'Mobilitate'">
+                <li>
+                    <a routerLinkActive="active" [routerLink]='["/statistici/mobilitate/waze"]' routerLinkActiveOptions="{pathMatch: 'full'}">Waze</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" [routerLink]='["/statistici/mobilitate/apple"]' routerLinkActiveOptions="{pathMatch: 'full'}">Apple</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" [routerLink]='["/statistici/mobilitate/google"]' routerLinkActiveOptions="{pathMatch: 'full'}">Google</a>
+                </li>
+            </ul>
         </li>
         
     </ul>
@@ -27,7 +42,22 @@
 <div class="layout-submenu" *ngIf="submenuVisible && isMobile">
     <ul>
         <li *ngFor="let item of links">
-            <a routerLinkActive="active" (click)="changeRoute()" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">{{item.label}}</a>
+            <a style="position: relative;" routerLinkActive="active" (click)="changeRoute(item)" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">
+                {{item.label}}
+                <i class="fa fa-plus" *ngIf="item.label === 'Mobilitate'" style="position: absolute;right: 10px;top: 12px;"></i>
+            </a>
+
+            <ul *ngIf="item.label === 'Mobilitate' && mobilitySubmenuVisible">
+                <li style="border-top: 1px solid #eee;">
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" routerLink="/statistici/mobilitate/waze" routerLinkActiveOptions="{pathMatch: 'full'}">Waze</a>
+                </li>
+                <li>
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" routerLink="/statistici/mobilitate/apple" routerLinkActiveOptions="{pathMatch: 'full'}">Apple</a>
+                </li>
+                <li>
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" routerLink="/statistici/mobilitate/google" routerLinkActiveOptions="{pathMatch: 'full'}">Google</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>

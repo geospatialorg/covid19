@@ -99,6 +99,10 @@ import { EuropeSituationComponent } from './components/main/statistics/europe-si
 import { CommunityComponent } from './components/main/community/community.component';
 import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
 import { CommunitiesComponent } from './components/main/maps/communities/communities.component';
+import { MobilityWazeComponent } from './components/main/statistics/mobility/mobility-waze/mobility-waze.component';
+import { MobilityAppleComponent } from './components/main/statistics/mobility/mobility-apple/mobility-apple.component';
+import { MobilityGoogleComponent } from './components/main/statistics/mobility/mobility-google/mobility-google.component';
+import { MobilityMapComponent } from './components/main/maps/mobility-map/mobility-map.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -141,7 +145,11 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     EuropeSituationComponent,
     CommunityComponent,
     DeathsComponent,
-    CommunitiesComponent
+    CommunitiesComponent,
+    MobilityWazeComponent,
+    MobilityAppleComponent,
+    MobilityGoogleComponent,
+    MobilityMapComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,8 @@ export class StatisticsComponent implements OnInit {
   screenHeight: number;
   screenWidth: number;
 
+  mobilitySubmenuVisible: boolean = false;
+
   constructor(
     private sharedService: SharedService,
     private router: Router
@@ -44,6 +46,10 @@ export class StatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if ( window.location !== window.parent.location ) { 
+      this.isMobile = true;
+    }
     
     // console.log(this.container.nativeElement.offsetWidth, this.containerContent.nativeElement.scrollWidth)
     // console.log(this.containerContent.nativeElement.scrollLeft)
@@ -89,6 +95,21 @@ export class StatisticsComponent implements OnInit {
         label: 'Mobilitate',
         classes: 'ui-button-secondary'
       },
+      // {
+      //   routerLink: '/statistici/mobilitate/waze',
+      //   label: 'Waze',
+      //   classes: 'ui-button-secondary'
+      // },
+      // {
+      //   routerLink: '/statistici/mobilitate/apple',
+      //   label: 'Apple',
+      //   classes: 'ui-button-secondary'
+      // },
+      // {
+      //   routerLink: '/statistici/mobilitate/google',
+      //   label: 'Google',
+      //   classes: 'ui-button-secondary'
+      // },
       {
         routerLink: '/statistici/calitate-aer',
         label: 'Calitate aer',
@@ -102,11 +123,14 @@ export class StatisticsComponent implements OnInit {
     ];
 
     let current_url = this.router.url.split('?')[0];
+    if(current_url.includes('/statistici/mobilitate')) current_url = '/statistici/mobilitate';
     this.activeLink = this.links.find(e => e.routerLink === current_url);
 
     this.subscription$ = this.router.events.subscribe(event => {
       if( event instanceof  NavigationEnd ){
         current_url = event.url.split('?')[0];
+
+        if(current_url.includes('/statistici/mobilitate')) current_url = '/statistici/mobilitate';
         this.activeLink = this.links.find(e => e.routerLink === current_url);
       }
     });
@@ -126,14 +150,19 @@ export class StatisticsComponent implements OnInit {
     this.submenuVisible = !this.submenuVisible;
   }
 
-  changeRoute(){
+  changeRoute(item){
+    if(item.label === 'Mobilitate') {
+      this.mobilitySubmenuVisible = !this.mobilitySubmenuVisible;
+      return;
+    }
+
     this.submenuVisible = false;
   }
 
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-    this.subscription$.unsubscribe();
+    if(this.subscription$) this.subscription$.unsubscribe();
   }
 
 //   $('.scrollleft').click(function () {

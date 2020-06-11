@@ -3,7 +3,7 @@
     <button pButton icon="pi pi-bars" class="ui-button-secondary ui-button-raised xs-only" (click)="showSidebar(true)"></button>
     <h2 [routerLink]="['/']">Coronavirus COVID-19 România</h2>
   </div>
-  <ul  class="topbar-menu">
+  <ul class="topbar-menu">
     <ng-container *ngFor="let item of menuItems" >
       <li *ngIf="item.visible">
         <a [routerLink]="item.routerLink" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: item.routerLink === ''}">

@@ -30,6 +30,10 @@ export class MobilityComponent implements OnInit {
     if (this.enableFeature) {
       // this.drawChart3();
     }
+
+    if ( window.location !== window.parent.location ) { 
+      this.isMobile = true;
+    }
   }
 
   drawChart3() {

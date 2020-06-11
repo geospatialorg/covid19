@@ -57,3 +57,27 @@
   padding-left: 42px;
   padding-right: 42px;
 }
+
+.menu-submenu {
+  border-top: 1px solid #fff;
+  display: none; 
+  position: absolute;
+  background-color: #323F5B;
+  top: 45px;
+  left: 25px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 170px;
+}
+
+.menu-submenu li a {
+  display: block !important;
+  font-size: 12px !important;
+  line-height: 34px !important;
+}
+
+.submenu ul li:hover .menu-submenu{
+  display: block;
+  z-index: 2;
+}

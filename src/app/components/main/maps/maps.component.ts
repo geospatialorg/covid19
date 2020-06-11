@@ -53,6 +53,10 @@ export class MapsComponent implements OnInit {
     {
       routerLink: '/harti/no2-emission',
       label: 'Concentrații NO2',
+    },
+    {
+      routerLink: '/harti/mobilitate',
+      label: 'Mobilitate',
     }
   ];
 
