@@ -103,6 +103,7 @@ import { MobilityWazeComponent } from './components/main/statistics/mobility/mob
 import { MobilityAppleComponent } from './components/main/statistics/mobility/mobility-apple/mobility-apple.component';
 import { MobilityGoogleComponent } from './components/main/statistics/mobility/mobility-google/mobility-google.component';
 import { MobilityMapComponent } from './components/main/maps/mobility-map/mobility-map.component';
+import { CountyGraphsComponent } from './components/main/statistics/county-graphs/county-graphs.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -149,7 +150,8 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     MobilityWazeComponent,
     MobilityAppleComponent,
     MobilityGoogleComponent,
-    MobilityMapComponent
+    MobilityMapComponent,
+    CountyGraphsComponent
   ],
   imports: [
     BrowserModule,

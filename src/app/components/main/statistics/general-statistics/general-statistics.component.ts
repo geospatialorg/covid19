@@ -9,6 +9,7 @@ import {SharedService} from '../../../../services/shared.service';
 import {environment} from '../../../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StatisticsService } from '../../../../services/statistics.service';
 
 @Component({
   selector: 'app-general-statistics',
@@ -23,6 +24,18 @@ export class GeneralStatisticsComponent implements OnInit {
   @ViewChild('canvasFreqByAge', {static: true}) canvasFreqByAge: ElementRef;
   @ViewChild('canvasTrendline', {static: true}) canvasTrendline: ElementRef;
   @ViewChild('mainGrid', {static: true}) mainGrid: ElementRef;
+
+  private canvasRByCounty: ElementRef;
+  @ViewChild('canvasRByCounty', {static: false}) set content(content: ElementRef) {
+    if(content) { // initially setter gets called with undefined
+        this.canvasRByCounty = content;
+        for(let county of this.countyList)
+        {            
+            this.drawCharts3(county.id);
+        }
+    }
+ }
+  
   @HostListener('window:resize', ['$event'])
     onResize(event?) {
     this.isMobile = window.innerWidth < 450;
@@ -41,8 +54,11 @@ export class GeneralStatisticsComponent implements OnInit {
     grey: 'rgb(201, 203, 207)'
   }
 
+  rChart: any;
   list: any[];
+  countyList: any[];
   activeChart: any;
+  activeCounty: any;
 
   isMobile: boolean = window.innerWidth < 450;
 
@@ -51,6 +67,7 @@ export class GeneralStatisticsComponent implements OnInit {
 
   constructor(
       private sharedService: SharedService,
+      private statisticsService: StatisticsService,
       private sanitizer: DomSanitizer,
       private route: ActivatedRoute,
       private router: Router
@@ -93,8 +110,58 @@ export class GeneralStatisticsComponent implements OnInit {
             id: 5,
             title: 'Numarul de reproductie R a virusului Covid-19 in Romania',
             path: 'r-reproductie-covid'
+        },
+        {
+            id: 6,
+            title: 'Numarul de reproductie R a virusului Covid-19 pe judete',
+            path: 'r-reproductie-judete'
         }
     ];
+
+    this.countyList = [
+       // {title:'NATIONAL',id:'national'},
+        {title:"Alba",id:"AB"},
+    {title:"Arad",id:"AR"},
+    {title:"Argeș",id:"AG"},
+    {title:"Bacău",id:"BC"},
+    {title:"Bihor",id:"BH"},
+    {title:"Bistrița-Năsăud",id:"BN"},
+    {title:"Botoșani",id:"BT"},
+    {title:"Brașov",id:"BV"},
+    {title:"Brăila",id:"BR"},
+    {title:"Bucharest",id:"B"},
+    {title:"Buzău",id:"BZ"},
+    {title:"Caraș-Severin",id:"CS"},
+    {title:"Călărași",id:"CL"},
+    {title:"Cluj",id:"CJ"},
+    {title:"Constanța",id:"CT"},
+    {title:"Covasna",id:"CV"},
+    {title:"Dâmbovița",id:"DB"},
+    {title:"Dolj",id:"DJ"},
+    {title:"Galați",id:"GL"},
+    {title:"Giurgiu",id:"GR"},
+    {title:"Gorj",id:"GJ"},
+    {title:"Harghita",id:"HR"},
+    {title:"Hunedoara",id:"HD"},
+    {title:"Ialomița",id:"IL"},
+    {title:"Iași",id:"IS"},
+    {title:"Ilfov",id:"IF"},
+    {title:"Maramureș",id:"MM"},
+    {title:"Mehedinți",id:"MH"},
+    {title:"Mureș",id:"MS"},
+    {title:"Neamț",id:"NT"},
+    {title:"Olt",id:"OT"},
+    {title:"Prahova",id:"PH"},
+    {title:"Satu Mare",id:"SM"},
+    {title:"Sălaj",id:"SJ"},
+    {title:"Sibiu",id:"SB"},
+    {title:"Suceava",id:"SV"},
+    {title:"Teleorman",id:"TR"},
+    {title:"Timiș",id:"TM"},
+    {title:"Tulcea",id:"TL"},
+    {title:"Vaslui",id:"VS"},
+    {title:"Vâlcea",id:"VL"},
+    {title:"Vrancea",id:"VN"}]
 
     this.route.queryParams.subscribe(params => {
         let entry = params.chart ? this.list.find(e => e.path === params.chart) : undefined;
@@ -123,6 +190,24 @@ export class GeneralStatisticsComponent implements OnInit {
 
   onGraphChange(){
     this.updateQueryParams();
+  }
+
+  onCountyChange(data){
+      let self = this;
+    if(this.rChart && this.activeCounty)
+    {
+        this.getRData(this.activeCounty.id).then(data=>{
+            console.log("gedata",data)
+            if(data && self.rChart){
+            self.rChart.data.labels = data.labels;
+            self.rChart.data.datasets[0].data = data.r;            
+            self.rChart.data.datasets[1].data = data.rmax;            
+            self.rChart.data.datasets[2].data = data.rmin;
+            self.rChart.update();
+            }
+
+        });
+    }
   }
 
   drawCharts1(){
@@ -677,6 +762,134 @@ export class GeneralStatisticsComponent implements OnInit {
         }
     });
 }
+
+getRData(county:string){
+    return this.statisticsService.getRByCounty(county).toPromise().then( res => {
+        if(res && res.labels) {
+
+            return res;
+        }
+        return {labels:[],r:[],rmin:[],rmax:[]};
+    });
+  };
+
+async drawCharts3(county){
+    let self = this;      
+    county = county||'national';
+    let ctxRCounty = (document.getElementById('canvasR-'+county) as HTMLCanvasElement).getContext('2d');
+    
+    let rData = await this.getRData(county);
+    let rLabels = rData.labels;
+    let rDatasets = [
+        {
+          label: "R probabil",
+          type: "line",
+          backgroundColor: "#4363a7ff",
+          borderColor: "rgba(45, 110, 127, 0.72)",
+          hoverBorderColor: "#1976d2ff",
+          fill: false,
+          tension: 0,
+          data: rData.r,
+          yAxisID: 'y',
+          xAxisID: 'x'
+        },
+        {
+          label: "Interval probabilitate",
+          type: "line",
+          backgroundColor: "rgb(75, 192, 255, 0.5)",
+          borderColor: "transparent",
+          pointRadius: 0,
+          fill: 2,
+          tension: 0,
+          data: rData.rmax,
+          yAxisID: 'y',
+          xAxisID: 'x'
+        },
+        {
+          label: "R minim",
+          type: "line",
+          backgroundColor: "rgb(75, 192, 135, 0.5)",
+          borderColor: "transparent",
+          pointRadius: 0,
+          fill: false,
+          tension: 0,
+          data: rData.rmin,
+          yAxisID: 'y',
+          xAxisID: 'x'
+        }
+        
+      ];
+    var rConfig = {
+        type: "line",
+        data: {
+          labels: rLabels,
+          datasets: rDatasets, 
+        },
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [{
+                id: 'x',
+                type: 'time',
+                distribution: 'linear'  
+            }],
+            yAxes: [{
+              id: 'y',
+              type: 'linear',
+              position: "left",
+              ticks: {
+                stepSize: 1
+              }
+            }]
+          },
+          legend: {
+            labels: {
+              filter: function(item, chart) {
+                // Logic to remove a particular legend item goes here
+                return !item.text.includes('R minim');
+              }
+            }
+          },
+          tooltips: {
+                    mode: 'index',
+                    intersect: 'true',
+                    filter: function(item, chart) {
+                        // Logic to remove a particular legend item goes here
+                        return !(item.datasetIndex>1);
+                      },
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var label = '';
+                            if(tooltipItem.datasetIndex>0){
+                                label = data.datasets[1].label || '';
+            
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += Math.round(data.datasets[2].data[tooltipItem.index] * 100) / 100;
+                                label += "-";
+                                label += Math.round(data.datasets[1].data[tooltipItem.index] * 100) / 100;
+                                return label;
+                            }
+                            else {
+                                label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += Math.round(tooltipItem.yLabel * 100) / 100;
+                            
+                                }
+                                    
+                            return label;
+                        }
+
+                    }
+				},
+        }
+      };
+    this.rChart = new Chart(ctxRCounty,rConfig );
+};
 
   drawCharts2(){
     let self = this;

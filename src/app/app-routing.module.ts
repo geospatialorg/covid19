@@ -22,6 +22,7 @@ import {SocialInterestPointsComponent} from './components/main/maps/social-inter
 import {FrontierSituationComponent} from './components/main/maps/frontier-situation/frontier-situation.component';
 import {HospitalInfrastructureComponent} from './components/main/maps/hospital-infrastructure/hospital-infrastructure.component';
 import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
+import {CountyGraphsComponent} from './components/main/statistics/county-graphs/county-graphs.component';
 import {LogsComponent} from './components/main/logs/logs.component';
 import { MobilityComponent } from './components/main/statistics/mobility/mobility.component';
 import { AirQualityComponent } from './components/main/statistics/air-quality/air-quality.component';
@@ -70,7 +71,7 @@ const routes: Routes = [
           {path: '', redirectTo: 'statistici-generale', pathMatch: 'full'},
           {path: 'statistici-generale', component: GeneralStatisticsComponent},
           {path: 'relationare-cazuri', component: RelationCasesComponent},
-          {path: 'repartitie-cazuri-judete', component: CountiesCasesComponent},
+          {path: 'repartitie-cazuri-judete', component: CountyGraphsComponent},
           // {path: 'situatie-europa', component: CoronavirusEuropeComponent},
           // {path: 'situatie-europa-grafic', component: EuropaCasesGraphComponent},
           {path: 'teste-efectuate', component: DailyTestsComponent},

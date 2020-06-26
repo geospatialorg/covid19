@@ -46,6 +46,27 @@
             <iframe seamless frameborder="0"  height="300px" scrolling="yes" src="https://www.graphs.ro/embed.php?embed=covid_r&range=365"></iframe>
         </div>
     </div>
+
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" *ngIf="activeChart.id === 6">
+        <div style="display: flex; flex-wrap: wrap;" id="canvasRByCounty" #canvasRByCounty>
+        
+            <div *ngFor="let item of countyList; index as i" >
+                <h2>{{item.title}}</h2>
+                <div class="chart-container" style="position: relative; height:30vh;">
+                    <canvas id="{{ 'canvasR-' + item.id }}"></canvas>
+                </div>
+            </div>
+        </div>
+        <!--div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+            <p-dropdown id="county-list" [options]="countyList"
+                [(ngModel)]="activeCounty"
+                optionLabel="title" (onChange)="onCountyChange()">
+            </p-dropdown>
+        </div>
+        <div class="chart-container" style="position: relative; height:60vh;">            
+        <canvas id="canvasRByCounty" #canvasRByCounty></canvas>
+        </div-->
+    </div>
 </div>
 
 
