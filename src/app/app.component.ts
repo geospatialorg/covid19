@@ -1,5 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import {PwaService} from './services/pwa.service';
+import {TranslateService} from '@ngx-translate/core';
+import defaultLanguage from "./../assets/i18n/ro.json";
 
 @Component({
   selector: 'app-root',
@@ -48,6 +50,13 @@ export class AppComponent {
     this.pwaService.changeUsedIn(used);
   }
 
-  constructor(private pwaService: PwaService) {}
+  constructor(
+    private pwaService: PwaService,
+    private translate: TranslateService
+  ) {
+    this.translate.setTranslation('ro', defaultLanguage);
+    this.translate.setDefaultLang('ro');
+    this.translate.use('ro');
+  }
 
 }

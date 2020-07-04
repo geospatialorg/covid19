@@ -1,8 +1,8 @@
 <div id="custom-grid" class="no-margin no-padding left-menu" #leftMenu *ngIf="dataReady">
   <div class="ui-grid" style="width: 100%">
     <div class="ui-g-12">
-      <p-card header="Total confirmate" [style]="{width: '100%', textAlign: 'center'}">
-        <em style="font-size: 12px;">(după locul confirmării)</em>
+      <p-card header="{{'home.Total confirmate' | translate}}" [style]="{width: '100%', textAlign: 'center'}">
+        <em style="font-size: 12px;">{{'home.(după locul confirmării)' | translate }}</em>
         <h1 style="color: #ff7f00;">
           {{totalCases}}
           <i class="fa fa-info-circle" style="cursor: pointer;" (click)="showDisclaimer(true)" title="Disclaimer"></i>
@@ -18,7 +18,7 @@
             <p-table [value]="tableData" class="addNewRasterTable" selectionMode="single">
               <ng-template pTemplate="header">
                 <tr>
-                  <th>Cazuri confirmate pe județ</th>
+                  <th>{{'home.Cazuri confirmate pe județ' | translate}}</th>
                 </tr>
               </ng-template>
               <ng-template pTemplate="body" let-item>
@@ -29,7 +29,7 @@
                     <a *ngIf="item.referinta" style="float: right;"
                        href="{{item.referinta}}"
                        target="_blank"
-                       title="Click pentru referință">
+                       title="{{'common.Click pentru referință' | translate}}">
                       <i class="fa fa-link"></i>
                     </a>
                   </td>
@@ -43,15 +43,15 @@
   </div>
 </div>
 
-<p-dialog header="Atenție" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
+<p-dialog header="{{'common.Atenție' | translate}} " styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
   <div>
-    <p>Începând cu data de 02.04.2020, autoritățile au reluat comunicarea cazurilor le nivel de județ. Cazurile raportate pe hartă și în tabel sunt extrase din comunicatul oficial.</p>
-    <p>Pentru mai multe informații vă rugăm să consultați secțiunea <a [routerLink]="['despre']" target="_blank" title="Coronavirus COVID-19 România Project">"Despre"</a>.</p>
+    <p>{{'home.message_confirmed_1' | translate}} Începând cu data de 02.04.2020, autoritățile au reluat comunicarea cazurilor le nivel de județ. Cazurile raportate pe hartă și în tabel sunt extrase din comunicatul oficial.</p>
+    <p>{{'home.message_confirmed_2' | translate}} <a [routerLink]="['despre']" target="_blank" title="{{'common.Coronavirus COVID-19 România Project' | translate}}">"{{'header.Despre' | translate}}"</a>.</p>
   </div>
 
   <p-footer>
     <div style="text-align: center;">
-      <button pButton type="button" label="Inchide"  class="ui-button-warning" (click)="showDisclaimer(false)"></button>
+      <button pButton type="button" label="{{'common.Inchide' | translate}}"  class="ui-button-warning" (click)="showDisclaimer(false)"></button>
     </div>
   </p-footer>
 </p-dialog>

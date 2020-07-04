@@ -14,7 +14,7 @@
   <ul style="list-style-type: none;margin: 0;">
       <li *ngFor="let item of submenuItems; let i = index" style="display: inline-block;">
           <i class="far fa-square" *ngIf="i > 0"></i>
-          <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">{{item.label}}</a>
+          <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'maps.'+item.label | translate}}">{{'maps.'+item.label | translate}}</a>
       </li>
   </ul>
 </div>
@@ -27,7 +27,7 @@
 <div class="layout-submenu" *ngIf="submenuVisible && isMobile">
   <ul>
       <li *ngFor="let item of submenuItems">
-          <a routerLinkActive="active" (click)="changeRoute()" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">{{item.label}}</a>
+          <a routerLinkActive="active" (click)="changeRoute()" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'maps.'+item.label | translate}}">{{'maps.'+item.label | translate}}</a>
       </li>
   </ul>
 </div>

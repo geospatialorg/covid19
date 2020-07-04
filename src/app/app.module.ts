@@ -10,6 +10,9 @@ import {GraphicsComponent} from './components/main/home/graphics/graphics.compon
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorInterceptor, JwtInterceptor} from './interceptors';
 
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 // primeng modules
 import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
@@ -17,7 +20,7 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {RightMenuComponent} from './components/main/home/right-menu/right-menu.component';
 import {TableModule} from 'primeng/table';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {FooterComponent} from './components/layout/footer/footer.component';
 import {HeaderComponent} from './components/layout/header/header.component';
 import {HomeComponent} from './components/main/home/home.component';
@@ -107,6 +110,11 @@ import { MobilityMapComponent } from './components/main/maps/mobility-map/mobili
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
 
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -162,6 +170,14 @@ const notificationsServiceInitializer = (notificationsService: NotificationsServ
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient],
+      }
+    }),
 
     SidebarModule,
     ButtonModule,

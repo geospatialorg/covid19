@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {AuthenticationService} from 'src/app/services';
+import {TranslateService, LangChangeEvent} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +14,21 @@ export class HeaderComponent implements OnInit {
   menuItems: MenuItem[];
 
   displaySidebar = false;
+  currentLang: string;
 
   constructor(
-    private AuthSvc: AuthenticationService
+    private AuthSvc: AuthenticationService,
+    private translate: TranslateService
   ) {
   }
 
   ngOnInit(): void {
     this.currentUser = this.AuthSvc.currentUserValue;
+    this.currentLang = this.translate.currentLang;
+
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLang = event.lang;
+    });
 
     this.menuItems = [
       {
@@ -93,6 +101,16 @@ export class HeaderComponent implements OnInit {
 
   showSidebar(val) {
     this.displaySidebar = val;
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.translate.onLangChange.unsubscribe();
   }
 
 }

@@ -13,8 +13,8 @@
     <ul style="list-style-type: none;margin: 0;">
         <li *ngFor="let item of links; let i = index" style="display: inline-block;position: relative;">
             <i class="far fa-square" *ngIf="i > 0"></i>
-            <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">
-                {{item.label}}
+            <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'statistics.'+item.label | translate}}">
+                {{'statistics.'+item.label | translate}}
                 <i class="fa fa-chevron-down" *ngIf="item.label === 'Mobilitate'"></i>
             </a>
 
@@ -36,14 +36,14 @@
 
 <a class="submenu" style="cursor: pointer;display: block;" (click)="showSubmenu()" *ngIf="isMobile">
     <i class="fa fa-angle-down"></i>
-    <span class="submenu-title">{{activeLink.label}}</span>
+    <span class="submenu-title">{{'statistics.'+activeLink.label | translate}}</span>
 </a>
 
 <div class="layout-submenu" *ngIf="submenuVisible && isMobile">
     <ul>
         <li *ngFor="let item of links">
-            <a style="position: relative;" routerLinkActive="active" (click)="changeRoute(item)" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{item.label}}">
-                {{item.label}}
+            <a style="position: relative;" routerLinkActive="active" (click)="changeRoute(item)" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'statistics.'+item.label | translate}}">
+                {{'statistics.'+item.label | translate}}
                 <i class="fa fa-plus" *ngIf="item.label === 'Mobilitate'" style="position: absolute;right: 10px;top: 12px;"></i>
             </a>
 

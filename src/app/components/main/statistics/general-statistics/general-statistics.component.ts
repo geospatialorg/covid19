@@ -9,6 +9,7 @@ import {SharedService} from '../../../../services/shared.service';
 import {environment} from '../../../../../environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-general-statistics',
@@ -53,7 +54,8 @@ export class GeneralStatisticsComponent implements OnInit {
       private sharedService: SharedService,
       private sanitizer: DomSanitizer,
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
+      private translate: TranslateService
     ) {
     this.sharedService.setMeta(
       'Statistici generale',
@@ -68,33 +70,11 @@ export class GeneralStatisticsComponent implements OnInit {
     // this.drawCharts1();
     // this.drawCharts2();
 
-    this.list = [
-        {
-            id: 1,
-            title: 'Ziua fata de cazuri cumulative',
-            path: 'ziua-fata-de-cazuri-cumulative'
-        },
-        {
-            id: 2,
-            title: 'Cazuri pe zile',
-            path: 'cazuri-pe-zile'
-        },
-        {
-            id: 3,
-            title: 'Ziua fata de numarul de cazuri noi / numar de cazuri totale',
-            path: 'ziua-fata-de-cazuri-noi-cazuri-totale'
-        },
-        {
-            id: 4,
-            title: 'Frecventa pe grupe de varsta',
-            path: 'frecventa-grupe-varsta'
-        },
-        {
-            id: 5,
-            title: 'Numarul de reproductie R a virusului Covid-19 in Romania',
-            path: 'r-reproductie-covid'
-        }
-    ];
+    this.translateValues();
+
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        this.translateValues();
+    });
 
     this.route.queryParams.subscribe(params => {
         let entry = params.chart ? this.list.find(e => e.path === params.chart) : undefined;
@@ -104,6 +84,49 @@ export class GeneralStatisticsComponent implements OnInit {
         this.activeChart = entry;
         this.updateQueryParams();
       });
+  }
+
+  translateValues(){
+    this.list = [
+        {
+            id: 1,
+            title: this.translate.instant('statistics.Ziua fata de cazuri cumulative'),
+            path: 'ziua-fata-de-cazuri-cumulative'
+        },
+        {
+            id: 2,
+            title: this.translate.instant('statistics.Cazuri pe zile'),
+            path: 'cazuri-pe-zile'
+        },
+        {
+            id: 3,
+            title: this.translate.instant('statistics.Ziua fata de numarul de cazuri noi / numar de cazuri totale'),
+            path: 'ziua-fata-de-cazuri-noi-cazuri-totale'
+        },
+        {
+            id: 4,
+            title: this.translate.instant('statistics.Frecventa pe grupe de varsta'),
+            path: 'frecventa-grupe-varsta'
+        },
+        {
+            id: 5,
+            title: this.translate.instant('statistics.Numarul de reproductie R a virusului Covid-19 in Romania'),
+            path: 'r-reproductie-covid'
+        },
+        {
+            id: 6,
+            title: this.translate.instant('statistics.Media numărului de cazuri noi pe județe'),
+            path: 'medie-cazuri-noi-judete'
+        }
+    ];
+
+    this.route.queryParams.subscribe(params => {
+        let entry = params.chart ? this.list.find(e => e.path === params.chart) : undefined;
+  
+        if (!entry) entry = this.list[0];
+  
+        this.activeChart = entry;
+    });
   }
 
   getSafeUrl(url) {

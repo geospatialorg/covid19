@@ -16,6 +16,7 @@ import Circle from 'ol/geom/Circle';
 import Feature from 'ol/Feature';
 import {defaults as defaultControls, Control} from 'ol/control';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -27,7 +28,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class MapComponent implements OnInit, OnDestroy {
   maxRadius = 40000;
   minRadius = 7500;
-  milestones: number[] = [100, 300];
+  milestones: number[] = [100, 500, 1000];
   metropolitan_colors : string[] = [
     '255,255,0',
     '0,255,0',
@@ -256,13 +257,15 @@ export class MapComponent implements OnInit, OnDestroy {
 
   legendVisible: boolean = false;
   displayDisclaimer: boolean = false;
+  displayDisclaimerDeaths: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private dashboardService: DashboardService,
     private sharedService: SharedService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private translate: TranslateService
   ) {
     this.activeMap = this.maps[0];
     this.loadData();
@@ -283,6 +286,11 @@ export class MapComponent implements OnInit, OnDestroy {
       if(this.activeMap.id === 'healed') {
         this.showDisclaimer(true);
       }
+
+      if(this.activeMap.id === 'deaths') {
+        this.showDisclaimerDeaths(true);
+      }
+      
       this.initMap();
     });
   }
@@ -317,14 +325,19 @@ export class MapComponent implements OnInit, OnDestroy {
       this.showDisclaimer(true);
     }
 
+    if(layer.id === 'deaths') {
+      this.showDisclaimerDeaths(true);
+    }
+
     let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
     countiesLayer.getSource().refresh();
 
-    if (layer.id === 'quarantine') {
+    if (layer.id === 'quarantine' || layer.id === 'metropolitan_areas') {
       this.over = [];
     } else {
-      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
-      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
+      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
+      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
+      this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
     }
   }
 
@@ -618,11 +631,51 @@ export class MapComponent implements OnInit, OnDestroy {
             width: 4
           })
         })
+      }),
+      new Style({
+        fill: new Fill({
+          color: 'rgba(209,4,52, 0.5)'
+        }),
+        stroke: new Stroke({
+          color: '#984ea3',
+          width: 1
+        }),
+        text: new Text({
+          font: '12px Calibri,sans-serif',
+          fill: new Fill({
+            color: '#000'
+          }),
+          stroke: new Stroke({
+            color: '#fff',
+            width: 4
+          })
+        })
+      }),
+      new Style({
+        fill: new Fill({
+          color: 'rgba(173, 221, 142, 0.6)'
+        }),
+        stroke: new Stroke({
+          color: '#984ea3',
+          width: 1
+        }),
+        text: new Text({
+          font: '12px Calibri,sans-serif',
+          fill: new Fill({
+            color: '#000'
+          }),
+          stroke: new Stroke({
+            color: '#fff',
+            width: 4
+          })
+        })
       })
   ];
   
-    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
-    this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
+    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
+    this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
+    this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+
 
     const vectorLayer = new VectorLayer({
       id: 'counties',
@@ -640,6 +693,17 @@ export class MapComponent implements OnInit, OnDestroy {
         if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
           s = styles[2];
         }
+
+        if(self.activeMap.id === 'healed'){
+          if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+            s = styles[4];
+          }
+        } else {
+          if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+            s = styles[3];
+          }
+        }
+        
 
         if(!s.getText()) s.setText(new Text());
         s.getText().setText(feature.get('county_code'));
@@ -882,11 +946,12 @@ export class MapComponent implements OnInit, OnDestroy {
     let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
     countiesLayer.getSource().refresh();
 
-    if (this.activeMap.id === 'quarantine') {
+    if (this.activeMap.id === 'quarantine' || this.activeMap.id === 'metropolitan_areas') {
       this.over = [];
     } else {
-      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[0]).map(e => e.county_code);
-      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] > this.milestones[1]).map(e => e.county_code);
+      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
+      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
+      this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
     }
   }
 
@@ -913,6 +978,10 @@ export class MapComponent implements OnInit, OnDestroy {
     this.displayDisclaimer = val;
   }
 
+  showDisclaimerDeaths(val) {
+    this.displayDisclaimerDeaths = val;
+  }
+
   generateLegend(){
     let map = this.maps.find(e => e.id === this.activeMap.id);
 
@@ -935,7 +1004,7 @@ export class MapComponent implements OnInit, OnDestroy {
     }
 
     if(this.activeMap.id === 'confirmed') {
-      options.height = 135;
+      options.height = 170;
     }
 
     let legend =  `
@@ -945,36 +1014,40 @@ export class MapComponent implements OnInit, OnDestroy {
     if(this.activeMap.id === 'quarantine'){
       legend += `
         <polygon points="5,20 8,13 20,10 25,20 20,25  10,27 5,20" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[0]}" stroke-width="${options.stroke_width}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="23">Zone in carantină</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="23">${this.translate.instant('home.Zone in carantină')}</text>
 
         <polygon points="5,45 8,38 20,35 25,45 20,50  10,52 5,45" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[1]}" stroke-width="${options.stroke_width}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">Zone cu statut special</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">${this.translate.instant('home.Zone cu statut special')}</text>
 
         <circle cx="14" cy="68" r="${options.small_radius}" stroke="${this.qStyles.checkpoints.default.stroke_color}" stroke-width="${options.stroke_width}" fill="${this.qStyles.checkpoints.default.fill_color}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="73">Punct control</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="73">${this.translate.instant('home.Punct control')}</text>
 
         <line x1="5" y1="92" x2="20" y2="92" style="stroke: ${this.qStyles.roads.default.stroke_color};stroke-width:2" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="95">Drum</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="95">${this.translate.instant('home.Drum')}</text>
       `;
     } else {
       legend += `
   
         <circle cx="13" cy="12" r="${options.big_radius}" stroke="#ffff33" stroke-width="${options.stroke_width}" fill="${map.style.fill.color}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="17">${map.title}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="17">${this.translate.instant('home.'+map.title)}</text>
 
         <circle cx="13" cy="43" r="${options.big_radius}" stroke="#e41a1c" stroke-width="${options.stroke_width}" fill="${options.hightlight_fill}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">Inregistrare selectată</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">${this.translate.instant('home.Inregistrare selectată')}</text>
       `;
 
       if(this.activeMap.id === 'confirmed') {
         legend += `
           <rect x="3" y="65" width="20" height="20" style="fill:rgba(255,255,217, 0.6);stroke-width:0.8;stroke: #984ea3" />
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">Judete cu mai mult de ${this.milestones[0]}</text>
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">cazuri confirmate</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant('home.Judete cu mai mult de')} ${this.milestones[0]}</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant('home.cazuri confirmate')}</text>
 
           <rect x="3" y="100" width="20" height="20" style="fill:rgba(254,224,139, 0.6);stroke-width:0.8;stroke: #984ea3" />
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">Judete cu mai mult de ${this.milestones[1]}</text>
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">cazuri confirmate</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant('home.Judete cu mai mult de')} ${this.milestones[1]}</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant('home.cazuri confirmate')}</text>
+
+          <rect x="3" y="135" width="20" height="20" style="fill:rgba(209,4,52, 0.5);stroke-width:0.8;stroke: #984ea3" />
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant('home.Judete cu mai mult de')} ${this.milestones[2]}</text>
+          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant('home.cazuri confirmate')}</text>
         `;
       }
     }

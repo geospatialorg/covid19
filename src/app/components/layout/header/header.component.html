@@ -1,17 +1,23 @@
 <div class="layout-topbar">
   <div class="logo">
     <button pButton icon="pi pi-bars" class="ui-button-secondary ui-button-raised xs-only" (click)="showSidebar(true)"></button>
-    <h2 [routerLink]="['/']">Coronavirus COVID-19 România</h2>
+    <h2 [routerLink]="['/']">{{'header.Coronavirus COVID-19 România' | translate}}</h2>
   </div>
   <ul class="topbar-menu">
     <ng-container *ngFor="let item of menuItems" >
       <li *ngIf="item.visible">
         <a [routerLink]="item.routerLink" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: item.routerLink === ''}">
           <span class="topbar-submenu-icon" [class]="item.icon"></span>&nbsp;
-          <span>{{item.label}}</span>
+          <span>{{'header.' + item.label | translate}}</span>
         </a>
       </li>
     </ng-container>
+    <li>
+      <a style="cursor: pointer;" [ngClass]="{'active': currentLang === 'ro'}" (click)="useLanguage('ro')">RO</a>
+    </li>
+    <li>
+      <a style="cursor: pointer;" [ngClass]="{'active': currentLang === 'en'}" (click)="useLanguage('en')">EN</a>
+    </li>
   </ul>
 </div>
 
@@ -20,7 +26,7 @@
     Coronavirus COVID-19 România
   </h2>
   <div class="sidebar-content">
-    <h3>MENIU NAVIGARE</h3>
+    <h3>{{'header.MENIU NAVIGARE' | translate}}</h3>
     <ul id="sidebar-menu">
 
       <ng-container *ngFor="let item of menuItems" >

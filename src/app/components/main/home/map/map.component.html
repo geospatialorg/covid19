@@ -4,7 +4,7 @@
       <ul id="layers">
         <li *ngFor="let item of maps">
           <button pButton
-                  label="{{item.title}}"
+                  label="{{'home.'+item.title | translate}}"
                   [ngClass]="{'ui-button-secondary': item.id !== activeMap.id}"
                   (click)="setActiveLayer(item)">
           </button>
@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div class="xs-only">
-      <h2 style="text-align: center;">Hartă cazuri</h2>
+      <h2 style="text-align: center;">{{'home.Hartă cazuri' | translate}}</h2>
 
       <p-dropdown [options]="maps"
                   [(ngModel)]="activeMap"
@@ -27,25 +27,25 @@
   <div class="info-modal" *ngIf="selectedFeature" [ngStyle]="{background: activeMap?.style?.fill.color}">
     <h3>{{selectedFeature.get('county')}}</h3>
     <p>
-      Cazuri confirmate: {{selectedFeature.get('total_case')}}
-      <em style="display: block;font-size: 12px;">(după locul confirmării)</em>
+      {{'home.Cazuri confirmate' | translate}} : {{selectedFeature.get('total_case')}}
+      <em style="display: block;font-size: 12px;">{{'home.(după locul confirmării)' | translate}}</em>
     </p>
     <p>
-      Total vindecari: {{selectedFeature.get('total_healed')}}
-      <em style="display: block;font-size: 12px;">(după locul externării)</em>
+      {{'home.Total vindecări' | translate}}: {{selectedFeature.get('total_healed')}}
+      <em style="display: block;font-size: 12px;">{{'home.(după locul externării)' | translate}}</em>
     </p>
-    <p>Total decese: {{selectedFeature.get('total_dead')}}</p>
+    <p>{{'home.Total decese' | translate}}: {{selectedFeature.get('total_dead')}}</p>
     <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> -->
   </div>
 
   <div class="map-legend" *ngIf="legendVisible">
-    <p><strong>Legenda</strong></p>
+    <p><strong>{{'home.Legenda' | translate}}</strong></p>
     <div [innerHtml]="generateLegend()"></div>
   </div>
 
     <div class="info-modal" *ngIf="selectedQuarantineZone">
       <h3>{{selectedQuarantineZone.get('uat')}}</h3>
-      <p>Populatie: {{selectedQuarantineZone.get('population')}}</p>
+      <p>{{'home.Populatie' | translate}}: {{selectedQuarantineZone.get('population')}}</p>
     </div>
 
     <div class="info-modal" *ngIf="selectedRoad">
@@ -53,39 +53,55 @@
     </div>
 
     <div class="info-modal" *ngIf="selectedCheckpoint">
-      <h3>Punct de control</h3>
+      <h3>{{'home.Punct de control' | translate}}</h3>
       <p>{{selectedCheckpoint.get('Descriere')}}</p>
     </div>
 
     <div class="info-modal" *ngIf="selectedMetropolitan" style="max-width: 200px;">
       <h3>{{selectedMetropolitan.get('uat')}}</h3>
-      <p *ngIf="selectedMetropolitan.get('metropolitan_zone')">Zona: {{selectedMetropolitan.get('metropolitan_zone')}}</p>
+      <p *ngIf="selectedMetropolitan.get('metropolitan_zone')">{{'home.Zona' | translate}}: {{selectedMetropolitan.get('metropolitan_zone')}}</p>
       <!-- <p>An infiintare: {{selectedMetropolitan.get('an_infiintare')}}</p> -->
-      <p>Populatie: {{selectedMetropolitan.get('population')}}</p>
+      <p>{{'home.Populatie' | translate}}: {{selectedMetropolitan.get('population')}}</p>
     </div>
 </div>
 
-<p-dialog header="Atenție" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
+<p-dialog header="{{'common.Atenție' | translate}}" styleClass="disclaimer" [(visible)]="displayDisclaimer" [responsive]="true" [modal]="true">
   <div>
    <p>
-     Începând cu data de 02.04.2020, autoritățile nu mai comunică 
-    numărul de vindecări la nivel de județ, prezentând doar numărul total 
-    al pacienților declarați vindecați. Din această cauză, etichetăm 
-    vindecările noi cu cu locația "JUDEȚ NECUNOSCUT".
+    {{'home.message_health_1' | translate}}
   </p>
 
   <p>
-    Echipa de voluntari 
-    verifică sistematic presa locală și anunțurile autorităților publice 
-    locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații 
-    verificabile, mută cazurile din "JUDEȚ NECUNOSCUT" în județul 
-    corect de vindecare.
+    {{'home.message_health_2' | translate}}
   </p> 
   </div>
 
   <p-footer>
     <div style="text-align: center;">
-      <button pButton type="button" label="Inchide"  class="ui-button-warning" (click)="showDisclaimer(false)"></button>
+      <button pButton type="button" label="{{'common.Inchide' | translate}}"  class="ui-button-warning" (click)="showDisclaimer(false)"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="{{'common.Atenție' | translate}}" styleClass="disclaimer" [(visible)]="displayDisclaimerDeaths" [responsive]="true" [modal]="true">
+  <div>
+   <p>
+    {{'home.Cazuri confirmate' | translate}}
+    Începând cu data de 11.06.2020, autoritățile nu mai comunică decesele la nivel de județ, prezentând doar numărul total al pacienților decedați 
+    și județele în care se găsesc spitale ce au înregistrat decese. Din această cauză, etichetăm decesele noi cu cu locația "JUDEȚ NECUNOSCUT" 
+    (plasate pe hartă în Marea Neagră).
+  </p>
+
+  <p>
+    {{'home.Cazuri confirmate' | translate}}
+    Echipa de voluntari verifică sistematic presa locală și anunțurile autorităților publice locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații verificabile, 
+    mută cazurile din "JUDEȚ NECUNOSCUT" în județul corect de deces.
+  </p> 
+  </div>
+
+  <p-footer>
+    <div style="text-align: center;">
+      <button pButton type="button" label="{{'common.Inchide' | translate}}"  class="ui-button-warning" (click)="showDisclaimerDeaths(false)"></button>
     </div>
   </p-footer>
 </p-dialog>

@@ -2,8 +2,8 @@
   <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 no-border no-padding">
     <div class="ui-grid ">
       <div class="ui-g-12">
-        <p-card header="Total vindecări" [style]="{width: '100%', textAlign: 'center'}">
-          <em style="font-size: 12px;">(după locul externării)</em>
+        <p-card header="{{'home.Total vindecări' | translate}}" [style]="{width: '100%', textAlign: 'center'}">
+          <em style="font-size: 12px;">{{'home.(după locul externării)' | translate}}</em>
           <h1 style="color: #4daf4a;">{{totalHealed}}</h1>
         </p-card>
       </div>
@@ -18,7 +18,7 @@
               <p-table [value]="tableDataRecovered" class="addNewRasterTable" selectionMode="single">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th>Vindecări înregistrate pe județ</th>
+                    <th>{{'home.Vindecări înregistrate pe județ' | translate}}</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-item>
@@ -31,7 +31,7 @@
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
                   <tr>
-                    <td colspan="1" *ngIf="tableDataRecovered.length === 0">Nu au fost înregistrate vindecări.</td>
+                    <td colspan="1" *ngIf="tableDataRecovered.length === 0">{{'home.Nu au fost înregistrate vindecări' | translate}}.</td>
                   </tr>
                 </ng-template>
               </p-table>
@@ -46,7 +46,7 @@
   <div class="p-sm-12 p-md-12 p-lg-6 p-xl-6 no-border no-padding">
     <div class="ui-grid ">
       <div class="ui-g-12">
-        <p-card header="Total decese" [style]="{width: '100%', textAlign: 'center'}">
+        <p-card header="{{'home.Total decese' | translate}}" [style]="{width: '100%', textAlign: 'center'}">
           <em style="font-size: 12px;">&nbsp; &nbsp;</em>
           <h1 style="color: #a65628;">{{totalDeaths}}</h1>
         </p-card>
@@ -62,7 +62,7 @@
               <p-table [value]="tableDataDeath" class="addNewRasterTable" selectionMode="single">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th>Decese înregistrate pe județ</th>
+                    <th>{{'home.Decese înregistrate pe județ' | translate}} </th>
                     
                   </tr>
                 </ng-template>
@@ -75,7 +75,7 @@
                       <a *ngIf="item.referinta_deces" style="float: right;"
                         href="{{item.referinta_deces}}"
                         target="_blank"
-                        title="Click pentru referință">
+                        title="{{'common.Click pentru referință' | translate}}">
                         <i class="fa fa-link"></i>
                       </a>
                     </td>
@@ -83,7 +83,7 @@
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
                   <tr>
-                    <td colspan="1" *ngIf="tableDataDeath.length === 0">Nu au fost înregistrate decese.</td>
+                    <td colspan="1" *ngIf="tableDataDeath.length === 0">{{'home.Nu au fost înregistrate decese' | translate}}.</td>
                   </tr>
                 </ng-template>
               </p-table>
