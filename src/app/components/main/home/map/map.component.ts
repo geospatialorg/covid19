@@ -29,6 +29,8 @@ export class MapComponent implements OnInit, OnDestroy {
   maxRadius = 40000;
   minRadius = 7500;
   milestones: number[] = [100, 500, 1000];
+  milestones_new: number[] = [10, 40, 40];
+  milestones_deaths: number[] = [10, 50, 100];
   metropolitan_colors : string[] = [
     '255,255,0',
     '0,255,0',
@@ -70,17 +72,28 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       dataKey: 'total_case'
     },
-    // {
-    //   id: 'active',
-    //   title: 'Cazuri active',
-    //   alt_id: 'cazuri_active',
-    //   style: {
-    //     fill: {
-    //       color: 'rgba(217,95,14, 0.8)'
-    //     }
-    //   },
-    //   dataKey: 'total_active'
-    // },
+    {
+      id: 'active_cases',
+      title: 'Cazuri active',
+      alt_id: 'cazuri_active',
+      style: {
+        fill: {
+          color: 'rgba(217,95,14, 0.6)'
+        }
+      },
+      dataKey: 'total_active'
+    },
+    {
+      id: 'new_cases',
+      title: 'Cazuri noi (24h)',
+      alt_id: 'cazuri_noi',
+      style: {
+        fill: {
+          color: 'rgba(217,95,14, 0.6)'
+        }
+      },
+      dataKey: 'new_case'
+    },
     {
       id: 'healed',
       title: 'Vindecări',
@@ -103,13 +116,13 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       dataKey: 'total_dead'
     },
-    {
-      id: 'metropolitan_areas',
-      title: 'Zone metropolitane',
-      alt_id: 'zone_metropolitane',
-      style: null,
-      dataKey: null
-    },
+    // {
+    //   id: 'metropolitan_areas',
+    //   title: 'Zone metropolitane',
+    //   alt_id: 'zone_metropolitane',
+    //   style: null,
+    //   dataKey: null
+    // },
     // {
     //   id: 'quarantine',
     //   title: 'Zone carantină',
@@ -303,6 +316,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   async loadData() {
     this.mapData = await this.getData();
+    console.log(this.mapData)
     // this.interval = setInterval(() => {
     //   this.getData().then(data => {
     //     this.mapData = data;
@@ -335,9 +349,19 @@ export class MapComponent implements OnInit, OnDestroy {
     if (layer.id === 'quarantine' || layer.id === 'metropolitan_areas') {
       this.over = [];
     } else {
-      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
-      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
-      this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+      if(this.activeMap.id === 'deaths'){
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[0]).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[1]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[2]).map(e => e.county_code);
+      } else if(this.activeMap.id === 'new_cases') {
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_new[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e =>  this.milestones_new[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_new[0]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_new[1]).map(e => e.county_code);
+      } else {
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+      }
     }
   }
 
@@ -345,10 +369,6 @@ export class MapComponent implements OnInit, OnDestroy {
     return this.dashboardService.getCasesByCounty().toPromise().then(res => {
       if (res && res.data && res.data.data) {
         return res.data.data;
-        // return res.data.data.map(e => {
-        //   e.total_active = e.total_county - e.total_healed - e.total_dead;
-        //   return e;
-        // });
       }
 
       return [];
@@ -536,6 +556,30 @@ export class MapComponent implements OnInit, OnDestroy {
     return styleCheckpoints;
   }
 
+  generateStyle(fill_color){
+    let style: Style = new Style({
+      fill: new Fill({
+        color: `rgba(${fill_color})`
+      }),
+      stroke: new Stroke({
+        color: '#984ea3',
+        width: 1
+      }),
+      text: new Text({
+        font: '12px Calibri,sans-serif',
+        fill: new Fill({
+          color: '#000'
+        }),
+        stroke: new Stroke({
+          color: '#fff',
+          width: 4
+        })
+      })
+    });
+
+    return style;
+  }
+
   private initOpenLayerMap(iconLayer, self: this, iconStyle, highlightStyle) {
 
     let ShowLegend = (function (Control){
@@ -593,89 +637,106 @@ export class MapComponent implements OnInit, OnDestroy {
             width: 4
           })
         })
-      }),
-      new Style({
-        fill: new Fill({
-          color: 'rgba(255,255,217, 0.6)'
-        }),
-        stroke: new Stroke({
-          color: '#984ea3',
-          width: 1
-        }),
-        text: new Text({
-          font: '12px Calibri,sans-serif',
-          fill: new Fill({
-            color: '#000'
-          }),
-          stroke: new Stroke({
-            color: '#fff',
-            width: 4
-          })
-        })
-      }),
-      new Style({
-        fill: new Fill({
-          color: 'rgba(254,224,139, 0.6)'
-        }),
-        stroke: new Stroke({
-          color: '#984ea3',
-          width: 1
-        }),
-        text: new Text({
-          font: '12px Calibri,sans-serif',
-          fill: new Fill({
-            color: '#000'
-          }),
-          stroke: new Stroke({
-            color: '#fff',
-            width: 4
-          })
-        })
-      }),
-      new Style({
-        fill: new Fill({
-          color: 'rgba(209,4,52, 0.5)'
-        }),
-        stroke: new Stroke({
-          color: '#984ea3',
-          width: 1
-        }),
-        text: new Text({
-          font: '12px Calibri,sans-serif',
-          fill: new Fill({
-            color: '#000'
-          }),
-          stroke: new Stroke({
-            color: '#fff',
-            width: 4
-          })
-        })
-      }),
-      new Style({
-        fill: new Fill({
-          color: 'rgba(173, 221, 142, 0.6)'
-        }),
-        stroke: new Stroke({
-          color: '#984ea3',
-          width: 1
-        }),
-        text: new Text({
-          font: '12px Calibri,sans-serif',
-          fill: new Fill({
-            color: '#000'
-          }),
-          stroke: new Stroke({
-            color: '#fff',
-            width: 4
-          })
-        })
       })
+
+      // // over 0 cases
+      // new Style({
+      //   fill: new Fill({
+      //     color: 'rgba(255,255,217, 0.6)'
+      //   }),
+      //   stroke: new Stroke({
+      //     color: '#984ea3',
+      //     width: 1
+      //   }),
+      //   text: new Text({
+      //     font: '12px Calibri,sans-serif',
+      //     fill: new Fill({
+      //       color: '#000'
+      //     }),
+      //     stroke: new Stroke({
+      //       color: '#fff',
+      //       width: 4
+      //     })
+      //   })
+      // }),
+
+      // // over 500 cases
+      // new Style({
+      //   fill: new Fill({
+      //     color: 'rgba(254,224,139, 0.6)'
+      //   }),
+      //   stroke: new Stroke({
+      //     color: '#984ea3',
+      //     width: 1
+      //   }),
+      //   text: new Text({
+      //     font: '12px Calibri,sans-serif',
+      //     fill: new Fill({
+      //       color: '#000'
+      //     }),
+      //     stroke: new Stroke({
+      //       color: '#fff',
+      //       width: 4
+      //     })
+      //   })
+      // }),
+
+      // // over 1000 cases
+      // new Style({
+      //   fill: new Fill({
+      //     color: 'rgba(209,4,52, 0.5)'
+      //   }),
+      //   stroke: new Stroke({
+      //     color: '#984ea3',
+      //     width: 1
+      //   }),
+      //   text: new Text({
+      //     font: '12px Calibri,sans-serif',
+      //     fill: new Fill({
+      //       color: '#000'
+      //     }),
+      //     stroke: new Stroke({
+      //       color: '#fff',
+      //       width: 4
+      //     })
+      //   })
+      // }),
+
+      // // healed over 0 cases
+      // new Style({
+      //   fill: new Fill({
+      //     color: 'rgba(173, 221, 142, 0.6)'
+      //   }),
+      //   stroke: new Stroke({
+      //     color: '#984ea3',
+      //     width: 1
+      //   }),
+      //   text: new Text({
+      //     font: '12px Calibri,sans-serif',
+      //     fill: new Fill({
+      //       color: '#000'
+      //     }),
+      //     stroke: new Stroke({
+      //       color: '#fff',
+      //       width: 4
+      //     })
+      //   })
+      // })
   ];
-  
+
+  if(this.activeMap.id === 'deaths'){
+    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[0]).map(e => e.county_code);
+    this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[1]).map(e => e.county_code);
+    this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[2]).map(e => e.county_code);
+  } else if(this.activeMap.id === 'new_cases') {
+    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_new[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
+    this.over[1] = this.mapData.filter(e =>  this.milestones_new[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_new[0]).map(e => e.county_code);
+    this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_new[1]).map(e => e.county_code);
+  }else {
     this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
     this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
     this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
-
+  }
 
     const vectorLayer = new VectorLayer({
       id: 'counties',
@@ -686,22 +747,62 @@ export class MapComponent implements OnInit, OnDestroy {
       style(feature) {
         let s = styles[0];
         
+        // default
         if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
-          s = styles[1];
+          s = self.generateStyle('255,255,217, 0.6');
         }
 
         if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
-          s = styles[2];
+          s = self.generateStyle('254,224,139, 0.6');
         }
 
+        if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+          s = self.generateStyle('209,4,52, 0.6');
+        }
+
+        // // active
+        // if(self.activeMap.id === 'active_cases'){
+        //   if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
+        //     s = self.generateStyle('0,217,203, 0.6');
+        //   }
+
+        //   if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+        //     s = self.generateStyle('0,217,203, 0.6');
+        //   }
+
+        //   if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+        //     s = self.generateStyle('0,217,203, 0.6');
+        //   }
+        // }
+
+        //healed
         if(self.activeMap.id === 'healed'){
+          // if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
+          //   s = self.generateStyle('102,194,164, 0.6');;
+          // }
+
+          // if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+          //   s = self.generateStyle('35,139,69, 0.6');;
+          // }
+
           if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
-            s = styles[4];
+            s = self.generateStyle('0,68,27, 0.6');;
           }
-        } else {
-          if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
-            s = styles[3];
-          }
+        }
+
+        //deaths
+        if(self.activeMap.id === 'deaths'){
+          // if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
+          //   s = self.generateStyle('217,72,1, 0.9');;
+          // }
+
+          // if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+          //   s = self.generateStyle('166,54,3, 0.9');;
+          // }
+
+          // if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+          //   s = self.generateStyle('127,39,4, 0.9');;
+          // }
         }
         
 
@@ -949,9 +1050,20 @@ export class MapComponent implements OnInit, OnDestroy {
     if (this.activeMap.id === 'quarantine' || this.activeMap.id === 'metropolitan_areas') {
       this.over = [];
     } else {
-      this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
-      this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
-      this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+
+      if(this.activeMap.id === 'deaths'){
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[0]).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[1]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[2]).map(e => e.county_code);
+      } else if(this.activeMap.id === 'new_cases') {
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_new[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e =>  this.milestones_new[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_new[0]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_new[1]).map(e => e.county_code);
+      } else {
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+      }
     }
   }
 
@@ -982,11 +1094,56 @@ export class MapComponent implements OnInit, OnDestroy {
     this.displayDisclaimerDeaths = val;
   }
 
+  generateLegendItems(options, milestone, fill_colors, stroke_colors){
+      let first_text = 'Judete cu mai mult de';
+      let alt_text = 'Judete cu mai putin de';
+      let text = 'cazuri confirmate';
+
+      if(this.activeMap.id === 'healed') text = 'vindecari confirmate';
+      if(this.activeMap.id === 'deaths') text = 'decese confirmate';
+      if(this.activeMap.id === 'active_cases') text = 'cazuri active';
+      if(this.activeMap.id === 'new_cases') text = 'cazuri noi';
+
+      let legend = `
+        <rect x="3" y="65" width="20" height="20" style="fill:rgba(${fill_colors[0]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant(`home.${first_text}`)} ${milestone[0]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant(`home.${text}`)}</text>
+
+        <rect x="3" y="100" width="20" height="20" style="fill:rgba(${fill_colors[1]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant(`home.${first_text}`)} ${milestone[1]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant(`home.${text}`)}</text>
+
+        <rect x="3" y="135" width="20" height="20" style="fill:rgba(${fill_colors[2]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant(`home.${text}`)}</text>
+      `;
+
+      if(this.activeMap.id === 'new_cases'){
+        legend = `
+        <rect x="3" y="65" width="20" height="20" style="fill:rgba(${fill_colors[0]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant(`home.${alt_text}`)} ${milestone[0]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant(`home.${text}`)}</text>
+
+        <rect x="3" y="100" width="20" height="20" style="fill:rgba(${fill_colors[1]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant(`home.${alt_text}`)} ${milestone[1]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant(`home.${text}`)}</text>
+
+        <rect x="3" y="135" width="20" height="20" style="fill:rgba(${fill_colors[2]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant(`home.${text}`)}</text>
+      `;
+      }
+
+      
+
+      return legend;
+  }
+
   generateLegend(){
     let map = this.maps.find(e => e.id === this.activeMap.id);
 
     const options = {
-      width: 200,
+      width: 220,
       height: 65,
       text_fill: '#000',
       font_size: 12,
@@ -1003,7 +1160,7 @@ export class MapComponent implements OnInit, OnDestroy {
       options.height = 110;
     }
 
-    if(this.activeMap.id === 'confirmed') {
+    if(['confirmed', 'healed', 'deaths', 'active_cases', 'new_cases'].includes(this.activeMap.id)) {
       options.height = 170;
     }
 
@@ -1036,19 +1193,23 @@ export class MapComponent implements OnInit, OnDestroy {
       `;
 
       if(this.activeMap.id === 'confirmed') {
-        legend += `
-          <rect x="3" y="65" width="20" height="20" style="fill:rgba(255,255,217, 0.6);stroke-width:0.8;stroke: #984ea3" />
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant('home.Judete cu mai mult de')} ${this.milestones[0]}</text>
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant('home.cazuri confirmate')}</text>
+        legend += this.generateLegendItems(options, this.milestones, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.5'], ['#984ea3']);
+      }
 
-          <rect x="3" y="100" width="20" height="20" style="fill:rgba(254,224,139, 0.6);stroke-width:0.8;stroke: #984ea3" />
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant('home.Judete cu mai mult de')} ${this.milestones[1]}</text>
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant('home.cazuri confirmate')}</text>
+      if(this.activeMap.id === 'healed') {
+        legend += this.generateLegendItems(options, this.milestones, ['255,255,217, 0.6', '254,224,139, 0.6', '0,68,27, 0.6'], ['#984ea3']);
+      }
 
-          <rect x="3" y="135" width="20" height="20" style="fill:rgba(209,4,52, 0.5);stroke-width:0.8;stroke: #984ea3" />
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant('home.Judete cu mai mult de')} ${this.milestones[2]}</text>
-          <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant('home.cazuri confirmate')}</text>
-        `;
+      if(this.activeMap.id === 'deaths') {
+        legend += this.generateLegendItems(options, this.milestones_deaths, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.5'], ['#984ea3']);
+      }
+
+      if(this.activeMap.id === 'active_cases') {
+        legend += this.generateLegendItems(options, this.milestones, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.6'], ['#984ea3']);
+      }
+
+      if(this.activeMap.id === 'new_cases') {
+        legend += this.generateLegendItems(options, this.milestones_new, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.6'], ['#984ea3']);
       }
     }
 

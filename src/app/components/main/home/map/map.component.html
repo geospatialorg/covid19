@@ -28,11 +28,17 @@
     <h3>{{selectedFeature.get('county')}}</h3>
     <p>
       {{'home.Cazuri confirmate' | translate}} : {{selectedFeature.get('total_case')}}
-      <em style="display: block;font-size: 12px;">{{'home.(după locul confirmării)' | translate}}</em>
+      <!-- <em style="display: block;font-size: 12px;">{{'home.(după locul confirmării)' | translate}}</em> -->
+    </p>
+    <p>
+      {{'home.Cazuri active' | translate}} : {{selectedFeature.get('total_active')}}
+    </p>
+    <p>
+      {{'home.Cazuri noi (24h)' | translate}} : {{selectedFeature.get('new_case')}}
     </p>
     <p>
       {{'home.Total vindecări' | translate}}: {{selectedFeature.get('total_healed')}}
-      <em style="display: block;font-size: 12px;">{{'home.(după locul externării)' | translate}}</em>
+      <!-- <em style="display: block;font-size: 12px;">{{'home.(după locul externării)' | translate}}</em> -->
     </p>
     <p>{{'home.Total decese' | translate}}: {{selectedFeature.get('total_dead')}}</p>
     <!-- <p>Cazuri active: {{selectedFeature.get('total_active')}}</p> -->

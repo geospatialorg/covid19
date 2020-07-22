@@ -1,12 +1,22 @@
-<div class="p-grid statistics-container no-margin no-padding" style="height: 100%;text-align: center;" id="statistics">
-    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12" style="height: 100%;text-align: center;width: 100%;padding: 0;">
-        <!-- <div class="wrapper" style="height: 100%;">
-            <div id="chart" style="height: 100%;"></div>
-        </div> -->
+<div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+    <p-dropdown id="statistics-list" [options]="list"
+        [(ngModel)]="activeChart"
+        optionLabel="title" (onChange)="onGraphChange()">
+    </p-dropdown>
+</div>
 
-        <!-- <div style="padding: 3px;">
-            <p-message  severity="info" text="Situaţia până la data în care s-au raportat oficial aceste informaţii."></p-message>
-        </div> -->
-        <iframe seamless frameborder="0" scrolling="no" src="https://alexaac.github.io/covid-19-ro-cases-relations/"></iframe>
+<!-- <div class="p-grid statistics-container no-margin no-padding" id="air-quality"  #mainGrid style="height: calc(100% - 105px)">
+    <div style="width: 100%;text-align: center;" *ngIf="!isMobile">
+      <iframe  seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+    </div>
+    <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" [src]="activeChart.mobile_url"></iframe>
+  </div> -->
+
+<div class="p-grid statistics-container no-margin no-padding" style="height: calc(100% - 105px);text-align: center;" id="statistics">
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12" style="height: 100%;text-align: center;width: 100%;padding: 0;">
+        <div style="width: 100%;height: 100%;text-align: center;" *ngIf="!isMobile">
+            <iframe  seamless frameborder="0" scrolling="yes" [src]="activeChart.url" style="height: 100%"></iframe>
+          </div>
+          <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" [src]="activeChart.mobile_url"></iframe>
     </div>
 </div>

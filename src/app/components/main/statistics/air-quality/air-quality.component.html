@@ -1,4 +1,4 @@
-<div class="p-grid statistics-container no-margin no-padding" #mainGrid style="height: calc(100% - 51px);">
+<!-- <div class="p-grid statistics-container no-margin no-padding" #mainGrid style="height: calc(100% - 51px);"> -->
     <!-- <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" >
         <canvas id="canvasNO2" #canvasNO2></canvas>
       </div>
@@ -6,6 +6,23 @@
         <canvas id="canvasAirQ" #canvasAirQ></canvas>
       </div> -->
 
-      <iframe *ngIf="!isMobile" seamless frameborder="0" scrolling="yes" style="width: 100%;" height="100%" src="https://apps.sage.ieat.ro/covid19/charts/embedded/airlive.html"></iframe>
-      <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" style="width: 100%;" height="100%" src="https://apps.sage.ieat.ro/covid19/charts/embedded/airlive-mobile.html"></iframe>
+      <!-- <iframe *ngIf="!isMobile" seamless frameborder="0" scrolling="yes" style="width: 100%;" height="100%" src="https://apps.sage.ieat.ro/covid19/charts/embedded/airlive.html"></iframe>
+      <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" style="width: 100%;" height="100%" src="https://apps.sage.ieat.ro/covid19/charts/embedded/airlive-mobile.html"></iframe> -->
+<!-- </div> -->
+
+<div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+  <p-dropdown id="graph-list" [options]="list"
+      [(ngModel)]="activeChart"
+      optionLabel="title" (onChange)="updateQueryParams()">
+  </p-dropdown>
+</div>
+
+<div class="p-grid statistics-container no-margin no-padding" id="air-quality"  #mainGrid style="height: calc(100% - 105px)">
+  <!-- <iframe *ngIf="activeChart.id > 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+  <iframe id="full" *ngIf="activeChart.id == 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe> -->
+
+  <div style="width: 100%;text-align: center;" *ngIf="!isMobile">
+    <iframe  seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+  </div>
+  <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" [src]="activeChart.mobile_url"></iframe>
 </div>

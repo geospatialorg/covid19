@@ -11,5 +11,4 @@ export interface AllCasesByCountyResponse {
     total: number,
     data: Array<any>
   };
-
 }

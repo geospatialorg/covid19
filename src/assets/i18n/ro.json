@@ -95,7 +95,11 @@
         "Evoluția cazurilor în Europa": "Evoluția cazurilor în Europa",
         "Evoluția cazurilor în Europa (raportate la 100k locuitori)": "Evoluția cazurilor în Europa (raportate la 100k locuitori)",
         "Evoluția deceselor în Europa": "Evoluția deceselor în Europa",
-        "Evoluția deceselor în Europa (raportate la 100k locuitori)": "Evoluția deceselor în Europa (raportate la 100k locuitori)"
+        "Evoluția deceselor în Europa (raportate la 100k locuitori)": "Evoluția deceselor în Europa (raportate la 100k locuitori)",
+        "Cazuri": "Cazuri",
+        "Pack": "Pack",
+        "Timeline": "Timeline",
+        "Relations": "Relations"
     },
     "manifest": {
         "Update 02.04.2020: Autoritățile au reluat raportarea cazurilor la nivel de județ": "Update 02.04.2020: Autoritățile au reluat raportarea cazurilor la nivel de județ",
@@ -134,5 +138,13 @@
         "row20" : "Înțelegem presiunea uriașă și apreciem eforturile autorităților române de a lupta și a restrânge efectele pandemiei de Covid-19. Considerăm însă că eficientizarea fluxului de informare al populației, precum și accesul deschis la datele oficiale complete enumerate mai sus ar reprezenta un ajutor semnificativ, cel puțin din perspectiva informării corecte a populației României",
         "Manifest redactat de către Asociația geo-spatial.org și susținut de către" : "Manifest redactat de către Asociația geo-spatial.org și susținut de către",
         "Persoană de contact" : "Persoană de contact"
+    },
+    "air-quality" : {
+        "Dioxid de azot (NO2)": "Dioxid de azot (NO2)",
+        "Dioxid de sulf (SO2)": "Dioxid de sulf (SO2)",
+        "Monoxid de carbon (CO)": "Monoxid de carbon (CO)",
+        "PM10": "PM10",
+        "PM2.5": "PM2.5",
+        "Indice calitate aer": "Indice calitate aer"
     }
 }

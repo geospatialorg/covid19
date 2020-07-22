@@ -21,13 +21,13 @@ export class DashboardService {
   public cases: AllCasesByCountyResponse = {
     confirmed: {total: 0, data: []},
     deaths: {total: 0, data: []},
-    healed: {total: 0, data: []},
+    healed: {total: 0, data: []}
   };
 
   private casesSourceSubject = new BehaviorSubject<AllCasesByCountyResponse>({
     confirmed: {total: 0, data: []},
     deaths: {total: 0, data: []},
-    healed: {total: 0, data: []},
+    healed: {total: 0, data: []}
   });
   currentCases = this.casesSourceSubject.asObservable();
 
@@ -50,6 +50,10 @@ export class DashboardService {
 
   getDeadCasesByCounty(params?: any) {
     return this.http.get<any>(`${environment.apiUrl}/dashboard/v2/getDeadCasesByCounty`, {params});
+  }
+
+  getCountyCaseActive(params?: any) {
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/v2/getCountyCaseActive`, {params});
   }
 
   getDailyCaseReport(params?: any) {
@@ -78,7 +82,8 @@ export class DashboardService {
       switchMap(() => combineLatest([
           this.getCasesByCounty(),
           this.getDeadCasesByCounty(),
-          this.getHealthCasesByCounty()
+          this.getHealthCasesByCounty(),
+          this.getCountyCaseActive()
         ]).pipe(
         map((response): AllCasesByCountyResponse => this.mapResponse(response))
         )
@@ -93,7 +98,7 @@ export class DashboardService {
     const newCases = {
       confirmed: response.confirmed.total,
       deaths: response.deaths.total,
-      healed: response.healed.total,
+      healed: response.healed.total
     };
 
 
@@ -113,7 +118,7 @@ export class DashboardService {
     this.storageService.set(TOTAL_CASES_KEY, newCases);
   }
 
-  private mapResponse([casesByCounty, deadCasesByCounty, healthCasesByCounty]): AllCasesByCountyResponse {
+  private mapResponse([casesByCounty, deadCasesByCounty, healthCasesByCounty, activeCasesByCounty]): AllCasesByCountyResponse {
     // force data changes to test notifications
     if (this.testNotificationEnableRandomTotals) {
       const min = 10;

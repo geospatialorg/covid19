@@ -33,6 +33,7 @@ export class StatisticsComponent implements OnInit {
   screenWidth: number;
 
   mobilitySubmenuVisible: boolean = false;
+  casesSubmenuVisible: boolean = false;
 
   constructor(
     private sharedService: SharedService,
@@ -56,7 +57,7 @@ export class StatisticsComponent implements OnInit {
     this.links = [
       {
         routerLink: '/statistici/statistici-generale',
-        label: 'Statistici generale',
+        label: 'Cazuri',
         classes: 'ui-button-secondary'
       },
       {
@@ -67,12 +68,14 @@ export class StatisticsComponent implements OnInit {
       {
         routerLink: '/statistici/relationare-cazuri',
         label: 'Relaționare cazuri',
-        classes: 'ui-button-secondary'
+        classes: 'ui-button-secondary',
+        hidden: true
       },
       {
         routerLink: '/statistici/repartitie-cazuri-judete',
         label: 'Repartiția cazurilor pe județe',
-        classes: 'ui-button-secondary'
+        classes: 'ui-button-secondary',
+        hidden: true
       },
       // {
       //   routerLink: '/statistici/situatie-europa',
@@ -95,21 +98,6 @@ export class StatisticsComponent implements OnInit {
         label: 'Mobilitate',
         classes: 'ui-button-secondary'
       },
-      // {
-      //   routerLink: '/statistici/mobilitate/waze',
-      //   label: 'Waze',
-      //   classes: 'ui-button-secondary'
-      // },
-      // {
-      //   routerLink: '/statistici/mobilitate/apple',
-      //   label: 'Apple',
-      //   classes: 'ui-button-secondary'
-      // },
-      // {
-      //   routerLink: '/statistici/mobilitate/google',
-      //   label: 'Google',
-      //   classes: 'ui-button-secondary'
-      // },
       {
         routerLink: '/statistici/calitate-aer',
         label: 'Calitate aer',
@@ -123,14 +111,18 @@ export class StatisticsComponent implements OnInit {
     ];
 
     let current_url = this.router.url.split('?')[0];
+    // if(current_url.includes('/statistici/statistici-generale')) current_url = '/statistici';
     if(current_url.includes('/statistici/mobilitate')) current_url = '/statistici/mobilitate';
+
     this.activeLink = this.links.find(e => e.routerLink === current_url);
 
     this.subscription$ = this.router.events.subscribe(event => {
       if( event instanceof  NavigationEnd ){
         current_url = event.url.split('?')[0];
 
+        // if(current_url.includes('/statistici/statistici-generale')) current_url = '/statistici';
         if(current_url.includes('/statistici/mobilitate')) current_url = '/statistici/mobilitate';
+        
         this.activeLink = this.links.find(e => e.routerLink === current_url);
       }
     });
@@ -153,6 +145,11 @@ export class StatisticsComponent implements OnInit {
   changeRoute(item){
     if(item.label === 'Mobilitate') {
       this.mobilitySubmenuVisible = !this.mobilitySubmenuVisible;
+      return;
+    }
+
+    if(item.label === 'Cazuri') {
+      this.casesSubmenuVisible = !this.casesSubmenuVisible;
       return;
     }
 

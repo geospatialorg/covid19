@@ -270,7 +270,7 @@ export class GraphicsComponent implements OnInit {
   }
 
   ngAfterContentInit() {
-    this.initChart();
+    // this.initChart();
   }
 
   async initChart(){

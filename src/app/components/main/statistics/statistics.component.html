@@ -12,11 +12,23 @@
 <div class="submenu" *ngIf="!isMobile">
     <ul style="list-style-type: none;margin: 0;">
         <li *ngFor="let item of links; let i = index" style="display: inline-block;position: relative;">
-            <i class="far fa-square" *ngIf="i > 0"></i>
-            <a routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'statistics.'+item.label | translate}}">
+            <i class="far fa-square" *ngIf="i > 0 && !item.hidden"></i>
+            <a *ngIf="!item.hidden" routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'statistics.'+item.label | translate}}">
                 {{'statistics.'+item.label | translate}}
-                <i class="fa fa-chevron-down" *ngIf="item.label === 'Mobilitate'"></i>
+                <i class="fa fa-chevron-down" *ngIf="['Mobilitate', 'Cazuri'].includes(item.label)"></i>
             </a>
+
+            <ul class="menu-submenu no-bullet" *ngIf="item.label === 'Cazuri'" style="width: 250px;">
+                <li>
+                    <a routerLinkActive="active" [routerLink]='["/statistici/statistici-generale"]' routerLinkActiveOptions="{pathMatch: 'full'}">Statistici generale</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" [routerLink]='["/statistici/relationare-cazuri"]' routerLinkActiveOptions="{pathMatch: 'full'}">Relaționare cazuri</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" [routerLink]='["/statistici/repartitie-cazuri-judete"]' routerLinkActiveOptions="{pathMatch: 'full'}">Repartiția cazurilor pe județe</a>
+                </li>
+            </ul>
 
             <ul class="menu-submenu" *ngIf="item.label === 'Mobilitate'">
                 <li>
@@ -41,11 +53,23 @@
 
 <div class="layout-submenu" *ngIf="submenuVisible && isMobile">
     <ul>
-        <li *ngFor="let item of links">
+        <li *ngFor="let item of links" [ngClass]="{'hidden': item.hidden}">
             <a style="position: relative;" routerLinkActive="active" (click)="changeRoute(item)" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'statistics.'+item.label | translate}}">
                 {{'statistics.'+item.label | translate}}
-                <i class="fa fa-plus" *ngIf="item.label === 'Mobilitate'" style="position: absolute;right: 10px;top: 12px;"></i>
+                <i class="fa fa-plus" *ngIf="['Mobilitate', 'Cazuri'].includes(item.label)" style="position: absolute;right: 10px;top: 12px;"></i>
             </a>
+
+            <ul *ngIf="item.label === 'Cazuri' && casesSubmenuVisible">
+                <li style="border-top: 1px solid #eee;">
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" routerLink="/statistici/statistici-generale" routerLinkActiveOptions="{pathMatch: 'full'}">Statistici generale</a>
+                </li>
+                <li>
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" routerLink="/statistici/relationare-cazuri" routerLinkActiveOptions="{pathMatch: 'full'}">Relaționare cazuri</a>
+                </li>
+                <li>
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" routerLink="/statistici/repartitie-cazuri-judete" routerLinkActiveOptions="{pathMatch: 'full'}">Repartiția cazurilor pe județe</a>
+                </li>
+            </ul>
 
             <ul *ngIf="item.label === 'Mobilitate' && mobilitySubmenuVisible">
                 <li style="border-top: 1px solid #eee;">

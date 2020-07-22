@@ -62,7 +62,7 @@ function setCacheControl(req, res, next){
 
 module.exports = app => {
     app.use(`${config.app.apiPath}/`, cors());
-    app.use(`${config.app.apiPath}/`, setCacheControl);
+    // app.use(`${config.app.apiPath}/`, setCacheControl);
     app.use(`${config.app.apiPath}/authentication`, require('./_authentication'));
     app.use(`${config.app.apiPath}/dashboard`, require('./_dashboard'));
     app.use(`${config.app.apiPath}/dashboard/v2`, require('./_dashboard.v2'));

@@ -8,11 +8,11 @@
 <div class="p-grid statistics-container no-margin no-padding" #mainGrid>
     <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width" id="canvasTrend" *ngIf="activeChart.id === 1">
         <div style="width: 70%;margin: 0 auto;" *ngIf="!isMobile">
-            <iframe  id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression.html"></iframe>
+            <iframe  id="regression" seamless frameborder="0" scrolling="yes" src="https://covid19.geo-spatial.org/external/charts_vasile/covid19-cazuri-cumulative-desktop.html"></iframe>
         </div>
         <!-- <canvas id="canvasTrendline" #canvasTrendline></canvas> -->
         
-        <iframe *ngIf="isMobile" id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression-mobile.html"></iframe>
+        <iframe *ngIf="isMobile" id="regression" seamless frameborder="0" scrolling="yes" src="https://covid19.geo-spatial.org/external/charts_vasile/covid19-cazuri-cumulative-mobile.html"></iframe>
     </div>
 
     <!-- <iframe *ngIf="isMobile" id="regression" seamless frameborder="0" scrolling="yes" src="https://apps.sage.ieat.ro/covid19/charts/embedded/regression-mobile.html"></iframe> -->

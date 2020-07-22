@@ -68,7 +68,11 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 170px;
+  min-width: 170px;
+}
+
+.menu-submenu.no-bullet {
+  left: 0;
 }
 
 .menu-submenu li a {
@@ -80,4 +84,8 @@
 .submenu ul li:hover .menu-submenu{
   display: block;
   z-index: 2;
+}
+
+.layout-submenu li.hidden {
+  display: none;
 }
