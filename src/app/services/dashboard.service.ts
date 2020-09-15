@@ -143,5 +143,10 @@ export class DashboardService {
   getJsonData(params: any) {
     return this.http.get<any>(`${environment.apiUrl}/dashboard/getJsonData`, {params});
   }
+
+  
+  getQuarantineUATGeojson(params: any) {
+    return this.http.get<any>(`${environment.apiUrl}/dashboard/getQuarantineUATGeojson`, {params});
+  }
   
 }

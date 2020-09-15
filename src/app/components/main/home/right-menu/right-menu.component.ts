@@ -16,6 +16,8 @@ export class RightMenuComponent implements OnInit, OnDestroy, AfterViewInit {
   tableDataRecovered: any[] = [];
   totalDeaths = 0;
   totalHealed = 0;
+  externari_gcs = 0;
+  vindecari_gcs = 0;
 
   dataReady = false;
 
@@ -37,6 +39,11 @@ export class RightMenuComponent implements OnInit, OnDestroy, AfterViewInit {
         this.dataReady = true;
       });
     }, 10);
+
+    this.dashboardService.getHealthCasesByCounty().subscribe(res => {
+      this.externari_gcs = res.data.externari_gcs || 0;
+      this.vindecari_gcs = res.data.vindecari_gcs || 0;
+    });
   }
 
   ngOnDestroy(): void {}

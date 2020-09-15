@@ -1,0 +1,17 @@
+<div id="mobility-list" style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+    <p-dropdown [options]="links"
+        [(ngModel)]="activeChart"
+        optionLabel="title" (onChange)="onGraphChange()">
+    </p-dropdown>
+</div>
+
+<div class="p-grid mobility-container no-margin no-padding" #mainGrid>
+    <div class="p-sm-12 p-md-12 p-lg-12 p-xl-12 full-width">
+        <div style="width: 70%;margin: 0 auto;" *ngIf="!isMobile">
+            <iframe height="700px" width="100%" seamless frameborder="0" scrolling="yes" [src]="activeChart.src"></iframe>
+        </div>
+        
+        <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" [src]="activeChart.src_mobile"></iframe>
+    </div>
+
+</div>

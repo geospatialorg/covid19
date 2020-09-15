@@ -4,7 +4,15 @@
       <div class="ui-g-12">
         <p-card header="{{'home.Total vindecări' | translate}}" [style]="{width: '100%', textAlign: 'center'}">
           <!-- <em style="font-size: 12px;">{{'home.(după locul externării)' | translate}}</em> -->
-          <h1 style="color: #4daf4a;">{{totalHealed}}</h1>
+          <h1 style="color: #4daf4a;">
+            {{vindecari_gcs}}
+            <sub style="font-size: 14px">
+              {{externari_gcs}}
+            </sub>
+            <i class="fa fa-info-circle" [escape]="false" pTooltip="{{'home.Pacienți declarați vindecați' | translate}} / {{'home.Pacienți asimptomatici externați la 10 zile după depistare' | translate}}  " tooltipPosition="right"></i>
+            <!-- {{externari_gcs}} -->
+            <!-- {{vindecari_gcs}} -->
+          </h1>
         </p-card>
       </div>
     </div>

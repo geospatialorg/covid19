@@ -1,0 +1,18 @@
+@media (max-width: 550px) {
+    .full-width {
+        width: 100%;
+    }
+
+    .only-xs {
+        display: block;
+    }
+
+    .only-large {
+        display: none;
+    }
+
+    .custom-container iframe {
+        height: 320px;
+        width: 100%;
+    }
+}

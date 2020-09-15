@@ -1,0 +1,16 @@
+<div style="width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px;">
+    <p-dropdown id="graph-list" [options]="list"
+        [(ngModel)]="activeChart"
+        optionLabel="title" (onChange)="updateQueryParams()">
+    </p-dropdown>
+  </div>
+  
+<div class="p-grid statistics-container no-margin no-padding" id="air-quality"  #mainGrid style="height: calc(100% - 105px)">
+    <!-- <iframe *ngIf="activeChart.id > 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+    <iframe id="full" *ngIf="activeChart.id == 1" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe> -->
+
+    <div style="width: 100%;text-align: center;" *ngIf="!isMobile">
+        <iframe [ngClass]="{'full-width': activeChart.id === 3 || activeChart.id === 4}" seamless frameborder="0" scrolling="yes" [src]="activeChart.url"></iframe>
+    </div>
+    <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" [src]="activeChart.mobile_url"></iframe>
+</div>

@@ -50,8 +50,8 @@
   </div>
 
     <div class="info-modal" *ngIf="selectedQuarantineZone">
-      <h3>{{selectedQuarantineZone.get('uat')}}</h3>
-      <p>{{'home.Populatie' | translate}}: {{selectedQuarantineZone.get('population')}}</p>
+      <h3>{{selectedQuarantineZone.get('denumire')}}</h3>
+      <p>{{'home.Populatie' | translate}}: {{selectedQuarantineZone.get('populatie')}}</p>
     </div>
 
     <div class="info-modal" *ngIf="selectedRoad">
@@ -65,9 +65,17 @@
 
     <div class="info-modal" *ngIf="selectedMetropolitan" style="max-width: 200px;">
       <h3>{{selectedMetropolitan.get('uat')}}</h3>
-      <p *ngIf="selectedMetropolitan.get('metropolitan_zone')">{{'home.Zona' | translate}}: {{selectedMetropolitan.get('metropolitan_zone')}}</p>
+      
       <!-- <p>An infiintare: {{selectedMetropolitan.get('an_infiintare')}}</p> -->
       <p>{{'home.Populatie' | translate}}: {{selectedMetropolitan.get('population')}}</p>
+    </div>
+
+    <div class="info-modal" *ngIf="selectedCovid14Zone" style="max-width: 200px;">
+      <h3>{{selectedCovid14Zone.get('uat')}}</h3>
+      <p *ngIf="selectedCovid14Zone.get('judet')">{{'home.Judet' | translate}}: {{selectedCovid14Zone.get('judet')}}</p>
+      <p *ngIf="selectedCovid14Zone.get('population')">{{'home.Populatie' | translate}}: {{selectedCovid14Zone.get('population')}}</p>
+      <br>
+      <p>{{'home.Rata de incidenta la 1000 locuitori' | translate}}: <strong>{{selectedCovid14Zone.get('incidenta')}}</strong></p>
     </div>
 </div>
 
@@ -79,7 +87,23 @@
 
   <p>
     {{'home.message_health_2' | translate}}
-  </p> 
+  </p>
+
+  <p>
+    {{'home.message_health_3' | translate}}
+  </p>
+
+  <p>
+    {{'home.message_health_4' | translate}}
+  </p>
+
+  <p>
+    {{'home.message_health_5' | translate}}
+  </p>
+
+  <p>
+    {{'home.message_health_6' | translate}}
+  </p>
   </div>
 
   <p-footer>

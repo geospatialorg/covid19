@@ -1,0 +1,41 @@
+<div class="submenu" *ngIf="!isMobile">
+    <ul style="list-style-type: none;margin: 0;">
+        <li *ngFor="let item of links; let i = index" style="display: inline-block;position: relative;">
+            <i class="far fa-square" *ngIf="i > 0 && !item.hidden"></i>
+            <a *ngIf="!item.hidden" routerLinkActive="active" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'impact.'+item.label | translate}}">
+                {{'impact.'+item.label | translate}}
+                <i class="fa fa-chevron-down" *ngIf="item.children.length > 0"></i>
+            </a>
+
+            <ul class="menu-submenu" *ngIf="item.children.length > 0">
+                <li *ngFor="let s of item.children">
+                    <a routerLinkActive="active" [routerLink]='s.routerLink' routerLinkActiveOptions="{pathMatch: 'full'}">{{'impact.'+s.label | translate}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<a class="submenu" style="cursor: pointer;display: block;" (click)="showSubmenu()" *ngIf="isMobile">
+    <i class="fa fa-angle-down"></i>
+    <span class="submenu-title">{{'impact.'+activeLink.label | translate}}</span>
+</a>
+
+<div class="layout-submenu" *ngIf="submenuVisible && isMobile">
+    <ul>
+        <li *ngFor="let item of links" [ngClass]="{'hidden': item.hidden}">
+            <a style="position: relative;" routerLinkActive="active" (click)="changeRoute(item)" routerLink="{{item.routerLink}}" routerLinkActiveOptions="{pathMatch: 'prefix'}" title="{{'impact.'+item.label | translate}}">
+                {{'impact.'+item.label | translate}}
+                <i class="fa fa-plus" *ngIf="item.children.length > 0" style="position: absolute;right: 10px;top: 12px;"></i>
+            </a>
+
+            <ul *ngIf="item.label === activeSubmenu">
+                <li style="border-top: 1px solid #eee;" *ngFor="let s of item.children">
+                    <a style="padding-left: 35px;" (click)="this.submenuVisible = false" routerLinkActive="active" [routerLink]="s.routerLink" routerLinkActiveOptions="{pathMatch: 'full'}">{{'impact.'+s.label | translate}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<router-outlet></router-outlet>

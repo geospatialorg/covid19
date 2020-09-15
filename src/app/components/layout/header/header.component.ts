@@ -51,6 +51,12 @@ export class HeaderComponent implements OnInit {
         visible: true
       },
       {
+        label: 'Impact',
+        icon: 'fa fa-stethoscope',
+        routerLink: '/impact',
+        visible: true
+      },
+      {
         label: 'Jurnal aplicație',
         icon: 'pi pi-file',
         routerLink: '/jurnal-aplicatie',
@@ -62,12 +68,12 @@ export class HeaderComponent implements OnInit {
         routerLink: '/manifest',
         visible: true
       },
-      {
-        label: 'Comunitate',
-        icon: 'pi pi-users',
-        routerLink: '/comunitate',
-        visible: true
-      },
+      // {
+      //   label: 'Comunitate',
+      //   icon: 'pi pi-users',
+      //   routerLink: '/comunitate',
+      //   visible: true
+      // },
       {
         label: 'Despre',
         icon: 'pi pi-info-circle',

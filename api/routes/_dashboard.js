@@ -8,7 +8,7 @@ let geojsonDir = path.resolve(__dirname, '../geojson/');
 
 function generateQuarantineJson(){
 
-    let query = `select COVID.GET_LYR_QUARANTINE_UAT() as data`;
+    let query = `select COVID.GET_LYR_QUARANTINE_ZONE() as data`;
 
     pool.query(query,
         [ ],
@@ -25,9 +25,26 @@ function generateQuarantineJson(){
     );
 }
 
-function generateMetropolitanAreasJson(){
-    console.log('called')
+function generateQuarantineUATJson(){
 
+    let query = `select COVID.GET_LYR_QUARANTINE_UAT() as data`;
+
+    pool.query(query,
+        [ ],
+        function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+
+            let filepath = path.resolve(geojsonDir, 'uat_carantina.geojson');
+            fs.closeSync(fs.openSync(filepath, 'w'));
+
+            fs.writeFileSync(filepath, JSON.stringify(result.rows[0].data));
+        }
+    );
+}
+
+function generateMetropolitanAreasJson(){
     let query = `select COVID.GET_LYR_METROPOLITAN_ZONE() as data`;
 
     pool.query(query,
@@ -45,12 +62,34 @@ function generateMetropolitanAreasJson(){
     );
 }
 
+function generateCovid14Json(){
+    let query = `select COVID.GET_LYR_INCIDENTE_14() as data`;
+
+    pool.query(query,
+        [ ],
+        function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+
+            let filepath = path.resolve(geojsonDir, 'uat_covid14.geojson');
+            fs.closeSync(fs.openSync(filepath, 'w'));
+
+            fs.writeFileSync(filepath, JSON.stringify(result.rows[0].data));
+        }
+    );
+}
+
 generateQuarantineJson();
+generateQuarantineUATJson();
 // generateMetropolitanAreasJson();
+generateCovid14Json();
 
 setInterval(() => {
     generateQuarantineJson();
+    generateQuarantineUATJson();
     // generateMetropolitanAreasJson();
+    generateCovid14Json();
 }, 5*60*1000);
 
 function getGeojson(file, res) {
@@ -359,5 +398,16 @@ router
         return getGeojson('uat.geojson', res);
     });
     
+router
+    .route('/getQuarantineUATGeojson')
+    .get((req, res) => {
+        return getGeojson('uat_carantina.geojson', res);
+    });
+    
+router
+    .route('/getCovid14Geojson')
+    .get((req, res) => {
+        return getGeojson('uat_covid14.geojson', res);
+    });
 
 module.exports = router;

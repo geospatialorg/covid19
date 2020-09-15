@@ -87,7 +87,7 @@ import {HospitalInfrastructureComponent} from './components/main/maps/hospital-i
 import {CountiesCasesComponent} from './components/main/statistics/counties-cases/counties-cases.component';
 import {LogsComponent} from './components/main/logs/logs.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import { MobilityComponent } from './components/main/statistics/mobility/mobility.component';
+import { MobilityComponent } from './components/main/impact/mobility/mobility.component';
 import { AirQualityComponent } from './components/main/statistics/air-quality/air-quality.component';
 
 import {OverlayPanelModule} from 'primeng/overlaypanel';
@@ -102,10 +102,39 @@ import { EuropeSituationComponent } from './components/main/statistics/europe-si
 import { CommunityComponent } from './components/main/community/community.component';
 import { DeathsComponent } from './components/main/statistics/deaths/deaths.component';
 import { CommunitiesComponent } from './components/main/maps/communities/communities.component';
-import { MobilityWazeComponent } from './components/main/statistics/mobility/mobility-waze/mobility-waze.component';
-import { MobilityAppleComponent } from './components/main/statistics/mobility/mobility-apple/mobility-apple.component';
-import { MobilityGoogleComponent } from './components/main/statistics/mobility/mobility-google/mobility-google.component';
+import { MobilityWazeComponent } from './components/main/impact/mobility/mobility-waze/mobility-waze.component';
+import { MobilityAppleComponent } from './components/main/impact/mobility/mobility-apple/mobility-apple.component';
+import { MobilityGoogleComponent } from './components/main/impact/mobility/mobility-google/mobility-google.component';
 import { MobilityMapComponent } from './components/main/maps/mobility-map/mobility-map.component';
+import { PublicInterestComponent } from './components/main/statistics/public-interest/public-interest.component';
+import { SeaWaterTemperatureComponent } from './components/main/statistics/sea-water-temperature/sea-water-temperature.component';
+import { MobilityBorderComponent } from './components/main/impact/mobility/mobility-border/mobility-border.component';
+import { EuropeActiveCasesComponent } from './components/main/statistics/europe-situation/europe-active-cases/europe-active-cases.component';
+import { EuropeConfirmedCasesComponent } from './components/main/statistics/europe-situation/europe-confirmed-cases/europe-confirmed-cases.component';
+import { EuropeDeathsComponent } from './components/main/statistics/europe-situation/europe-deaths/europe-deaths.component';
+import { ImpactComponent } from './components/main/impact/impact.component';
+import { MobilityAirTrafficComponent } from './components/main/impact/mobility/mobility-air-traffic/mobility-air-traffic.component';
+import { AgricultureComponent } from './components/main/impact/agriculture/agriculture.component';
+import { MediaComponent } from './components/main/impact/media/media.component';
+import { TourismComponent } from './components/main/impact/tourism/tourism.component';
+import { PopulationComponent } from './components/main/impact/population/population.component';
+import { RealEstateComponent } from './components/main/impact/real-estate/real-estate.component';
+import { AutoComponent } from './components/main/impact/auto/auto.component';
+import { EconomyComponent } from './components/main/impact/economy/economy.component';
+import { SacrificationComponent } from './components/main/impact/agriculture/sacrification/sacrification.component';
+import { TvAudienceComponent } from './components/main/impact/media/tv-audience/tv-audience.component';
+import { TourismServicesComponent } from './components/main/impact/tourism/tourism-services/tourism-services.component';
+import { NaturalMovementComponent } from './components/main/impact/population/natural-movement/natural-movement.component';
+import { WorkforceComponent } from './components/main/impact/population/workforce/workforce.component';
+import { AuthorizationsComponent } from './components/main/impact/real-estate/authorizations/authorizations.component';
+import { DynamicsComponent } from './components/main/impact/real-estate/dynamics/dynamics.component';
+import { PricesComponent } from './components/main/impact/real-estate/prices/prices.component';
+import { RegistrationComponent } from './components/main/impact/auto/registration/registration.component';
+import { FuelPriceComponent } from './components/main/impact/auto/fuel-price/fuel-price.component';
+import { IndicatorsComponent } from './components/main/impact/economy/indicators/indicators.component';
+import { CommerceComponent } from './components/main/impact/economy/commerce/commerce.component';
+import { ExchangeComponent } from './components/main/impact/economy/exchange/exchange.component';
+import { MonetaryComponent } from './components/main/impact/economy/monetary/monetary.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -157,7 +186,36 @@ export function createTranslateLoader(http: HttpClient) {
     MobilityWazeComponent,
     MobilityAppleComponent,
     MobilityGoogleComponent,
-    MobilityMapComponent
+    MobilityMapComponent,
+    PublicInterestComponent,
+    SeaWaterTemperatureComponent,
+    MobilityBorderComponent,
+    EuropeActiveCasesComponent,
+    EuropeConfirmedCasesComponent,
+    EuropeDeathsComponent,
+    ImpactComponent,
+    MobilityAirTrafficComponent,
+    AgricultureComponent,
+    MediaComponent,
+    TourismComponent,
+    PopulationComponent,
+    RealEstateComponent,
+    AutoComponent,
+    EconomyComponent,
+    SacrificationComponent,
+    TvAudienceComponent,
+    TourismServicesComponent,
+    NaturalMovementComponent,
+    WorkforceComponent,
+    AuthorizationsComponent,
+    DynamicsComponent,
+    PricesComponent,
+    RegistrationComponent,
+    FuelPriceComponent,
+    IndicatorsComponent,
+    CommerceComponent,
+    ExchangeComponent,
+    MonetaryComponent
   ],
   imports: [
     BrowserModule,

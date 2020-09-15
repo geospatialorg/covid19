@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "app": "ng serve --host 0.0.0.0 --proxy-config proxy.conf.json --disable-host-check",
+    "app": "ng serve --host 0.0.0.0 --port 4100 --proxy-config proxy.conf.json --disable-host-check",
     "api": "nodemon api/server.js",
     "build": "ng build && npm run copy-404 && npm run copy-500",
     "build-prod": "ng build --prod --aot && npm run copy-404 && npm run copy-500",

@@ -1,0 +1,9 @@
+<div class="p-grid statistics-container no-margin no-padding" id="tests-graph" #mainGrid style="height: calc(100% - 51px);">
+    <!-- <iframe seamless frameborder="0" scrolling="yes" src="https://covid19.geo-spatial.org/external/charts_vasile/covid19-mediu-sst-desktop.html"></iframe> -->
+
+    <iframe *ngIf="!isMobile" seamless frameborder="0" scrolling="yes" src="https://covid19.geo-spatial.org/external/charts_vasile/covid19-mediu-sst-desktop.html"></iframe>
+
+    <!-- <canvas id="canvasTrendline" #canvasTrendline></canvas> -->
+    
+    <iframe *ngIf="isMobile" seamless frameborder="0" scrolling="yes" src="https://covid19.geo-spatial.org/external/charts_vasile/covid19-mediu-sst-mobile.html"></iframe>
+</div>

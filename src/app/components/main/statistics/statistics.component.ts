@@ -34,6 +34,8 @@ export class StatisticsComponent implements OnInit {
 
   mobilitySubmenuVisible: boolean = false;
   casesSubmenuVisible: boolean = false;
+  mediuSubmenuVisible: boolean = false;
+  europaSubmenuVisible: boolean = false;
 
   constructor(
     private sharedService: SharedService,
@@ -93,26 +95,56 @@ export class StatisticsComponent implements OnInit {
         label: 'Teste efectuate',
         classes: 'ui-button-secondary'
       },
+      // {
+      //   routerLink: '/statistici/mobilitate',
+      //   label: 'Mobilitate',
+      //   classes: 'ui-button-secondary'
+      // },
       {
-        routerLink: '/statistici/mobilitate',
-        label: 'Mobilitate',
+        routerLink: '/statistici/calitate-aer',
+        label: 'Mediu',
         classes: 'ui-button-secondary'
       },
       {
-        routerLink: '/statistici/calitate-aer',
-        label: 'Calitate aer',
+        routerLink: '/statistici/temperatura-apa-mare',
+        label: 'Temperatura apei mării',
+        classes: 'ui-button-secondary',
+        hidden: true
+      },
+      {
+        routerLink: '/statistici/interes-public',
+        label: 'Interes public',
         classes: 'ui-button-secondary'
       },
       {
         routerLink: '/statistici/situatie-europa',
         label: 'Europa',
         classes: 'ui-button-secondary'
+      },
+      {
+        routerLink: '/statistici/situatie-europa/cazuri-active',
+        label: 'Cazuri active',
+        classes: 'ui-button-secondary',
+        hidden: true
+      },
+      {
+        routerLink: '/statistici/situatie-europa/cazuri-confirmate',
+        label: 'Cazuri confirmate',
+        classes: 'ui-button-secondary',
+        hidden: true
+      },
+      {
+        routerLink: '/statistici/situatie-europa/decese',
+        label: 'Decese',
+        classes: 'ui-button-secondary',
+        hidden: true
       }
     ];
 
     let current_url = this.router.url.split('?')[0];
     // if(current_url.includes('/statistici/statistici-generale')) current_url = '/statistici';
     if(current_url.includes('/statistici/mobilitate')) current_url = '/statistici/mobilitate';
+    if(current_url.includes('/statistici/temperatura-apa-mare')) current_url = '/statistici/temperatura-apa-mare';
 
     this.activeLink = this.links.find(e => e.routerLink === current_url);
 
@@ -122,6 +154,7 @@ export class StatisticsComponent implements OnInit {
 
         // if(current_url.includes('/statistici/statistici-generale')) current_url = '/statistici';
         if(current_url.includes('/statistici/mobilitate')) current_url = '/statistici/mobilitate';
+        if(current_url.includes('/statistici/temperatura-apa-mare')) current_url = '/statistici/temperatura-apa-mare';
         
         this.activeLink = this.links.find(e => e.routerLink === current_url);
       }
@@ -150,6 +183,16 @@ export class StatisticsComponent implements OnInit {
 
     if(item.label === 'Cazuri') {
       this.casesSubmenuVisible = !this.casesSubmenuVisible;
+      return;
+    }
+
+    if(item.label === 'Mediu') {
+      this.mediuSubmenuVisible = !this.mediuSubmenuVisible;
+      return;
+    }
+    
+    if(item.label === 'Europa') {
+      this.europaSubmenuVisible = !this.europaSubmenuVisible;
       return;
     }
 

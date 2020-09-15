@@ -1,0 +1,77 @@
+::ng-deep .statistics-container {
+    height: calc(100% - 51px);
+    overflow-y: auto;
+  }
+  
+  @media (max-width: 550px) {
+      #maps-btn {
+          margin-left: 0 !important;
+          display: block;
+          margin-top: 5px;
+      }
+  
+      .new-row {
+          margin-right: unset !important;
+          margin-top: 5px !important;
+       }
+  }
+  
+  .s-m-container {
+    overflow-x: hidden;
+    width: 100%;
+    white-space: nowrap;
+  }
+  
+  .sub-menu {
+    position: relative;
+  
+    .arrow-btn {
+      position: absolute;
+      z-index: 1;
+    }
+  
+    .arrow-btn.left {
+      left: 0;
+    }
+  
+    .arrow-btn.right {
+      right: 0;
+    }
+  }
+  
+  .sub-menu.with-arrows {
+    padding-left: 42px;
+    padding-right: 42px;
+  }
+  
+  .menu-submenu {
+    border-top: 1px solid #fff;
+    display: none; 
+    position: absolute;
+    background-color: #323F5B;
+    top: 45px;
+    left: 0px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    min-width: 170px;
+  }
+  
+  .menu-submenu.no-bullet {
+    left: 0;
+  }
+  
+  .menu-submenu li a {
+    display: block !important;
+    font-size: 12px !important;
+    line-height: 34px !important;
+  }
+  
+  .submenu ul li:hover .menu-submenu{
+    display: block;
+    z-index: 2;
+  }
+  
+  .layout-submenu li.hidden {
+    display: none;
+  }

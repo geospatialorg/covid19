@@ -1,0 +1,23 @@
+#tests-graph iframe {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+@media(max-width: 1000px) {
+    #tests-graph iframe {
+        width: 100%;
+    }
+}
+
+@media(min-width: 1001px) and (max-width: 1200px) {
+    #tests-graph iframe {
+        width: 60%;
+    }
+}
+
+@media(min-width: 1201px) and (max-width: 1368px) {
+    #tests-graph iframe {
+        width: 55%;
+    }
+}

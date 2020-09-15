@@ -28,7 +28,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class MapComponent implements OnInit, OnDestroy {
   maxRadius = 40000;
   minRadius = 7500;
-  milestones: number[] = [100, 500, 1000];
+  // milestones: number[] = [100, 500, 1000];
+  milestones: number[] = [500, 1500, 2500, 5000];
+  milestones_active: number[] = [200, 500, 1000, 1000];
   milestones_new: number[] = [10, 40, 40];
   milestones_deaths: number[] = [10, 50, 100];
   metropolitan_colors : string[] = [
@@ -57,6 +59,12 @@ export class MapComponent implements OnInit, OnDestroy {
     // '204,204,204',
     // '0,60,48',
     // '53,151,143'
+  ];
+
+ covid14_colors : string[] = [
+    '118, 255, 90',
+    '216, 194, 28',
+    '220, 14, 8'
   ];
 
   activeMap: any;
@@ -116,6 +124,17 @@ export class MapComponent implements OnInit, OnDestroy {
       },
       dataKey: 'total_dead'
     },
+    {
+      id: 'incidenta_covid_14_zile',
+      title: 'Incidenta COVID 14 zile',
+      alt_id: 'incidenta_covid_14_zile',
+      style: {
+        fill: {
+          color: 'rgba(0,0,0, 0.6)'
+        }
+      },
+      dataKey: 'incidenta_covid_14_zile'
+    },
     // {
     //   id: 'metropolitan_areas',
     //   title: 'Zone metropolitane',
@@ -138,7 +157,7 @@ export class MapComponent implements OnInit, OnDestroy {
         stroke_color: '#984ea3',
         stroke_width: 0.3,
         fill_colors: [
-          'rgba(222, 0, 11, 0.5)',
+          'rgba(222, 0, 11, 0.9)',
           'rgba(251, 255, 0, 0.5)',
           'rgba(222, 0, 11, 0.5)'
         ]
@@ -272,6 +291,11 @@ export class MapComponent implements OnInit, OnDestroy {
   displayDisclaimer: boolean = false;
   displayDisclaimerDeaths: boolean = false;
 
+  quarantineUats : any[] = [];
+
+
+  selectedCovid14Zone: any = null;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -316,7 +340,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   async loadData() {
     this.mapData = await this.getData();
-    console.log(this.mapData)
+    this.quarantineUats = await this.dashboardService.getQuarantineUATGeojson(null).toPromise().then(res => res.features);
     // this.interval = setInterval(() => {
     //   this.getData().then(data => {
     //     this.mapData = data;
@@ -346,21 +370,30 @@ export class MapComponent implements OnInit, OnDestroy {
     let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
     countiesLayer.getSource().refresh();
 
-    if (layer.id === 'quarantine' || layer.id === 'metropolitan_areas') {
+    if (layer.id === 'quarantine' || layer.id === 'metropolitan_areas' || layer.id === 'incidenta_covid_14_zile') {
       this.over = [];
     } else {
       if(this.activeMap.id === 'deaths'){
         this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[0]).map(e => e.county_code);
         this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[1]).map(e => e.county_code);
         this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[2]).map(e => e.county_code);
+      } else if(this.activeMap.id === 'active_cases'){
+        // this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[0]).map(e => e.county_code);
+        // this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[1]).map(e => e.county_code);
+        // this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[2]).map(e => e.county_code);
+
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_active[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e =>  this.milestones_active[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_active[0]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e =>  this.milestones_active[2] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_active[1]).map(e => e.county_code);
+        this.over[3] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[2]).map(e => e.county_code);
       } else if(this.activeMap.id === 'new_cases') {
         this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_new[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
         this.over[1] = this.mapData.filter(e =>  this.milestones_new[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_new[0]).map(e => e.county_code);
         this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_new[1]).map(e => e.county_code);
       } else {
-        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
-        this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
-        this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+        for(let i = 0; i < this.milestones.length; i++){
+          this.over[i] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[i]).map(e => e.county_code);
+        }
       }
     }
   }
@@ -402,7 +435,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     if (this.activeMap.id === 'quarantine') {
       this.map.getLayers().getArray().map(e => {
-        if (['icons', 'metropolitan_areas'].includes(e.get('id'))) {
+        if (['icons', 'metropolitan_areas', 'incidenta_covid_14_zile'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
@@ -410,7 +443,15 @@ export class MapComponent implements OnInit, OnDestroy {
       });
     } else if (this.activeMap.id === 'metropolitan_areas') {
       this.map.getLayers().getArray().map(e => {
-        if (['counties_quarantine', 'roads', 'checkpoints'].includes(e.get('id'))) {
+        if (['counties_quarantine', 'quarantine_uats', 'roads', 'checkpoints', 'incidenta_covid_14_zile'].includes(e.get('id'))) {
+          e.setVisible(false);
+        } else {
+          e.setVisible(true);
+        }
+      });
+    } else if (this.activeMap.id === 'incidenta_covid_14_zile') {
+      this.map.getLayers().getArray().map(e => {
+        if (['counties_quarantine', 'quarantine_uats', 'roads', 'checkpoints', 'metropolitan_areas'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
@@ -419,7 +460,7 @@ export class MapComponent implements OnInit, OnDestroy {
     }
     else {
       this.map.getLayers().getArray().map(e => {
-        if (['counties_quarantine', 'roads', 'checkpoints', 'metropolitan_areas'].includes(e.get('id'))) {
+        if (['counties_quarantine', 'quarantine_uats', 'roads', 'checkpoints', 'metropolitan_areas', 'incidenta_covid_14_zile'].includes(e.get('id'))) {
           e.setVisible(false);
         } else {
           e.setVisible(true);
@@ -472,9 +513,10 @@ export class MapComponent implements OnInit, OnDestroy {
       stroke: stroke
     });
 
-    if (feature && feature.get('quarantine')) {
+    if (feature && feature.get('carantine_flag')) {
       styleQuarantine.setFill(new Fill({
-        color: this.qStyles.uat.default.fill_colors[feature.get('quarantine')]
+        // color: this.qStyles.uat.default.fill_colors[feature.get('quarantine')]
+        color: this.qStyles.uat.default.fill_colors[0]
       }));
     }
 
@@ -511,6 +553,83 @@ export class MapComponent implements OnInit, OnDestroy {
         color: this.qStyles.uat.highlight.fill_color
       })
     });
+
+    return [style, styleHover];
+  }
+
+  covid14Styles(feature) {
+    const stroke = new Stroke({
+      color: this.qStyles.uat.default.stroke_color,
+      width: 0.2
+    });
+
+    const style = new Style({
+      stroke: stroke
+    });
+
+    if (feature) {
+      if(feature.get('incidenta') >= 0 && feature.get('incidenta') < 1){
+        style.setFill(
+          new Fill({
+            color: `rgba(${this.covid14_colors[0]}, 0.5)`
+          })
+        );
+      }
+
+      if(feature.get('incidenta') >= 1 && feature.get('incidenta') < 3){
+        style.setFill(
+          new Fill({
+            color: `rgba(${this.covid14_colors[1]}, 0.5)`
+          })
+        );
+      }
+
+      if(feature.get('incidenta') >= 3 && feature.get('incidenta') <= 100){
+        style.setFill(
+          new Fill({
+            color: `rgba(${this.covid14_colors[2]}, 0.5)`
+          })
+        );
+      }
+    }
+
+    //
+
+    const styleHover = new Style({
+      stroke: new Stroke({
+        color: 'rgb(152, 78, 163)',
+        width: 2
+      }),
+      // fill: new Fill({
+      //   color: this.qStyles.uat.highlight.fill_color
+      // })
+    });
+
+    if (feature) {
+      if(feature.get('incidenta') >= 0 && feature.get('incidenta') < 1){
+        styleHover.setFill(
+          new Fill({
+            color: `rgba(${this.covid14_colors[0]}, 0.5)`
+          })
+        );
+      }
+
+      if(feature.get('incidenta') >= 1 && feature.get('incidenta') < 3){
+        styleHover.setFill(
+          new Fill({
+            color: `rgba(${this.covid14_colors[1]}, 0.5)`
+          })
+        );
+      }
+
+      if(feature.get('incidenta') >= 3 && feature.get('incidenta') <= 100){
+        styleHover.setFill(
+          new Fill({
+            color: `rgba(${this.covid14_colors[2]}, 0.5)`
+          })
+        );
+      }
+    }
 
     return [style, styleHover];
   }
@@ -728,14 +847,23 @@ export class MapComponent implements OnInit, OnDestroy {
     this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[0]).map(e => e.county_code);
     this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[1]).map(e => e.county_code);
     this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[2]).map(e => e.county_code);
+  } else if(this.activeMap.id === 'active_cases'){
+    // this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[0]).map(e => e.county_code);
+    // this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[1]).map(e => e.county_code);
+    // this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[2]).map(e => e.county_code);
+
+    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_active[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
+    this.over[1] = this.mapData.filter(e =>  this.milestones_active[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_active[0]).map(e => e.county_code);
+    this.over[2] = this.mapData.filter(e =>  this.milestones_active[2] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_active[1]).map(e => e.county_code);
+    this.over[3] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[2]).map(e => e.county_code);
   } else if(this.activeMap.id === 'new_cases') {
     this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_new[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
     this.over[1] = this.mapData.filter(e =>  this.milestones_new[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_new[0]).map(e => e.county_code);
     this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_new[1]).map(e => e.county_code);
   }else {
-    this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[0]).map(e => e.county_code);
-    this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[1]).map(e => e.county_code);
-    this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
+    for(let i = 0; i < this.milestones.length; i++){
+      this.over[i] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[i]).map(e => e.county_code);
+    }
   }
 
     const vectorLayer = new VectorLayer({
@@ -748,17 +876,24 @@ export class MapComponent implements OnInit, OnDestroy {
         let s = styles[0];
         
         // default
-        if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
-          s = self.generateStyle('255,255,217, 0.6');
+        if(self.activeMap.id === 'confirmed'){
+          if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
+            s = self.generateStyle('255,255,217, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+            s = self.generateStyle('254,224,139, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+            s = self.generateStyle('209,4,52, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[3].includes(feature.get('county_code'))){
+            s = self.generateStyle('111, 30, 81, 0.6');
+          }
         }
-
-        if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
-          s = self.generateStyle('254,224,139, 0.6');
-        }
-
-        if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
-          s = self.generateStyle('209,4,52, 0.6');
-        }
+        
 
         // // active
         // if(self.activeMap.id === 'active_cases'){
@@ -775,34 +910,72 @@ export class MapComponent implements OnInit, OnDestroy {
         //   }
         // }
 
+        if(self.activeMap.id === 'active_cases') {
+          if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
+            s = self.generateStyle('255,255,217, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+            s = self.generateStyle('254,224,139, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+            s = self.generateStyle('209,4,52, 0.6');
+          }
+
+          if(self.over.length > 0 && self.over[3].includes(feature.get('county_code'))){
+            s = self.generateStyle('111, 30, 81, 0.6');
+          }
+        }
+
+        if(self.activeMap.id === 'new_cases') {
+          if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
+            s = self.generateStyle('255,255,217, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
+            s = self.generateStyle('254,224,139, 0.6');
+          }
+  
+          if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
+            s = self.generateStyle('209,4,52, 0.6');
+          }
+        }
+
         //healed
         if(self.activeMap.id === 'healed'){
           // if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
-          //   s = self.generateStyle('102,194,164, 0.6');;
+          //   s = self.generateStyle('102,194,164, 0.6');
           // }
 
           // if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
-          //   s = self.generateStyle('35,139,69, 0.6');;
+          //   s = self.generateStyle('35,139,69, 0.6');
           // }
 
           if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
-            s = self.generateStyle('0,68,27, 0.6');;
+            s = self.generateStyle('0,68,27, 0.6');
           }
         }
 
         //deaths
         if(self.activeMap.id === 'deaths'){
           // if(self.over.length > 0 && self.over[0].includes(feature.get('county_code'))){
-          //   s = self.generateStyle('217,72,1, 0.9');;
+          //   s = self.generateStyle('217,72,1, 0.9');
           // }
 
           // if(self.over.length > 0 && self.over[1].includes(feature.get('county_code'))){
-          //   s = self.generateStyle('166,54,3, 0.9');;
+          //   s = self.generateStyle('166,54,3, 0.9');
           // }
 
           // if(self.over.length > 0 && self.over[2].includes(feature.get('county_code'))){
-          //   s = self.generateStyle('127,39,4, 0.9');;
+          //   s = self.generateStyle('127,39,4, 0.9');
           // }
+        }
+
+        if(self.activeMap.id === 'quarantine'){
+          let entry = self.quarantineUats.find(e => e.properties['cod_judet'] === feature.get('county_code'));
+
+          if(entry) s = self.generateStyle('255,247,188, 0.5');
         }
         
 
@@ -834,27 +1007,61 @@ export class MapComponent implements OnInit, OnDestroy {
         return self.quarantineStyles(feature)[0];
       }
     });
-
-    const vectorLayerRoads = new VectorLayer({
-      id: 'roads',
-      source: new VectorSource({
-        url: './assets/retea_rutiera_principala_ro_clip_simplificat.geojson',
-        format: new GeoJSON()
-      }),
-      style() {
-        return self.roadsStyles()[0];
-      }
-    });
     
 
-    const vectorLayerCheckpoints = new VectorLayer({
-      id: 'checkpoints',
+    const vectorLayerQuarantineUATS = new VectorLayer({
+      id: 'quarantine_uats',
       source: new VectorSource({
-        url: './assets/puncte_verificare.geojson',
+        url: '/api/dashboard/getQuarantineUATGeojson',
         format: new GeoJSON()
       }),
-      style: self.checkpointsStyles()[0]
+      style(feature) {
+        // let counties = vectorLayer.getSource().getFeatures();
+        let style = new Style({
+            fill: new Fill({
+              color: 'rgba(255,127,0, 0.2)'
+            }),
+            stroke: new Stroke({
+              color: '#984ea3',
+              width: 1
+            })
+          });
+
+        return style;
+      }
     });
+
+    const vectorLayerCovid14 = new VectorLayer({
+      id: 'incidenta_covid_14_zile',
+      source: new VectorSource({
+        url: '/api/dashboard/getCovid14Geojson',
+        format: new GeoJSON()
+      }),
+      style(feature) {
+        return self.covid14Styles(feature)[0];
+      }
+    });
+
+    // const vectorLayerRoads = new VectorLayer({
+    //   id: 'roads',
+    //   source: new VectorSource({
+    //     url: './assets/retea_rutiera_principala_ro_clip_simplificat.geojson',
+    //     format: new GeoJSON()
+    //   }),
+    //   style() {
+    //     return self.roadsStyles()[0];
+    //   }
+    // });
+    
+
+    // const vectorLayerCheckpoints = new VectorLayer({
+    //   id: 'checkpoints',
+    //   source: new VectorSource({
+    //     url: './assets/puncte_verificare.geojson',
+    //     format: new GeoJSON()
+    //   }),
+    //   style: self.checkpointsStyles()[0]
+    // });
 
     const map = new Map({
       controls: defaultControls().extend([
@@ -864,12 +1071,13 @@ export class MapComponent implements OnInit, OnDestroy {
         new TileLayer({
           source: new OSM()
         }),
-        vectorLayerMetropolitanAreas,
+        // vectorLayerMetropolitanAreas,
         vectorLayer,
-        
         // vectorLayerQuarantine,
-        vectorLayerRoads,
-        vectorLayerCheckpoints,
+        // vectorLayerQuarantineUATS,
+        vectorLayerCovid14,
+        // vectorLayerRoads,
+        // vectorLayerCheckpoints,
         iconLayer
       ],
       target: 'map',
@@ -886,6 +1094,8 @@ export class MapComponent implements OnInit, OnDestroy {
       if (ev.dragging) {
         return;
       }
+
+      // console.log(ev)
 
       if (self.selectedFeature !== null) {
         self.selectedFeature.setStyle(iconStyle);
@@ -904,6 +1114,12 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedMetropolitan = null;
       }
 
+      if (self.selectedCovid14Zone !== null) {
+        let style = self.covid14Styles(self.selectedCovid14Zone)[0];
+        self.selectedCovid14Zone.setStyle(style);
+        // self.selectedCovid14Zone = null;
+      }
+
       if (self.selectedRoad !== null) {
         let style = self.roadsStyles()[0];
         self.selectedRoad.setStyle(style);
@@ -918,6 +1134,7 @@ export class MapComponent implements OnInit, OnDestroy {
       const pixel = ev.pixel;
 
       self.map.forEachFeatureAtPixel(pixel, (feature, layer) => {
+        
         if (layer.get('id') === 'icons') {
           self.selectedFeature = feature;
           feature.setStyle(highlightStyle);
@@ -932,6 +1149,12 @@ export class MapComponent implements OnInit, OnDestroy {
           let style = self.metropolitanStyles(null)[1];
 
           self.selectedMetropolitan = feature;
+          feature.setStyle(style);
+          return true;
+        } else if (layer.get('id') === 'incidenta_covid_14_zile') {
+          let style = self.covid14Styles(self.selectedCovid14Zone)[1];
+
+          self.selectedCovid14Zone = feature;
           feature.setStyle(style);
           return true;
         } else if (layer.get('id') === 'roads') {
@@ -977,6 +1200,11 @@ export class MapComponent implements OnInit, OnDestroy {
         self.selectedMetropolitan = null;
       }
 
+      if (self.selectedCovid14Zone !== null) {
+        self.selectedCovid14Zone.setStyle(this.selectedCovid14Zone[0]);
+        self.selectedCovid14Zone = null;
+      }
+
       const coords = self.map.getEventCoordinate(ev.originalEvent);
 
       if (self.activeMap.id === 'quarantine') {
@@ -998,6 +1226,11 @@ export class MapComponent implements OnInit, OnDestroy {
           })
         });
 
+        feature.setStyle(style);
+      } else if (self.activeMap.id === 'incidenta_covid_14_zile') {
+        const feature = vectorLayerCovid14.getSource().getClosestFeatureToCoordinate(coords);
+        self.selectedCovid14Zone = feature;
+        let style = self.covid14Styles(null)[1];
         feature.setStyle(style);
       } else {
         const feature = iconLayer.getSource().getClosestFeatureToCoordinate(coords);
@@ -1037,6 +1270,16 @@ export class MapComponent implements OnInit, OnDestroy {
       this.selectedMetropolitan = null;
     }
 
+    // if (this.selectedQuarantineZone !== null) {
+    //   let style = new Style({
+    //     fill: new Fill({
+    //       color: this.qStyles.uat.default.fill_colors[this.selectedQuarantineZone.get('quarantine')]
+    //     })
+    //   });
+    //   this.selectedQuarantineZone.setStyle(style);
+    //   this.selectedQuarantineZone = null;
+    // }
+
     this.router.navigate(['/'], {
       queryParams: {
         map: this.activeMap.alt_id
@@ -1047,7 +1290,9 @@ export class MapComponent implements OnInit, OnDestroy {
     let countiesLayer: VectorLayer  = this.map.getLayers().getArray().find(l => l.get('id') === 'counties');
     countiesLayer.getSource().refresh();
 
-    if (this.activeMap.id === 'quarantine' || this.activeMap.id === 'metropolitan_areas') {
+    console.log(this.activeMap.id)
+
+    if (this.activeMap.id === 'quarantine' || this.activeMap.id === 'metropolitan_areas' || this.activeMap.id === 'incidenta_covid_14_zile') {
       this.over = [];
     } else {
 
@@ -1055,6 +1300,15 @@ export class MapComponent implements OnInit, OnDestroy {
         this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[0]).map(e => e.county_code);
         this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[1]).map(e => e.county_code);
         this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_deaths[2]).map(e => e.county_code);
+      } else if(this.activeMap.id === 'active_cases'){
+        // this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[0]).map(e => e.county_code);
+        // this.over[1] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[1]).map(e => e.county_code);
+        // this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[2]).map(e => e.county_code);
+
+        this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_active[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
+        this.over[1] = this.mapData.filter(e =>  this.milestones_active[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_active[0]).map(e => e.county_code);
+        this.over[2] = this.mapData.filter(e =>  this.milestones_active[2] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_active[1]).map(e => e.county_code);
+        this.over[3] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones_active[2]).map(e => e.county_code);
       } else if(this.activeMap.id === 'new_cases') {
         this.over[0] = this.mapData.filter(e => e[this.activeMap.dataKey] < this.milestones_new[0] && e[this.activeMap.dataKey] > 0).map(e => e.county_code);
         this.over[1] = this.mapData.filter(e =>  this.milestones_new[1] > e[this.activeMap.dataKey] && e[this.activeMap.dataKey]  >= this.milestones_new[0]).map(e => e.county_code);
@@ -1065,6 +1319,7 @@ export class MapComponent implements OnInit, OnDestroy {
         this.over[2] = this.mapData.filter(e => e[this.activeMap.dataKey] >= this.milestones[2]).map(e => e.county_code);
       }
     }
+    
   }
 
   ngOnDestroy(): void {
@@ -1104,22 +1359,47 @@ export class MapComponent implements OnInit, OnDestroy {
       if(this.activeMap.id === 'active_cases') text = 'cazuri active';
       if(this.activeMap.id === 'new_cases') text = 'cazuri noi';
 
-      let legend = `
-        <rect x="3" y="65" width="20" height="20" style="fill:rgba(${fill_colors[0]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant(`home.${first_text}`)} ${milestone[0]}</text>
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant(`home.${text}`)}</text>
+      let legend;
+      
+      
+    if(this.activeMap.id === 'incidenta_covid_14_zile'){
+      legend = `
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="3" y="10"> ${this.translate.instant(`home.Rata de incidenta la 1000 locuitori`)} </text>
 
-        <rect x="3" y="100" width="20" height="20" style="fill:rgba(${fill_colors[1]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant(`home.${first_text}`)} ${milestone[1]}</text>
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant(`home.${text}`)}</text>
+      <rect x="3" y="17" width="20" height="20" style="fill:rgba(${fill_colors[0]}, .5);stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="33"> < 1 </text>
 
-        <rect x="3" y="135" width="20" height="20" style="fill:rgba(${fill_colors[2]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant(`home.${text}`)}</text>
+      <rect x="3" y="48" width="20" height="20" style="fill:rgba(${fill_colors[1]}, .5);stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="64"> 1 - 3 </text>
+
+      <rect x="3" y="79" width="20" height="20" style="fill:rgba(${fill_colors[2]}, .5);stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="95"> >= 3 </text>
+     `;
+    } else {
+      legend = `
+      <rect x="3" y="65" width="20" height="20" style="fill:rgba(${fill_colors[0]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant(`home.${first_text}`)} ${milestone[0]}</text>
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant(`home.${text}`)}</text>
+
+      <rect x="3" y="100" width="20" height="20" style="fill:rgba(${fill_colors[1]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant(`home.${first_text}`)} ${milestone[1]}</text>
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant(`home.${text}`)}</text>
+
+      <rect x="3" y="135" width="20" height="20" style="fill:rgba(${fill_colors[2]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant(`home.${text}`)}</text>
+    `;
+
+    if(this.activeMap.id === 'confirmed'){
+      legend += `
+        <rect x="3" y="170" width="20" height="20" style="fill:rgba(${fill_colors[3]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="180">${this.translate.instant(`home.${first_text}`)} ${milestone[3]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="193">${this.translate.instant(`home.${text}`)}</text>
       `;
+    }
 
-      if(this.activeMap.id === 'new_cases'){
-        legend = `
+    if(this.activeMap.id === 'active_cases'){
+      legend = `
         <rect x="3" y="65" width="20" height="20" style="fill:rgba(${fill_colors[0]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
         <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant(`home.${alt_text}`)} ${milestone[0]}</text>
         <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant(`home.${text}`)}</text>
@@ -1129,12 +1409,31 @@ export class MapComponent implements OnInit, OnDestroy {
         <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant(`home.${text}`)}</text>
 
         <rect x="3" y="135" width="20" height="20" style="fill:rgba(${fill_colors[2]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${alt_text}`)} ${milestone[2]}</text>
         <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant(`home.${text}`)}</text>
-      `;
-      }
 
-      
+        <rect x="3" y="170" width="20" height="20" style="fill:rgba(${fill_colors[3]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="180">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="193">${this.translate.instant(`home.${text}`)}</text>
+       `;
+    }
+
+    if(this.activeMap.id === 'new_cases'){
+      legend = `
+      <rect x="3" y="65" width="20" height="20" style="fill:rgba(${fill_colors[0]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="75">${this.translate.instant(`home.${alt_text}`)} ${milestone[0]}</text>
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="88">${this.translate.instant(`home.${text}`)}</text>
+
+      <rect x="3" y="100" width="20" height="20" style="fill:rgba(${fill_colors[1]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="110">${this.translate.instant(`home.${alt_text}`)} ${milestone[1]}</text>
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="123">${this.translate.instant(`home.${text}`)}</text>
+
+      <rect x="3" y="135" width="20" height="20" style="fill:rgba(${fill_colors[2]});stroke-width:0.8;stroke: ${stroke_colors[0]}" />
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="145">${this.translate.instant(`home.${first_text}`)} ${milestone[2]}</text>
+      <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="158">${this.translate.instant(`home.${text}`)}</text>
+    `;
+    }
+    }
 
       return legend;
   }
@@ -1143,7 +1442,7 @@ export class MapComponent implements OnInit, OnDestroy {
     let map = this.maps.find(e => e.id === this.activeMap.id);
 
     const options = {
-      width: 220,
+      width: 230,
       height: 65,
       text_fill: '#000',
       font_size: 12,
@@ -1156,13 +1455,18 @@ export class MapComponent implements OnInit, OnDestroy {
       hightlight_fill: 'rgba(255,255,51, 0.6)'
     };
 
-    if(this.activeMap.id === 'quarantine') {
+    if(['quarantine', 'incidenta_covid_14_zile'].includes(this.activeMap.id)) {
       options.height = 110;
     }
 
-    if(['confirmed', 'healed', 'deaths', 'active_cases', 'new_cases'].includes(this.activeMap.id)) {
+    if(['healed', 'deaths', 'new_cases'].includes(this.activeMap.id)) {
       options.height = 170;
     }
+
+    if(['confirmed', 'active_cases'].includes(this.activeMap.id)) {
+      options.height = 200;
+    }
+    
 
     let legend =  `
       <svg width="${options.width}" height="${options.height}">  
@@ -1171,17 +1475,33 @@ export class MapComponent implements OnInit, OnDestroy {
     if(this.activeMap.id === 'quarantine'){
       legend += `
         <polygon points="5,20 8,13 20,10 25,20 20,25  10,27 5,20" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[0]}" stroke-width="${options.stroke_width}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="23">${this.translate.instant('home.Zone in carantină')}</text>
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="23">${this.translate.instant('home.Localități carantinate')}</text>
 
-        <polygon points="5,45 8,38 20,35 25,45 20,50  10,52 5,45" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[1]}" stroke-width="${options.stroke_width}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">${this.translate.instant('home.Zone cu statut special')}</text>
-
-        <circle cx="14" cy="68" r="${options.small_radius}" stroke="${this.qStyles.checkpoints.default.stroke_color}" stroke-width="${options.stroke_width}" fill="${this.qStyles.checkpoints.default.fill_color}" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="73">${this.translate.instant('home.Punct control')}</text>
-
-        <line x1="5" y1="92" x2="20" y2="92" style="stroke: ${this.qStyles.roads.default.stroke_color};stroke-width:2" />
-        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="95">${this.translate.instant('home.Drum')}</text>
+        <polygon points="5,45 8,38 20,35 25,45 20,50  10,52 5,45" stroke="purple" fill="rgba(255,127,0, 1)" stroke-width="${options.stroke_width}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">${this.translate.instant('home.UAT-uri cu localități carantinate')}</text>
+        
+        <polygon points="5,70 8,63 20,60 25,70 20,75  10,77 5,70" stroke="purple" fill="rgba(255,247,188, 1)" stroke-width="${options.stroke_width}" />
+        <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="73">${this.translate.instant('home.Județe cu localități carantinate')}</text>
       `;
+
+      // <polygon points="5,45 8,38 20,35 25,45 20,50  10,52 5,45" stroke="purple" fill="${this.qStyles.uat.default.fill_colors[1]}" stroke-width="${options.stroke_width}" />
+      // <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">${this.translate.instant('home.Zone cu statut special')}</text>
+
+      // <circle cx="14" cy="68" r="${options.small_radius}" stroke="${this.qStyles.checkpoints.default.stroke_color}" stroke-width="${options.stroke_width}" fill="${this.qStyles.checkpoints.default.fill_color}" />
+      //   <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="73">${this.translate.instant('home.Punct control')}</text>
+
+      //   <line x1="5" y1="92" x2="20" y2="92" style="stroke: ${this.qStyles.roads.default.stroke_color};stroke-width:2" />
+      //   <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="95">${this.translate.instant('home.Drum')}</text>
+    } else if(this.activeMap.id === 'incidenta_covid_14_zile'){ 
+    //   legend += `
+  
+    //   <circle cx="13" cy="12" r="${options.big_radius}" stroke="#ffff33" stroke-width="${options.stroke_width}" fill="${map.style.fill.color}" />
+    //   <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="17">${this.translate.instant('home.'+map.title)}</text>
+
+    //   <circle cx="13" cy="43" r="${options.big_radius}" stroke="#e41a1c" stroke-width="${options.stroke_width}" fill="${options.hightlight_fill}" />
+    //   <text fill="${options.text_fill}" font-size="${options.font_size}" font-family="${options.font_family}" x="32" y="48">${this.translate.instant('home.Inregistrare selectată')}</text>
+    // `;
+      legend += this.generateLegendItems(options, null, this.covid14_colors, ['#984ea3']);
     } else {
       legend += `
   
@@ -1193,7 +1513,7 @@ export class MapComponent implements OnInit, OnDestroy {
       `;
 
       if(this.activeMap.id === 'confirmed') {
-        legend += this.generateLegendItems(options, this.milestones, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.5'], ['#984ea3']);
+        legend += this.generateLegendItems(options, this.milestones, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.5', '111, 30, 81, 0.6'], ['#984ea3']);
       }
 
       if(this.activeMap.id === 'healed') {
@@ -1205,7 +1525,7 @@ export class MapComponent implements OnInit, OnDestroy {
       }
 
       if(this.activeMap.id === 'active_cases') {
-        legend += this.generateLegendItems(options, this.milestones, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.6'], ['#984ea3']);
+        legend += this.generateLegendItems(options, this.milestones_active, ['255,255,217, 0.6', '254,224,139, 0.6', '209,4,52, 0.6', '111, 30, 81, 0.6'], ['#984ea3']);
       }
 
       if(this.activeMap.id === 'new_cases') {

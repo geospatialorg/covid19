@@ -678,24 +678,24 @@
   // color: #000 !important;
 }
 
-#mobility-list .ui-dropdown {
+#mobility-list .ui-dropdown, #custom-list .ui-dropdown {
   width: 20%;
 }
 
 @media(max-width: 1000px) {
-  #mobility-list .ui-dropdown {
+  #mobility-list .ui-dropdown, #custom-list .ui-dropdown {
       width: 90% !important;
   }
 }
 
 @media(min-width: 1001px) and (max-width: 1200px) {
-  #mobility-list .ui-dropdown {
+  #mobility-list .ui-dropdown, #custom-list .ui-dropdown {
       width: 40%;
   }
 }
 
 @media(min-width: 1201px) and (max-width: 1368px) {
-  #mobility-list .ui-dropdown {
+  #mobility-list .ui-dropdown, #custom-list .ui-dropdown {
       width: 30%;
   }
 }

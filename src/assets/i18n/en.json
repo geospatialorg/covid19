@@ -7,7 +7,8 @@
         "Jurnal aplicație": "Jurnal aplicație",
         "Manifest": "Manifest",
         "Comunitate": "Comunitate",
-        "Despre": "Despre"
+        "Despre": "Despre",
+        "Impact": "Impact"
     },
     "footer": {
         "Data ultimei actualizari": "Data ultimei actualizari"
@@ -33,9 +34,14 @@
 
         "message_health_1": "Începând cu data de 02.04.2020, autoritățile nu mai comunică numărul de vindecări la nivel de județ, prezentând doar numărul total al pacienților declarați vindecați. Din această cauză, etichetăm vindecările noi cu cu locația \"JUDEȚ NECUNOSCUT\"",
         "message_health_2": "Echipa de voluntari verifică sistematic presa locală și anunțurile autorităților publice locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații verificabile, mută cazurile din \"JUDEȚ NECUNOSCUT\" în județul corect de vindecare.",
+        "message_health_3": "Astfel, am observat că numărul de persoane declarate ca fiind vindecate la nivel local este mai mare decât cel raportat în comunicatul zilnic al Grupului de Comunicare Strategică. Credem că diferența este dată de modul trunchiat sau inconsistent în care sunt prezentate datele persoanelor externate.",
+        "message_health_4": "Este posibil ca unele cazuri să fie declarate ca fiind vindecate atât în județul de externare cât si în rapoartele din județele de domiciliu. De exemplu, din ce am reușit să înțelegem, Constanța raportează atât externări ale cetățenilor din județ cât și din județele Tulcea și Ialomița.",
+        "message_health_5": "O altă problemă o reprezintă modul neuniform în care sunt tratați asimptomaticii externați după 10 zile și persoanele externate la cerere sau cele care au refuzat internarea.",
+        "message_health_6": "Înțelegem că cifrele prezentate de noi pot provoca confuzie. Vă asigurăm că însă că fiecare caz catalogat ca fiind vindecat are ca referință o comunicare oficială la nivel local și că, atâta vreme cât autoritățile centrale refuză să comunice transparent situația la nivel de județ, nu avem cum să prezentăm date la nivel de județ aliniate cu cele raportate la nivel național.",
 
         "message_deaths_1": "Începând cu data de 11.06.2020, autoritățile nu mai comunică decesele la nivel de județ, prezentând doar numărul total al pacienților decedați și județele în care se găsesc spitale ce au înregistrat decese. Din această cauză, etichetăm decesele noi cu cu locația \"JUDEȚ NECUNOSCUT\" (plasate pe hartă în Marea Neagră).",
         "message_deaths_2": "Echipa de voluntari verifică sistematic presa locală și anunțurile autorităților publice locale (DSP-uri, spitale, etc.) și, acolo unde găsește informații verificabile, mută cazurile din \"JUDEȚ NECUNOSCUT\" în județul corect de deces.",
+        
 
         "Cazuri confirmate": "Cazuri confirmate",
         "cazuri confirmate": "cazuri confirmate",
@@ -52,7 +58,17 @@
         "Zone in carantină": "Zone in carantină",
         "Populatie": "Populatie",
         "Zona": "Zona",
-        "Hartă cazuri": "Hartă cazuri"
+        "Hartă cazuri": "Hartă cazuri",
+        "Localități carantinate": "Localități carantinate",
+        "UAT-uri cu localități carantinate": "UAT-uri cu localități carantinate",
+        "Județe cu localități carantinate": "Județe cu localități carantinate",
+        "Vindecări cu teste": "Vindecări cu teste",
+        "Externări la 10 zile fără test": "Externări la 10 zile fără test",
+        "Incidenta COVID 14 zile": "Incidenta COVID 14 zile",
+        "Localitate": "Localitate",
+        "Incidenta": "Incidenta",
+        "Judet": "Judet",
+        "Rata de incidenta la 1000 locuitori": "Rata de incidenta la 1000 locuitori"
     },
     "maps": {
         "Infrastructura spitalicească": "Infrastructura spitalicească",
@@ -99,7 +115,13 @@
         "Cazuri": "Cases",
         "Pack": "Pack",
         "Timeline": "Timeline",
-        "Relations": "Relations"
+        "Relations": "Relations",
+        "Interes public": "Interes public",
+        "Mediu": "Mediu",
+        "Frontieră": "Frontieră",
+        "Temperatura apei mării": "Temperatura apei mării",
+        "Cazuri active": "Cazuri active",
+        "Cazuri confirmate": "Cazuri confirmate"
     },
     "manifest": {
         "Update 02.04.2020: Autoritățile au reluat raportarea cazurilor la nivel de județ": "Update 02.04.2020: Autoritățile au reluat raportarea cazurilor la nivel de județ",
@@ -146,5 +168,48 @@
         "PM10": "PM10",
         "PM2.5": "PM2.5",
         "Indice calitate aer": "Indice calitate aer"
+    },
+    "europe-situation" : {
+        "Decese raportate la 100k locuitori": "Decese raportate la 100k locuitori",
+        "Decese cumulate": "Decese cumulate",
+        "Heatmap decese cumulate": "Heatmap decese cumulate",
+        "Heatmap decese raportate la 100k locuitori": "Heatmap decese raportate la 100k locuitori",
+        "Heatmap cazuri confirmate cumulate": "Heatmap cazuri confirmate cumulate",
+        "Heatmap cazuri confirmate raportate la 100k locuitori": "Heatmap cazuri confirmate raportate la 100k locuitori",
+        "Cazuri confirmate cumulate": "Cazuri confirmate cumulate",
+        "Cazuri confirmate raportate la 100k locuitori": "Cazuri confirmate raportate la 100k locuitori",
+        "Cazuri active raportate la 100k locuitori": "Cazuri active raportate la 100k locuitori",
+        "Cazuri active cumulate": "Cazuri active cumulate",
+        "Heatmap cazuri active cumulate": "Heatmap cazuri active cumulate",
+        "Heatmap cazuri active raportate la 100k locuitori" : "Heatmap cazuri active raportate la 100k locuitori"
+    },
+    "impact" : {
+        "Mobilitate": "Mobilitate",
+        "Waze": "Waze",
+        "Apple": "Apple",
+        "Google": "Google",
+        "Frontieră": "Frontieră",
+        "Trafic aerian": "Trafic aerian",
+        "Agricultură": "Agricultură",
+        "Media": "Media",
+        "Turism": "Turism",
+        "Populație": "Populație",
+        "Imobiliare": "Imobiliare",
+        "Auto": "Auto",
+        "Economie": "Economie",
+        "Curs valutar": "Curs valutar",
+        "Preț combustibili": "Preț combustibili",
+        "Autorizații": "Autorizații",
+        "Mișcarea naturală": "Mișcarea naturală",
+        "Forța de muncă": "Forța de muncă",
+        "Audiențe TV": "Audiențe TV",
+        "Dinamica": "Dinamica",
+        "Sacrificări animale": "Sacrificări animale",
+        "Structuri primire turistică": "Structuri primire turistică",
+        "Înmatriculare": "Înmatriculare",
+        "Prețuri": "Prețuri",
+        "Indici": "Indici",
+        "Indicatori monetari": "Indicatori monetari",
+        "Comerț și servicii": "Comerț și servicii"
     }
 }
