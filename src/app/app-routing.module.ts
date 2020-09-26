@@ -68,6 +68,18 @@ import { ExchangeComponent } from './components/main/impact/economy/exchange/exc
 import { IndicatorsComponent } from './components/main/impact/economy/indicators/indicators.component';
 import { CommerceComponent } from './components/main/impact/economy/commerce/commerce.component';
 import { MonetaryComponent } from './components/main/impact/economy/monetary/monetary.component';
+import { AdvertisingComponent } from './components/main/impact/media/advertising/advertising.component';
+import { OnlineTrafficUniqueComponent } from './components/main/impact/media/online-traffic-unique/online-traffic-unique.component';
+import { OnlineTrafficVisitsComponent } from './components/main/impact/media/online-traffic-visits/online-traffic-visits.component';
+import { OnlineTrafficViewsComponent } from './components/main/impact/media/online-traffic-views/online-traffic-views.component';
+import { CommunicationsComponent } from './components/main/impact/communications/communications.component';
+import { Statistics112Component } from './components/main/impact/communications/statistics112/statistics112.component';
+import { EnterpriseComponent } from './components/main/impact/enterprise/enterprise.component';
+import { SuspendedComponent } from './components/main/impact/enterprise/suspended/suspended.component';
+import { ErasuresComponent } from './components/main/impact/enterprise/erasures/erasures.component';
+import { DissolutionsComponent } from './components/main/impact/enterprise/dissolutions/dissolutions.component';
+
+import { RegistrationsComponent } from './components/main/impact/enterprise/registrations/registrations.component';
 
 const routes: Routes = [
   {
@@ -161,7 +173,11 @@ const routes: Routes = [
             component: MediaComponent,
             children: [
               {path: '', redirectTo: 'audiente-tv', pathMatch: 'full'},
-              {path: 'audiente-tv', component: TvAudienceComponent}
+              {path: 'audiente-tv', component: TvAudienceComponent},
+              {path: 'trafic-online-afisari', component: OnlineTrafficViewsComponent },
+              {path: 'trafic-online-vizite', component: OnlineTrafficVisitsComponent},
+              {path: 'trafic-online-vizitatori-unici', component: OnlineTrafficUniqueComponent},
+              {path: 'publicitate', component: AdvertisingComponent}
             ]
           },
           {
@@ -209,6 +225,25 @@ const routes: Routes = [
               {path: 'indici', component: IndicatorsComponent},
               {path: 'comert-servicii', component: CommerceComponent},
               {path: 'indicatori-monetari', component: MonetaryComponent}
+            ]
+          },
+          {
+            path: 'comunicatii', 
+            component: CommunicationsComponent,
+            children: [
+              {path: '', redirectTo: 'statistici-112', pathMatch: 'full'},
+              {path: 'statistici-112', component: Statistics112Component}
+            ]
+          },
+          {
+            path: 'intreprinderi', 
+            component: EnterpriseComponent,
+            children: [
+              {path: '', redirectTo: 'inmatriculari', pathMatch: 'full'},
+              {path: 'inmatriculari', component: RegistrationsComponent},
+              {path: 'suspendari', component: SuspendedComponent},
+              {path: 'radieri', component: ErasuresComponent},
+              {path: 'dizolvari', component: DissolutionsComponent}
             ]
           }
         ]

@@ -57,6 +57,14 @@ ngOnInit(): void {
           path: 'ipc',
           src: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_indici_preturi_ipc.html'),
           src_mobile: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_indici_preturi_ipc_mobile.html')
+      },
+      {
+        
+          id: 4,
+          title: 'Indicii valorici ai cifrei de afaceri din industrie',
+          path: 'indici-cifra-afacere-industrie',
+          src: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_indici_preturi_ica.html'),
+          src_mobile: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_indici_preturi_ica_mobile.html')
       }
   ];
 

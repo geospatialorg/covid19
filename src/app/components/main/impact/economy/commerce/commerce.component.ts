@@ -57,6 +57,20 @@ ngOnInit(): void {
           path: 'cifra-afaceri-servicii-piata-prestate-intreprinderi',
           src: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_comert_servicii_cifra_servicii_prestate_intreprinderi.html'),
           src_mobile: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_comert_servicii_cifra_servicii_prestate_intreprinderi_mobile.html')
+      },
+      {
+          id: 4,
+          title: 'Cifra de afaceri în comerț și servicii prestate în principal populației',
+          path: 'cifra-afaceri-servicii-prestate-populatie',
+          src: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_comert_servicii_cifra_servicii_prestate_populatie.html'),
+          src_mobile: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_comert_servicii_cifra_servicii_prestate_populatie_mobile.html')
+      },
+      {
+          id: 5,
+          title: 'Cifra de afaceri din comerțul, întreţinerea și repararea de autovehicule și motociclete',
+          path: 'cifra-afaceri-servicii-autovehicule-motociclete',
+          src: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_comert_servicii_cifra_servicii_autovehicule_motociclete.html'),
+          src_mobile: this.getSafeUrl('https://covid19.geo-spatial.org/external/charts_vasile/impact/impact_economie_comert_servicii_cifra_servicii_autovehicule_motociclete_mobile.html')
       }
   ];
 

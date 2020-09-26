@@ -135,6 +135,17 @@ import { IndicatorsComponent } from './components/main/impact/economy/indicators
 import { CommerceComponent } from './components/main/impact/economy/commerce/commerce.component';
 import { ExchangeComponent } from './components/main/impact/economy/exchange/exchange.component';
 import { MonetaryComponent } from './components/main/impact/economy/monetary/monetary.component';
+import { OnlineTrafficViewsComponent } from './components/main/impact/media/online-traffic-views/online-traffic-views.component';
+import { OnlineTrafficVisitsComponent } from './components/main/impact/media/online-traffic-visits/online-traffic-visits.component';
+import { OnlineTrafficUniqueComponent } from './components/main/impact/media/online-traffic-unique/online-traffic-unique.component';
+import { AdvertisingComponent } from './components/main/impact/media/advertising/advertising.component';
+import { CommunicationsComponent } from './components/main/impact/communications/communications.component';
+import { Statistics112Component } from './components/main/impact/communications/statistics112/statistics112.component';
+import { EnterpriseComponent } from './components/main/impact/enterprise/enterprise.component';
+import { RegistrationsComponent } from './components/main/impact/enterprise/registrations/registrations.component';
+import { SuspendedComponent } from './components/main/impact/enterprise/suspended/suspended.component';
+import { ErasuresComponent } from './components/main/impact/enterprise/erasures/erasures.component';
+import { DissolutionsComponent } from './components/main/impact/enterprise/dissolutions/dissolutions.component';
 
 const pwaServiceInitializer = (pwaService: PwaService) => () => pwaService.init();
 const notificationsServiceInitializer = (notificationsService: NotificationsService) => () => notificationsService.init();
@@ -215,7 +226,18 @@ export function createTranslateLoader(http: HttpClient) {
     IndicatorsComponent,
     CommerceComponent,
     ExchangeComponent,
-    MonetaryComponent
+    MonetaryComponent,
+    OnlineTrafficViewsComponent,
+    OnlineTrafficVisitsComponent,
+    OnlineTrafficUniqueComponent,
+    AdvertisingComponent,
+    CommunicationsComponent,
+    Statistics112Component,
+    EnterpriseComponent,
+    RegistrationsComponent,
+    SuspendedComponent,
+    ErasuresComponent,
+    DissolutionsComponent
   ],
   imports: [
     BrowserModule,

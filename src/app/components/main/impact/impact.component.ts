@@ -105,6 +105,26 @@ export class ImpactComponent implements OnInit {
             label: 'Audiențe TV',
             routerLink: '/impact/media/audiente-tv',
             hidden: false
+          },
+          {
+            label: 'Trafic online (afișări)',
+            routerLink: '/impact/media/trafic-online-afisari',
+            hidden: false
+          },
+          {
+            label: 'Trafic online (vizite)',
+            routerLink: '/impact/media/trafic-online-vizite',
+            hidden: false
+          },
+          {
+            label: 'Trafic online (vizitatori unici)',
+            routerLink: '/impact/media/trafic-online-vizitatori-unici',
+            hidden: false
+          },
+          {
+            label: 'Publicitate',
+            routerLink: '/impact/media/publicitate',
+            hidden: false
           }
         ]
       },
@@ -207,6 +227,47 @@ export class ImpactComponent implements OnInit {
             hidden: false
           }
         ]
+      },
+      {
+        label: 'Comunicații',
+        routerLink: '/impact/comunicatii',
+        classes: 'ui-button-secondary',
+        hidden: false,
+        children: [
+          {
+            label: 'Statistici 112',
+            routerLink: '/impact/comunicatii/statistici-112',
+            hidden: false
+          }
+        ]
+      },
+      {
+        label: 'Întreprinderi',
+        routerLink: '/impact/intreprinderi',
+        classes: 'ui-button-secondary',
+        hidden: false,
+        children: [
+          {
+            label: 'Înmatriculări',
+            routerLink: '/impact/intreprinderi/inmatriculari',
+            hidden: false
+          },
+          {
+            label: 'Suspendări',
+            routerLink: '/impact/intreprinderi/suspendari',
+            hidden: false
+          },
+          {
+            label: 'Radieri',
+            routerLink: '/impact/intreprinderi/radieri',
+            hidden: false
+          },
+          {
+            label: 'Dizolvări',
+            routerLink: '/impact/intreprinderi/dizolvari',
+            hidden: false
+          }
+        ]
       }
     ];
 
@@ -220,6 +281,7 @@ export class ImpactComponent implements OnInit {
     if(current_url.includes('/impact/imobiliare')) current_url = '/impact/imobiliare';
     if(current_url.includes('/impact/auto')) current_url = '/impact/auto';
     if(current_url.includes('/impact/economie')) current_url = '/impact/economie';
+    if(current_url.includes('/impact/comunicatii')) current_url = '/impact/comunicatii';
 
     this.activeLink = this.links.find(e => e.routerLink === current_url);
 
@@ -235,6 +297,7 @@ export class ImpactComponent implements OnInit {
         if(current_url.includes('/impact/imobiliare')) current_url = '/impact/imobiliare';
         if(current_url.includes('/impact/auto')) current_url = '/impact/auto';
         if(current_url.includes('/impact/economie')) current_url = '/impact/economie';
+        if(current_url.includes('/impact/comunicatii')) current_url = '/impact/comunicatii';
         
         this.activeLink = this.links.find(e => e.routerLink === current_url);
       }
